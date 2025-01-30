@@ -1,0 +1,52 @@
+---
+title: Single Sign-on
+---
+
+### Overview
+
+RedBrick AI is proud to offer Single Sign-on (SSO) for Enterprise-level clients, which allows your team to effortlessly access our platform using your trusted internal credentials for a seamless end-user experience.
+
+Implementing SSO for your Organization fundamentally alters the way that Users are added to and sign into your Organization on RedBrick AI.
+
+Please see more detailed summaries of both of these processes below.
+
+<Note>
+If you'd like to implement SSO for your organization, please reach out to us at support@redbrickai.com. We'll reach out to you directly to discuss the specific requirements of your integration given your company's existing security architecture.
+</Note>
+
+### Inviting Users to a RedBrick Organization with SSO
+
+After SSO has been configured for your Organization (and assuming you have the [proper permissions](/organizations/what-is-an-organization#organization-level-roles)), you can invite team members by first navigating to the Team Page.
+
+The "Invite Users" dialog will allow you to invite colleagues as either an Org Admin or an Org Member, as well as display a URL slug. This URL slug is unique to your Organization and is key to user sign-in, as detailed below.&#x20;
+
+Simply enter the email address of the user you would like to invite to your RedBrick Organization, designate their privilege level and click "Send Invite".
+
+<Frame>
+  <img src="/assets/images/organizations/saml.gif" alt="Inviting users with SAML" />
+</Frame>
+
+### Account Creation with SSO
+
+After an Org Admin has extended an invitation, the user should receive a message in their email inbox containing a button that redirects the user to RedBrick AI to create an account (or, if they have already created an account, to sign in to your RedBrick Organization).
+
+After clicking on the invitation link, the user will be prompted to confirm their Organization's unique URL slug.
+
+<Frame>
+  <img src="/assets/images/organizations/sso.png" alt="Organization URL slug" />
+</Frame>
+
+After clicking on "Sign up with SSO", the user will be redirected to an external identity provider, where they will have to complete a successful login. If the login is successful, a RedBrick AI account will be generated for the user.
+
+After a RedBrick AI account has been generated for the user, a confirmation code will be issued to their email address. Once the user enters that confirmation code into the necessary field, they will be able to join their team's RedBrick Organization and begin work.
+
+### Signing In with SSO
+
+Once a user has created an account on RedBrick AI and successfully joined an Organization that has SSO enabled, they can easily sign in by clicking on "Sign in with SSO" on the login page.
+
+<Frame>
+  <img src="/assets/images/organizations/sso-button.png" alt="Sign in with SSO" />
+</Frame>
+
+After clicking on "Sign in with SSO", the user will be prompted to enter their Organization's unique URL slug. Enter the slug and click on "Sign in with SSO" to proceed to the RedBrick UI.
+
