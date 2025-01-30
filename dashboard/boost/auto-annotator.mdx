@@ -1,0 +1,80 @@
+---
+title: Auto Annotator
+---
+
+The RedBrick AI Auto Annotator is an automated segmentation tool that allows teams to easily generate segmentation masks for hundreds of different structures on CT and MR images, which are then inserted into a Project pipeline as pre-labels.
+
+To use Auto Annotator, you must have an [active Boost instance](./#creating-a-boost-instance) available in your Organization.
+
+***
+
+## Adding Auto Annotator to a Project
+
+The decision to utilize Auto Annotator for a Project must be made **at Project creation.**&#x20;
+
+After a Project has been created, there is no way to retroactively add Auto Annotator to it, as the model will be added to the Project pipeline as a pre-Stage.
+
+<Frame caption="An example pipeline with Auto Annotator">
+  <img src="/assets/images/dashboard/boost/auto-annotator-pipeline.png" alt="An example pipeline with Auto Annotator" />
+</Frame>
+
+If you have an active Boost instance in your Organization, you will notice that Step (4) of standard Project creation looks slightly different:
+
+<Frame caption="Project creation with Auto Annotator">
+  <img src="/assets/images/dashboard/boost/auto-annotator-switch.png" alt="Project creation with Auto Annotator" />
+</Frame>
+
+1. The Auto Annotator toggle;
+2. Object Label mapping window;
+3. Model URL selection dropdown;
+
+### Mapping Object Labels
+
+After you've enabled Auto Annotator in a Project, you must map the labels that the algorithm will generate to a corresponding entry in your Redbrick Taxonomy.
+
+Click on **Map object labels** to open the Mapping window.
+
+<Frame caption="The Mapping Window">
+  <img src="/assets/images/dashboard/boost/auto-annotator-map.png" alt="The Mapping Window" />
+</Frame>
+
+The Mapping Window allows you to:
+
+1. Choose which Auto Annotator sub-type you would like to use for this specific Project;
+2. Map the output of the designated model sub-type to the Object Labels of your Project's Taxonomy;
+
+<Frame caption="Mapping model output">
+  <iframe className="w-full aspect-video" src="https://media.cleanshot.cloud/media/78863/E7wvuBfIwyMt5eAI0YKwEe711GTv9ihn2CUsLevm.gif?Expires=1738159121&Signature=XDYBecA5~YpBZQpOeA4YOGyI5zE~osoXZXUAY~EHKk4oiYQMGBEq99nm~E3TAieVcnc10TV00p8vAxV6ag4chBs0Sh45HO~AQvwRHkMrycdxLD6sMc4GVl-Ib3hH9Cb43vokQCbDYpjdicI5ylGvXwn9XjAkP-CK8WkjaCW2tD9p1cRpgdylRXYdtCqXt2KR5f5twB0VkyQkIZ7JiOeXP59HG-r6JBee0H2oiY~RXzgmsYaUFSyG09vtAW1P6VveNIGUYoOmpxxhJ-HBalJr44cwtVIjHxjoRAOMKRLP-uqYzcItm14wexyShDhxob80td2WNMlcrAmvLylZbsSang__&Key-Pair-Id=K269JMAT9ZF4GZ" alt="Mapping model output" />
+</Frame>
+
+Each entry in the Auto Annotator Labels list can only be mapped once. However, Taxonomy Labels can be mapped to as many structures as you'd like.
+
+Consider the example below, where the model output for `kidney_right` and `kidney_left` are both mapped to a single RedBrick Object Label called `Kidney`.
+
+<Frame>
+  <img src="/assets/images/dashboard/boost/auto-annotator-map-2.png" alt="Mapping model output" />
+</Frame>
+
+Once you have finished mapping your labels, click on **Save changes**.
+
+### Selecting a Model
+
+If you have multiple models integrated with RedBrick AI, you can use the dropdown field to select which model should run on this specific Project.
+
+***
+
+## Running Auto Annotator in a Project
+
+Once your Project is created, any [data that you upload](/importing-data/uploading-data-to-redbrick.md) or [integrate](/importing-data/import-cloud-data.md) to the Project will automatically pass through the Auto Annotator pre-Stage, where automated annotation will occur.
+
+<Frame caption="4 Tasks in the Auto Annotator pre-Stage">
+  <img src="/assets/images/dashboard/boost/auto-annotator-project.png" alt="4 Tasks in the Auto Annotator pre-Stage" />
+</Frame>
+
+**There is nothing that the user needs to do for Tasks in the Auto Annotator pre-Stage.** After the Auto Annotator is done generating labels, the Task will automatically move to the next Stage in your Project pipeline.
+
+<Frame caption="Task History of a Task that was labeled automatically">
+  <img src="/assets/images/dashboard/boost/auto-annotator-project-history.png" alt="Task History of a Task that was labeled automatically" />
+</Frame>
+
+Once the Tasks have reached the next Stage in your pipeline, your team can begin work on it.
