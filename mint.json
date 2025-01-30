@@ -1,0 +1,132 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "RedBrick AI Docs",
+  "logo": {
+    "light": "/assets/logos/rbai-light.png",
+    "dark": "/assets/logos/rbai-dark.png"
+  },
+  "colors": {
+    "primary": "#0D9373",
+    "light": "#55D799",
+    "dark": "#0D9373"
+  },
+  "favicon": "/assets/logos/favicon.png",
+  "feedback": {
+    "thumbsRating": true,
+    "suggestEdit": true
+  },
+  "navigation": [
+    {
+      "group": "Quick Start",
+      "pages": [
+        "home",
+        "quick-start/get-started-with-a-project",
+        {
+          "group": "Getting Started with Workspace",
+          "pages": [
+            "quick-start/get-started-with-workspace/home",
+            "quick-start/get-started-with-workspace/cohort-creation",
+            "quick-start/get-started-with-workspace/datapoint-classification",
+            "quick-start/get-started-with-workspace/configuring-metadata-schema"
+          ]
+        },
+        "quick-start/creating-a-redbrick-ai-account"
+      ]
+    },
+    {
+      "group": "Organizations",
+      "pages": [
+        "organizations/what-is-an-organization",
+        {
+          "group": "Inviting Your Team",
+          "pages": [
+            "organizations/inviting-your-team/home",
+            "organizations/inviting-your-team/single-sign-on"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Dashboard",
+      "pages": [
+        "dashboard/account-settings",
+        "dashboard/user-preferences",
+        "dashboard/worklist",
+        "dashboard/preview-tool",
+        "dashboard/integrations",
+        "dashboard/taxonomies",
+        {
+          "group": "Boost",
+          "pages": [
+            "dashboard/boost/home",
+            "dashboard/boost/auto-annotator"
+          ]
+        },
+        {
+          "group": "Home",
+          "pages": [
+            "dashboard/home/home",
+            "dashboard/home/sections"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Importing Data",
+      "pages": [
+        "importing-data/uploading-data-to-redbrick",
+        {
+          "group": "Import Cloud Data",
+          "pages": [
+            "importing-data/import-cloud-data/home",
+            "importing-data/import-cloud-data/configuring-aws-s3",
+            "importing-data/import-cloud-data/configuring-azure-blob",
+            "importing-data/import-cloud-data/configuring-gcs",
+            "importing-data/import-cloud-data/configuring-altadb",
+            "importing-data/import-cloud-data/creating-an-items-list"
+          ]
+        },
+        "importing-data/troubleshooting"
+      ]
+    },
+    {
+      "group": "Projects",
+      "pages": [
+        "projects/tasks-and-assignment",
+        "projects/comments-and-raised-issues",
+        "projects/reference-standards",
+        "projects/project-and-task-analytics",
+        "projects/labeler-evaluation"
+      ]
+    },
+    {
+      "group": "Project Pages",
+      "pages": [
+        "project-pages/data-page"
+      ]
+    },
+    {
+      "group": "Annotation & Viewer",
+      "pages": [
+        {
+          "group": "Viewer Basics",
+          "pages": [
+            "annotation-and-viewer/viewer-basics/home"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Python SDK & CLI",
+      "pages": [
+        "python-sdk/full-documentation"
+      ]
+    },
+    {
+      "group": "Useful Links",
+      "pages": [
+        "privacy-policy"
+      ]
+    }
+  ]
+}
