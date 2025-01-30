@@ -1,4 +1,6 @@
-# Segmentation Tools
+---
+title: Segmentation Tools
+---
 
 ## Brush Tool
 
@@ -8,9 +10,9 @@ The Brush Tool has two modes - 2D and 3D (toggled on the right-side panel). The 
 `Left click + drag` to segment and `right click + drag` to erase.
 </Note>
 
-{% embed url="https://www.loom.com/share/e64fe93018644cd4ad056103dff18c21?sid=9d6248b8-c3c6-4350-8da0-885508d4dbff" %}
-Brush Tool Overview
-{% endembed %}
+<Frame caption="Brush Tool Overview">
+  <iframe className="w-full aspect-video" src="https://www.loom.com/share/e64fe93018644cd4ad056103dff18c21?sid=9d6248b8-c3c6-4350-8da0-885508d4dbff" alt="Brush Tool Overview" />
+</Frame>
 
 ***
 
@@ -20,11 +22,11 @@ The Adaptive Brush automatically defines the edges of the structure you are anno
 
 The Adhesion parameter allows you to determine how "strict" the Adaptive Brush is with similar intensity values. A lower Adhesion value, for example, would be recommended for annotating regions or structures with smooth gradients, whereas a higher Adhesion value would be best for annotating with sharper gradients.
 
-<figure><img src="../../.gitbook/assets/adaptive-brush.gif" alt=""><figcaption><p>The Adaptive Brush in action</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/adaptive-brush.gif" alt=""/><figcaption><p>The Adaptive Brush in action</p></figcaption></figure>
 
-{% hint style="info" %}
+<Note>
 **Adaptive Brush Mastery:** we recommend adjusting your Windowing (and other Visualization) settings along with your Adhesion levels to ensure optimal brush behavior.
-{% endhint %}
+</Note>
 
 ***
 
@@ -32,13 +34,13 @@ The Adhesion parameter allows you to determine how "strict" the Adaptive Brush i
 
 The Pen Tool has two modes - 2D and 3D (toggled on the right-side panel). The Pen Tool allows you to annotate using a free-form contour. In 3D mode, the free-form contour is extruded above and below the current slice.&#x20;
 
-{% hint style="info" %}
+<Note>
 `Left click + drag` to add a segment region and `Right click + drag` to remove a region.
-{% endhint %}
+</Note>
 
-{% embed url="https://www.loom.com/share/691c0c14e3514bea85af205f5db0261b?sid=ead7575b-aa5d-4120-9c19-0d2d12df6dcd" %}
-Pen Tool Overview
-{% endembed %}
+<Frame caption="Pen Tool Overview">
+  <iframe className="w-full aspect-video" src="https://www.loom.com/share/691c0c14e3514bea85af205f5db0261b?sid=ead7575b-aa5d-4120-9c19-0d2d12df6dcd" alt="Pen Tool Overview" />
+</Frame>
 
 ***
 
@@ -46,25 +48,25 @@ Pen Tool Overview
 
 The Scissor tool allows you to erase the unwanted section of your segmentation in the 3D view plane.&#x20;
 
-{% hint style="info" %}
+<Note>
 Left click + Drag to erase the unwanted section
-{% endhint %}
+</Note>
 
-{% embed url="https://www.loom.com/share/30b2db17a9374b06ad4e77fe5a09bf22?sid=80478b58-7d44-4b01-bdbb-9e5475533294" %}
-
-***
+<Frame caption="">
+  <iframe className="w-full aspect-video" src="https://www.loom.com/share/30b2db17a9374b06ad4e77fe5a09bf22?sid=80478b58-7d44-4b01-bdbb-9e5475533294" alt="" />
+</Frame>
 
 ## Region Growing (Grow Tool)
 
 The Grow Tool is a semi-automated tool that uses image intensity information to segment regions. By clicking and holding in a region, the segmentation will grow outward from the point that you clicked on. The longer you hold, the longer the region will grow.&#x20;
 
-{% hint style="info" %}
+<Note>
 `Left click + hold (+ drag)` to segment, `right click + hold (+ drag)` to erase.
-{% endhint %}
+</Note>
 
-{% embed url="https://www.loom.com/share/8cc5cc78ef174ec08091b3de5c633574?sid=7a043c44-9907-4729-87a9-4e276ff1306e" %}
-Grow Tool Overview
-{% endembed %}
+<Frame caption="Grow Tool Overview">
+  <iframe className="w-full aspect-video" src="https://www.loom.com/share/8cc5cc78ef174ec08091b3de5c633574?sid=7a043c44-9907-4729-87a9-4e276ff1306e" alt="Grow Tool Overview" />
+</Frame>
 
 ***
 
@@ -76,19 +78,19 @@ The contour tool lets you interact with masks as _contours_. Interacting with ma
 
 Select the contour tool, and click and drag on the canvas to draw a contour. To complete the contour, simply intersect the initial node or any other edge of the contour.&#x20;
 
-{% embed url="https://share.redbrickai.com/gFQxpFTR" %}
-
-### Editing existing masks as contours
+<Frame caption="">
+  <iframe className="w-full aspect-video" src="https://share.redbrickai.com/gFQxpFTR" alt="" />
+</Frame>
 
 * **Node edit.** Select an existing mask and select the contour tool. When you hover over an edge, you will see a node with a "target spline" appear. You can drag this node to edit the "target spline" area interactively.
 
-{% embed url="https://share.redbrickai.com/WWwm55Yn" %}
+<Frame caption="">
+  <iframe className="w-full aspect-video" src="https://share.redbrickai.com/WWwm55Yn" alt="" />
+</Frame>
 
-* **Edge redraw.** You can redraw any edge by simply "overwriting" the edge by intersecting it two times.&#x20;
-
-{% embed url="https://share.redbrickai.com/cR4Yndyl" %}
-
-***
+<Frame caption="">
+  <iframe className="w-full aspect-video" src="https://share.redbrickai.com/cR4Yndyl" alt="" />
+</Frame>
 
 ## Edge Selection
 
@@ -101,9 +103,9 @@ To use the Edge Selection Tool:&#x20;
 * **Without releasing `LMB`**, drag your mouse away from the click point to smooth the edge of your contour.
 * Once your contour has been generated and smoothed to your liking, release `LMB`.
 
-{% embed url="https://www.loom.com/share/95fd6734fd794027a294f228d2289e0b?sid=9b23c876-0019-4d41-a26f-47a428b869f2" %}
-
-***
+<Frame caption="">
+  <iframe className="w-full aspect-video" src="https://www.loom.com/share/95fd6734fd794027a294f228d2289e0b?sid=9b23c876-0019-4d41-a26f-47a428b869f2" alt="" />
+</Frame>
 
 ## Interpolate
 
@@ -115,11 +117,12 @@ The Interpolate Tool allows you to quickly generate contours across a range of s
 4. Repeat Step (3) with the mask on Slice 80.
 5. Voila! The Interpolate Tool has generated annotations on all slices between Slice 70 and Slice 80.
 
-{% embed url="https://share.redbrickai.com/bFkXVrjq" %}
-
-{% hint style="info" %}
+<Frame caption="">
+  <iframe className="w-full aspect-video" src="https://share.redbrickai.com/bFkXVrjq" alt="" />
+</Frame>
+<Warning>
 **RedBrick Mastery:** Activating **Cineloop** will display the Cineloop Player, which makes it much easier to keep track of where the interpolated segmentation masks are in your image.&#x20;
-{% endhint %}
+</Warning>
 
 ***
 
@@ -127,17 +130,17 @@ The Interpolate Tool allows you to quickly generate contours across a range of s
 
 The Hole Filling Tool iteratively fills small holes in your segmentation. Click anywhere on the canvas to start filling in small holes.
 
-{% hint style="info" %}
+<Note>
 The Hole Filling Tool is designed to fill small holes. For larger holes, you may need to run the Hole Filling Tool more than once (i.e. click several times).&#x20;
-{% endhint %}
+</Note>
 
-{% embed url="https://www.loom.com/share/2c7c4b7a0b5a40b696806dd5513b0d81?sid=668ea3d4-9fa2-4651-99f7-bfdb8ea1277b" %}
-Hole Filling Overview
-{% endembed %}
+<Frame caption="Hole Filling Overview">
+  <iframe className="w-full aspect-video" src="https://www.loom.com/share/2c7c4b7a0b5a40b696806dd5513b0d81?sid=668ea3d4-9fa2-4651-99f7-bfdb8ea1277b" alt="Hole Filling Overview" />
+</Frame>
 
-{% hint style="warning" %}
+<Warning>
 For large volumes, 3D hole filling can be very computationally expensive. If your data has more than 800 slices, we recommend only using 2D hole filling.
-{% endhint %}
+</Warning>
 
 ***
 
@@ -153,9 +156,9 @@ Island Removal deletes "islands" of segmentations. Simply click on any island se
 
 Conversely, you can enable **Keep Currently Selected** in the right hand Context Panel to remove all of the islands **except** the one you clicked on.
 
-{% embed url="https://www.loom.com/share/5db273c1770d47a5b48af7481d934e4b?sid=986bd7ce-604b-4b01-8ed2-a5585ca187cd" %}
-Island Tool Overview
-{% endembed %}
+<Frame caption="Island Tool Overview">
+  <iframe className="w-full aspect-video" src="https://www.loom.com/share/5db273c1770d47a5b48af7481d934e4b?sid=986bd7ce-604b-4b01-8ed2-a5585ca187cd" alt="Island Tool Overview" />
+</Frame>
 
 ***
 
@@ -169,7 +172,7 @@ The Copy Tool allows you to transform a segmentation into a perfect copy of anot
 
 With Segmentation X selected, enable the Copy Tool and click on Segmentation Y to create a perfect copy of Segmentation X that occupies the same space.
 
-<figure><img src="../../.gitbook/assets/copy-tool.gif" alt=""><figcaption><p>The Copy Tool in action</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/copy-tool.gif" alt=""/><figcaption><p>The Copy Tool in action</p></figcaption></figure>
 
 ### Add Tool
 
@@ -189,9 +192,9 @@ The Merge Tool allows you to transform one type of segmentation island into anot
 
 With Segmentation X selected, enable the Merge Tool and click on an island of Segmentation Y to merge the island to Segmentation X.&#x20;
 
-{% embed url="https://www.loom.com/share/d72af53241874f64b7de1228b3f7868f?sid=879977db-121f-4c81-9cfe-b216103fd92b" %}
-Add, Subtract, and Merge Tool Tutorial
-{% endembed %}
+<Frame caption="Add, Subtract, and Merge Tool Tutorial">
+  <iframe className="w-full aspect-video" src="https://www.loom.com/share/d72af53241874f64b7de1228b3f7868f?sid=879977db-121f-4c81-9cfe-b216103fd92b" alt="Add, Subtract, and Merge Tool Tutorial" />
+</Frame>
 
 ***
 
@@ -199,21 +202,23 @@ Add, Subtract, and Merge Tool Tutorial
 
 The Fast Automated Segmentation Tool (F.A.S.T.) is an automatic segmentation tool powered by Meta AI's Segment Anything Model that allows users to rapidly generate 2D and 3D segmentations.&#x20;
 
-{% embed url="https://www.loom.com/share/2d347785be3945b3bbb278c29f6da84a?sid=cdfd8209-fa79-494d-9e7a-215eeb85880c" %}
-F.A.S.T. Overview
-{% endembed %}
+<Frame caption="F.A.S.T. Overview">
+  <iframe className="w-full aspect-video" src="https://www.loom.com/share/2d347785be3945b3bbb278c29f6da84a?sid=cdfd8209-fa79-494d-9e7a-215eeb85880c" alt="F.A.S.T. Overview" />
+</Frame>
 
 F.A.S.T. is powerful because of the way users can prompt the tool to generate an accurate segmentation in real time. Under the hood, there are two components to the system:
 
 1. **Image encoding**, which takes place on the server side. The result of image encoding is _embeddings_, which are special vector representations of the images that are useful for machine learning.
 2. **Segmentation decoding**, which takes place in the browser in real time.
 
-{% hint style="info" %}
+<Note>
 **To enable F.A.S.T. for your team**, please do the following:&#x20;
+</Note>
 
+<Warning>
 1. Request access at https://redbrickai.com/fast or reach out to support@redbrickai.com.
-2. Within a Project, navigate to the [Tool Settings page](segmentation-tools.md#tool-configuration) and enable F.A.S.T. in the desired mode (i.e. 2D or 3D).&#x20;
-{% endhint %}
+2. Within a Project, navigate to the [Tool Settings page](segmentation-tools#tool-configuration) and enable F.A.S.T. in the desired mode (i.e. 2D or 3D).&#x20;
+</Warning>
 
 ### Generating 2D Segmentations with F.A.S.T.
 
@@ -237,13 +242,13 @@ The process for creating interpolated annotations with 2D F.A.S.T. is detailed b
 6. Repeat Step 3 (and optionally, Step 4) for the structure you wish to annotate on Slice Y
 7. Once you are satisfied with the annotations, press Enter or click on “Finalize” in the right hand toolbar to generate the pixel masks on every slice between Slice X and Slice Y.
 
-{% hint style="info" %}
+<Note>
 Processing times may increase when interpolating across large ranges. However, please note that all subsequent work across the same range should be much faster, as the embedding computations only have to be computed once per slice.
-{% endhint %}
+</Note>
 
-{% hint style="danger" %}
+<Danger>
 Firewalls, ad blockers, privacy extensions, and any other browser extensions that block HTTP traffic are known to interfere with FAST.
-{% endhint %}
+</Danger>
 
 ***
 
@@ -255,9 +260,9 @@ With a segmentation selected, use `left click` to Dilate (grow) the area of the 
 
 Use the **Pixels to Change** slider in the right hand Context Panel to control the severity of the dilation or erosion.
 
-{% embed url="https://www.loom.com/share/70582d4c25ff4dc99f553d8342b1b6eb?sid=607db874-4a49-4be4-9e77-9fedd1b2cca7" %}
-The Dilate and Erode Tool in action
-{% endembed %}
+<Frame caption="The Dilate and Erode Tool in action">
+  <iframe className="w-full aspect-video" src="https://www.loom.com/share/70582d4c25ff4dc99f553d8342b1b6eb?sid=607db874-4a49-4be4-9e77-9fedd1b2cca7" alt="The Dilate and Erode Tool in action" />
+</Frame>
 
 ***
 
@@ -267,9 +272,9 @@ The Smoothing Tool helps you remove peaks and valleys in noisy annotations.&#x20
 
 With the Smoothing Tool selected, use `left click` to remove valleys and `right click` to remove peaks.&#x20;
 
-{% embed url="https://www.loom.com/share/54c074b2300e464e906e4cff0f216f4d?sid=7f109621-959c-4329-b367-7886b43d652e" %}
-
-***
+<Frame caption="">
+  <iframe className="w-full aspect-video" src="https://www.loom.com/share/54c074b2300e464e906e4cff0f216f4d?sid=7f109621-959c-4329-b367-7886b43d652e" alt="" />
+</Frame>
 
 ## Mask Propagation Tool
 
@@ -284,15 +289,15 @@ The Mask Propagation Tool, built on SAM2, is an extremely powerful tool intended
 6. Click on **Propagate Mask** (or use the preferred hotkey). The Mask Propagation Tool will begin processing the ROI in the defined slice range.
 7. Once you are satisfied with the preview, click on **Finalize**.
 
-{% hint style="success" %}
+<Check>
 For trickier ROIs, you can use **Finalize Slice** to rasterize a mask on a single slice, touch up the finalized slice mask with the Segmentation Toolkit (e.g. Brush Tool, Contour Tool, etc.) and re-feed it back to the Mask Propagation Tool as input.
-{% endhint %}
+</Check>
 
 Please see the following video for a visual walkthrough of the above steps:
 
-{% embed url="https://www.loom.com/share/6313307d627349fa8c79906914b36f77?sid=6b2472a5-179e-43ce-8812-fb4c46dc66d7" %}
-An in-Editor walkthrough of the Mask Propagation Tool
-{% endembed %}
+<Frame caption="An in-Editor walkthrough of the Mask Propagation Tool">
+  <iframe className="w-full aspect-video" src="https://www.loom.com/share/6313307d627349fa8c79906914b36f77?sid=6b2472a5-179e-43ce-8812-fb4c46dc66d7" alt="An in-Editor walkthrough of the Mask Propagation Tool" />
+</Frame>
 
 ***
 
@@ -307,4 +312,4 @@ Simply utilize the checkboxes for each tool to:
 * set a default mode (i.e. 2D or 3D);
 * enable/disable a Tool entirely;
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-08-23 at 3.44.13 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-08-23 at 3.44.13 PM.png" alt=""/><figcaption></figcaption></figure>

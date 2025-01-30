@@ -1,8 +1,10 @@
-# Creating, Editing and Deleting Annotations
+---
+title: Creating, Editing and Deleting Annotations
+---
 
 All of the Object Labels that you created inside of your Taxonomy will display in the the left side bar of the Annotation Tool. Depending on the elements you included in your Taxonomy, the left side bar will contain up to 4 sections: **Study Classification**, **Series Classification, Instance Classification** and **Object Labels.**
 
-<figure><img src="../.gitbook/assets/app.redbrickai.com_a717f7d8-8a19-4346-b9b4-a90c8d6875ba_projects_7532ec0d-c308-4274-a68e-a88da9eaa887_tool_Label_taskid=f7cf207e-989e-4d52-9bb0-34e2549a306e (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/app.redbrickai.com_a717f7d8-8a19-4346-b9b4-a90c8d6875ba_projects_7532ec0d-c308-4274-a68e-a88da9eaa887_tool_Label_taskid=f7cf207e-989e-4d52-9bb0-34e2549a306e (1).png" alt=""/><figcaption></figcaption></figure>
 
 ## Study, Series and Instance Classification
 
@@ -14,7 +16,7 @@ Depending on the type (**Boolean**, **Text**, **Select**, or **Multiselect**), y
 Click and drag to adjust the size of the grid for easy interaction and viewing!
 </Note>
 
-<figure><img src="../.gitbook/assets/ezgif.com-gif-maker (14).gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/ezgif.com-gif-maker (14).gif" alt=""/><figcaption></figcaption></figure>
 
 ## Object Labels
 
@@ -33,15 +35,15 @@ The left side bar will show all the Object Labels with an option to create _Enti
 
 When you create an Entity, the default tool for that Label type will be automatically selected (e.g. the **Brush Tool** will be selected by default when creating an Entity of a **Segmentation**).&#x20;
 
-{% hint style="success" %}
-Your default Segmentation Tool can be configured on the [Tool Settings page](segmentation/segmentation-tools.md#tool-configuration) within your Project Settings.
-{% endhint %}
+<Check>
+Your default Segmentation Tool can be configured on the [Tool Settings page](segmentation/segmentation-tools#tool-configuration) within your Project Settings.
+</Check>
 
 All Entities are organized within each Object Label's expansion panel.
 
-{% embed url="https://www.loom.com/share/ddf38c93fd5646b9af04f631f368b745?sid=23646aeb-6066-4716-840f-2ec51d1bbe16" %}
-
-#### A Quick Note on Annotation Mapping and Exports
+<Frame caption="">
+  <iframe className="w-full aspect-video" src="https://www.loom.com/share/ddf38c93fd5646b9af04f631f368b745?sid=23646aeb-6066-4716-840f-2ec51d1bbe16" alt="" />
+</Frame>
 
 When an annotation is created inside of the Annotation Tool, a corresponding `segmentMap` value is also generated to reflect the order in which the annotation was created.&#x20;
 
@@ -55,9 +57,9 @@ The RedBrick AI SDK also supports both semantic export and exports of binary mas
 
 To edit an Object Label, you must first select it from the left sidebar. Once you select the Entity from the left side bar, the default tool for that label type will be selected automatically, and you can interact with the canvas to apply edits to that Entity.&#x20;
 
-{% hint style="info" %}
+<Note>
 When a Object Label Entity is selected, all interactions with the canvas will only modify that particular Entity.
-{% endhint %}
+</Note>
 
 ***
 
@@ -67,7 +69,7 @@ There are several actions available that are designed to make selecting, viewing
 
 All actions can be accessed by clicking the three-dot menu button on a Label Entity.&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-08-03 at 2.04.17 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-08-03 at 2.04.17 PM.png" alt=""/><figcaption></figcaption></figure>
 
 #### Editing a Selected Label and Attributes&#x20;
 
@@ -77,17 +79,17 @@ To reveal this menu in the right hand Context Panel, either click on the Object 
 
 With the Context Panel open, you can also add, modify, and delete Attributes for an Object Label.
 
-{% embed url="https://www.loom.com/share/55eaf5f270a2407788dc99439201bb29?sid=275eb3c4-2091-4c70-804b-133b61495235" %}
-
-#### Deleting Object Labels
+<Frame caption="">
+  <iframe className="w-full aspect-video" src="https://www.loom.com/share/55eaf5f270a2407788dc99439201bb29?sid=275eb3c4-2091-4c70-804b-133b61495235" alt="" />
+</Frame>
 
 You can delete the selected Object Label by using the `delete` / `backspace` hotkey. Alternatively, you can use the Delete Action in the actions dropdown.&#x20;
 
 To delete all Labels, use the shortcut `shift + delete`/`shift + backspace`.&#x20;
 
-{% hint style="danger" %}
+<Danger>
 The Delete All Labels action **cannot be undone**. Please ensure that you wish to irrecoverably delete the most recent version of all of your labels before using the Delete All Labels action.
-{% endhint %}
+</Danger>
 
 Alternatively, you can use the Delete All action in the Object Labels three-dot menu dropdown.&#x20;
 
@@ -105,9 +107,9 @@ To lock/unlock all labels, use the shortcut `shift + u` or the Lock All Action i
 
 Watch the video below to understand how to prevent/allow the overwriting of annotations.
 
-{% embed url="https://www.loom.com/share/7daf374f6967429dad43b2962c6ccd8f" %}
-
-#### Toggle Vibrant Mode
+<Frame caption="">
+  <iframe className="w-full aspect-video" src="https://www.loom.com/share/7daf374f6967429dad43b2962c6ccd8f" alt="" />
+</Frame>
 
 Vibrant Mode allows you to temporarily highlight a particular Entity. For example, if you have several small Entities of nodules in a chest CT, you can hover over any particular Entity on the left side bar or on the canvas and use the `v` shortcut to activate Vibrant Mode to highlight that Entity. &#x20;
 
@@ -132,15 +134,15 @@ RedBrick allows users to create logical groups of existing Object Labels, which 
 1. Click on the **Delink** button next to any Object Label in a Label Group to remove it from the Label Group.
 2. To delete a Label Group, delink all of the Object Labels in the Group.
 
-{% hint style="info" %}
+<Note>
 Each Object Label Entity can only be a part of one Label Group!
-{% endhint %}
+</Note>
 
 For a brief overview, please see the following video walkthrough:
 
-{% embed url="https://www.loom.com/share/63ca8bac493942fb9d93affa10765fd8?sid=b51bff18-7cf2-48b1-be07-c82a9cf13823" %}
-
-***
+<Frame caption="">
+  <iframe className="w-full aspect-video" src="https://www.loom.com/share/63ca8bac493942fb9d93affa10765fd8?sid=b51bff18-7cf2-48b1-be07-c82a9cf13823" alt="" />
+</Frame>
 
 ### Read-only Labels
 
@@ -150,11 +152,13 @@ Optionally, Project & Org Admins can determine which user permission level can r
 
 In the Editor, read-only labels are represented by a unique "crossed-out pencil" icon.
 
-<figure><img src="../.gitbook/assets/CleanShot 2024-09-24 at 16.42.41@2x (1).png" alt=""><figcaption><p>A read-only label in the Editor's left sidebar</p></figcaption></figure>
+<Frame caption="A read-only label in the Editor's left sidebar">
+  <img src="/assets/images/CleanShot 2024-09-24 at 16.42.41@2x (1).png" alt="A read-only label in the Editor's left sidebar" />
+</Frame>
 
 #### Uploading Read-only Labels
 
-As with all [annotation imports](../python-sdk/importing-annotations-guide.md), designating a label as read-only and uploading it to RedBrick must be done programmatically.&#x20;
+As with all [annotation imports](../python-sdk/importing-annotations-guide), designating a label as read-only and uploading it to RedBrick must be done programmatically.&#x20;
 
 Please see the following JSON snippet for an example of the relevant code:
 
@@ -189,7 +193,9 @@ In your [Project Settings](../project-pages/settings-page/#general-settings) -> 
 
 This setting can be configured for each Stage of your Project and allows for the construction of more advanced QA flows.
 
-<figure><img src="../.gitbook/assets/CleanShot 2024-10-04 at 10.12.15@2x.png" alt=""><figcaption><p>Configuring read-only label permissions</p></figcaption></figure>
+<Frame caption="Configuring read-only label permissions">
+  <img src="/assets/images/CleanShot 2024-10-04 at 10.12.15@2x.png" alt="Configuring read-only label permissions" />
+</Frame>
 
 * No one - no users can toggle the status of a Read-only Label
 * Admin - Project Admins (and higher) can toggle the status of a Read-only Label
@@ -198,13 +204,15 @@ This setting can be configured for each Stage of your Project and allows for the
 
 #### Example QA Flow 1 - Limited Review Stage
 
-<figure><img src="../.gitbook/assets/CleanShot 2024-10-04 at 10.21.51@2x.png" alt="" width="563"><figcaption><p>A sample flow utilizing ROL permission levels</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/CleanShot 2024-10-04 at 10.21.51@2x.png" alt="" width="563" /><figcaption><p>A sample flow utilizing ROL permission levels</p></figcaption></figure>
 
 Assuming that **all uploaded annotations are set as Read-only Labels**, the following flow would prevent users in the Review Stage from making any edits to annotations in the Review Stage while preserving their ability to accept or reject a Task, leave comments on a Task, etc.
 
 #### Example QA Flow 2 - Iterating over a large dataset
 
-<figure><img src="../.gitbook/assets/CleanShot 2024-10-04 at 10.28.15@2x.png" alt=""><figcaption><p>A sample flow ideal for iterating over a dataset</p></figcaption></figure>
+<Frame caption="A sample flow ideal for iterating over a dataset">
+  <img src="/assets/images/CleanShot 2024-10-04 at 10.28.15@2x.png" alt="A sample flow ideal for iterating over a dataset" />
+</Frame>
 
 The above configuration would allow a team to do the following:
 
@@ -220,7 +228,7 @@ RedBrick AI's Version Explorer allows users to reference (and, if necessary, res
 
 To reference a previously saved set of annotations, click on the Version Explorer button in the top right corner of the screen. The Version Explorer will then display in the right hand Context Panel., allowing you to access previously saved versions of your annotations.
 
-<figure><img src="../.gitbook/assets/image (14).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (14).png" alt="" width="563"/><figcaption></figcaption></figure>
 
 Restoring an older set of annotations will both:
 
@@ -231,8 +239,8 @@ For example, let's say you (a reviewer) open a Task and see that the latest vers
 
 Please see the short video tutorial below for a full overview:
 
-{% embed url="https://www.loom.com/share/1962d135c2b843d58e27b42a64fbf219?sid=54e492df-b065-4907-a0ec-c7d916ba52c1" %}
-Version Explorer Tutorial
-{% endembed %}
+<Frame caption="Version Explorer Tutorial">
+  <iframe className="w-full aspect-video" src="https://www.loom.com/share/1962d135c2b843d58e27b42a64fbf219?sid=54e492df-b065-4907-a0ec-c7d916ba52c1" alt="Version Explorer Tutorial" />
+</Frame>
 
 &#x20;
