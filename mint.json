@@ -102,7 +102,30 @@
     {
       "group": "Project Pages",
       "pages": [
-        "project-pages/data-page"
+        "project-pages/data-page",
+        {
+          "group": "Settings Page",
+          "pages": [
+            "project-pages/settings-page/home",
+            "project-pages/settings-page/custom-label-validation",
+            "project-pages/settings-page/custom-hanging-protocol",
+            "project-pages/settings-page/webhooks"
+          ]
+        },
+        {
+          "group": "Multiple Labeling",
+          "pages": [
+            "project-pages/multiple-labeling/home",
+            {
+              "group": "Consensus",
+              "pages": [
+                "project-pages/multiple-labeling/consensus/home",
+                "project-pages/multiple-labeling/consensus/agreement-calculation"
+              ]
+            },
+            "project-pages/multiple-labeling/task-duplication"
+          ]
+        }
       ]
     },
     {
@@ -111,15 +134,32 @@
         {
           "group": "Viewer Basics",
           "pages": [
-            "annotation-and-viewer/viewer-basics/home"
+            "annotation-and-viewer/viewer-basics/home",
+            "annotation-and-viewer/viewer-basics/document-viewer",
+            "annotation-and-viewer/viewer-basics/multiple-modalities",
+            "annotation-and-viewer/viewer-basics/intellisync",
+            "annotation-and-viewer/viewer-basics/annotation-mirroring"
           ]
-        }
+        },
+        "annotation-and-viewer/creating-editing-and-deleting-annotations",
+        "annotation-and-viewer/visualization-and-masking",
+        {
+          "group": "Segmentation",
+          "pages": [
+            "annotation-and-viewer/segmentation/home",
+            "annotation-and-viewer/segmentation/segmentation-tools",
+            "annotation-and-viewer/segmentation/instance-vs-semantic",
+            "annotation-and-viewer/segmentation/overlapping-segmentations"
+          ]
+        },
+        "annotation-and-viewer/heat-maps"
       ]
     },
     {
       "group": "Python SDK & CLI",
       "pages": [
-        "python-sdk/full-documentation"
+        "python-sdk/home",
+        "python-sdk/installation-and-api-keys"
       ]
     },
     {

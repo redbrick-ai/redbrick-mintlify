@@ -269,16 +269,17 @@ Your custom validation script must return a list of warning/error messages descr
 
 To help you write a validation function with several checks, RedBrick AI has a custom-defined function `assert` that accepts a boolean statement and a corresponding error message. The two scripts below will produce the same result:&#x20;
 
-{% tabs %}
-{% tab title="With assert()" %}
+
+<Tabs>
+<Tab title="With assert()">
 <pre class="language-typescript"><code class="lang-typescript"><strong>function(task: Task, labels: Label[]): string[] {
 </strong>    assert(labels.length >= 1, "You have not created any labels!");
     assert(labels.length &#x3C;= 5, "You have created too many labels!");
 }
 </code></pre>
-{% endtab %}
+</Tab>
 
-{% tab title="Without assert()" %}
+<Tab title="Without assert()">
 ```typescript
 function(task: Task, labels: Label[]): string[] {
     const errors = [];
@@ -293,8 +294,8 @@ function(task: Task, labels: Label[]): string[] {
     return errors;
 }
 ```
-{% endtab %}
-{% endtabs %}
+</Tab>
+</Tabs>
 
 ## Validate Your Code
 
