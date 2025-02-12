@@ -119,6 +119,7 @@
             {
               "group": "Consensus",
               "pages": [
+                "project-pages/multiple-labeling/consensus/home",
                 "project-pages/multiple-labeling/consensus/agreement-calculation"
               ]
             },
@@ -157,7 +158,7 @@
     {
       "group": "Python SDK & CLI",
       "pages": [
-        "python-sdk/home",
+        "python-sdk/full-documentation",
         "python-sdk/installation-and-api-keys",
         "python-sdk/importing-annotations-guide",
         {
@@ -173,13 +174,17 @@
         {
           "group": "CLI Overview",
           "pages": [
-            "python-sdk/home"
+            "python-sdk/cli-overview/home",
+            "python-sdk/cli-overview/creating-and-cloning-projects",
+            "python-sdk/cli-overview/exporting-annotations"
           ]
         },
+        "python-sdk/importing-annotations-guide",
         {
           "group": "Formats Overview",
           "pages": [
-            "python-sdk/home"
+            "python-sdk/formats/full-format-reference",
+            "python-sdk/formats/export-structure"
           ]
         }
       ]

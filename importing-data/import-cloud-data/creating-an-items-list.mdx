@@ -6,33 +6,29 @@ title: Creating an Items List
 
 An Items List is a JSON file that points the RedBrick AI platform to the data in your external storage and allows you to selectively import data points. The format of your Items List depends on both the type of cloud storage you have integrated with RedBrick AI and the type of data you are uploading.
 
-For solution-specific instructions regarding how to format your Items List with [AWS S3](../configuring-external-storage/configuring-aws-s3.md#items-path), [GCS](../configuring-external-storage/configuring-gcs.md#items-path), or [Azure Blob Storage](configuring-azure-blob.md#items-path), please refer to the corresponding configuration guide.
+For solution-specific instructions regarding how to format your Items List with [AWS S3](./configuring-aws-s3#items-path), [GCS](./configuring-gcs#items-path), or [Azure Blob Storage](./configuring-azure-blob#items-path), please refer to the corresponding configuration guide.
 
 It's important to note that each entry in your Items List **will be created as a separate Task**, which can then be annotated as a single unit. You can find detailed explanations of each key in our [Format Reference](https://docs.redbrickai.com/python-sdk/reference/annotation-format#tasks-json).
 
-After creating your JSON Items List, you can upload it from RedBrick AI's Project Dashboard or by using the [SDK](../../python-sdk/sdk-overview/importing-data-and-annotations.md).
+After creating your JSON Items List, you can upload it from RedBrick AI's Project Dashboard or by using the [SDK](/python-sdk/sdk-overview/importing-data-and-annotations).
 
-<figure>
+<Frame>
   <img
-    src="../../.gitbook/assets/Screenshot 2023-06-08 at 12.48.54 PM.png"
+    src="/images/import-cloud-data/create-items-list.png"
     alt=""
   />
-  <figcaption></figcaption>
-</figure>
+</Frame>
 
-<figure>
+<Frame caption="Select a Storage Method and upload your Items List">
   <img
-    src="../../.gitbook/assets/Screenshot 2023-06-08 at 12.53.17 PM.png"
+    src="/images/import-cloud-data/select-storage-method.png"
     alt=""
   />
-  <figcaption>
-    <p>Select a Storage Method and upload your Items List</p>
-  </figcaption>
-</figure>
+</Frame>
 
 <Check>
   Please note that there is no need to create an Items List when using [Direct
-  Upload](../uploading-data-to-redbrick.md).
+  Upload](/importing-data/uploading-data-to-redbrick).
 </Check>
 
 ---
@@ -63,9 +59,9 @@ interface Series {
 <Note>
 The `items` entry enumerates the file paths referencing your data in your cloud storage. Depending on the storage method, this file path may be relative to your bucket name or the root folder in your bucket. Please reference the relevant documentation to verify the format of the Items List for each of RedBrick AI’s supported storage methods:
 
-- [AWS S3 Items List](../configuring-external-storage/configuring-aws-s3.md#items-path)
-- [Azure Blob Items List](configuring-azure-blob.md#items-path)
-- [GCS Items List](../configuring-external-storage/configuring-gcs.md#items-path)
+- [AWS S3 Items List](./configuring-aws-s3#items-path)
+- [Azure Blob Items List](./configuring-azure-blob#items-path)
+- [GCS Items List](./configuring-gcs#items-path)
 </Note>
 
 ### Example Item Lists by Format

@@ -9,7 +9,7 @@ Annotations and images must be imported together at the start.&#x20;
 </Warning>
 
 <Warning>
-If you want to add annotations programmatically to images that have already been uploaded, [please use the programmatic label & review](sdk-overview/programmatic-label-and-review).
+If you want to add annotations programmatically to images that have already been uploaded, [please use the programmatic label & review](./sdk-overview/programmatic-label-and-review).
 </Warning>
 
 <Warning>
@@ -17,23 +17,23 @@ Annotation import is only supported through the SDK and CLI.&#x20;
 </Warning>
 
 <Warning>
-That is, you cannot use the [direct upload UI](../importing-data/uploading-data-to-redbrick) to import annotations, and you must use the items list with the SDK/CLI to provide the required metadata along with annotations.
+That is, you cannot use the [direct upload UI](./importing-data/uploading-data-to-redbrick) to import annotations, and you must use the items list with the SDK/CLI to provide the required metadata along with annotations.
 </Warning>
 
 To import images along with segmentations, you must provide us with:
 
 1. Images in any supported format and NIftI segmentation files.
-2. [An items list](importing-annotations-guide#items-list-for-importing-segmentations) that provides a mapping of:
+2. [An items list](./importing-annotations-guide#items-list-for-importing-segmentations) that provides a mapping of:
    * Segmentation files to volumes so that segmentations are applied to correct images.
    * Values within segmentation file to taxonomy categories.
 
 <Check>
-Once you've prepared the [items list in the format defined below](importing-annotations-guide#items-list-for-importing-segmentations), you can import the images and annotations using the [`create_datapoints` SDK method](sdk-overview/importing-data-and-annotations) or [CLI `upload` method](cli-overview/import-data-and-annotations).
+Once you've prepared the [items list in the format defined below](./importing-annotations-guide#items-list-for-importing-segmentations), you can import the images and annotations using the [`create_datapoints` SDK method](./sdk-overview/importing-data-and-annotations) or [CLI `upload` method](./cli-overview/import-data-and-annotations).
 </Check>
 
 ## Items list for importing segmentations
 
-You can find the [full format reference here](formats/full-format-reference#items-list-and-tasks.json). In this section, we will focus on importing segmentations. In the examples below, pay attention to the following fields:&#x20;
+You can find the [full format reference here](./formats/full-format-reference#items-list-and-tasks.json). In this section, we will focus on importing segmentations. In the examples below, pay attention to the following fields:&#x20;
 
 1. `segmentations`: The segmentation files to be applied to the task.
 2. `segmentMap`: Map the values present in the segmentation files to their corresponding taxonomy categories.

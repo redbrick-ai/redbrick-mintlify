@@ -4,7 +4,7 @@ title: Exporting Annotations
 
 ## Overview
 
-The RedBrick CLI allows you to easily export your Project's annotations within [a local project directory](creating-and-cloning-projects).&#x20;
+The RedBrick CLI allows you to easily export your Project's annotations within [a local project directory](./creating-and-cloning-projects).&#x20;
 
 Please note that the `export` function only fetches **newly created annotations** when run. It will not generate an annotation file for a Task if no annotation work has been completed and saved on said Task.&#x20;
 
@@ -13,7 +13,7 @@ For example, if you upload 100 images to your Project, annotate 80 of them and i
 If your team annotates 5 additional Tasks the next day and initiates an export, the CLI will only export annotations for the **5 newly annotated Tasks**, bringing the total number of annotation files in your local directory to **85**.
 
 <Check>
-By default, all segmentation files are exported in **NIfTI-1 format**. Please see our [Format Reference](../formats/full-format-reference) for more information on exported annotations and alternative formats (such as PNG or RT Struct).
+By default, all segmentation files are exported in **NIfTI-1 format**. Please see our [Format Reference](/python-sdk/formats/full-format-reference) for more information on exported annotations and alternative formats (such as PNG or RT Struct).
 </Check>
 
 ***
@@ -35,9 +35,9 @@ project_id/
 
 ### Segmentations Subdirectory
 
-The segmentation directory will contain a single sub-directory for each task in your export. The sub-directories will be named after the task [`name`](exporting-annotations#name-string). A single task (depending on whether it was single series or multi-series) can have one or more segmentations.
+The segmentation directory will contain a single sub-directory for each task in your export. The sub-directories will be named after the task [`name`](./exporting-annotations#name-string). A single task (depending on whether it was single series or multi-series) can have one or more segmentations.
 
-The individual segmentation files will be in NIfTI-1 format and be [named after the user-defined series name](exporting-annotations#name-string-1). If no series name is provided on upload, RedBrick will assign a unique name. Corresponding meta-data ex. category names will be provided in [tasks.json](exporting-annotations#tasks-json).
+The individual segmentation files will be in NIfTI-1 format and be [named after the user-defined series name](./exporting-annotations#name-string-1). If no series name is provided on upload, RedBrick will assign a unique name. Corresponding meta-data ex. category names will be provided in [tasks.json](./exporting-annotations#tasks-json).
 
 ***
 
@@ -47,7 +47,7 @@ The individual segmentation files will be in NIfTI-1 format and be [named after 
 You can also find all of these steps, as well as pre-configured CLI commands, inside the "Export Labels" section of your Project Settings
 </Note>
 
-To export your data, first ensure that your [credentials file has been properly configured](https://docs.redbrickai.com/python-sdk/cli-overview) and you have created a [local project directory](creating-and-cloning-projects).&#x20;
+To export your data, first ensure that your [credentials file has been properly configured](https://docs.redbrickai.com/python-sdk/cli-overview) and you have created a [local project directory](./creating-and-cloning-projects).&#x20;
 
 Next, navigate to the newly created Project directory.
 
@@ -69,8 +69,7 @@ $ redbrick export
 
 For exporting only those annotations associated with Tasks in the Ground Truth Stage.
 
-<pre class="language-bash"><code class="lang-bash"><strong>$ redbrick export groundtruth
-</strong></code></pre>
+<pre class="language-bash"><code class="lang-bash"><strong>$ redbrick export groundtruth</strong></code></pre>
 
 ### Export Tasks and Clear Cache
 
@@ -110,7 +109,7 @@ $ redbrick export --stage Review_2
 
 Generating an audit trail can be useful material for regulators interested in your quality control processes and for managing your internal QA processes.&#x20;
 
-You can create such a report by running the following command within your [local project directory](creating-and-cloning-projects).
+You can create such a report by running the following command within your [local project directory](./creating-and-cloning-projects).
 
 ```bash
 $ redbrick report

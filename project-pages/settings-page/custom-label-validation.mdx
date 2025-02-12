@@ -18,13 +18,22 @@ Prevent simple, recurrent errors from occurring by writing a set of tests that w
 
 By default, all projects have a custom check to warn annotators when they submit tasks without any annotations. You can enable/disable custom validation under Project Settings -> Label Validation.&#x20;
 
-<figure><img src="../../.gitbook/assets/qa.redbrickdevteam.com_943c97cd-58b1-4794-84d0-8b00d26f0c84_projects_b4b15a0e-f26d-4f8b-80a5-4c39c6a38aac_settings (1).png" alt=""/><figcaption><p>Custom label validation in settings</p></figcaption></figure>
+<Frame caption="Custom label validation in settings">
+    <img src="/assets/images/project-pages/settings-page/custom-label-validation.png" alt="" />
+</Frame>
 
 ### Prevent Submissions with Errors
 
 By default, annotators will just receive the error messages as a warning, and they will still be able to submit the task anyway. To prevent the annotators from submitting with any errors present, toggle the _Prevent submission with errors_ switch.
 
-<div><figure><img src="../../.gitbook/assets/qa.redbrickdevteam.com_943c97cd-58b1-4794-84d0-8b00d26f0c84_projects_b4b15a0e-f26d-4f8b-80a5-4c39c6a38aac_tool_Label.png" alt=""/><figcaption><p>Submission allowed</p></figcaption></figure> <figure><img src="../../.gitbook/assets/qa.redbrickdevteam.com_943c97cd-58b1-4794-84d0-8b00d26f0c84_projects_b4b15a0e-f26d-4f8b-80a5-4c39c6a38aac_tool_Label_taskid=4d88355c-b83c-4901-bbd1-9fd45a72d6c0.png" alt=""/><figcaption><p>Submission with errors prevented</p></figcaption></figure></div>
+<CardGroup cols={2}>
+  <Frame caption="Submission allowed">
+      <img src="/assets/images/project-pages/settings-page/submission-allowed.png" alt="" />
+  </Frame>
+  <Frame caption="Submission with errors prevented">
+      <img src="/assets/images/project-pages/settings-page/submission-with-errors-prevented.png" alt="" />
+  </Frame>
+</CardGroup>
 
 ### Custom Javascript function
 
@@ -262,7 +271,7 @@ type Attributes = { [attributeName: string]: string | boolean | string[] };
 You can generate a sample `Label[]` object by going to the labeling tool -> opening command bar `cmd/ctrl + k` -> _Copy current label state to clipboard._
 
 <Frame caption="">
-  <iframe className="w-full aspect-video" src="https://www.loom.com/share/90aa36c4bad44069adeac75a5765589c" alt="" />
+  <iframe className="w-full aspect-video" src="https://www.loom.com/embed/90aa36c4bad44069adeac75a5765589c" alt="" />
 </Frame>
 
 Your custom validation script must return a list of warning/error messages describing the issues found. Return an empty array `[]` if no errors are found. These error message strings will be displayed to the annotators on the labeling tool.&#x20;
@@ -272,11 +281,12 @@ To help you write a validation function with several checks, RedBrick AI has a c
 
 <Tabs>
 <Tab title="With assert()">
-<pre class="language-typescript"><code class="lang-typescript"><strong>function(task: Task, labels: Label[]): string[] {
-</strong>    assert(labels.length >= 1, "You have not created any labels!");
+```typescript
+function(task: Task, labels: Label[]): string[] {
+    assert(labels.length >= 1, "You have not created any labels!");
     assert(labels.length &#x3C;= 5, "You have created too many labels!");
 }
-</code></pre>
+```
 </Tab>
 
 <Tab title="Without assert()">
@@ -301,15 +311,20 @@ function(task: Task, labels: Label[]): string[] {
 
 Before saving your script, you should validate that your code executes as expected. Click on the validate button on the bottom right of the Settings page, and paste the JSON object copied from the labeling tool to see if your code executes as expected:
 
-<figure><img src="../../.gitbook/assets/Screen Shot 2022-09-04 at 3.22.20 PM.png" alt=""/><figcaption></figcaption></figure>
+<Frame>
+  <img src="/assets/images/project-pages/settings-page/validate-code.png" alt="" />
+</Frame>
 
 ## Displaying the Validation on the Labeling Tool
 
 Your custom validation script will be regularly run. If any warnings are found, an indicator will appear on the right side of the bottom bar. If you have enabled **Prevent submissions with errors**, the indicator will be red.&#x20;
 
-<figure><img src="../../.gitbook/assets/qa.redbrickdevteam.com_943c97cd-58b1-4794-84d0-8b00d26f0c84_projects_64e8b5d9-81d3-4401-a49a-924d72916b0f_tool_Label_taskid=bd8aa035-e0fa-4388-ae66-6f12c7fe2a4c.png" alt=""/><figcaption><p>Submission with errors is allowed</p></figcaption></figure>
-
-<figure><img src="../../.gitbook/assets/qa.redbrickdevteam.com_943c97cd-58b1-4794-84d0-8b00d26f0c84_projects_64e8b5d9-81d3-4401-a49a-924d72916b0f_tool_Label_taskid=bd8aa035-e0fa-4388-ae66-6f12c7fe2a4c (1) (3).png" alt=""/><figcaption><p>Submission with errors is prevented</p></figcaption></figure>
+<Frame caption="Submission with errors is allowed">
+  <img src="/assets/images/project-pages/settings-page/submission-allowed-bottom.png" alt="" />
+</Frame>
+<Frame caption="Submission with errors is prevented">
+  <img src="/assets/images/project-pages/settings-page/submission-prevented-bottom.png" alt="" />
+</Frame>
 
 ## Example Scripts
 

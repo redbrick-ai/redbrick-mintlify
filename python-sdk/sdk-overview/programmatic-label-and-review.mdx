@@ -24,12 +24,12 @@ project = redbrick.get_project(org_id, project_id, api_key)
 Next, you need to get a list of Tasks you want to label/review. You can do this by:&#x20;
 
 1. Searching for the `task_id` through the RedBrick AI UI.
-2. Retrieving the `task_id` from your filename/custom `name` from the Items List using [search\_tasks](exporting-annotations#query-tasks-in-your-project).
+2. Retrieving the `task_id` from your filename/custom `name` from the Items List using [search\_tasks](./exporting-annotations#query-tasks-in-your-project).
 3. Retrieving tasks assigned to your API key using `list_tasks`.
 
 #### Programmatically Label Tasks
 
-Add your annotations within the `series` field, along with the `task_id`. Please refer to the reference documentation for the [format of the annotations in Series](../formats/full-format-reference).
+Add your annotations within the `series` field, along with the `task_id`. Please refer to the reference documentation for the [format of the annotations in Series](/python-sdk/formats/full-format-reference).
 
 &#x20;The corresponding Task must be queued in the Label Stage and assigned to your API key.&#x20;
 
@@ -77,7 +77,7 @@ project.review.put_tasks("Review_1", [{taskId: "...", series: [{...}]}])
 
 Once your Task goes through all of the stages in your workflow, it will be stored in the Ground Truth Stage. If you notice issues with one or more of your Ground Truth Tasks, you can either modify them manually within the UI while the Tasks are still in the Ground Truth Stage or **send them back to the Label Stage** for correction.
 
-First, get a list of the `task_id`s you want to send back to Label. You can do this by [exporting only Ground Truth Tasks](exporting-annotations#export-only-ground-truth) and filtering them. Then, use `move_tasks_to_start` to send them back to Label.
+First, get a list of the `task_id`s you want to send back to Label. You can do this by [exporting only Ground Truth Tasks](./exporting-annotations#export-only-ground-truth) and filtering them. Then, use `move_tasks_to_start` to send them back to Label.
 
 ```python
 task_ids = ["...", "..."]
