@@ -1,0 +1,387 @@
+Formats
+*******
+
+This section will document the structure used for importing and
+exporting data from RedBrick AI.
+
+
+Import
+======
+
+The RedBrick AI SDK uses a list of "redbrick.types.task.InputTask"
+objects for importing data. To import data through the CLI or SDK,
+create a JSON file that follows the same format.
+
+class redbrick.types.task.InputTask
+
+   Represents a single task in RedBrick AI, which is a unit of
+   labeling work. This user-defined object can contain one or more
+   series of mixed modalities.
+
+   name: "str"
+
+      A unique user defined string for quickly identifying and
+      searching tasks.
+
+   series: "List"["Series"]
+
+      Add more than one series per task by adding multiple entries to
+      *series* list.
+
+   classification: "Classification"
+
+      For importing Study level classifications
+      "redbrick.types.task.Classification".
+
+   priority: "float"
+
+      *priority* must between [0, 1]. Tasks will be ordered in
+      descending order of priority.
+
+   metaData: "Dict"["str", "str"]
+
+      Used for displaying Task level meta-data within the annotation
+      viewer.
+
+   preAssign: "Dict"["str", "Union"["str", "List"["str"]]]
+
+      Specify user email(s) to automatically assign this task to them.
+
+class redbrick.types.task.Series
+
+   A single series represents a single volume, image, or video. A
+   "redbrick.types.task.InputTask" can have multiple series.
+
+   items: "Union"["str", "List"["str"]] = <method 'items' of 'dict' objects>
+
+      Path(s) to the image instances of this series.
+
+         # DICOM instances don't need to be in order.
+         items = ["instance001.dcm", "instance000.dcm", "instance003.dcm]
+
+         items = "path/to/instance.dcm"
+
+         items = "path/to/nifti.nii
+
+         # Frames need to be in correct order.
+         items = ["fram001.png", "frame002.png", "frame003.png"]
+
+   name: "str"
+
+      Unique identifier for the series that will be displayed on the
+      annotation viewport.
+
+   metaData: "Dict"["str", "str"]
+
+      Series level meta-data will be displayed on the viewport.
+
+   segmentations: "Union"["str", "List"["str"]]
+
+      Path to your NIfTI segmentation files for uploading annotations.
+
+      Read our guide on importing annotation to learn more.
+
+      If your series has a single segmentation file.
+
+         items = "path/to/segmentation.nii"
+
+      If your series has multiple segmentation files for different
+      instances.
+
+         items = ["path/to/instance01.nii", "path/to/instance02.nii"]
+
+   segmentMap: "Dict"["Union"["str", "int"], "Union"["str", "int", "List"["str"], "CommonLabelProps"]]
+
+      A mapping between your segmentation file instance values (values
+      inside your NIfTI files) and your RedBrick AI taxonomy
+      categories.
+
+      Read our guide on importing annotation to learn more.
+
+      "1" and "2" are values present the NIfTI files defined by
+      "redbrick.types.task.Series.segmentations". Those values will be
+      mapped to your RedBrick AI taxonomy categories "category a" and
+      "category b".
+
+         segmentMap = {
+             "1": "category a",
+             "2": "category b"
+         }
+
+      "1" and "2" are values present the NIfTI files defined by
+      "redbrick.types.task.Series.segmentations". Those values will be
+      mapped to your RedBrick AI taxonomy categories "category a" and
+      "category b".
+
+      "Attributes": "redbrick.types.task.Attributes"
+
+         segmentMap = {
+             "1": {
+                 "category": "category a",
+                 "mask": "path/to/segmentation.nii"
+                 "attributes": Attributes
+             },
+             "2": {
+                 "category": "category b",
+                 "mask": "path/to/segmentation.nii"
+                 "attributes": Attributes
+             }
+         }
+
+   heatMaps: "List"["HeatMap"]
+
+      Heatmaps for the series.
+
+   transforms: "List"["Transform"]
+
+      Transforms for the series.
+
+   centerline: "List"["Centerline"]
+
+      Centerline info for the series.
+
+   binaryMask: "bool"
+
+      Treats all files in "redbrick.types.task.Series.segmentations"
+      as binary masks. That is, any non-zero value will be treated as
+      a single instance.
+
+   pngMask: "bool"
+
+      Set to true if uploading PNG masks.
+
+   landmarks: "List"["Landmark"]
+
+      2D landmarks for 2D data.
+
+   landmarks3d: "List"["Landmark3D"]
+
+      3D landmarks for 3D data.
+
+   measurements: "List"["Union"["MeasureLength", "MeasureAngle"]]
+
+      Length or angle measurements. Not supported in videos.
+
+   ellipses: "List"["Ellipse"]
+
+      Ellipse annotation. Not supported in Videos.
+
+   boundingBoxes: "List"["BoundingBox"]
+
+      2D bounding box for 2D images, or slice by slice annotation in
+      3D images.
+
+   cuboids: "List"["Cuboid"]
+
+      3D bounding boxes for 3D images.
+
+   polygons: "List"["Polygon"]
+
+      Closed polygons, not supported in 3D images.
+
+   polylines: "List"["Polyline"]
+
+      Open polylines, not supported in 3D images.
+
+   classifications: "List"["Classification"]
+
+      Series level classifications.
+
+   instanceClassifications: "List"["InstanceClassification"]
+
+      Instance level classifications for frame-by-frame (video) or
+      slice-by-slice (volume) classifications.
+
+class redbrick.types.task.HeatMap
+
+   Heat map.
+
+   name: "str"
+
+      Name.
+
+   item: "str"
+
+      File path.
+
+   preset: "str"
+
+      Preset.
+
+   dataRange: "List"["float"]
+
+      Data range.
+
+   opacityPoints: "List"["float"]
+
+      Opacity points.
+
+   opacityPoints3d: "List"["float"]
+
+      Opacity points 3D.
+
+   rgbPoints: "List"["float"]
+
+      RGB points.
+
+class redbrick.types.task.Transform
+
+   Transform.
+
+   transform: "List"["List"["float"]]
+
+      Transformation matrix (4x4).
+
+class redbrick.types.task.Centerline
+
+   Centerline info.
+
+   name: "str"
+
+      Centerline name
+
+   centerline: "Dict"
+
+      Centerline polydata
+
+
+Export
+======
+
+The RedBrick SDK will export a list of
+"redbrick.types.task.OutputTask" objects, along with NIfTI
+segmentation files if they exist, written to the disk. The CLI will
+export in the same format in a JSON file.
+
+class redbrick.types.task.OutputTask
+
+   Single task object on export.
+
+   taskId: "str"
+
+      System generated unique identifier for the task.
+
+   name: "str"
+
+      A unique user defined string for quickly identifying and
+      searching tasks.
+
+   series: "List"["Series"]
+
+      List of *series* in the task "redbrick.types.task.Series".
+
+   classification: "Classification"
+
+      Study level classifications
+      "redbrick.types.task.Classification".
+
+   priority: "float"
+
+      Task *priority* in the range [0, 1].
+
+   metaData: "Dict"["str", "str"]
+
+      Task level meta-data within the annotation viewer.
+
+   currentStageName: "str"
+
+      Name of the stage in which this task currently is.
+
+   status: "TaskStates"
+
+      Current status of the task in the workflow.
+
+   createdBy: "str"
+
+      E-mail of the user who uploaded this task.
+
+   createdAt: "str"
+
+      Timestamp of when this task was uploaded.
+
+   updatedBy: "str"
+
+      E-mail of the user who last edited this task.
+
+   updatedByUserId: "str"
+
+      System generated unique user ID of user who last edited this
+      task.
+
+   updatedAt: "str"
+
+      Timestamp of when this task was last edited.
+
+   consensus: "bool"
+
+      If true, this task is a consensus task, i.e., it was labeled by
+      more than one person.
+
+   consensusScore: "float"
+
+      Agreement score between annotators who labeled this task.
+
+      Read more about the score calculation here.
+
+   consensusTasks: "List"["OutputTask"]
+
+      A list of all the results from consensus. One entry for each
+      annotator.
+
+   scores: "List"["ConsensusScore"]
+
+      Matrix of the agreement scores between the labelers.
+
+   superTruth: "OutputTask"
+
+      Supertruth version produced in consensus review stage.
+
+   datapointClassification: "Classification"
+
+      Datapoint classification attributes.
+
+class redbrick.types.task.ConsensusScore
+
+   Consensus score for a pair of annotators for a consensus task.
+
+   secondaryUser: "str"
+
+      User who is compared to primary user.
+
+   secondaryUserId: "str"
+
+      User id of user who is compared to primary user.
+
+   secondaryUserEmail: "str"
+
+      User email of user who is compared to the primary user.
+
+   score: "float"
+
+      Agreement score between the primary user and this secondary
+      user.
+
+class redbrick.common.enums.TaskStates(value, names=<not given>, *values, module=None, qualname=None, type=None, start=1, boundary=None)
+
+   Task Status.
+
+   * "UNASSIGNED" - The Task has not been assigned to a Project Admin
+     or Member.
+
+   * "ASSIGNED" - The Task has been assigned to a Project Admin or
+     Member,
+        but work has not begun on it.
+
+   * "IN_PROGRESS" - The Task is currently being worked on by a
+     Project Admin or Member.
+
+   * "COMPLETED" - The Task has been completed successfully.
+
+   * "PROBLEM" - A Project Admin or Member has raised an Issue
+     regarding the Task,
+        and work cannot continue until the Issue is resolved by a
+        Project Admin.
+
+   * "SKIPPED" - The Task has been skipped.
+
+   * "STAGED" - The Task has been saved as a Draft.
