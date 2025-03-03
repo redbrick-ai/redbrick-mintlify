@@ -1,28 +1,10 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: "Command Line Interface"
+description: "The RedBrick CLI offers a simple interface to quickly import and export your images & annotations, and perform other high-level actions."
 ---
-
-
-
-[![Light Logo](https://sdk.redbrickai.com/_static/redbrick.svg)Version 2.21.5](https://sdk.redbrickai.com/index.html)
-
-* [Python SDK](https://sdk.redbrickai.com/sdk.html)
-
-* [Command Line Interface](https://sdk.redbrickai.com/cli.html#)
-
-* [Formats](https://sdk.redbrickai.com/formats/index.html)
-
-
-
-
-# Command Line Interface
-
-The RedBrick CLI offers a simple interface to quickly import and export your images & annotations, and perform other high-level actions.
 
 usag&#x65;**:** redbrick **\[-**&#x68;**]** **\[-**&#x76;**]** **\[--**&#x63;ompletion **\{**&#x62;as&#x68;**,**&#x7A;s&#x68;**,**&#x74;cs&#x68;**}]**
 &#x20;               **\{**&#x63;onfi&#x67;**,**&#x69;ni&#x74;**,**&#x63;lon&#x65;**,**&#x69;nf&#x6F;**,**&#x65;xpor&#x74;**,**&#x75;ploa&#x64;**,**&#x72;epor&#x74;**}** **...**
-
 
 ## Named Arguments
 
@@ -51,7 +33,6 @@ Setup the credentials for your CLI.
 redbrick config **\[-**&#x68;**]** **\[--**&#x6F;rg OR&#x47;**]** **\[--**&#x6B;ey KE&#x59;**]** **\[--**&#x75;rl UR&#x4C;**]** **\[--**&#x70;rofile PROFIL&#x45;**]**
 &#x20;               **\[--**&#x66;orc&#x65;**]**
 &#x20;               **\{**&#x6C;is&#x74;**,**&#x73;e&#x74;**,**&#x61;d&#x64;**,**&#x72;emov&#x65;**,**&#x63;lea&#x72;**,**&#x76;erif&#x79;**}** **...**
-
 
 #### Positional Arguments
 
@@ -91,13 +72,11 @@ List all credential profiles
 
 redbrick config list **\[-**&#x68;**]**
 
-
 ##### set
 
 Set your default credentials profile
 
 redbrick config set **\[-**&#x68;**]** **\[**&#x70;rofil&#x65;**]**
-
 
 ###### Positional Arguments
 
@@ -111,7 +90,6 @@ Add a new profile
 
 redbrick config add **\[-**&#x68;**]** **\[--**&#x6F;rg OR&#x47;**]** **\[--**&#x6B;ey KE&#x59;**]** **\[--**&#x75;rl UR&#x4C;**]**
 &#x20;                   **\[--**&#x70;rofile PROFIL&#x45;**]**
-
 
 ###### Named Arguments
 
@@ -137,7 +115,6 @@ Remove a profile
 
 redbrick config remove **\[-**&#x68;**]** **\[**&#x70;rofil&#x65;**]**
 
-
 ###### Positional Arguments
 
 profile
@@ -150,13 +127,11 @@ Clear all credentials
 
 redbrick config clear **\[-**&#x68;**]**
 
-
 ##### verify
 
 Verify a profile
 
 redbrick config verify **\[-**&#x68;**]** **\[**&#x70;rofil&#x65;**]**
-
 
 ###### Positional Arguments
 
@@ -172,11 +147,9 @@ $ mkdir new-project
 $ cd new-project
 $ redbrick init
 
-
 redbrick init **\[-**&#x68;**]** **\[--**&#x6E;ame NAM&#x45;**]** **\[--**&#x74;axonomy TAXONOM&#x59;**]** **\[--**&#x72;eviews REVIEW&#x53;**]**
 &#x20;             **\[--**&#x77;orkspace WORKSPAC&#x45;**]** **\[--**&#x73;iblin&#x67;**-**&#x74;asks SIBLING\_TASK&#x53;**]**
 &#x20;             **\[**&#x70;at&#x68;**]**
-
 
 #### Positional Arguments
 
@@ -214,7 +187,6 @@ The project will be cloned to a local directory named after your `project name
 
 redbrick clone **\[-**&#x68;**]** **\[**&#x70;rojec&#x74;**]** **\[**&#x70;at&#x68;**]**
 
-
 #### Positional Arguments
 
 project
@@ -230,7 +202,6 @@ Local path of the empty project directory
 Get a project’s information
 
 redbrick info **\[-**&#x68;**]** **\[--**&#x67;et **\{**&#x6C;abelstorag&#x65;**}]** **\[--**&#x73;et **\{**&#x6C;abelstorag&#x65;**}]** **\[**&#x70;at&#x68;**]**
-
 
 #### Positional Arguments
 
@@ -264,7 +235,6 @@ redbrick export **\[-**&#x68;**]** **\[--with-**&#x66;ile&#x73;**]** **\[--**&#x
 &#x20;               **\[--**&#x63;oncurrency CONCURRENC&#x59;**]** **\[--**&#x73;tage STAG&#x45;**]**
 &#x20;               **\[--**&#x64;estination DESTINATIO&#x4E;**]**
 &#x20;               **\[**&#x74;yp&#x65;**]**
-
 
 #### Positional Arguments
 
@@ -377,7 +347,6 @@ redbrick upload **\[-**&#x68;**]** **\[--as-**&#x66;rame&#x73;**]**
 &#x20;               **\[--**&#x63;oncurrency CONCURRENC&#x59;**]**
 &#x20;               directory
 
-
 #### Positional Arguments
 
 directory
@@ -483,7 +452,6 @@ Generate an audit report for a project. Exports a JSON file containing all actio
 * and more.
 
 redbrick report **\[-**&#x68;**]** **\[--**&#x63;oncurrency CONCURRENC&#x59;**]** **\[**&#x74;yp&#x65;**]**
-
 
 #### Positional Arguments
 

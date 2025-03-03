@@ -193,18 +193,8 @@
       "group": "Python SDK & CLI - Documentation",
       "pages": [
         "sdk/index",
-        {
-          "group": "SDK Documentation",
-          "pages": [
-            "sdk/sdk"
-          ]
-        },
-        {
-          "group": "CLI Documentation",
-          "pages": [
-            "sdk/cli"
-          ]
-        },
+        "sdk/sdk",
+        "sdk/cli",
         {
           "group": "Formats Overview",
           "pages": [

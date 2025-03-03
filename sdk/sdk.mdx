@@ -1,21 +1,7 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: "Python SDK"
+description: "The SDK is best for writing Python scripts to interact with your RedBrick AI organization & projects. The SDK offers granular functions for programmatically manipulating data, importing annotations, assigning tasks, and more."
 ---
-
-
-
-[![Light Logo](https://sdk.redbrickai.com/_static/redbrick.svg)Version 2.21.5](https://sdk.redbrickai.com/index.html)
-
-* [Python SDK](https://sdk.redbrickai.com/sdk.html#)
-
-* [Command Line Interface](https://sdk.redbrickai.com/cli.html)
-
-* [Formats](https://sdk.redbrickai.com/formats/index.html)
-
-# Python SDK
-
-The SDK is best for writing Python scripts to interact with your RedBrick AI organization & projects. The SDK offers granular functions for programmatically manipulating data, importing annotations, assigning tasks, and more.
 
 ## RedBrick
 
@@ -23,19 +9,9 @@ The SDK is best for writing Python scripts to interact with your RedBrick AI org
 
 Storage method integration for organizations.
 
-* `PUBLIC` - Access files from a public cloud storage service using their absolute URLs.
+* `PUBLIC` - Access files from a public cloud storage service using their absolute URLs.(i.e. files available publicly)
 
-
-
-
-  (i.e. files available publicly)
-
-* `REDBRICK` - Access files stored on RedBrick AI’s servers
-
-
-
-
-  (i.e. files uploaded directly to RBAI from a local machine)
+* `REDBRICK` - Access files stored on RedBrick AI’s servers(i.e. files uploaded directly to RBAI from a local machine)
 
 *class* Public[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.Public)
 
@@ -481,23 +457,13 @@ Task Status.
 
 * `UNASSIGNED` - The Task has not been assigned to a Project Admin or Member.
 
-* `ASSIGNED` - The Task has been assigned to a Project Admin or Member,
-
-
-
-
-  but work has not begun on it.
+* `ASSIGNED` - The Task has been assigned to a Project Admin or Member,but work has not begun on it.
 
 * `IN_PROGRESS` - The Task is currently being worked on by a Project Admin or Member.
 
 * `COMPLETED` - The Task has been completed successfully.
 
-* `PROBLEM` - A Project Admin or Member has raised an Issue regarding the Task,
-
-
-
-
-  and work cannot continue until the Issue is resolved by a Project Admin.
+* `PROBLEM` - A Project Admin or Member has raised an Issue regarding the Task,and work cannot continue until the Issue is resolved by a Project Admin.
 
 * `SKIPPED` - The Task has been skipped.
 
@@ -859,7 +825,6 @@ Organization object allows you to interact with your organization and perform hi
 
 \>>> org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_ke&#x79;**)**
 
-
 Parameters:
 
 * **org\_id** (*str*) – Your organizations unique id [https://app.redbrickai.com](https://app.redbrickai.com/)/\<org\_id>/.
@@ -879,7 +844,6 @@ Get an existing RedBrick workspace object.
 Workspace objects allow you to interact with your RedBrick AI workspaces, and perform actions like importing data, exporting data etc.
 
 \>>> workspace **=** redbric&#x6B;**.**&#x67;et\_workspac&#x65;**(**&#x6F;rg\_i&#x64;**,** workspace\_i&#x64;**,** api\_ke&#x79;**)**
-
 
 Parameters:
 
@@ -903,7 +867,6 @@ Project objects allow you to interact with your RedBrick Ai projects, and perfor
 
 \>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
 
-
 Parameters:
 
 * **org\_id** (*str*) – Your organizations unique id [https://app.redbrickai.com](https://app.redbrickai.com/)/\<org\_id>/
@@ -923,7 +886,6 @@ redbrick.get\_org\_from\_profile(*profile\_name=None*)[\[source\]](https://sdk.r
 Get the org from the profile name in credentials file
 
 \>>> org **=** get\_org\_from\_profil&#x65;**()**
-
 
 Parameters:
 
@@ -966,7 +928,6 @@ Variables:
 * **storage** ([*redbrick.common.storage.Storage*](https://sdk.redbrickai.com/sdk.html#redbrick.common.storage.Storage "redbrick.common.storage.Storage")) – Organization storage methods integration.
 
 \>>> org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**=**""**,** api\_ke&#x79;**=**""**)**
-
 
 *abstract property* org\_i&#x64;*: str*
 
@@ -1048,12 +1009,7 @@ Parameters:
 
 * **sibling\_tasks** (*Optional\[int] = None*) – Number of tasks created for each uploaded datapoint.
 
-* **consensus\_settings** (*Optional\[Dict\[str, Any]] = None*) –
-
-
-
-
-  Consensus settings for the project. It has keys:
+* **consensus\_settings** (*Optional\[Dict\[str, Any]] = None*) –Consensus settings for the project. It has keys:
 
   * minAnnotations: int
 
@@ -1091,12 +1047,7 @@ Parameters:
 
 * **sibling\_tasks** (*Optional\[int] = None*) – Number of tasks created for each uploaded datapoint.
 
-* **consensus\_settings** (*Optional\[Dict\[str, Any]] = None*) –
-
-
-
-
-  Consensus settings for the project. It has keys:
+* **consensus\_settings** (*Optional\[Dict\[str, Any]] = None*) –Consensus settings for the project. It has keys:
 
   * minAnnotations: int
 
@@ -1209,7 +1160,6 @@ Get a team member.
 org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_ke&#x79;**)**
 member **=** or&#x67;**.**&#x74;ea&#x6D;**.**&#x67;et\_membe&#x72;**(**&#x6D;ember\_i&#x64;**)**
 
-
 Parameters:
 
 **member\_id** (*str*) – Unique member userId or email.
@@ -1225,7 +1175,6 @@ Get a list of all organization members.
 org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_ke&#x79;**)**
 members **=** or&#x67;**.**&#x74;ea&#x6D;**.**&#x6C;ist\_member&#x73;**()**
 
-
 Return type:
 
 List\[[OrgMember](https://sdk.redbrickai.com/sdk.html#redbrick.OrgMember "redbrick.common.member.OrgMember")]
@@ -1236,7 +1185,6 @@ Remove members from the organization.
 
 org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_ke&#x79;**)**
 or&#x67;**.**&#x74;ea&#x6D;**.**&#x72;emove\_member&#x73;**(**&#x6D;ember\_id&#x73;**)**
-
 
 Parameters:
 
@@ -1253,7 +1201,6 @@ Get a list of all pending or declined invites.
 org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_ke&#x79;**)**
 members **=** or&#x67;**.**&#x74;ea&#x6D;**.**&#x6C;ist\_invite&#x73;**()**
 
-
 Return type:
 
 List\[[OrgInvite](https://sdk.redbrickai.com/sdk.html#redbrick.OrgInvite "redbrick.common.member.OrgInvite")]
@@ -1264,7 +1211,6 @@ Invite a user to the organization.
 
 org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_ke&#x79;**)**
 invitation **=** or&#x67;**.**&#x74;ea&#x6D;**.**&#x69;nvite\_use&#x72;**(**&#x4F;rgInvit&#x65;**(**&#x65;mai&#x6C;**=**"..."**,** rol&#x65;**=**&#x4F;rgMembe&#x72;**.**&#x52;ol&#x65;**.**&#x4D;EMBE&#x52;**))**
-
 
 Parameters:
 
@@ -1280,7 +1226,6 @@ Revoke org user invitation.
 
 org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_ke&#x79;**)**
 or&#x67;**.**&#x74;ea&#x6D;**.**&#x72;evoke\_invitatio&#x6E;**(**&#x4F;rgInvit&#x65;**(**&#x65;mai&#x6C;**=**"..."**))**
-
 
 Parameters:
 
@@ -1483,7 +1428,6 @@ points **=** **\[**
 **]**
 workspac&#x65;**.**&#x63;reate\_datapoint&#x73;**(**&#x73;torage\_i&#x64;**,** point&#x73;**)**
 
-
 Parameters:
 
 * **storage\_id** (*str*) – Your RedBrick AI external storage\_id. This can be found under the Storage Tab on the RedBrick AI platform. To directly upload images to rbai, use redbrick.StorageMethod.REDBRICK.
@@ -1523,7 +1467,6 @@ points **=** **\[**
 **]**
 workspac&#x65;**.**&#x75;pdate\_datapoints\_metadat&#x61;**(**&#x73;torage\_i&#x64;**,** point&#x73;**)**
 
-
 Parameters:
 
 * **storage\_id** (*str*) – Storage method where the datapoints are stored.
@@ -1540,7 +1483,6 @@ Delete workspace datapoints based on ids.
 
 \>>> workspace **=** redbric&#x6B;**.**&#x67;et\_workspac&#x65;**(**&#x6F;rg\_i&#x64;**,** workspace\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
 \>>> workspac&#x65;**.**&#x64;elete\_datapoint&#x73;**(\[...])**
-
 
 Parameters:
 
@@ -1579,7 +1521,6 @@ Variables:
 * **workforce** ([*redbrick.common.member.Workforce*](https://sdk.redbrickai.com/sdk.html#redbrick.common.member.Workforce "redbrick.common.member.Workforce")) – Project workforce management.
 
 \>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**=**""**,** project\_i&#x64;**=**""**,** api\_ke&#x79;**=**""**)**
-
 
 *abstract property* org\_i&#x64;*: str*
 
@@ -1640,7 +1581,6 @@ By default, all annotations get stored in RedBrick AI’s storage i.e. `redbric
 \>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
 \>>> projec&#x74;**.**&#x73;et\_label\_storag&#x65;**(**&#x73;torage\_i&#x64;**)**
 
-
 Parameters:
 
 * **storage\_id** (*str*) – The unique ID of your RedBrick AI storage method integration. Found on the storage method tab on the left sidebar.
@@ -1684,7 +1624,6 @@ The export module has many functions for exporting annotations and meta-data fro
 \>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x61;pi\_ke&#x79;**=**""**,** org\_i&#x64;**=**""**,** project\_i&#x64;**=**""**)**
 \>>> projec&#x74;**.**&#x65;xport *# Export*
 
-
 *abstract* export\_tasks(*\**, *concurrency=10*, *only\_ground\_truth=False*, *stage\_name=None*, *task\_id=None*, *from\_timestamp=None*, *old\_format=False*, *without\_masks=False*, *without\_json=False*, *semantic\_mask=False*, *binary\_mask=None*, *no\_consensus=None*, *with\_files=False*, *dicom\_to\_nifti=False*, *png=False*, *rt\_struct=False*, *mhd=False*, *destination=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/export.html#Export.export_tasks)
 
 Export annotation data.
@@ -1693,7 +1632,6 @@ Meta-data and category information returned as an Object. Segmentations are writ
 
 \>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
 \>>> projec&#x74;**.**&#x65;xpor&#x74;**.**&#x65;xport\_task&#x73;**()**
-
 
 Parameters:
 
@@ -1750,7 +1688,6 @@ Search tasks based on multiple queries for a project. This function returns mini
 \>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
 \>>> result **=** projec&#x74;**.**&#x65;xpor&#x74;**.**&#x6C;ist\_task&#x73;**()**
 
-
 Parameters:
 
 * **search** ([`TaskFilters`](https://sdk.redbrickai.com/sdk.html#redbrick.TaskFilters "redbrick.common.enums.TaskFilters") = TaskFilters.ALL) – Task filter type.
@@ -1759,23 +1696,13 @@ Parameters:
 
 * **limit** (*Optional\[int] = 50*) – The number of tasks to return. Use None to return all tasks matching the search query.
 
-* **stage\_name** (*Optional\[str] = None*) –
-
-
-
-
-  If present, will return tasks that are:
+* **stage\_name** (*Optional\[str] = None*) –If present, will return tasks that are:
 
   1. Available in stage\_name: If search == TaskFilters.QUEUED
 
   2. Completed in stage\_name: If search == TaskFilters.COMPLETED
 
-* **user\_id** (*Optional\[str] = None*) –
-
-
-
-
-  User id/email. If present, will return tasks that are:
+* **user\_id** (*Optional\[str] = None*) –User id/email. If present, will return tasks that are:
 
   1. Assigned to user\_id: If search == TaskFilters.QUEUED
 
@@ -1790,8 +1717,6 @@ Parameters:
 * **completed\_at** (*Optional\[Tuple\[Optional\[float], Optional\[float]]] = None*) – If present, will return tasks that were completed in the given time range. The tuple contains the from and to timestamps respectively.
 
 Returns:
-
-
 
 \>>> **\[\{**
 &#x20;   *"taskId": str,*
@@ -1812,9 +1737,6 @@ Returns:
 &#x20;       *"timeSpentMs"?: float,*
 &#x20;   *}]*
 *}]*
-
-
-
 
 Return type:
 
@@ -1850,16 +1772,11 @@ Parameters:
 
 Returns:
 
-
-
 \>>> **\[\{**
 &#x20;   *"taskId": string,*
 &#x20;   *"currentStageName": string,*
 &#x20;   *"events": List\[Dict]*
 *}]*
-
-
-
 
 Return type:
 
@@ -1879,8 +1796,6 @@ Parameters:
 
 Returns:
 
-
-
 \>>> **\[\{**
 &#x20;   *"orgId": string,*
 &#x20;   *"projectId": string,*
@@ -1891,9 +1806,6 @@ Returns:
 &#x20;   *"completedAt": datetime,*
 &#x20;   *"cycle": number  # Task cycle*
 *}]*
-
-
-
 
 Return type:
 
@@ -1909,7 +1821,6 @@ Primary interface for uploading to a project.
 
 \>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x61;pi\_ke&#x79;**=**""**,** org\_i&#x64;**=**""**,** project\_i&#x64;**=**""**)**
 \>>> projec&#x74;**.**&#x75;pload
-
 
 *abstract* create\_datapoints(*storage\_id*, *points*, *\**, *is\_ground\_truth=False*, *segmentation\_mapping=None*, *rt\_struct=False*, *mhd=False*, *label\_storage\_id=None*, *label\_validate=False*, *prune\_segmentations=False*, *concurrency=50*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/upload.html#Upload.create_datapoints)
 
@@ -1933,7 +1844,6 @@ points **=** **\[**
 &#x20;   **}**
 **]**
 projec&#x74;**.**&#x75;ploa&#x64;**.**&#x63;reate\_datapoint&#x73;**(**&#x73;torage\_i&#x64;**,** point&#x73;**)**
-
 
 Parameters:
 
@@ -1978,7 +1888,6 @@ Delete project tasks based on task ids.
 \>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
 \>>> projec&#x74;**.**&#x75;ploa&#x64;**.**&#x64;elete\_task&#x73;**(\[...])**
 
-
 Parameters:
 
 * **task\_ids** (*List\[str]*) – List of task ids to delete.
@@ -1999,7 +1908,6 @@ Delete project tasks based on task names.
 
 \>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
 \>>> projec&#x74;**.**&#x75;ploa&#x64;**.**&#x64;elete\_tasks\_by\_nam&#x65;**(\[...])**
-
 
 Parameters:
 
@@ -2032,7 +1940,6 @@ points **=** **\[**
 **]**
 projec&#x74;**.**&#x75;ploa&#x64;**.**&#x75;pdate\_task\_item&#x73;**(**&#x73;torage\_i&#x64;**,** point&#x73;**)**
 
-
 Parameters:
 
 * **storage\_id** (*str*) – Your RedBrick AI external storage\_id. This can be found under the Storage Tab on the RedBrick AI platform. To directly upload images to rbai, use redbrick.StorageMethod.REDBRICK.
@@ -2059,7 +1966,6 @@ Import tasks from another project in the same workspace.
 
 project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
 projec&#x74;**.**&#x75;ploa&#x64;**.**&#x69;mport\_tasks\_from\_workspac&#x65;**(**&#x73;ource\_project\_i&#x64;**,** task\_id&#x73;**)**
-
 
 Parameters:
 
@@ -2101,7 +2007,6 @@ tasks **=** **\[**
 
 *# Overwrite labels in tasks*
 projec&#x74;**.**&#x75;ploa&#x64;**.**&#x75;pdate\_tasks\_label&#x73;**(**&#x74;ask&#x73;**)**
-
 
 Parameters:
 
@@ -2186,7 +2091,6 @@ projec&#x74;**.**&#x6C;abelin&#x67;**.**&#x70;ut\_task&#x73;**(**"Label"**,** ta
 *# Submit tasks with existing labels*
 projec&#x74;**.**&#x6C;abelin&#x67;**.**&#x70;ut\_task&#x73;**(**"Label"**,** **\[\{**"taskId"**:**"..."**}],** existing\_label&#x73;**=True)**
 
-
 Review
 
 Parameters:
@@ -2230,7 +2134,6 @@ Unassigns all users from the task if neither of the `email` or `current_user`
 \>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
 \>>> projec&#x74;**.**&#x6C;abelin&#x67;**.**&#x61;ssign\_task&#x73;**(\[**&#x74;ask\_i&#x64;**],** emai&#x6C;**=**&#x65;mai&#x6C;**)**
 
-
 Parameters:
 
 * **task\_ids** (*List\[str]*) – List of unique `task_id` of the tasks you want to assign.
@@ -2243,14 +2146,9 @@ Parameters:
 
 Returns:
 
-
-
 List of affected tasks.
 
 \>>> **\[\{**"taskId"**,** "name"**,** "stageName"**}]**
-
-
-
 
 Return type:
 
@@ -2285,7 +2183,6 @@ Get
 project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
 label\_validation **=** projec&#x74;**.**&#x73;etting&#x73;**.**&#x6C;abel\_validation
 
-
 Set
 
 *abstract property* hanging\_protoco&#x6C;*: HangingProtocol*
@@ -2301,7 +2198,6 @@ Get
 project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
 hanging\_protocol **=** projec&#x74;**.**&#x73;etting&#x73;**.**&#x68;anging\_protocol
 
-
 Set
 
 *abstract property* webhoo&#x6B;*: Webhook*
@@ -2316,7 +2212,6 @@ Get
 
 project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
 webhook **=** projec&#x74;**.**&#x73;etting&#x73;**.**&#x77;ebhook
-
 
 Set
 
@@ -2341,7 +2236,6 @@ Get
 project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
 count **=** projec&#x74;**.**&#x73;etting&#x73;**.**&#x74;ask\_duplication
 
-
 Set
 
 ## Workforce
@@ -2359,7 +2253,6 @@ Get a project member.
 project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
 member **=** projec&#x74;**.**&#x77;orkforc&#x65;**.**&#x67;et\_membe&#x72;**(**&#x6D;ember\_i&#x64;**)**
 
-
 Parameters:
 
 **member\_id** (*str*) – Unique member userId or email.
@@ -2375,7 +2268,6 @@ Get a list of all project members.
 project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
 members **=** projec&#x74;**.**&#x77;orkforc&#x65;**.**&#x6C;ist\_member&#x73;**()**
 
-
 Return type:
 
 List\[[ProjectMember](https://sdk.redbrickai.com/sdk.html#redbrick.ProjectMember "redbrick.common.member.ProjectMember")]
@@ -2386,7 +2278,6 @@ Add project members.
 
 project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
 member **=** projec&#x74;**.**&#x77;orkforc&#x65;**.**&#x61;dd\_member&#x73;**(\[\{**"member\_id"**:** "..."**,** "role"**:** "..."**,** "stages"**:** **\[**"..."**]},** **...])**
-
 
 Parameters:
 
@@ -2407,7 +2298,6 @@ Update project members.
 project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
 member **=** projec&#x74;**.**&#x77;orkforc&#x65;**.**&#x75;pdate\_member&#x73;**(\[\{**"member\_id"**:** "..."**,** "role"**:** "..."**,** "stages"**:** **\[**"..."**]},** **...])**
 
-
 Parameters:
 
 **members** (*List\[*[*ProjectMember*](https://sdk.redbrickai.com/sdk.html#redbrick.ProjectMember "redbrick.common.member.ProjectMember")*]*) – List of members to update.
@@ -2426,7 +2316,6 @@ Remove project members.
 
 project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
 member **=** projec&#x74;**.**&#x77;orkforc&#x65;**.**&#x72;emove\_member&#x73;**(\[...])**
-
 
 Parameters:
 

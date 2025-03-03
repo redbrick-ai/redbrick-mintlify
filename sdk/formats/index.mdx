@@ -1,32 +1,7 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: "Formats"
+description: "This section will document the structure used for importing and exporting data from RedBrick AI."
 ---
-
-
-
-[![Light Logo](https://sdk.redbrickai.com/_static/redbrick.svg)Version 2.21.5](https://sdk.redbrickai.com/index.html)
-
-* [Python SDK](https://sdk.redbrickai.com/sdk.html)
-
-* [Command Line Interface](https://sdk.redbrickai.com/cli.html)
-
-* [Formats](https://sdk.redbrickai.com/formats/index.html#)
-
-
-
-
-  Toggle navigation of Formats
-
-  * [Annotation type definitions](https://sdk.redbrickai.com/formats/annotations.html)
-
-  * [Taxonomy format](https://sdk.redbrickai.com/formats/taxonomy.html)
-
-Toggle Light / Dark / Auto color theme
-
-# Formats
-
-This section will document the structure used for importing and exporting data from RedBrick AI.
 
 ## Import
 
@@ -73,7 +48,6 @@ DICOM 3D
 *# DICOM instances don't need to be in order.*
 items **=** **\[**"instance001.dcm"**,** "instance000.dcm"**,** "instance003.dcm]
 
-
 DICOM 2DNIfTIVideo frames
 
 nam&#x65;*: `str`*
@@ -96,7 +70,6 @@ If your series has a single segmentation file.
 
 items **=** "path/to/segmentation.nii"
 
-
 Multiple
 
 segmentMa&#x70;*: `Dict`\[`Union`\[`str`, `int`], `Union`\[`str`, `int`, `List`\[`str`],* [*`CommonLabelProps`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.CommonLabelProps "redbrick.types.task.CommonLabelProps")*]]*
@@ -113,7 +86,6 @@ segmentMap **=** **\{**
 &#x20;   "1"**:** "category a"**,**
 &#x20;   "2"**:** "category b"
 **}**
-
 
 Full
 
@@ -341,23 +313,13 @@ Task Status.
 
 * `UNASSIGNED` - The Task has not been assigned to a Project Admin or Member.
 
-* `ASSIGNED` - The Task has been assigned to a Project Admin or Member,
-
-
-
-
-  but work has not begun on it.
+* `ASSIGNED` - The Task has been assigned to a Project Admin or Member,but work has not begun on it.
 
 * `IN_PROGRESS` - The Task is currently being worked on by a Project Admin or Member.
 
 * `COMPLETED` - The Task has been completed successfully.
 
-* `PROBLEM` - A Project Admin or Member has raised an Issue regarding the Task,
-
-
-
-
-  and work cannot continue until the Issue is resolved by a Project Admin.
+* `PROBLEM` - A Project Admin or Member has raised an Issue regarding the Task,and work cannot continue until the Issue is resolved by a Project Admin.
 
 * `SKIPPED` - The Task has been skipped.
 
