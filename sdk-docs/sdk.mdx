@@ -384,14 +384,14 @@ class redbrick.StorageProvider(storage_id, name, details)
       Return type:
          "StorageProvider"
 
-class redbrick.ImportTypes(value, names=<not given>, *values, module=None, qualname=None, type=None, start=1, boundary=None)
+class redbrick.ImportTypes(value, names=\<not given\>, *values, module=None, qualname=None, type=None, start=1, boundary=None)
 
    Enumerates the supported data import types.
 
    Please see supported data types, and file extensions in our
    documentation here.
 
-class redbrick.TaskEventTypes(value, names=<not given>, *values, module=None, qualname=None, type=None, start=1, boundary=None)
+class redbrick.TaskEventTypes(value, names=\<not given\>, *values, module=None, qualname=None, type=None, start=1, boundary=None)
 
    Enumerate the different types of task events.
 
@@ -424,7 +424,7 @@ class redbrick.TaskEventTypes(value, names=<not given>, *values, module=None, qu
 
    * "CONSENSUS_TASK_EDITED" - A consensus task has been edited.
 
-class redbrick.TaskFilters(value, names=<not given>, *values, module=None, qualname=None, type=None, start=1, boundary=None)
+class redbrick.TaskFilters(value, names=\<not given\>, *values, module=None, qualname=None, type=None, start=1, boundary=None)
 
    Enumerate the different task filters.
 
@@ -446,7 +446,7 @@ class redbrick.TaskFilters(value, names=<not given>, *values, module=None, qualn
 
    * "ISSUES" - Tasks that have issues raised and cannot be completed.
 
-class redbrick.TaskStates(value, names=<not given>, *values, module=None, qualname=None, type=None, start=1, boundary=None)
+class redbrick.TaskStates(value, names=\<not given\>, *values, module=None, qualname=None, type=None, start=1, boundary=None)
 
    Task Status.
 
@@ -507,7 +507,7 @@ class redbrick.Stage(stage_name, config)
       Return type:
          "Dict"
 
-class redbrick.LabelStage(stage_name, config=<factory>, on_submit=True)
+class redbrick.LabelStage(stage_name, config=\<factory\>, on_submit=True)
 
    Label Stage.
 
@@ -573,7 +573,7 @@ class redbrick.LabelStage(stage_name, config=<factory>, on_submit=True)
       Return type:
          "Dict"
 
-class redbrick.ReviewStage(stage_name, config=<factory>, on_accept=True, on_reject=False)
+class redbrick.ReviewStage(stage_name, config=\<factory\>, on_accept=True, on_reject=False)
 
    Review Stage.
 
@@ -645,7 +645,7 @@ class redbrick.ReviewStage(stage_name, config=<factory>, on_accept=True, on_reje
       Return type:
          "Dict"
 
-class redbrick.ModelStage(stage_name, config=<factory>, on_submit=True)
+class redbrick.ModelStage(stage_name, config=\<factory\>, on_submit=True)
 
    Model Stage.
 
@@ -739,7 +739,7 @@ class redbrick.OrgMember(user_id, email, given_name, family_name, role, tags, is
       * **sso_provider** (*Optional**[**str**] **= None*) -- User
         identity SSO provider.
 
-   class Role(value, names=<not given>, *values, module=None, qualname=None, type=None, start=1, boundary=None)
+   class Role(value, names=\<not given\>, *values, module=None, qualname=None, type=None, start=1, boundary=None)
 
       Enumerate access levels for Organization.
 
@@ -771,7 +771,7 @@ class redbrick.OrgInvite(email, role, sso_provider=None, status=Status.PENDING)
       * **status** (*OrgInvite.Status = OrgInvite.Status.PENDING*) --
         Invite status.
 
-   class Status(value, names=<not given>, *values, module=None, qualname=None, type=None, start=1, boundary=None)
+   class Status(value, names=\<not given\>, *values, module=None, qualname=None, type=None, start=1, boundary=None)
 
       Enumerate invite status.
 
@@ -812,7 +812,7 @@ class redbrick.ProjectMember(member_id, role, stages=None, org_membership=None)
         Organization memberhip. This is not required when
         adding/updating a member.
 
-   class Role(value, names=<not given>, *values, module=None, qualname=None, type=None, start=1, boundary=None)
+   class Role(value, names=\<not given\>, *values, module=None, qualname=None, type=None, start=1, boundary=None)
 
       Enumerate access levels for Project.
 
@@ -840,7 +840,7 @@ redbrick.get_org(org_id, api_key, url='https://api.redbrickai.com')
 
    Parameters:
       * **org_id** (*str*) -- Your organizations unique id
-        https://app.redbrickai.com/<org_id>/.
+        https://app.redbrickai.com/org_id/.
 
       * **api_key** (*str*) -- Your secret api_key, can be created
         from the RedBrick AI platform.
@@ -863,7 +863,7 @@ redbrick.get_workspace(org_id, workspace_id, api_key, url='https://api.redbricka
 
    Parameters:
       * **org_id** (*str*) -- Your organizations unique id
-        https://app.redbrickai.com/<org_id>/
+        https://app.redbrickai.com/org_id/
 
       * **workspace_id** (*str*) -- Your workspaces unique id.
 
@@ -888,10 +888,10 @@ redbrick.get_project(org_id, project_id, api_key, url='https://api.redbrickai.co
 
    Parameters:
       * **org_id** (*str*) -- Your organizations unique id
-        https://app.redbrickai.com/<org_id>/
+        https://app.redbrickai.com/org_id/
 
       * **project_id** (*str*) -- Your projects unique id
-        https://app.redbrickai.com/<org_id>/<project_id>/
+        https://app.redbrickai.com/project_id/
 
       * **api_key** (*str*) -- Your secret api_key, can be created
         from the RedBrick AI platform.
@@ -1443,7 +1443,7 @@ class redbrick.RBWorkspace
 
       Upload data to your workspace (without annotations). Please
       visit our documentation to understand the format for "points".
-
+```
          workspace = redbrick.get_workspace(org_id, workspace_id, api_key, url)
          points = [
              {
@@ -1456,7 +1456,7 @@ class redbrick.RBWorkspace
              }
          ]
          workspace.create_datapoints(storage_id, points)
-
+```
       Parameters:
          * **storage_id** (*str*) -- Your RedBrick AI external
            storage_id. This can be found under the Storage Tab on the
@@ -1493,7 +1493,7 @@ class redbrick.RBWorkspace
       Update datapoints metadata.
 
       Update metadata for datapoints in workspace.
-
+```
          workspace = redbrick.get_workspace(org_id, workspace_id, api_key, url)
          points = [
              {
@@ -1504,7 +1504,7 @@ class redbrick.RBWorkspace
              }
          ]
          workspace.update_datapoints_metadata(storage_id, points)
-
+```
       Parameters:
          * **storage_id** (*str*) -- Storage method where the
            datapoints are stored.
@@ -1527,7 +1527,7 @@ class redbrick.RBWorkspace
            delete.
 
          * **concurrency** (*int = 50*) -- The number of datapoints to
-           delete at a time. We recommend keeping this <= 50.
+           delete at a time. We recommend keeping this \<= 50.
 
       Returns:
          True if successful, else False.
@@ -1814,7 +1814,7 @@ class redbrick.common.export.Export
            will return tasks that were completed in the given time
            range. The tuple contains the *from* and *to* timestamps
            respectively.
-
+```
       Returns:
          >>> [{
              "taskId": str,
@@ -1835,7 +1835,7 @@ class redbrick.common.export.Export
                  "timeSpentMs"?: float,
              }]
          }]
-
+```
       Return type:
          Iterator[Dict]
 
@@ -1875,14 +1875,14 @@ class redbrick.common.export.Export
 
          * **with_labels** (*bool = False*) -- Get metadata of labels
            submitted in each stage.
-
+```
       Returns:
          >>> [{
              "taskId": string,
              "currentStageName": string,
              "events": List[Dict]
          }]
-
+```
       Return type:
          Iterator[Dict]
 
@@ -1898,7 +1898,7 @@ class redbrick.common.export.Export
            will return info for the given task in the given stage.
 
          * **concurrency** (*int = 100*) -- Request batch size.
-
+```
       Returns:
          >>> [{
              "orgId": string,
@@ -1910,7 +1910,7 @@ class redbrick.common.export.Export
              "completedAt": datetime,
              "cycle": number  # Task cycle
          }]
-
+```
       Return type:
          Iterator[Dict]
 
@@ -1933,7 +1933,7 @@ class redbrick.common.upload.Upload
 
       Upload data, and optionally annotations, to your project. Please
       visit our documentation to understand the format for "points".
-
+```
          project = redbrick.get_project(org_id, project_id, api_key, url)
          points = [
              {
@@ -1950,7 +1950,7 @@ class redbrick.common.upload.Upload
              }
          ]
          project.upload.create_datapoints(storage_id, points)
-
+```
       Parameters:
          * **storage_id** (*str*) -- Your RedBrick AI external
            storage_id. This can be found under the Storage Tab on the
@@ -2017,7 +2017,7 @@ class redbrick.common.upload.Upload
            delete.
 
          * **concurrency** (*int = 50*) -- The number of tasks to
-           delete at a time. We recommend keeping this <= 50.
+           delete at a time. We recommend keeping this \<= 50.
 
       Returns:
          True if successful, else False.
@@ -2037,7 +2037,7 @@ class redbrick.common.upload.Upload
            delete.
 
          * **concurrency** (*int = 50*) -- The number of tasks to
-           delete at a time. We recommend keeping this <= 50.
+           delete at a time. We recommend keeping this \<= 50.
 
       Returns:
          True if successful, else False.
@@ -2049,7 +2049,7 @@ class redbrick.common.upload.Upload
 
       Update task items, meta data, heat maps, transforms, etc. for
       the mentioned task ids.
-
+```
          project = redbrick.get_project(org_id, project_id, api_key, url)
          points = [
              {
@@ -2062,7 +2062,7 @@ class redbrick.common.upload.Upload
              }
          ]
          project.upload.update_task_items(storage_id, points)
-
+```
       Parameters:
          * **storage_id** (*str*) -- Your RedBrick AI external
            storage_id. This can be found under the Storage Tab on the
@@ -2112,22 +2112,22 @@ class redbrick.common.upload.Upload
 
       Update tasks' priorities. Used to determine how the tasks get
       assigned to annotators/reviewers in auto-assignment.
-
+```
       Parameters:
          * **tasks** (*List**[**Dict**]*) -- List of taskIds and their
            priorities. - [{"taskId": str, "priority": float([0, 1]),
            "user"?: str}]
 
          * **concurrency** (*int = 50*) -- The number of tasks to
-           update at a time. We recommend keeping this <= 50.
+           update at a time. We recommend keeping this \<= 50.
 
       Return type:
          "None"
-
+```
    abstract update_tasks_labels(tasks, *, rt_struct=False, mhd=False, label_storage_id='22222222-2222-2222-2222-222222222222', label_validate=False, prune_segmentations=False, concurrency=50, finalize=False, time_spent_ms=None, extra_data=None)
 
       Update tasks labels at any point in project pipeline.
-
+```
          project = redbrick.get_project(...)
          tasks = [
              {
@@ -2138,7 +2138,7 @@ class redbrick.common.upload.Upload
 
          # Overwrite labels in tasks
          project.upload.update_tasks_labels(tasks)
-
+```
       Parameters:
          * **points** (List["OutputTask"]) -- Please see the RedBrick
            AI reference documentation for overview of the format.
@@ -2223,7 +2223,7 @@ class redbrick.common.labeling.Labeling
       tasks in a *Review stage*. If you don't already have a list of
       "task_id", you can use "list_tasks" to get a filtered list of
       tasks in your project, that you want to work upon.
-
+```
          project = redbrick.get_project(...)
          tasks = [
              {
@@ -2251,7 +2251,7 @@ class redbrick.common.labeling.Labeling
 
          # Add labels if you want to accept the tasks with correction
          project.review.put_tasks("Review_1", [{taskId: "...", series: [{...}]}])
-
+```
       Parameters:
          * **stage_name** (*str*) -- The stage to which you want to
            submit the tasks. This must be the same stage as which you
@@ -2356,9 +2356,9 @@ class redbrick.common.settings.Settings
 
       Use custom label validation to prevent annotation errors in
       real-time. Please visit label validation for more info.
-
+```
       Format: {"enabled": bool, "enforce": bool, "script": str}
-
+```
          project = redbrick.get_project(org_id, project_id, api_key, url)
          label_validation = project.settings.label_validation
 
@@ -2371,9 +2371,9 @@ class redbrick.common.settings.Settings
 
       Use hanging protocol to define the visual layout of tool. Please
       visit hanging protocol for more info.
-
+```
       Format: {"enabled": bool, "script": str}
-
+```
          project = redbrick.get_project(org_id, project_id, api_key, url)
          hanging_protocol = project.settings.hanging_protocol
 
@@ -2386,9 +2386,9 @@ class redbrick.common.settings.Settings
 
       Use webhooks to receive custom events like tasks entering
       stages, and many more.
-
+```
       Format: {"enabled": bool, "url": str}
-
+```
          project = redbrick.get_project(org_id, project_id, api_key, url)
          webhook = project.settings.webhook
 
@@ -2453,10 +2453,10 @@ class redbrick.common.member.Workforce
    abstract add_members(members)
 
       Add project members.
-
+```
          project = redbrick.get_project(org_id, project_id, api_key)
          member = project.workforce.add_members([{"member_id": "...", "role": "...", "stages": ["..."]}, ...])
-
+```
       Parameters:
          **members** (*List**[**ProjectMember**]*) -- List of members
          to add.
@@ -2470,10 +2470,10 @@ class redbrick.common.member.Workforce
    abstract update_members(members)
 
       Update project members.
-
+```
          project = redbrick.get_project(org_id, project_id, api_key)
          member = project.workforce.update_members([{"member_id": "...", "role": "...", "stages": ["..."]}, ...])
-
+```
       Parameters:
          **members** (*List**[**ProjectMember**]*) -- List of members
          to update.

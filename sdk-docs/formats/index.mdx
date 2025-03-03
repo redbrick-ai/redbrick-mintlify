@@ -52,7 +52,7 @@ class redbrick.types.task.Series
    A single series represents a single volume, image, or video. A
    "redbrick.types.task.InputTask" can have multiple series.
 
-   items: "Union"["str", "List"["str"]] = <method 'items' of 'dict' objects>
+   items: "Union"["str", "List"["str"]] = \<method 'items' of 'dict' objects\>
 
       Path(s) to the image instances of this series.
 
@@ -102,19 +102,19 @@ class redbrick.types.task.Series
       "redbrick.types.task.Series.segmentations". Those values will be
       mapped to your RedBrick AI taxonomy categories "category a" and
       "category b".
-
+```
          segmentMap = {
              "1": "category a",
              "2": "category b"
          }
-
+```
       "1" and "2" are values present the NIfTI files defined by
       "redbrick.types.task.Series.segmentations". Those values will be
       mapped to your RedBrick AI taxonomy categories "category a" and
       "category b".
 
       "Attributes": "redbrick.types.task.Attributes"
-
+```
          segmentMap = {
              "1": {
                  "category": "category a",
@@ -127,7 +127,7 @@ class redbrick.types.task.Series
                  "attributes": Attributes
              }
          }
-
+```
    heatMaps: "List"["HeatMap"]
 
       Heatmaps for the series.
@@ -361,7 +361,7 @@ class redbrick.types.task.ConsensusScore
       Agreement score between the primary user and this secondary
       user.
 
-class redbrick.common.enums.TaskStates(value, names=<not given>, *values, module=None, qualname=None, type=None, start=1, boundary=None)
+class redbrick.common.enums.TaskStates(value, names=\<not given\>, *values, module=None, qualname=None, type=None, start=1, boundary=None)
 
    Task Status.
 
