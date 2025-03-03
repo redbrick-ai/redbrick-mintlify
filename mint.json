@@ -186,8 +186,7 @@
             "python-sdk/formats/full-format-reference",
             "python-sdk/formats/export-structure"
           ]
-        },
-        "sdk"
+        }
       ]
     },
     {
