@@ -1,10 +1,13 @@
+<a id="cli"></a>
+
 # Command Line Interface
 
 The RedBrick CLI offers a simple interface to quickly import and export your images & annotations, and perform other high-level actions.
 
-    ```default
-    usage: redbrick [-h] [-v] [--completion {bash,zsh,tcsh}] {config,init,clone,info,export,upload,report} ...
-    ```
+```default
+usage: redbrick [-h] [-v] [--completion {bash,zsh,tcsh}] {config,init,clone,info,export,upload,report} ...
+```
+
 ## Named Arguments
 
 ## Commands
@@ -15,9 +18,10 @@ The RedBrick CLI offers a simple interface to quickly import and export your ima
 
 Setup the credentials for your CLI.
 
-    ```default
-    redbrick config [-h] [--org ORG] [--key KEY] [--url URL] [--profile PROFILE] [--force] {list,set,add,remove,clear,verify} ...
-    ```
+```default
+redbrick config [-h] [--org ORG] [--key KEY] [--url URL] [--profile PROFILE] [--force] {list,set,add,remove,clear,verify} ...
+```
+
 #### Positional Arguments
 
 #### Named Arguments
@@ -28,50 +32,56 @@ Setup the credentials for your CLI.
 
 List all credential profiles
 
-    ```default
-    redbrick config list [-h]
-    ```
+```default
+redbrick config list [-h]
+```
+
 ##### set
 
 Set your default credentials profile
 
-    ```default
-    redbrick config set [-h] [profile]
-    ```
+```default
+redbrick config set [-h] [profile]
+```
+
 ###### Positional Arguments
 
 ##### add
 
 Add a new profile
 
-    ```default
-    redbrick config add [-h] [--org ORG] [--key KEY] [--url URL] [--profile PROFILE]
-    ```
+```default
+redbrick config add [-h] [--org ORG] [--key KEY] [--url URL] [--profile PROFILE]
+```
+
 ###### Named Arguments
 
 ##### remove
 
 Remove a profile
 
-    ```default
-    redbrick config remove [-h] [profile]
-    ```
+```default
+redbrick config remove [-h] [profile]
+```
+
 ###### Positional Arguments
 
 ##### clear
 
 Clear all credentials
 
-    ```default
-    redbrick config clear [-h]
-    ```
+```default
+redbrick config clear [-h]
+```
+
 ##### verify
 
 Verify a profile
 
-    ```default
-    redbrick config verify [-h] [profile]
-    ```
+```default
+redbrick config verify [-h] [profile]
+```
+
 ###### Positional Arguments
 
 ### init
@@ -79,14 +89,16 @@ Verify a profile
 Create a new project. We recommend creating a new directory and naming it after your project,
 initializing your project within the new directory.
 
-    ```default
-    $ mkdir new-project
-    $ cd new-project
-    $ redbrick init
-    ```
-    ```default
-    redbrick init [-h] [--name NAME] [--taxonomy TAXONOMY] [--reviews REVIEWS] [--workspace WORKSPACE] [--sibling-tasks SIBLING_TASKS] [path]
-    ```
+```default
+$ mkdir new-project
+$ cd new-project
+$ redbrick init
+```
+
+```default
+redbrick init [-h] [--name NAME] [--taxonomy TAXONOMY] [--reviews REVIEWS] [--workspace WORKSPACE] [--sibling-tasks SIBLING_TASKS] [path]
+```
+
 #### Positional Arguments
 
 #### Named Arguments
@@ -95,18 +107,20 @@ initializing your project within the new directory.
 
 The project will be cloned to a local directory named after your `project name`.
 
-    ```default
-    redbrick clone [-h] [project] [path]
-    ```
+```default
+redbrick clone [-h] [project] [path]
+```
+
 #### Positional Arguments
 
 ### info
 
 Get a project’s information
 
-    ```default
-    redbrick info [-h] [--get {labelstorage}] [--set {labelstorage}] [path]
-    ```
+```default
+redbrick info [-h] [--get {labelstorage}] [--set {labelstorage}] [path]
+```
+
 #### Positional Arguments
 
 #### Named Arguments
@@ -115,11 +129,12 @@ Get a project’s information
 
 Export data for a project
 
-    ```default
-    redbrick export [-h] [--with-files] [--dicom-to-nifti] [--old-format] [--without-masks] [--semantic] [--binary-mask] [--single-mask] [--no-consensus] [--png] [--rt-struct]
-                    [--mhd] [--clear-cache] [--concurrency CONCURRENCY] [--stage STAGE] [--destination DESTINATION]
-                    [type]
-    ```
+```default
+redbrick export [-h] [--with-files] [--dicom-to-nifti] [--old-format] [--without-masks] [--semantic] [--binary-mask] [--single-mask] [--no-consensus] [--png] [--rt-struct]
+                [--mhd] [--clear-cache] [--concurrency CONCURRENCY] [--stage STAGE] [--destination DESTINATION]
+                [type]
+```
+
 #### Positional Arguments
 
 #### Named Arguments
@@ -128,11 +143,12 @@ Export data for a project
 
 Upload files to a project
 
-    ```default
-    redbrick upload [-h] [--as-frames] [--type [{DICOM3D,NIFTI3D,NRRD3D,IMAGE2D,VIDEO,VIDEOFRAMES}]] [--as-study] [--json] [--segment-map SEGMENT_MAP] [--storage STORAGE]
-                    [--label-storage LABEL_STORAGE] [--ground-truth] [--label-validate] [--prune-segmentations] [--rt-struct] [--mhd] [--clear-cache] [--concurrency CONCURRENCY]
-                    directory
-    ```
+```default
+redbrick upload [-h] [--as-frames] [--type [{DICOM3D,NIFTI3D,NRRD3D,IMAGE2D,VIDEO,VIDEOFRAMES}]] [--as-study] [--json] [--segment-map SEGMENT_MAP] [--storage STORAGE]
+                [--label-storage LABEL_STORAGE] [--ground-truth] [--label-validate] [--prune-segmentations] [--rt-struct] [--mhd] [--clear-cache] [--concurrency CONCURRENCY]
+                directory
+```
+
 #### Positional Arguments
 
 #### Named Arguments
@@ -142,15 +158,15 @@ Upload files to a project
 Generate an audit report for a project. Exports a JSON file containing all actions & events
 associated with every task, including:
 
-  - Who annotated the task
-  - Who uploaded the data
-  - Who reviewed the task
-  - and more.
+- Who annotated the task
+- Who uploaded the data
+- Who reviewed the task
+- and more.
 
+```default
+redbrick report [-h] [--concurrency CONCURRENCY] [type]
+```
 
-    ```default
-    redbrick report [-h] [--concurrency CONCURRENCY] [type]
-    ```
 #### Positional Arguments
 
 #### Named Arguments

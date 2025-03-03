@@ -2,604 +2,453 @@
 
 This section covers definitions of all the annotation object types. The objects are the same for importing annotations, and exporting annotations.
 
-| [Label Type](taxonomy.mdx#redbrick.types.taxonomy.ObjectType.labelType)`Label Type` | Label Definition | 2D Image | 3D Volume | Video |
-| :------------------------------------------------------------------ | :---------------------------------------------------------------- | :-------------------------------------------------------------- | :-------------------------------------------------------------- | :-------------------------------------------------------------- |
-| CLASSIFICATION (non objectType) | [Classification](#redbrick.types.task.Classification)`Classification` |  |  |  |
-| SEGMENTATION | [CommonLabelProps](#redbrick.types.task.CommonLabelProps)`CommonLabelProps` |  |  |  |
-| LENGTH | [MeasureLength](#redbrick.types.task.MeasureLength)`MeasureLength` |  |  |  |
-| ANGLE | [MeasureAngle](#redbrick.types.task.MeasureAngle)`MeasureAngle` |  |  |  |
-| POINT | [Landmark](#redbrick.types.task.Landmark)`Landmark` |  |  |  |
-| [Landmark3D](#redbrick.types.task.Landmark3D)`Landmark3D` |  |  |  |
-| POLYLINE | [Polyline](#redbrick.types.task.Polyline)`Polyline` |  |  |  |
-| POLYGON | [Polygon](#redbrick.types.task.Polygon)`Polygon` |  |  |  |
-| ELLIPSE | [Ellipse](#redbrick.types.task.Ellipse)`Ellipse` |  |  |  |
-| BBOX | [BoundingBox](#redbrick.types.task.BoundingBox)`BoundingBox` |  |  |  |
-| CUBOID | [Cuboid](#redbrick.types.task.Cuboid)`Cuboid` |  |  |  |
+| [`Label Type`](taxonomy.md#redbrick.types.taxonomy.ObjectType.labelType)   | Label Definition                                                                                                                                                                                                                         | 2D Image                                                                                                                                                                                                                                                                                                                                                                                | 3D Volume                                                                                                                                                                                                                                                                                                                                                                     | Video                                                                                                                                                                                                                                                                                                                                                                                   |
+|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| CLASSIFICATION (non objectType)                                            | [`Classification`](#redbrick.types.task.Classification)                                                                                                                                                                                  | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           |
+| SEGMENTATION                                                               | [`CommonLabelProps`](#redbrick.types.task.CommonLabelProps)                                                                                                                                                                              | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-disabled_by_default sd-text-danger" viewBox="0 0 24 24" aria-hidden="true"><rect fill="none" height="24" width="24"></rect><path d="M3,3v18h18V3H3z M17,15.59L15.59,17L12,13.41L8.41,17L7,15.59L10.59,12L7,8.41L8.41,7L12,10.59L15.59,7L17,8.41L13.41,12 L17,15.59z"></path></svg> |
+| LENGTH                                                                     | [`MeasureLength`](#redbrick.types.task.MeasureLength)                                                                                                                                                                                    | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-disabled_by_default sd-text-danger" viewBox="0 0 24 24" aria-hidden="true"><rect fill="none" height="24" width="24"></rect><path d="M3,3v18h18V3H3z M17,15.59L15.59,17L12,13.41L8.41,17L7,15.59L10.59,12L7,8.41L8.41,7L12,10.59L15.59,7L17,8.41L13.41,12 L17,15.59z"></path></svg> |
+| ANGLE                                                                      | [`MeasureAngle`](#redbrick.types.task.MeasureAngle)                                                                                                                                                                                      | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-disabled_by_default sd-text-danger" viewBox="0 0 24 24" aria-hidden="true"><rect fill="none" height="24" width="24"></rect><path d="M3,3v18h18V3H3z M17,15.59L15.59,17L12,13.41L8.41,17L7,15.59L10.59,12L7,8.41L8.41,7L12,10.59L15.59,7L17,8.41L13.41,12 L17,15.59z"></path></svg> |
+| POINT                                                                      | [`Landmark`](#redbrick.types.task.Landmark)                                                                                                                                                                                              | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-remove" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 13H5v-2h14v2z"></path></svg>                                                                                                                                      | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           |
+| [`Landmark3D`](#redbrick.types.task.Landmark3D)                            | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-remove" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 13H5v-2h14v2z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-remove" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 13H5v-2h14v2z"></path></svg>                                                                                                                                      |                                                                                                                                                                                                                                                                                                                                                                                         |
+| POLYLINE                                                                   | [`Polyline`](#redbrick.types.task.Polyline)                                                                                                                                                                                              | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           |
+| POLYGON                                                                    | [`Polygon`](#redbrick.types.task.Polygon)                                                                                                                                                                                                | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           |
+| ELLIPSE                                                                    | [`Ellipse`](#redbrick.types.task.Ellipse)                                                                                                                                                                                                | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-disabled_by_default sd-text-danger" viewBox="0 0 24 24" aria-hidden="true"><rect fill="none" height="24" width="24"></rect><path d="M3,3v18h18V3H3z M17,15.59L15.59,17L12,13.41L8.41,17L7,15.59L10.59,12L7,8.41L8.41,7L12,10.59L15.59,7L17,8.41L13.41,12 L17,15.59z"></path></svg> |
+| BBOX                                                                       | [`BoundingBox`](#redbrick.types.task.BoundingBox)                                                                                                                                                                                        | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           |
+| CUBOID                                                                     | [`Cuboid`](#redbrick.types.task.Cuboid)                                                                                                                                                                                                  | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-disabled_by_default sd-text-danger" viewBox="0 0 24 24" aria-hidden="true"><rect fill="none" height="24" width="24"></rect><path d="M3,3v18h18V3H3z M17,15.59L15.59,17L12,13.41L8.41,17L7,15.59L10.59,12L7,8.41L8.41,7L12,10.59L15.59,7L17,8.41L13.41,12 L17,15.59z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-disabled_by_default sd-text-danger" viewBox="0 0 24 24" aria-hidden="true"><rect fill="none" height="24" width="24"></rect><path d="M3,3v18h18V3H3z M17,15.59L15.59,17L12,13.41L8.41,17L7,15.59L10.59,12L7,8.41L8.41,7L12,10.59L15.59,7L17,8.41L13.41,12 L17,15.59z"></path></svg> |
 
+<a id="module-redbrick.types.task"></a>
 
-<dl>
-    <dt>class redbrick.types.task.Point2D</dt>
-    <dd>
-    2D pixel point.
+### *class* redbrick.types.task.Point2D
 
-    The Point2D coordinates are normalized in relation to the dimensions of the image, meaning they are scaled down to a range between 0 and 1. To convert these normalized points back to their original scale on the image, you “un-normalize” them by multiplying by the image’s dimensions. This operation typically results in a floating-point number.
+2D pixel point.
 
-    RedBrick AI enhances the precision of annotations on its canvas by <strong>supporting a resolution higher than that of the underlying image</strong>. This capability facilitates sub-pixel annotation accuracy. However, if sub-pixel precision is not necessary for your application, you can simplify the process <strong>by rounding the un-normalized coordinates to the nearest whole number</strong>. This adjustment converts the precise floating-point values back to standard pixel coordinates, making them easier to work with for general purposes.
+The Point2D coordinates are normalized in relation to the dimensions of the image, meaning they are scaled down to a range between 0 and 1. To convert these normalized points back to their original scale on the image, you “un-normalize” them by multiplying by the image’s dimensions. This operation typically results in a floating-point number.
 
-    Important: The origin point (0,0) from which these coordinates are measured is at the top left of the image. However, for mammography and DBT the origin is the top right of the image.
+RedBrick AI enhances the precision of annotations on its canvas by **supporting a resolution higher than that of the underlying image**. This capability facilitates sub-pixel annotation accuracy. However, if sub-pixel precision is not necessary for your application, you can simplify the process **by rounding the un-normalized coordinates to the nearest whole number**. This adjustment converts the precise floating-point values back to standard pixel coordinates, making them easier to work with for general purposes.
 
-    <dl>
-        <dt>xNorm`:` `float`</dt>
-        <dd>X co-ordinate normalized by the width of the image.</dd>
-    </dl>
-    <dl>
-        <dt>yNorm`:` `float`</dt>
-        <dd>Y co-ordinate normalized by the height of the image.</dd>
-    </dl>
-    </dd>
-</dl>
-<dl>
-    <dt>class redbrick.types.task.VoxelPoint</dt>
-    <dd>
-    Represents a three-dimensional point in image-space, where i, j, and k  are columns, rows, and k is the slice number.
+#### IMPORTANT
+The origin point (0,0) from which these coordinates are measured is at the top left of the image. However, for mammography and DBT the origin is the top right of the image.
 
-    <dl>
-        <dt>i`:` `int`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>j`:` `int`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>k`:` `int`</dt>
-        <dd></dd>
-    </dl>
-    </dd>
-</dl>
-<dl>
-    <dt>class redbrick.types.task.WorldPoint</dt>
-    <dd>
-    Represents a three-dimensional point in physical space/world co-ordinates. The world co-ordinates are calculated using [redbrick.types.task.VoxelPoint](#redbrick.types.task.VoxelPoint)`redbrick.types.task.VoxelPoint` and the DICOM Image Plane Module.
+#### xNorm *: `float`*
 
-    <dl>
-        <dt>x`:` `float`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>y`:` `float`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>z`:` `float`</dt>
-        <dd></dd>
-    </dl>
-    </dd>
-</dl>
-<dl>
-    <dt>class redbrick.types.task.MeasurementStats</dt>
-    <dd>
-    Measurement statistics for annotations.
+X co-ordinate normalized by the width of the image.
 
-    <dl>
-        <dt>average`:` `float`</dt>
-        <dd>Average pixel/voxel intensity within the annotation. In CT, this is the average HU value.</dd>
-    </dl>
-    <dl>
-        <dt>area`:` `float`</dt>
-        <dd>Area contained within the annotation in mm^2.</dd>
-    </dl>
-    <dl>
-        <dt>volume`:` `float`</dt>
-        <dd>Volume contained within the annotation in mm^3</dd>
-    </dl>
-    <dl>
-        <dt>minimum`:` `float`</dt>
-        <dd>Minimum intensity value within the annotation.</dd>
-    </dl>
-    <dl>
-        <dt>maximum`:` `float`</dt>
-        <dd>Maximum intensity value within the annotation.</dd>
-    </dl>
-    </dd>
-</dl>
-<dl>
-    <dt>class redbrick.types.task.VideoMetaData</dt>
-    <dd>
-    Contains annotation information along the third axis. Frames for video, and slices for 3D volumes.
+#### yNorm *: `float`*
 
-    Warning: [redbrick.types.task.VideoMetaData](#redbrick.types.task.VideoMetaData)`redbrick.types.task.VideoMetaData` has a misleading name. It contains information for both videos, and 3D volumes.
+Y co-ordinate normalized by the height of the image.
 
-    Hint: Watch [this video](https://share.redbrickai.com/vpKDGyBd) for a detailed explaination of all the attributes of this object.
+### *class* redbrick.types.task.VoxelPoint
 
-    <dl>
-        <dt>seriesItemIndex`:` `int`</dt>
-        <dd>The index of the file in series “items” list that this annotation is present on.</dd>
-    </dl>
-    <dl>
-        <dt>seriesFrameIndex`:` `int`</dt>
-        <dd>Frame index of the annotation for nifti and dicom multipart files.</dd>
-    </dl>
-    <dl>
-        <dt>frameIndex`:` `int`</dt>
-        <dd>The frame number (for video) or slice index (for 3D volumes) the annotation is present on.</dd>
-    </dl>
-    <dl>
-        <dt>trackId`:` `str`</dt>
-        <dd>Each distinct object has a unique trackId. Two annotations on different frameIndex’s with the same trackId’s represent the same distinct object.</dd>
-    </dl>
-    <dl>
-        <dt>keyFrame`:` `bool`</dt>
-        <dd>If True, this annotation is user-defined. If False, this annotation is interpolated.</dd>
-    </dl>
-    <dl>
-        <dt>endTrack`:` `bool`</dt>
-        <dd>If True, this annotation is the last annotation of a specific track defined by trackId.</dd>
-    </dl>
-    </dd>
-</dl>
-<dl>
-    <dt>redbrick.types.task.Attributes</dt>
-    <dd>
-    Attributes for Taxonomy objects.
-    Attributes can be boolean, textfields, select’s or multi-select’s.
+Represents a three-dimensional point in image-space, where i, j, and k  are columns, rows, and k is the slice number.
 
-    alias of `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]
+#### i *: `int`*
 
-    </dd>
-</dl>
-<dl>
-    <dt>class redbrick.types.task.CommonLabelProps</dt>
-    <dd>
-    Full version of [redbrick.types.task.Series.segmentMap](index.mdx#redbrick.types.task.Series.segmentMap)`redbrick.types.task.Series.segmentMap`.
+#### j *: `int`*
 
-    <dl>
-        <dt>category`:` `Union`[`int`, `str`, `List`[`str`]]</dt>
-        <dd>Taxonomy object category.</dd>
-    </dl>
-    <dl>
-        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
-        <dd>Associated taxonomy object attributes.</dd>
-    </dl>
-    <dl>
-        <dt>mask`:` `Union`[`str`, `List`[`str`]]</dt>
-        <dd>Filepath to segmentation file for this annotation.</dd>
-    </dl>
-    <dl>
-        <dt>overlappingGroups`:` `List`[`int`]</dt>
-        <dd>Overlapping instances that this label is part of (when without_masks is set).</dd>
-    </dl>
-    <dl>
-        <dt>group`:` `str`</dt>
-        <dd>Linked label group id.</dd>
-    </dl>
-    <dl>
-        <dt>readOnly`:` `bool`</dt>
-        <dd>Read only status</dd>
-    </dl>
-    </dd>
-</dl>
-<dl>
-    <dt>class redbrick.types.task.InstanceClassification</dt>
-    <dd>
-    Instance level classifications for frame-by-frame (video) or slice-by-slice (volume) classifications..
+#### k *: `int`*
 
-    <dl>
-        <dt>fileIndex`:` `int`</dt>
-        <dd>For video this is the frameIndex, for DICOM volumes this is the sliceIndex.</dd>
-    </dl>
-    <dl>
-        <dt>fileName`:` `str`</dt>
-        <dd>The file name represented by frameIndex.</dd>
-    </dl>
-    <dl>
-        <dt>group`:` `str`</dt>
-        <dd>Linked label group id.</dd>
-    </dl>
-    <dl>
-        <dt>readOnly`:` `bool`</dt>
-        <dd>Read only status</dd>
-    </dl>
-    </dd>
-</dl>
-<dl>
-    <dt>class redbrick.types.task.Classification</dt>
-    <dd>
-    Study or series classification.
+### *class* redbrick.types.task.WorldPoint
 
-    <dl>
-        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>group`:` `str`</dt>
-        <dd>Linked label group id.</dd>
-    </dl>
-    <dl>
-        <dt>readOnly`:` `bool`</dt>
-        <dd>Read only status</dd>
-    </dl>
-    </dd>
-</dl>
-<dl>
-    <dt>class redbrick.types.task.Polyline</dt>
-    <dd>
-    Open polylines, not supported in 3D images.
+Represents a three-dimensional point in physical space/world co-ordinates. The world co-ordinates are calculated using [`redbrick.types.task.VoxelPoint`](#redbrick.types.task.VoxelPoint) and the DICOM Image Plane Module.
 
-    <dl>
-        <dt>points`:` `List`[[Point2D](#redbrick.types.task.Point2D)`Point2D`]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>category`:` `Union`[`int`, `str`, `List`[`str`]]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>video`:` [VideoMetaData](#redbrick.types.task.VideoMetaData)`VideoMetaData`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>group`:` `str`</dt>
-        <dd>Linked label group id.</dd>
-    </dl>
-    <dl>
-        <dt>readOnly`:` `bool`</dt>
-        <dd>Read only status</dd>
-    </dl>
-    </dd>
-</dl>
-<dl>
-    <dt>class redbrick.types.task.Polygon</dt>
-    <dd>
-    Closed polygons, not supported in 3D images.
+#### x *: `float`*
 
-    <dl>
-        <dt>points`:` `List`[[Point2D](#redbrick.types.task.Point2D)`Point2D`]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>category`:` `Union`[`int`, `str`, `List`[`str`]]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>stats`:` [MeasurementStats](#redbrick.types.task.MeasurementStats)`MeasurementStats`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>video`:` [VideoMetaData](#redbrick.types.task.VideoMetaData)`VideoMetaData`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>group`:` `str`</dt>
-        <dd>Linked label group id.</dd>
-    </dl>
-    <dl>
-        <dt>readOnly`:` `bool`</dt>
-        <dd>Read only status</dd>
-    </dl>
-    </dd>
-</dl>
-<dl>
-    <dt>class redbrick.types.task.Cuboid</dt>
-    <dd>
-    3D bounding boxes for 3D images.
+#### y *: `float`*
 
-    <dl>
-        <dt>point1`:` [VoxelPoint](#redbrick.types.task.VoxelPoint)`VoxelPoint`</dt>
-        <dd>Top left diagonal corner.</dd>
-    </dl>
-    <dl>
-        <dt>point2`:` [VoxelPoint](#redbrick.types.task.VoxelPoint)`VoxelPoint`</dt>
-        <dd>Bottom right diagonal corner.</dd>
-    </dl>
-    <dl>
-        <dt>absolutePoint1`:` [WorldPoint](#redbrick.types.task.WorldPoint)`WorldPoint`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>absolutePoint2`:` [WorldPoint](#redbrick.types.task.WorldPoint)`WorldPoint`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>category`:` `Union`[`int`, `str`, `List`[`str`]]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>stats`:` [MeasurementStats](#redbrick.types.task.MeasurementStats)`MeasurementStats`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>group`:` `str`</dt>
-        <dd>Linked label group id.</dd>
-    </dl>
-    <dl>
-        <dt>readOnly`:` `bool`</dt>
-        <dd>Read only status</dd>
-    </dl>
-    </dd>
-</dl>
-<dl>
-    <dt>class redbrick.types.task.BoundingBox</dt>
-    <dd>
-    2D bounding box for 2D images, or slice by slice annotation in 3D images.
+#### z *: `float`*
 
-    Hint: See the [following diagram](https://share.redbrickai.com/T0jPZFn9) to understand the coordinate system.
+### *class* redbrick.types.task.MeasurementStats
 
-    <dl>
-        <dt>pointTopLeft`:` [Point2D](#redbrick.types.task.Point2D)`Point2D`</dt>
-        <dd>Coordinates of the top left of the bounding box.</dd>
-    </dl>
-    <dl>
-        <dt>wNorm`:` `float`</dt>
-        <dd>Width of the bounding box, normalized by image width.</dd>
-    </dl>
-    <dl>
-        <dt>hNorm`:` `float`</dt>
-        <dd>Height of the bounding box, normalized by the image height.</dd>
-    </dl>
-    <dl>
-        <dt>category`:` `Union`[`int`, `str`, `List`[`str`]]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>stats`:` [MeasurementStats](#redbrick.types.task.MeasurementStats)`MeasurementStats`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>video`:` [VideoMetaData](#redbrick.types.task.VideoMetaData)`VideoMetaData`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>group`:` `str`</dt>
-        <dd>Linked label group id.</dd>
-    </dl>
-    <dl>
-        <dt>readOnly`:` `bool`</dt>
-        <dd>Read only status</dd>
-    </dl>
-    </dd>
-</dl>
-<dl>
-    <dt>class redbrick.types.task.Ellipse</dt>
-    <dd>
-    Ellipse annotation.
+Measurement statistics for annotations.
 
-    Hint: See [this ellipse diagram](https://share.redbrickai.com/6PH9ypkl) to understand the coordinate system. Please read the [redbrick.types.task.Point2D](#redbrick.types.task.Point2D)`redbrick.types.task.Point2D` documentation to understand how normalization works & the origin of the coordinate system.
+#### average *: `float`*
 
-    Warning: For DICOM images of a certain type, ellipse annotations might be flipped i.e., rotating the ellipse clockwise would result in counter-clockwise rotation.
-             If you encounter these cases, reach out to our support for instructions on how to handle this [support@redbrickai.com](mailto:support@redbrickai.com).
+Average pixel/voxel intensity within the annotation. In CT, this is the average HU value.
 
-    <dl>
-        <dt>pointCenter`:` [Point2D](#redbrick.types.task.Point2D)`Point2D`</dt>
-        <dd>The normalized center of the ellipse.</dd>
-    </dl>
-    <dl>
-        <dt>xRadiusNorm`:` `float`</dt>
-        <dd>The x axis of the ellipse, normalized with by the image width. Adjusting for xxxrotationRadxxx, the x-axis of the ellipse aligns with the x-axis of the image.</dd>
-    </dl>
-    <dl>
-        <dt>yRadiusNorm`:` `float`</dt>
-        <dd>The y axis of the ellipse, normalized with by the image width. Adjusting for xxxrotationRadxxx, the y-axis of the ellipse aligns with the y-axis of the image.</dd>
-    </dl>
-    <dl>
-        <dt>rotationRad`:` `float`</dt>
-        <dd>The rotation of the ellipse measured clockwise as the angle between the y-axis of the ellipse and y-axis of the image.</dd>
-    </dl>
-    <dl>
-        <dt>category`:` `Union`[`int`, `str`, `List`[`str`]]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>stats`:` [MeasurementStats](#redbrick.types.task.MeasurementStats)`MeasurementStats`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>video`:` [VideoMetaData](#redbrick.types.task.VideoMetaData)`VideoMetaData`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>group`:` `str`</dt>
-        <dd>Linked label group id.</dd>
-    </dl>
-    <dl>
-        <dt>readOnly`:` `bool`</dt>
-        <dd>Read only status</dd>
-    </dl>
-    </dd>
-</dl>
-<dl>
-    <dt>class redbrick.types.task.MeasureAngle</dt>
-    <dd>
-    Angle measurement label.
+#### area *: `float`*
 
-    An angle measurement is defined by three points, where xxxvertexxxx is the middle point between xxxpoint1xxx and xxxpoint2xxx. The angle between the two vectors <point1, vertex> and <point2, vertex> defines the angle measurement.
+Area contained within the annotation in mm^2.
 
-    Hint: See [this angle diagram](https://share.redbrickai.com/rqW3sZtf) to understand the coordinate system.
+#### volume *: `float`*
 
-    <dl>
-        <dt>type`:` `Literal`[`'angle'`]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>point1`:` [VoxelPoint](#redbrick.types.task.VoxelPoint)`VoxelPoint`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>vertex`:` [VoxelPoint](#redbrick.types.task.VoxelPoint)`VoxelPoint`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>point2`:` [VoxelPoint](#redbrick.types.task.VoxelPoint)`VoxelPoint`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>absolutePoint1`:` [WorldPoint](#redbrick.types.task.WorldPoint)`WorldPoint`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>absoluteVertex`:` [WorldPoint](#redbrick.types.task.WorldPoint)`WorldPoint`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>absolutePoint2`:` [WorldPoint](#redbrick.types.task.WorldPoint)`WorldPoint`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>normal`:` `List`[`float`]</dt>
-        <dd>Measurements can be made on oblique planes. xxxnormalxxx defines the normal unit vector to the slice on which the annotation was made. For annotations made on non-oblique planes, the normal will be [0,0,1].
-        The measurement is fully defined even without xxxnormalxxx, however, for completeness [see this angle diagram](https://share.redbrickai.com/CZ5BXXWK) for it’s definition.</dd>
-    </dl>
-    <dl>
-        <dt>angle`:` `float`</dt>
-        <dd>Measurement angle in degrees.</dd>
-    </dl>
-    <dl>
-        <dt>category`:` `Union`[`int`, `str`, `List`[`str`]]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>group`:` `str`</dt>
-        <dd>Linked label group id.</dd>
-    </dl>
-    <dl>
-        <dt>readOnly`:` `bool`</dt>
-        <dd>Read only status</dd>
-    </dl>
-    </dd>
-</dl>
-<dl>
-    <dt>class redbrick.types.task.MeasureLength</dt>
-    <dd>
-    Length measurement label.
+Volume contained within the annotation in mm^3
 
-    A length measurement is defined by two points, and the length measurement is the distance between the two points.
+#### minimum *: `float`*
 
-    <dl>
-        <dt>type`:` `Literal`[`'length'`]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>point1`:` [VoxelPoint](#redbrick.types.task.VoxelPoint)`VoxelPoint`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>point2`:` [VoxelPoint](#redbrick.types.task.VoxelPoint)`VoxelPoint`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>absolutePoint1`:` [WorldPoint](#redbrick.types.task.WorldPoint)`WorldPoint`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>absolutePoint2`:` [WorldPoint](#redbrick.types.task.WorldPoint)`WorldPoint`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>normal`:` `List`[`float`]</dt>
-        <dd>Measurements can be made on oblique planes. xxxnormalxxx defines the normal unit vector to the slice on which the annotation was made. For annotations made on non-oblique planes, the normal will be [0,0,1].
-        The measurement is fully defined even without xxxnormalxxx, however, for completeness [see this length diagram](https://share.redbrickai.com/CZ5BXXWK) for it’s definition.</dd>
-    </dl>
-    <dl>
-        <dt>length`:` `float`</dt>
-        <dd>The value of the measurement in millimeters.</dd>
-    </dl>
-    <dl>
-        <dt>category`:` `Union`[`int`, `str`, `List`[`str`]]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>group`:` `str`</dt>
-        <dd>Linked label group id.</dd>
-    </dl>
-    <dl>
-        <dt>readOnly`:` `bool`</dt>
-        <dd>Read only status</dd>
-    </dl>
-    </dd>
-</dl>
-<dl>
-    <dt>class redbrick.types.task.Landmark3D</dt>
-    <dd>
-    3D landmark for 3D data.
+Minimum intensity value within the annotation.
 
-    <dl>
-        <dt>point`:` [VoxelPoint](#redbrick.types.task.VoxelPoint)`VoxelPoint`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>category`:` `Union`[`int`, `str`, `List`[`str`]]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>group`:` `str`</dt>
-        <dd>Linked label group id.</dd>
-    </dl>
-    <dl>
-        <dt>readOnly`:` `bool`</dt>
-        <dd>Read only status</dd>
-    </dl>
-    </dd>
-</dl>
-<dl>
-    <dt>class redbrick.types.task.Landmark</dt>
-    <dd>
-    2D landmark for 2D data.
+#### maximum *: `float`*
 
-    <dl>
-        <dt>point`:` [Point2D](#redbrick.types.task.Point2D)`Point2D`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>category`:` `Union`[`int`, `str`, `List`[`str`]]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>video`:` [VideoMetaData](#redbrick.types.task.VideoMetaData)`VideoMetaData`</dt>
-        <dd></dd>
-    </dl>
-    <dl>
-        <dt>group`:` `str`</dt>
-        <dd>Linked label group id.</dd>
-    </dl>
-    <dl>
-        <dt>readOnly`:` `bool`</dt>
-        <dd>Read only status</dd>
-    </dl>
-    </dd>
-</dl>
+Maximum intensity value within the annotation.
+
+### *class* redbrick.types.task.VideoMetaData
+
+Contains annotation information along the third axis. Frames for video, and slices for 3D volumes.
+
+#### WARNING
+[`redbrick.types.task.VideoMetaData`](#redbrick.types.task.VideoMetaData) has a misleading name. It contains information for both videos, and 3D volumes.
+
+#### HINT
+Watch [this video](https://share.redbrickai.com/vpKDGyBd) for a detailed explaination of all the attributes of this object.
+
+#### seriesItemIndex *: `int`*
+
+The index of the file in series “items” list that this annotation is present on.
+
+#### seriesFrameIndex *: `int`*
+
+Frame index of the annotation for nifti and dicom multipart files.
+
+#### frameIndex *: `int`*
+
+The frame number (for video) or slice index (for 3D volumes) the annotation is present on.
+
+#### trackId *: `str`*
+
+Each distinct object has a unique trackId. Two annotations on different frameIndex’s with the same trackId’s represent the same distinct object.
+
+#### keyFrame *: `bool`*
+
+If True, this annotation is user-defined. If False, this annotation is interpolated.
+
+#### endTrack *: `bool`*
+
+If True, this annotation is the last annotation of a specific track defined by trackId.
+
+### redbrick.types.task.Attributes
+
+Attributes for Taxonomy objects.
+Attributes can be boolean, textfields, select’s or multi-select’s.
+
+alias of `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]
+
+### *class* redbrick.types.task.CommonLabelProps
+
+Full version of [`redbrick.types.task.Series.segmentMap`](index.md#redbrick.types.task.Series.segmentMap).
+
+#### category *: `Union`[`int`, `str`, `List`[`str`]]*
+
+Taxonomy object category.
+
+#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
+
+Associated taxonomy object attributes.
+
+#### mask *: `Union`[`str`, `List`[`str`]]*
+
+Filepath to segmentation file for this annotation.
+
+#### overlappingGroups *: `List`[`int`]*
+
+Overlapping instances that this label is part of (when without_masks is set).
+
+#### group *: `str`*
+
+Linked label group id.
+
+#### readOnly *: `bool`*
+
+Read only status
+
+### *class* redbrick.types.task.InstanceClassification
+
+Instance level classifications for frame-by-frame (video) or slice-by-slice (volume) classifications..
+
+#### fileIndex *: `int`*
+
+For video this is the frameIndex, for DICOM volumes this is the sliceIndex.
+
+#### fileName *: `str`*
+
+The file name represented by frameIndex.
+
+#### group *: `str`*
+
+Linked label group id.
+
+#### readOnly *: `bool`*
+
+Read only status
+
+### *class* redbrick.types.task.Classification
+
+Study or series classification.
+
+#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
+
+#### group *: `str`*
+
+Linked label group id.
+
+#### readOnly *: `bool`*
+
+Read only status
+
+### *class* redbrick.types.task.Polyline
+
+Open polylines, not supported in 3D images.
+
+#### points *: `List`[[`Point2D`](#redbrick.types.task.Point2D)]*
+
+#### category *: `Union`[`int`, `str`, `List`[`str`]]*
+
+#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
+
+#### video *: [`VideoMetaData`](#redbrick.types.task.VideoMetaData)*
+
+#### group *: `str`*
+
+Linked label group id.
+
+#### readOnly *: `bool`*
+
+Read only status
+
+### *class* redbrick.types.task.Polygon
+
+Closed polygons, not supported in 3D images.
+
+#### points *: `List`[[`Point2D`](#redbrick.types.task.Point2D)]*
+
+#### category *: `Union`[`int`, `str`, `List`[`str`]]*
+
+#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
+
+#### stats *: [`MeasurementStats`](#redbrick.types.task.MeasurementStats)*
+
+#### video *: [`VideoMetaData`](#redbrick.types.task.VideoMetaData)*
+
+#### group *: `str`*
+
+Linked label group id.
+
+#### readOnly *: `bool`*
+
+Read only status
+
+### *class* redbrick.types.task.Cuboid
+
+3D bounding boxes for 3D images.
+
+#### point1 *: [`VoxelPoint`](#redbrick.types.task.VoxelPoint)*
+
+Top left diagonal corner.
+
+#### point2 *: [`VoxelPoint`](#redbrick.types.task.VoxelPoint)*
+
+Bottom right diagonal corner.
+
+#### absolutePoint1 *: [`WorldPoint`](#redbrick.types.task.WorldPoint)*
+
+#### absolutePoint2 *: [`WorldPoint`](#redbrick.types.task.WorldPoint)*
+
+#### category *: `Union`[`int`, `str`, `List`[`str`]]*
+
+#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
+
+#### stats *: [`MeasurementStats`](#redbrick.types.task.MeasurementStats)*
+
+#### group *: `str`*
+
+Linked label group id.
+
+#### readOnly *: `bool`*
+
+Read only status
+
+### *class* redbrick.types.task.BoundingBox
+
+2D bounding box for 2D images, or slice by slice annotation in 3D images.
+
+#### HINT
+See the [following diagram](https://share.redbrickai.com/T0jPZFn9) to understand the coordinate system.
+
+#### pointTopLeft *: [`Point2D`](#redbrick.types.task.Point2D)*
+
+Coordinates of the top left of the bounding box.
+
+#### wNorm *: `float`*
+
+Width of the bounding box, normalized by image width.
+
+#### hNorm *: `float`*
+
+Height of the bounding box, normalized by the image height.
+
+#### category *: `Union`[`int`, `str`, `List`[`str`]]*
+
+#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
+
+#### stats *: [`MeasurementStats`](#redbrick.types.task.MeasurementStats)*
+
+#### video *: [`VideoMetaData`](#redbrick.types.task.VideoMetaData)*
+
+#### group *: `str`*
+
+Linked label group id.
+
+#### readOnly *: `bool`*
+
+Read only status
+
+### *class* redbrick.types.task.Ellipse
+
+Ellipse annotation.
+
+#### HINT
+See [this ellipse diagram](https://share.redbrickai.com/6PH9ypkl) to understand the coordinate system. Please read the [`redbrick.types.task.Point2D`](#redbrick.types.task.Point2D) documentation to understand how normalization works & the origin of the coordinate system.
+
+#### WARNING
+For DICOM images of a certain type, ellipse annotations might be flipped i.e., rotating the ellipse clockwise would result in counter-clockwise rotation.
+If you encounter these cases, reach out to our support for instructions on how to handle this [support@redbrickai.com](mailto:support@redbrickai.com).
+
+#### pointCenter *: [`Point2D`](#redbrick.types.task.Point2D)*
+
+The normalized center of the ellipse.
+
+#### xRadiusNorm *: `float`*
+
+The x axis of the ellipse, normalized with by the image width. Adjusting for rotationRad, the x-axis of the ellipse aligns with the x-axis of the image.
+
+#### yRadiusNorm *: `float`*
+
+The y axis of the ellipse, normalized with by the image width. Adjusting for rotationRad, the y-axis of the ellipse aligns with the y-axis of the image.
+
+#### rotationRad *: `float`*
+
+The rotation of the ellipse measured clockwise as the angle between the y-axis of the ellipse and y-axis of the image.
+
+#### category *: `Union`[`int`, `str`, `List`[`str`]]*
+
+#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
+
+#### stats *: [`MeasurementStats`](#redbrick.types.task.MeasurementStats)*
+
+#### video *: [`VideoMetaData`](#redbrick.types.task.VideoMetaData)*
+
+#### group *: `str`*
+
+Linked label group id.
+
+#### readOnly *: `bool`*
+
+Read only status
+
+### *class* redbrick.types.task.MeasureAngle
+
+Angle measurement label.
+
+An angle measurement is defined by three points, where vertex is the middle point between point1 and point2. The angle between the two vectors <point1, vertex> and <point2, vertex> defines the angle measurement.
+
+#### HINT
+See [this angle diagram](https://share.redbrickai.com/rqW3sZtf) to understand the coordinate system.
+
+#### type *: `Literal`[`'angle'`]*
+
+#### point1 *: [`VoxelPoint`](#redbrick.types.task.VoxelPoint)*
+
+#### vertex *: [`VoxelPoint`](#redbrick.types.task.VoxelPoint)*
+
+#### point2 *: [`VoxelPoint`](#redbrick.types.task.VoxelPoint)*
+
+#### absolutePoint1 *: [`WorldPoint`](#redbrick.types.task.WorldPoint)*
+
+#### absoluteVertex *: [`WorldPoint`](#redbrick.types.task.WorldPoint)*
+
+#### absolutePoint2 *: [`WorldPoint`](#redbrick.types.task.WorldPoint)*
+
+#### normal *: `List`[`float`]*
+
+Measurements can be made on oblique planes. normal defines the normal unit vector to the slice on which the annotation was made. For annotations made on non-oblique planes, the normal will be [0,0,1].
+The measurement is fully defined even without normal, however, for completeness [see this angle diagram](https://share.redbrickai.com/CZ5BXXWK) for it’s definition.
+
+#### angle *: `float`*
+
+Measurement angle in degrees.
+
+#### category *: `Union`[`int`, `str`, `List`[`str`]]*
+
+#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
+
+#### group *: `str`*
+
+Linked label group id.
+
+#### readOnly *: `bool`*
+
+Read only status
+
+### *class* redbrick.types.task.MeasureLength
+
+Length measurement label.
+
+A length measurement is defined by two points, and the length measurement is the distance between the two points.
+
+#### type *: `Literal`[`'length'`]*
+
+#### point1 *: [`VoxelPoint`](#redbrick.types.task.VoxelPoint)*
+
+#### point2 *: [`VoxelPoint`](#redbrick.types.task.VoxelPoint)*
+
+#### absolutePoint1 *: [`WorldPoint`](#redbrick.types.task.WorldPoint)*
+
+#### absolutePoint2 *: [`WorldPoint`](#redbrick.types.task.WorldPoint)*
+
+#### normal *: `List`[`float`]*
+
+Measurements can be made on oblique planes. normal defines the normal unit vector to the slice on which the annotation was made. For annotations made on non-oblique planes, the normal will be [0,0,1].
+The measurement is fully defined even without normal, however, for completeness [see this length diagram](https://share.redbrickai.com/CZ5BXXWK) for it’s definition.
+
+#### length *: `float`*
+
+The value of the measurement in millimeters.
+
+#### category *: `Union`[`int`, `str`, `List`[`str`]]*
+
+#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
+
+#### group *: `str`*
+
+Linked label group id.
+
+#### readOnly *: `bool`*
+
+Read only status
+
+### *class* redbrick.types.task.Landmark3D
+
+3D landmark for 3D data.
+
+#### point *: [`VoxelPoint`](#redbrick.types.task.VoxelPoint)*
+
+#### category *: `Union`[`int`, `str`, `List`[`str`]]*
+
+#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
+
+#### group *: `str`*
+
+Linked label group id.
+
+#### readOnly *: `bool`*
+
+Read only status
+
+### *class* redbrick.types.task.Landmark
+
+2D landmark for 2D data.
+
+#### point *: [`Point2D`](#redbrick.types.task.Point2D)*
+
+#### category *: `Union`[`int`, `str`, `List`[`str`]]*
+
+#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
+
+#### video *: [`VideoMetaData`](#redbrick.types.task.VideoMetaData)*
+
+#### group *: `str`*
+
+Linked label group id.
+
+#### readOnly *: `bool`*
+
+Read only status
