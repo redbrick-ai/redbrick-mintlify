@@ -1,104 +1,1037 @@
-# Taxonomy format
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Taxonomy format - Version 2.21.5</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Taxonomy format - Version 2.21.5</h1>
+</header>
+<img
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJkaXNwbGF5OiBub25lOyI+CiAgPHN5bWJvbCBpZD0ic3ZnLXRvYyIgdmlld2JveD0iMCAwIDI0IDI0Ij4KICAgIDx0aXRsZT5Db250ZW50czwvdGl0bGU+CiAgICA8c3ZnIHN0cm9rZT0iY3VycmVudENvbG9yIiBmaWxsPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMCIgdmlld2JveD0iMCAwIDEwMjQgMTAyNCI+CiAgICAgIDxwYXRoIGQ9Ik00MDggNDQyaDQ4MGM0LjQgMCA4LTMuNiA4LTh2LTU2YzAtNC40LTMuNi04LTgtOEg0MDhjLTQuNCAwLTggMy42LTggOHY1NmMwIDQuNCAzLjYgOCA4IDh6bS04IDIwNGMwIDQuNCAzLjYgOCA4IDhoNDgwYzQuNCAwIDgtMy42IDgtOHYtNTZjMC00LjQtMy42LTgtOC04SDQwOGMtNC40IDAtOCAzLjYtOCA4djU2em01MDQtNDg2SDEyMGMtNC40IDAtOCAzLjYtOCA4djU2YzAgNC40IDMuNiA4IDggOGg3ODRjNC40IDAgOC0zLjYgOC04di01NmMwLTQuNC0zLjYtOC04LTh6bTAgNjMySDEyMGMtNC40IDAtOCAzLjYtOCA4djU2YzAgNC40IDMuNiA4IDggOGg3ODRjNC40IDAgOC0zLjYgOC04di01NmMwLTQuNC0zLjYtOC04LTh6TTExNS40IDUxOC45TDI3MS43IDY0MmM1LjggNC42IDE0LjQuNSAxNC40LTYuOVYzODguOWMwLTcuNC04LjUtMTEuNS0xNC40LTYuOUwxMTUuNCA1MDUuMWE4Ljc0IDguNzQgMCAwIDAgMCAxMy44eiIgLz4KICAgIDwvc3ZnPg==" />
+Menu
+<img
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdib3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlci1tZW51Ij4KICAgICAgPGxpbmUgeDE9IjMiIHkxPSIxMiIgeDI9IjIxIiB5Mj0iMTIiPjwvbGluZT4KICAgICAgPGxpbmUgeDE9IjMiIHkxPSI2IiB4Mj0iMjEiIHkyPSI2Ij48L2xpbmU+CiAgICAgIDxsaW5lIHgxPSIzIiB5MT0iMTgiIHgyPSIyMSIgeTI9IjE4Ij48L2xpbmU+CiAgICA8L3N2Zz4="
+class="feather-menu" />
+Expand
+<img
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdib3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlci1jaGV2cm9uLXJpZ2h0Ij4KICAgICAgPHBvbHlsaW5lIHBvaW50cz0iOSAxOCAxNSAxMiA5IDYiPjwvcG9seWxpbmU+CiAgICA8L3N2Zz4="
+class="feather-chevron-right" />
+Light mode
+<img
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdib3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJmZWF0aGVyLXN1biI+CiAgICAgIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjUiPjwvY2lyY2xlPgogICAgICA8bGluZSB4MT0iMTIiIHkxPSIxIiB4Mj0iMTIiIHkyPSIzIj48L2xpbmU+CiAgICAgIDxsaW5lIHgxPSIxMiIgeTE9IjIxIiB4Mj0iMTIiIHkyPSIyMyI+PC9saW5lPgogICAgICA8bGluZSB4MT0iNC4yMiIgeTE9IjQuMjIiIHgyPSI1LjY0IiB5Mj0iNS42NCI+PC9saW5lPgogICAgICA8bGluZSB4MT0iMTguMzYiIHkxPSIxOC4zNiIgeDI9IjE5Ljc4IiB5Mj0iMTkuNzgiPjwvbGluZT4KICAgICAgPGxpbmUgeDE9IjEiIHkxPSIxMiIgeDI9IjMiIHkyPSIxMiI+PC9saW5lPgogICAgICA8bGluZSB4MT0iMjEiIHkxPSIxMiIgeDI9IjIzIiB5Mj0iMTIiPjwvbGluZT4KICAgICAgPGxpbmUgeDE9IjQuMjIiIHkxPSIxOS43OCIgeDI9IjUuNjQiIHkyPSIxOC4zNiI+PC9saW5lPgogICAgICA8bGluZSB4MT0iMTguMzYiIHkxPSI1LjY0IiB4Mj0iMTkuNzgiIHkyPSI0LjIyIj48L2xpbmU+CiAgICA8L3N2Zz4="
+class="feather-sun" />
+Dark mode
+<img
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdib3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJpY29uLXRhYmxlci1tb29uIj4KICAgICAgPHBhdGggc3Ryb2tlPSJub25lIiBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPgogICAgICA8cGF0aCBkPSJNMTIgM2MuMTMyIDAgLjI2MyAwIC4zOTMgMGE3LjUgNy41IDAgMCAwIDcuOTIgMTIuNDQ2YTkgOSAwIDEgMSAtOC4zMTMgLTEyLjQ1NHoiIC8+CiAgICA8L3N2Zz4="
+class="icon-tabler-moon" />
+Auto light/dark mode
+<img
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdib3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJpY29uLXRhYmxlci1zaGFkb3ciPgogICAgICA8cGF0aCBzdHJva2U9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiIC8+CiAgICAgIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjkiPjwvY2lyY2xlPgogICAgICA8cGF0aCBkPSJNMTMgMTJoNSIgLz4KICAgICAgPHBhdGggZD0iTTEzIDE1aDQiIC8+CiAgICAgIDxwYXRoIGQ9Ik0xMyAxOGgxIiAvPgogICAgICA8cGF0aCBkPSJNMTMgOWg0IiAvPgogICAgICA8cGF0aCBkPSJNMTMgNmgxIiAvPgogICAgPC9zdmc+"
+class="icon-tabler-shadow" />
+<div class="visually-hidden">
+Hide navigation sidebar
+</div>
+<div class="visually-hidden">
+Hide table of contents sidebar
+</div>
+<div class="page">
+<div class="mobile-header">
+<div class="header-left">
+<div class="visually-hidden">
+Toggle site navigation sidebar
+</div>
+<em><img
+src="data:image/svg+xml;base64,PHN2Zz48dXNlIGhyZWY9IiNzdmctbWVudSIgLz48L3N2Zz4=" /></em>
+</div>
+<div class="header-center">
+<a href="../index.html"></a>
+<div class="brand">
+Version 2.21.5
+</div>
+</div>
+<div class="header-right">
+<div class="theme-toggle-container theme-toggle-header">
+<div class="visually-hidden">
+Toggle Light / Dark / Auto color theme
+</div>
+<img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0idGhlbWUtaWNvbi13aGVuLWF1dG8iPjx1c2UgaHJlZj0iI3N2Zy1zdW4taGFsZiIgLz48L3N2Zz4="
+class="theme-icon-when-auto" /> <img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0idGhlbWUtaWNvbi13aGVuLWRhcmsiPjx1c2UgaHJlZj0iI3N2Zy1tb29uIiAvPjwvc3ZnPg=="
+class="theme-icon-when-dark" /> <img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0idGhlbWUtaWNvbi13aGVuLWxpZ2h0Ij48dXNlIGhyZWY9IiNzdmctc3VuIiAvPjwvc3ZnPg=="
+class="theme-icon-when-light" />
+</div>
+<div class="visually-hidden">
+Toggle table of contents sidebar
+</div>
+<em><img
+src="data:image/svg+xml;base64,PHN2Zz48dXNlIGhyZWY9IiNzdmctdG9jIiAvPjwvc3ZnPg==" /></em>
+</div>
+</div>
+<div class="sidebar-container">
+<div class="sidebar-sticky">
+<a href="../index.html" class="sidebar-brand"></a>
+<div class="sidebar-logo-container">
+<img src="/assets/logos/rbai-light.png" class="sidebar-logo only-light"
+alt="Light Logo" /> <img src="/assets/logos/rbai-dark.png"
+class="sidebar-logo only-dark" alt="Dark Logo" />
+</div>
+<span class="sidebar-brand-text">Version 2.21.5</span>
+<div id="searchbox">
 
-Section covering the formats for all Taxonomy objects. Taxonomies define a labeling schema for your RedBrick AI projects.
+</div>
+<div class="sidebar-scroll">
+<div class="sidebar-tree">
+<ul>
+<li><a href="../sdk.html" class="reference internal">Python SDK</a></li>
+</ul>
+<ul>
+<li><a href="../cli.html" class="reference internal">Command Line
+Interface</a></li>
+</ul>
+<ul>
+<li><a href="index.html" class="reference internal">Formats</a>☒
+<div class="visually-hidden">
+Toggle navigation of Formats
+</div>
+<em><img
+src="data:image/svg+xml;base64,PHN2Zz48dXNlIGhyZWY9IiNzdmctYXJyb3ctcmlnaHQiIC8+PC9zdmc+" /></em>
+<ul>
+<li><a href="annotations.html" class="reference internal">Annotation
+type definitions</a></li>
+<li><a href="#" class="current reference internal">Taxonomy
+format</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="main">
+<div class="content">
+<div class="article-container">
+<a href="#" class="back-to-top muted-link"><img
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdib3g9IjAgMCAyNCAyNCI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMyAyMGgtMlY4bC01LjUgNS41LTEuNDItMS40MkwxMiA0LjE2bDcuOTIgNy45Mi0xLjQyIDEuNDJMMTMgOHYxMnoiIC8+CiAgICAgICAgICA8L3N2Zz4=" />
+<span>Back to top</span></a>
+<div class="content-icon-container">
+<div class="theme-toggle-container theme-toggle-content">
+<div class="visually-hidden">
+Toggle Light / Dark / Auto color theme
+</div>
+<img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0idGhlbWUtaWNvbi13aGVuLWF1dG8iPjx1c2UgaHJlZj0iI3N2Zy1zdW4taGFsZiIgLz48L3N2Zz4="
+class="theme-icon-when-auto" /> <img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0idGhlbWUtaWNvbi13aGVuLWRhcmsiPjx1c2UgaHJlZj0iI3N2Zy1tb29uIiAvPjwvc3ZnPg=="
+class="theme-icon-when-dark" /> <img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0idGhlbWUtaWNvbi13aGVuLWxpZ2h0Ij48dXNlIGhyZWY9IiNzdmctc3VuIiAvPjwvc3ZnPg=="
+class="theme-icon-when-light" />
+</div>
+<div class="visually-hidden">
+Toggle table of contents sidebar
+</div>
+<em><img
+src="data:image/svg+xml;base64,PHN2Zz48dXNlIGhyZWY9IiNzdmctdG9jIiAvPjwvc3ZnPg==" /></em>
+</div>
+<section id="module-redbrick.types.taxonomy">
+<span id="taxonomy-format"></span>
+<h1 id="taxonomy-format">Taxonomy format<a
+href="#module-redbrick.types.taxonomy" class="headerlink"
+title="Link to this heading">#</a></h1>
+<p>Section covering the formats for all Taxonomy objects. Taxonomies
+define a labeling schema for your RedBrick AI projects.</p>
+<dl>
+<dt><em><span class="pre">class</span><span class="w"> </span></em><span
+class="sig-prename descclassname"><span
+class="pre">redbrick.types.taxonomy.</span></span><span
+class="sig-name descname"><span
+class="pre">AttributeOption</span></span><a
+href="../_modules/redbrick/types/taxonomy.html#AttributeOption"
+class="reference internal"><span class="viewcode-link"><span
+class="pre">[source]</span></span></a><a
+href="#redbrick.types.taxonomy.AttributeOption" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Attribute Option.</p>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">name</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.taxonomy.AttributeOption.name" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
 
-### *class* redbrick.types.taxonomy.AttributeOption
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">optionId</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span></em><a
+href="#redbrick.types.taxonomy.AttributeOption.optionId"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
 
-Attribute Option.
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">color</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.taxonomy.AttributeOption.color" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
 
-#### name *: `str`*
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">archived</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span></em><a
+href="#redbrick.types.taxonomy.AttributeOption.archived"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
 
-#### optionId *: `int`*
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt><em><span class="pre">class</span><span class="w"> </span></em><span
+class="sig-prename descclassname"><span
+class="pre">redbrick.types.taxonomy.</span></span><span
+class="sig-name descname"><span class="pre">Attribute</span></span><a
+href="../_modules/redbrick/types/taxonomy.html#Attribute"
+class="reference internal"><span class="viewcode-link"><span
+class="pre">[source]</span></span></a><a
+href="#redbrick.types.taxonomy.Attribute" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Attribute.</p>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">name</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.taxonomy.Attribute.name" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
 
-#### color *: `str`*
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">attrType</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Literal</code></span><span
+class="pre">[</span><span class="pre"><code
+class="docutils literal notranslate">'BOOL'</code></span><span
+class="pre">,</span> <span class="pre"><code
+class="docutils literal notranslate">'TEXT'</code></span><span
+class="pre">,</span> <span class="pre"><code
+class="docutils literal notranslate">'SELECT'</code></span><span
+class="pre">,</span> <span class="pre"><code
+class="docutils literal notranslate">'MULTISELECT'</code></span><span
+class="pre">]</span></em><a
+href="#redbrick.types.taxonomy.Attribute.attrType" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
 
-#### archived *: `bool`*
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">attrId</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span></em><a
+href="#redbrick.types.taxonomy.Attribute.attrId" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
 
-### *class* redbrick.types.taxonomy.Attribute
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">options</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Optional</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python">List</code></span><span class="pre">[</span><a
+href="#redbrick.types.taxonomy.AttributeOption"
+class="reference internal"
+title="redbrick.types.taxonomy.AttributeOption"><span class="pre"><code
+class="sourceCode python">AttributeOption</code></span></a><span
+class="pre">]]</span></em><a
+href="#redbrick.types.taxonomy.Attribute.options" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>For attrType SELECT and MULTISELECT this defines the list of
+selection options.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">archived</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span></em><a
+href="#redbrick.types.taxonomy.Attribute.archived" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
 
-Attribute.
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">parents</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Optional</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]</span></em><a
+href="#redbrick.types.taxonomy.Attribute.parents" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Defining parents will add a nested structure to the taxonomy.
+Multiple attributes with parent [“Type A”] will be visually nested under
+a expansion panel Type A in the user interface.</p>
+<div class="admonition note">
+<p>Note</p>
+<p>Only supported for Classifications, not for Object Attributes.</p>
+</div>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">hint</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Optional</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]</span></em><a
+href="#redbrick.types.taxonomy.Attribute.hint" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>A string containing raw text, or HTML. The hints will appear in the
+viewer.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">defaultValue</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span><span
+class="pre">],</span> <span class="pre"><code
+class="sourceCode python"><span class="va">None</span></code></span><span
+class="pre">]</span></em><a
+href="#redbrick.types.taxonomy.Attribute.defaultValue"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
+<p>For SELECT or MULTISELECT types, defaultValue will pre-populate the
+UI with the selection.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt><em><span class="pre">class</span><span class="w"> </span></em><span
+class="sig-prename descclassname"><span
+class="pre">redbrick.types.taxonomy.</span></span><span
+class="sig-name descname"><span class="pre">ObjectType</span></span><a
+href="../_modules/redbrick/types/taxonomy.html#ObjectType"
+class="reference internal"><span class="viewcode-link"><span
+class="pre">[source]</span></span></a><a
+href="#redbrick.types.taxonomy.ObjectType" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Object’s are used to annotate features or objects in tasks.</p>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">category</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.taxonomy.ObjectType.category" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Category of the Taxonomy object is a string descriptor.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">classId</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span></em><a
+href="#redbrick.types.taxonomy.ObjectType.classId" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>A unique integer for this object. Segmentation files can be exported
+to contain classId as the values in the file.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">labelType</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Literal</code></span><span
+class="pre">[</span><span class="pre"><code
+class="docutils literal notranslate">'BBOX'</code></span><span
+class="pre">,</span> <span class="pre"><code
+class="docutils literal notranslate">'CUBOID'</code></span><span
+class="pre">,</span> <span class="pre"><code
+class="docutils literal notranslate">'POINT'</code></span><span
+class="pre">,</span> <span class="pre"><code
+class="docutils literal notranslate">'POLYLINE'</code></span><span
+class="pre">,</span> <span class="pre"><code
+class="docutils literal notranslate">'POLYGON'</code></span><span
+class="pre">,</span> <span class="pre"><code
+class="docutils literal notranslate">'ELLIPSE'</code></span><span
+class="pre">,</span> <span class="pre"><code
+class="docutils literal notranslate">'SEGMENTATION'</code></span><span
+class="pre">,</span> <span class="pre"><code
+class="docutils literal notranslate">'LENGTH'</code></span><span
+class="pre">,</span> <span class="pre"><code
+class="docutils literal notranslate">'ANGLE'</code></span><span
+class="pre">]</span></em><a
+href="#redbrick.types.taxonomy.ObjectType.labelType" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>They type of label for this object.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">attributes</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Optional</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python">List</code></span><span class="pre">[</span><a
+href="#redbrick.types.taxonomy.Attribute" class="reference internal"
+title="redbrick.types.taxonomy.Attribute"><span class="pre"><code
+class="sourceCode python">Attribute</code></span></a><span
+class="pre">]]</span></em><a
+href="#redbrick.types.taxonomy.ObjectType.attributes" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Attributes allow further classification of objects.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">color</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.taxonomy.ObjectType.color" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
 
-#### name *: `str`*
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">archived</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span></em><a
+href="#redbrick.types.taxonomy.ObjectType.archived" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
 
-#### attrType *: `Literal`[`'BOOL'`, `'TEXT'`, `'SELECT'`, `'MULTISELECT'`]*
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">parents</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Optional</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]</span></em><a
+href="#redbrick.types.taxonomy.ObjectType.parents" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Defining parents will add a nested structure to the taxonomy.
+Multiple objects with parent [“Type A”] will be visually nested under a
+expansion panel Type A in the user interface.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">hint</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Optional</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]</span></em><a
+href="#redbrick.types.taxonomy.ObjectType.hint" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>A string containing raw text, or HTML. The hints will appear in the
+viewer.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt><em><span class="pre">class</span><span class="w"> </span></em><span
+class="sig-prename descclassname"><span
+class="pre">redbrick.types.taxonomy.</span></span><span
+class="sig-name descname"><span class="pre">Taxonomy</span></span><a
+href="../_modules/redbrick/types/taxonomy.html#Taxonomy"
+class="reference internal"><span class="viewcode-link"><span
+class="pre">[source]</span></span></a><a
+href="#redbrick.types.taxonomy.Taxonomy" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Taxonomy object.</p>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">orgId</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.taxonomy.Taxonomy.orgId" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
 
-#### attrId *: `int`*
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">taxId</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.taxonomy.Taxonomy.taxId" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
 
-#### options *: `Optional`[`List`[[`AttributeOption`](#redbrick.types.taxonomy.AttributeOption)]]*
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">name</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.taxonomy.Taxonomy.name" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
 
-For attrType SELECT and MULTISELECT this defines the list of selection options.
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">studyClassify</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">List</code></span><span
+class="pre">[</span><a href="#redbrick.types.taxonomy.Attribute"
+class="reference internal"
+title="redbrick.types.taxonomy.Attribute"><span class="pre"><code
+class="sourceCode python">Attribute</code></span></a><span
+class="pre">]</span></em><a
+href="#redbrick.types.taxonomy.Taxonomy.studyClassify"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
 
-#### archived *: `bool`*
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">seriesClassify</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">List</code></span><span
+class="pre">[</span><a href="#redbrick.types.taxonomy.Attribute"
+class="reference internal"
+title="redbrick.types.taxonomy.Attribute"><span class="pre"><code
+class="sourceCode python">Attribute</code></span></a><span
+class="pre">]</span></em><a
+href="#redbrick.types.taxonomy.Taxonomy.seriesClassify"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
 
-#### parents *: `Optional`[`List`[`str`]]*
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">instanceClassify</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">List</code></span><span
+class="pre">[</span><a href="#redbrick.types.taxonomy.Attribute"
+class="reference internal"
+title="redbrick.types.taxonomy.Attribute"><span class="pre"><code
+class="sourceCode python">Attribute</code></span></a><span
+class="pre">]</span></em><a
+href="#redbrick.types.taxonomy.Taxonomy.instanceClassify"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
 
-Defining parents will add a nested structure to the taxonomy.
-Multiple attributes with parent [“Type A”] will be visually nested under a expansion panel Type A in the user interface.
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">objectTypes</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">List</code></span><span
+class="pre">[</span><a href="#redbrick.types.taxonomy.ObjectType"
+class="reference internal"
+title="redbrick.types.taxonomy.ObjectType"><span class="pre"><code
+class="sourceCode python">ObjectType</code></span></a><span
+class="pre">]</span></em><a
+href="#redbrick.types.taxonomy.Taxonomy.objectTypes" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
 
-#### NOTE
-Only supported for Classifications, not for Object Attributes.
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">createdAt</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.taxonomy.Taxonomy.createdAt" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
 
-#### hint *: `Optional`[`str`]*
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">archived</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span></em><a
+href="#redbrick.types.taxonomy.Taxonomy.archived" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
 
-A string containing raw text, or HTML. The hints will appear in the viewer.
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">isNew</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span></em><a
+href="#redbrick.types.taxonomy.Taxonomy.isNew" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
 
-#### defaultValue *: `Union`[`str`, `bool`, `int`, `List`[`int`], `None`]*
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</div>
+<div class="related-pages">
+<a href="annotations.html" class="prev-page"><img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZnVyby1yZWxhdGVkLWljb24iPjx1c2UgaHJlZj0iI3N2Zy1hcnJvdy1yaWdodCIgLz48L3N2Zz4="
+class="furo-related-icon" /></a>
+<div class="page-info">
+<div class="context">
+<span>Previous</span>
+</div>
+<div class="title">
+Annotation type definitions
+</div>
+</div>
+</div>
+<div class="bottom-of-page">
+<div class="left-details">
+<div class="copyright">
+Copyright © 2023, RedBrick AI
+</div>
+Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a
+href="https://pradyunsg.me" class="muted-link">@pradyunsg</a>'s <a
+href="https://github.com/pradyunsg/furo">Furo</a>
+</div>
+<div class="right-details">
 
-For SELECT or MULTISELECT types, defaultValue will pre-populate the UI with the selection.
-
-### *class* redbrick.types.taxonomy.ObjectType
-
-Object’s are used to annotate features or objects in tasks.
-
-#### category *: `str`*
-
-Category of the Taxonomy object is a string descriptor.
-
-#### classId *: `int`*
-
-A unique integer for this object. Segmentation files can be exported to contain classId as the values in the file.
-
-#### labelType *: `Literal`[`'BBOX'`, `'CUBOID'`, `'POINT'`, `'POLYLINE'`, `'POLYGON'`, `'ELLIPSE'`, `'SEGMENTATION'`, `'LENGTH'`, `'ANGLE'`]*
-
-They type of label for this object.
-
-#### attributes *: `Optional`[`List`[[`Attribute`](#redbrick.types.taxonomy.Attribute)]]*
-
-Attributes allow further classification of objects.
-
-#### color *: `str`*
-
-#### archived *: `bool`*
-
-#### parents *: `Optional`[`List`[`str`]]*
-
-Defining parents will add a nested structure to the taxonomy.
-Multiple objects with parent [“Type A”] will be visually nested under a expansion panel Type A in the user interface.
-
-#### hint *: `Optional`[`str`]*
-
-A string containing raw text, or HTML. The hints will appear in the viewer.
-
-### *class* redbrick.types.taxonomy.Taxonomy
-
-Taxonomy object.
-
-#### orgId *: `str`*
-
-#### taxId *: `str`*
-
-#### name *: `str`*
-
-#### studyClassify *: `List`[[`Attribute`](#redbrick.types.taxonomy.Attribute)]*
-
-#### seriesClassify *: `List`[[`Attribute`](#redbrick.types.taxonomy.Attribute)]*
-
-#### instanceClassify *: `List`[[`Attribute`](#redbrick.types.taxonomy.Attribute)]*
-
-#### objectTypes *: `List`[[`ObjectType`](#redbrick.types.taxonomy.ObjectType)]*
-
-#### createdAt *: `str`*
-
-#### archived *: `bool`*
-
-#### isNew *: `bool`*
+</div>
+</div>
+</div>
+<div class="toc-sticky toc-scroll">
+<div class="toc-title-container">
+<span class="toc-title"> On this page </span>
+</div>
+<div class="toc-tree-container">
+<div class="toc-tree">
+<ul>
+<li><a href="#" class="reference internal">Taxonomy format</a>
+<ul>
+<li><a href="#redbrick.types.taxonomy.AttributeOption"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">AttributeOption</code></span></a>
+<ul>
+<li><a href="#redbrick.types.taxonomy.AttributeOption.name"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">AttributeOption.name</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.AttributeOption.optionId"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">AttributeOption.optionId</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.AttributeOption.color"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">AttributeOption.color</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.AttributeOption.archived"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">AttributeOption.archived</code></span></a></li>
+</ul></li>
+<li><a href="#redbrick.types.taxonomy.Attribute"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Attribute</code></span></a>
+<ul>
+<li><a href="#redbrick.types.taxonomy.Attribute.name"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Attribute.name</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.Attribute.attrType"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Attribute.attrType</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.Attribute.attrId"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Attribute.attrId</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.Attribute.options"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Attribute.options</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.Attribute.archived"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Attribute.archived</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.Attribute.parents"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Attribute.parents</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.Attribute.hint"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Attribute.hint</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.Attribute.defaultValue"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Attribute.defaultValue</code></span></a></li>
+</ul></li>
+<li><a href="#redbrick.types.taxonomy.ObjectType"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">ObjectType</code></span></a>
+<ul>
+<li><a href="#redbrick.types.taxonomy.ObjectType.category"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">ObjectType.category</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.ObjectType.classId"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">ObjectType.classId</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.ObjectType.labelType"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">ObjectType.labelType</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.ObjectType.attributes"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">ObjectType.attributes</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.ObjectType.color"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">ObjectType.color</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.ObjectType.archived"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">ObjectType.archived</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.ObjectType.parents"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">ObjectType.parents</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.ObjectType.hint"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">ObjectType.hint</code></span></a></li>
+</ul></li>
+<li><a href="#redbrick.types.taxonomy.Taxonomy"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Taxonomy</code></span></a>
+<ul>
+<li><a href="#redbrick.types.taxonomy.Taxonomy.orgId"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Taxonomy.orgId</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.Taxonomy.taxId"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Taxonomy.taxId</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.Taxonomy.name"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Taxonomy.name</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.Taxonomy.studyClassify"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Taxonomy.studyClassify</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.Taxonomy.seriesClassify"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Taxonomy.seriesClassify</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.Taxonomy.instanceClassify"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Taxonomy.instanceClassify</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.Taxonomy.objectTypes"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Taxonomy.objectTypes</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.Taxonomy.createdAt"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Taxonomy.createdAt</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.Taxonomy.archived"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Taxonomy.archived</code></span></a></li>
+<li><a href="#redbrick.types.taxonomy.Taxonomy.isNew"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Taxonomy.isNew</code></span></a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

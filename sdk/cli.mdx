@@ -1,172 +1,1037 @@
-<a id="cli"></a>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Command Line Interface - Version 2.21.5</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Command Line Interface - Version 2.21.5</h1>
+</header>
+<img
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJkaXNwbGF5OiBub25lOyI+CiAgPHN5bWJvbCBpZD0ic3ZnLXRvYyIgdmlld2JveD0iMCAwIDI0IDI0Ij4KICAgIDx0aXRsZT5Db250ZW50czwvdGl0bGU+CiAgICA8c3ZnIHN0cm9rZT0iY3VycmVudENvbG9yIiBmaWxsPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMCIgdmlld2JveD0iMCAwIDEwMjQgMTAyNCI+CiAgICAgIDxwYXRoIGQ9Ik00MDggNDQyaDQ4MGM0LjQgMCA4LTMuNiA4LTh2LTU2YzAtNC40LTMuNi04LTgtOEg0MDhjLTQuNCAwLTggMy42LTggOHY1NmMwIDQuNCAzLjYgOCA4IDh6bS04IDIwNGMwIDQuNCAzLjYgOCA4IDhoNDgwYzQuNCAwIDgtMy42IDgtOHYtNTZjMC00LjQtMy42LTgtOC04SDQwOGMtNC40IDAtOCAzLjYtOCA4djU2em01MDQtNDg2SDEyMGMtNC40IDAtOCAzLjYtOCA4djU2YzAgNC40IDMuNiA4IDggOGg3ODRjNC40IDAgOC0zLjYgOC04di01NmMwLTQuNC0zLjYtOC04LTh6bTAgNjMySDEyMGMtNC40IDAtOCAzLjYtOCA4djU2YzAgNC40IDMuNiA4IDggOGg3ODRjNC40IDAgOC0zLjYgOC04di01NmMwLTQuNC0zLjYtOC04LTh6TTExNS40IDUxOC45TDI3MS43IDY0MmM1LjggNC42IDE0LjQuNSAxNC40LTYuOVYzODguOWMwLTcuNC04LjUtMTEuNS0xNC40LTYuOUwxMTUuNCA1MDUuMWE4Ljc0IDguNzQgMCAwIDAgMCAxMy44eiIgLz4KICAgIDwvc3ZnPg==" />
+Menu
+<img
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdib3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlci1tZW51Ij4KICAgICAgPGxpbmUgeDE9IjMiIHkxPSIxMiIgeDI9IjIxIiB5Mj0iMTIiPjwvbGluZT4KICAgICAgPGxpbmUgeDE9IjMiIHkxPSI2IiB4Mj0iMjEiIHkyPSI2Ij48L2xpbmU+CiAgICAgIDxsaW5lIHgxPSIzIiB5MT0iMTgiIHgyPSIyMSIgeTI9IjE4Ij48L2xpbmU+CiAgICA8L3N2Zz4="
+class="feather-menu" />
+Expand
+<img
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdib3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlci1jaGV2cm9uLXJpZ2h0Ij4KICAgICAgPHBvbHlsaW5lIHBvaW50cz0iOSAxOCAxNSAxMiA5IDYiPjwvcG9seWxpbmU+CiAgICA8L3N2Zz4="
+class="feather-chevron-right" />
+Light mode
+<img
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdib3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJmZWF0aGVyLXN1biI+CiAgICAgIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjUiPjwvY2lyY2xlPgogICAgICA8bGluZSB4MT0iMTIiIHkxPSIxIiB4Mj0iMTIiIHkyPSIzIj48L2xpbmU+CiAgICAgIDxsaW5lIHgxPSIxMiIgeTE9IjIxIiB4Mj0iMTIiIHkyPSIyMyI+PC9saW5lPgogICAgICA8bGluZSB4MT0iNC4yMiIgeTE9IjQuMjIiIHgyPSI1LjY0IiB5Mj0iNS42NCI+PC9saW5lPgogICAgICA8bGluZSB4MT0iMTguMzYiIHkxPSIxOC4zNiIgeDI9IjE5Ljc4IiB5Mj0iMTkuNzgiPjwvbGluZT4KICAgICAgPGxpbmUgeDE9IjEiIHkxPSIxMiIgeDI9IjMiIHkyPSIxMiI+PC9saW5lPgogICAgICA8bGluZSB4MT0iMjEiIHkxPSIxMiIgeDI9IjIzIiB5Mj0iMTIiPjwvbGluZT4KICAgICAgPGxpbmUgeDE9IjQuMjIiIHkxPSIxOS43OCIgeDI9IjUuNjQiIHkyPSIxOC4zNiI+PC9saW5lPgogICAgICA8bGluZSB4MT0iMTguMzYiIHkxPSI1LjY0IiB4Mj0iMTkuNzgiIHkyPSI0LjIyIj48L2xpbmU+CiAgICA8L3N2Zz4="
+class="feather-sun" />
+Dark mode
+<img
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdib3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJpY29uLXRhYmxlci1tb29uIj4KICAgICAgPHBhdGggc3Ryb2tlPSJub25lIiBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPgogICAgICA8cGF0aCBkPSJNMTIgM2MuMTMyIDAgLjI2MyAwIC4zOTMgMGE3LjUgNy41IDAgMCAwIDcuOTIgMTIuNDQ2YTkgOSAwIDEgMSAtOC4zMTMgLTEyLjQ1NHoiIC8+CiAgICA8L3N2Zz4="
+class="icon-tabler-moon" />
+Auto light/dark mode
+<img
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdib3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJpY29uLXRhYmxlci1zaGFkb3ciPgogICAgICA8cGF0aCBzdHJva2U9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiIC8+CiAgICAgIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjkiPjwvY2lyY2xlPgogICAgICA8cGF0aCBkPSJNMTMgMTJoNSIgLz4KICAgICAgPHBhdGggZD0iTTEzIDE1aDQiIC8+CiAgICAgIDxwYXRoIGQ9Ik0xMyAxOGgxIiAvPgogICAgICA8cGF0aCBkPSJNMTMgOWg0IiAvPgogICAgICA8cGF0aCBkPSJNMTMgNmgxIiAvPgogICAgPC9zdmc+"
+class="icon-tabler-shadow" />
+<div class="visually-hidden">
+Hide navigation sidebar
+</div>
+<div class="visually-hidden">
+Hide table of contents sidebar
+</div>
+<div class="page">
+<div class="mobile-header">
+<div class="header-left">
+<div class="visually-hidden">
+Toggle site navigation sidebar
+</div>
+<em><img
+src="data:image/svg+xml;base64,PHN2Zz48dXNlIGhyZWY9IiNzdmctbWVudSIgLz48L3N2Zz4=" /></em>
+</div>
+<div class="header-center">
+<a href="index.html"></a>
+<div class="brand">
+Version 2.21.5
+</div>
+</div>
+<div class="header-right">
+<div class="theme-toggle-container theme-toggle-header">
+<div class="visually-hidden">
+Toggle Light / Dark / Auto color theme
+</div>
+<img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0idGhlbWUtaWNvbi13aGVuLWF1dG8iPjx1c2UgaHJlZj0iI3N2Zy1zdW4taGFsZiIgLz48L3N2Zz4="
+class="theme-icon-when-auto" /> <img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0idGhlbWUtaWNvbi13aGVuLWRhcmsiPjx1c2UgaHJlZj0iI3N2Zy1tb29uIiAvPjwvc3ZnPg=="
+class="theme-icon-when-dark" /> <img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0idGhlbWUtaWNvbi13aGVuLWxpZ2h0Ij48dXNlIGhyZWY9IiNzdmctc3VuIiAvPjwvc3ZnPg=="
+class="theme-icon-when-light" />
+</div>
+<div class="visually-hidden">
+Toggle table of contents sidebar
+</div>
+<em><img
+src="data:image/svg+xml;base64,PHN2Zz48dXNlIGhyZWY9IiNzdmctdG9jIiAvPjwvc3ZnPg==" /></em>
+</div>
+</div>
+<div class="sidebar-container">
+<div class="sidebar-sticky">
+<a href="index.html" class="sidebar-brand"></a>
+<div class="sidebar-logo-container">
+<img src="/assets/logos/rbai-light.png" class="sidebar-logo only-light"
+alt="Light Logo" /> <img src="/assets/logos/rbai-dark.png"
+class="sidebar-logo only-dark" alt="Dark Logo" />
+</div>
+<span class="sidebar-brand-text">Version 2.21.5</span>
+<div id="searchbox">
 
-# Command Line Interface
-
-The RedBrick CLI offers a simple interface to quickly import and export your images & annotations, and perform other high-level actions.
-
-```default
-usage: redbrick [-h] [-v] [--completion {bash,zsh,tcsh}] {config,init,clone,info,export,upload,report} ...
-```
-
-## Named Arguments
-
-## Commands
-
-## Sub-commands
-
-### config
-
-Setup the credentials for your CLI.
-
-```default
-redbrick config [-h] [--org ORG] [--key KEY] [--url URL] [--profile PROFILE] [--force] {list,set,add,remove,clear,verify} ...
-```
-
-#### Positional Arguments
-
-#### Named Arguments
-
-#### Sub-commands
-
-##### list
-
-List all credential profiles
-
-```default
-redbrick config list [-h]
-```
-
-##### set
-
-Set your default credentials profile
-
-```default
-redbrick config set [-h] [profile]
-```
-
-###### Positional Arguments
-
-##### add
-
-Add a new profile
-
-```default
-redbrick config add [-h] [--org ORG] [--key KEY] [--url URL] [--profile PROFILE]
-```
-
-###### Named Arguments
-
-##### remove
-
-Remove a profile
-
-```default
-redbrick config remove [-h] [profile]
-```
-
-###### Positional Arguments
-
-##### clear
-
-Clear all credentials
-
-```default
-redbrick config clear [-h]
-```
-
-##### verify
-
-Verify a profile
-
-```default
-redbrick config verify [-h] [profile]
-```
-
-###### Positional Arguments
-
-### init
-
-Create a new project. We recommend creating a new directory and naming it after your project,
-initializing your project within the new directory.
-
-```default
-$ mkdir new-project
+</div>
+<div class="sidebar-scroll">
+<div class="sidebar-tree">
+<ul>
+<li><a href="sdk.html" class="reference internal">Python SDK</a></li>
+</ul>
+<ul>
+<li><a href="#" class="current reference internal">Command Line
+Interface</a></li>
+</ul>
+<ul>
+<li><a href="formats/index.html" class="reference internal">Formats</a>☐
+<div class="visually-hidden">
+Toggle navigation of Formats
+</div>
+<em><img
+src="data:image/svg+xml;base64,PHN2Zz48dXNlIGhyZWY9IiNzdmctYXJyb3ctcmlnaHQiIC8+PC9zdmc+" /></em>
+<ul>
+<li><a href="formats/annotations.html"
+class="reference internal">Annotation type definitions</a></li>
+<li><a href="formats/taxonomy.html" class="reference internal">Taxonomy
+format</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="main">
+<div class="content">
+<div class="article-container">
+<a href="#" class="back-to-top muted-link"><img
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdib3g9IjAgMCAyNCAyNCI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMyAyMGgtMlY4bC01LjUgNS41LTEuNDItMS40MkwxMiA0LjE2bDcuOTIgNy45Mi0xLjQyIDEuNDJMMTMgOHYxMnoiIC8+CiAgICAgICAgICA8L3N2Zz4=" />
+<span>Back to top</span></a>
+<div class="content-icon-container">
+<div class="theme-toggle-container theme-toggle-content">
+<div class="visually-hidden">
+Toggle Light / Dark / Auto color theme
+</div>
+<img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0idGhlbWUtaWNvbi13aGVuLWF1dG8iPjx1c2UgaHJlZj0iI3N2Zy1zdW4taGFsZiIgLz48L3N2Zz4="
+class="theme-icon-when-auto" /> <img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0idGhlbWUtaWNvbi13aGVuLWRhcmsiPjx1c2UgaHJlZj0iI3N2Zy1tb29uIiAvPjwvc3ZnPg=="
+class="theme-icon-when-dark" /> <img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0idGhlbWUtaWNvbi13aGVuLWxpZ2h0Ij48dXNlIGhyZWY9IiNzdmctc3VuIiAvPjwvc3ZnPg=="
+class="theme-icon-when-light" />
+</div>
+<div class="visually-hidden">
+Toggle table of contents sidebar
+</div>
+<em><img
+src="data:image/svg+xml;base64,PHN2Zz48dXNlIGhyZWY9IiNzdmctdG9jIiAvPjwvc3ZnPg==" /></em>
+</div>
+<section id="command-line-interface">
+<span id="cli"></span>
+<h1 id="command-line-interface">Command Line Interface<a
+href="#command-line-interface" class="headerlink"
+title="Link to this heading">#</a></h1>
+<p>The RedBrick CLI offers a simple interface to quickly import and
+export your images &amp; annotations, and perform other high-level
+actions.</p>
+<div class="highlight-default notranslate">
+<div class="highlight">
+<pre><code>usage: redbrick [-h] [-v] [--completion {bash,zsh,tcsh}] {config,init,clone,info,export,upload,report} ...</code></pre>
+</div>
+</div>
+<h2 id="named-arguments">Named Arguments<a href="#named-arguments"
+class="headerlink" title="Link to this heading">#</a></h2>
+<dl>
+<dt><kbd>-v, --version</kbd></dt>
+<dd>
+<p>show program’s version number and exit</p>
+</dd>
+<dt><kbd>--completion</kbd></dt>
+<dd>
+<p>Possible choices: bash, zsh, tcsh</p>
+<p>print shell completion script</p>
+</dd>
+</dl>
+<h2 id="commands">Commands<a href="#commands" class="headerlink"
+title="Link to this heading">#</a></h2>
+<dl>
+<dt><kbd>command</kbd></dt>
+<dd>
+<p>Possible choices: config, init, clone, info, export, upload,
+report</p>
+</dd>
+</dl>
+<section id="Sub-commands">
+<h2 id="sub-commands">Sub-commands<a href="#Sub-commands"
+class="headerlink" title="Link to this heading">#</a></h2>
+<h3 id="config">config<a href="#config" class="headerlink"
+title="Link to this heading">#</a></h3>
+<p>Setup the credentials for your CLI.</p>
+<div class="highlight-default notranslate">
+<div class="highlight">
+<pre><code>redbrick config [-h] [--org ORG] [--key KEY] [--url URL] [--profile PROFILE] [--force] {list,set,add,remove,clear,verify} ...</code></pre>
+</div>
+</div>
+<h4 id="positional-arguments">Positional Arguments<a
+href="#positional-arguments" class="headerlink"
+title="Link to this heading">#</a></h4>
+<dl>
+<dt><kbd>sub_command</kbd></dt>
+<dd>
+<p>Possible choices: list, set, add, remove, clear, verify</p>
+</dd>
+</dl>
+<section id="named-arguments_repeat1">
+<h4 id="named-arguments-1">Named Arguments<a
+href="#named-arguments_repeat1" class="headerlink"
+title="Link to this heading">#</a></h4>
+<dl>
+<dt><kbd>--org, -o</kbd></dt>
+<dd>
+<p>Org ID</p>
+</dd>
+<dt><kbd>--key, -k</kbd></dt>
+<dd>
+<p>API Key</p>
+</dd>
+<dt><kbd>--url, -u</kbd></dt>
+<dd>
+<p>Endpoint URL, should default to https://api.redbrickai.com.</p>
+</dd>
+<dt><kbd>--profile, -p</kbd></dt>
+<dd>
+<p>Profile name</p>
+</dd>
+<dt><kbd>--force, -f</kbd></dt>
+<dd>
+<p>Force create new credentials</p>
+<p>Default: False</p>
+</dd>
+</dl>
+</section>
+<section id="Sub-commands_repeat1">
+<h4 id="sub-commands-1">Sub-commands<a href="#Sub-commands_repeat1"
+class="headerlink" title="Link to this heading">#</a></h4>
+<h5 id="list">list<a href="#list" class="headerlink"
+title="Link to this heading">#</a></h5>
+<p>List all credential profiles</p>
+<div class="highlight-default notranslate">
+<div class="highlight">
+<pre><code>redbrick config list [-h]</code></pre>
+</div>
+</div>
+<h5 id="set">set<a href="#set" class="headerlink"
+title="Link to this heading">#</a></h5>
+<p>Set your default credentials profile</p>
+<div class="highlight-default notranslate">
+<div class="highlight">
+<pre><code>redbrick config set [-h] [profile]</code></pre>
+</div>
+</div>
+<section id="positional-arguments_repeat1">
+<h6 id="positional-arguments-1">Positional Arguments<a
+href="#positional-arguments_repeat1" class="headerlink"
+title="Link to this heading">#</a></h6>
+<dl>
+<dt><kbd>profile</kbd></dt>
+<dd>
+<p>Profile name</p>
+</dd>
+</dl>
+</section>
+<h5 id="add">add<a href="#add" class="headerlink"
+title="Link to this heading">#</a></h5>
+<p>Add a new profile</p>
+<div class="highlight-default notranslate">
+<div class="highlight">
+<pre><code>redbrick config add [-h] [--org ORG] [--key KEY] [--url URL] [--profile PROFILE]</code></pre>
+</div>
+</div>
+<section id="named-arguments_repeat2">
+<h6 id="named-arguments-2">Named Arguments<a
+href="#named-arguments_repeat2" class="headerlink"
+title="Link to this heading">#</a></h6>
+<dl>
+<dt><kbd>--org, -o</kbd></dt>
+<dd>
+<p>Org ID</p>
+</dd>
+<dt><kbd>--key, -k</kbd></dt>
+<dd>
+<p>Add your API Key.</p>
+</dd>
+<dt><kbd>--url, -u</kbd></dt>
+<dd>
+<p>Endpoint URL, should default to https://api.redbrickai.com.</p>
+</dd>
+<dt><kbd>--profile, -p</kbd></dt>
+<dd>
+<p>Define a name for your authentication profile.</p>
+</dd>
+</dl>
+</section>
+<h5 id="remove">remove<a href="#remove" class="headerlink"
+title="Link to this heading">#</a></h5>
+<p>Remove a profile</p>
+<div class="highlight-default notranslate">
+<div class="highlight">
+<pre><code>redbrick config remove [-h] [profile]</code></pre>
+</div>
+</div>
+<section id="positional-arguments_repeat2">
+<h6 id="positional-arguments-2">Positional Arguments<a
+href="#positional-arguments_repeat2" class="headerlink"
+title="Link to this heading">#</a></h6>
+<dl>
+<dt><kbd>profile</kbd></dt>
+<dd>
+<p>Profile name</p>
+</dd>
+</dl>
+</section>
+<h5 id="clear">clear<a href="#clear" class="headerlink"
+title="Link to this heading">#</a></h5>
+<p>Clear all credentials</p>
+<div class="highlight-default notranslate">
+<div class="highlight">
+<pre><code>redbrick config clear [-h]</code></pre>
+</div>
+</div>
+<h5 id="verify">verify<a href="#verify" class="headerlink"
+title="Link to this heading">#</a></h5>
+<p>Verify a profile</p>
+<div class="highlight-default notranslate">
+<div class="highlight">
+<pre><code>redbrick config verify [-h] [profile]</code></pre>
+</div>
+</div>
+<section id="positional-arguments_repeat3">
+<h6 id="positional-arguments-3">Positional Arguments<a
+href="#positional-arguments_repeat3" class="headerlink"
+title="Link to this heading">#</a></h6>
+<dl>
+<dt><kbd>profile</kbd></dt>
+<dd>
+<p>Profile name</p>
+</dd>
+</dl>
+</section>
+</section>
+<h3 id="init">init<a href="#init" class="headerlink"
+title="Link to this heading">#</a></h3>
+<p>Create a new project. We recommend creating a new directory and
+naming it after your project, initializing your project within the new
+directory.</p>
+<div class="code bash highlight-default notranslate">
+<div class="highlight">
+<pre><code>$ mkdir new-project
 $ cd new-project
-$ redbrick init
-```
-
-```default
-redbrick init [-h] [--name NAME] [--taxonomy TAXONOMY] [--reviews REVIEWS] [--workspace WORKSPACE] [--sibling-tasks SIBLING_TASKS] [path]
-```
-
-#### Positional Arguments
-
-#### Named Arguments
-
-### clone
-
-The project will be cloned to a local directory named after your `project name`.
-
-```default
-redbrick clone [-h] [project] [path]
-```
-
-#### Positional Arguments
-
-### info
-
-Get a project’s information
-
-```default
-redbrick info [-h] [--get {labelstorage}] [--set {labelstorage}] [path]
-```
-
-#### Positional Arguments
-
-#### Named Arguments
-
-### export
-
-Export data for a project
-
-```default
-redbrick export [-h] [--with-files] [--dicom-to-nifti] [--old-format] [--without-masks] [--semantic] [--binary-mask] [--single-mask] [--no-consensus] [--png] [--rt-struct]
+$ redbrick init</code></pre>
+</div>
+</div>
+<div class="highlight-default notranslate">
+<div class="highlight">
+<pre><code>redbrick init [-h] [--name NAME] [--taxonomy TAXONOMY] [--reviews REVIEWS] [--workspace WORKSPACE] [--sibling-tasks SIBLING_TASKS] [path]</code></pre>
+</div>
+</div>
+<section id="positional-arguments_repeat4">
+<h4 id="positional-arguments-4">Positional Arguments<a
+href="#positional-arguments_repeat4" class="headerlink"
+title="Link to this heading">#</a></h4>
+<dl>
+<dt><kbd>path</kbd></dt>
+<dd>
+<p>Local path of the empty project directory</p>
+<p>Default: “.”</p>
+</dd>
+</dl>
+</section>
+<section id="named-arguments_repeat3">
+<h4 id="named-arguments-3">Named Arguments<a
+href="#named-arguments_repeat3" class="headerlink"
+title="Link to this heading">#</a></h4>
+<dl>
+<dt><kbd>--name, -n</kbd></dt>
+<dd>
+<p>Project name</p>
+</dd>
+<dt><kbd>--taxonomy, -t</kbd></dt>
+<dd>
+<p>Taxonomy name</p>
+</dd>
+<dt><kbd>--reviews, -r</kbd></dt>
+<dd>
+<p>Number of review stages</p>
+</dd>
+<dt><kbd>--workspace, -w</kbd></dt>
+<dd>
+<p>The workspace that you want to add this project to</p>
+</dd>
+<dt><kbd>--sibling-tasks</kbd></dt>
+<dd>
+<p>Number of tasks created for each uploaded datapoint</p>
+</dd>
+</dl>
+</section>
+<h3 id="clone">clone<a href="#clone" class="headerlink"
+title="Link to this heading">#</a></h3>
+<p>The project will be cloned to a local directory named after your
+<span class="pre"><code
+class="code docutils literal notranslate">project</code></span><code
+class="code docutils literal notranslate"> </code><span
+class="pre"><code
+class="code docutils literal notranslate">name</code></span>.</p>
+<div class="highlight-default notranslate">
+<div class="highlight">
+<pre><code>redbrick clone [-h] [project] [path]</code></pre>
+</div>
+</div>
+<section id="positional-arguments_repeat5">
+<h4 id="positional-arguments-5">Positional Arguments<a
+href="#positional-arguments_repeat5" class="headerlink"
+title="Link to this heading">#</a></h4>
+<dl>
+<dt><kbd>project</kbd></dt>
+<dd>
+<p>Project ID or Name</p>
+</dd>
+<dt><kbd>path</kbd></dt>
+<dd>
+<p>Local path of the empty project directory</p>
+</dd>
+</dl>
+</section>
+<h3 id="info">info<a href="#info" class="headerlink"
+title="Link to this heading">#</a></h3>
+<p>Get a project’s information</p>
+<div class="highlight-default notranslate">
+<div class="highlight">
+<pre><code>redbrick info [-h] [--get {labelstorage}] [--set {labelstorage}] [path]</code></pre>
+</div>
+</div>
+<section id="positional-arguments_repeat6">
+<h4 id="positional-arguments-6">Positional Arguments<a
+href="#positional-arguments_repeat6" class="headerlink"
+title="Link to this heading">#</a></h4>
+<dl>
+<dt><kbd>path</kbd></dt>
+<dd>
+<p>Path of project (Default: current directory)</p>
+<p>Default: “.”</p>
+</dd>
+</dl>
+</section>
+<section id="named-arguments_repeat4">
+<h4 id="named-arguments-4">Named Arguments<a
+href="#named-arguments_repeat4" class="headerlink"
+title="Link to this heading">#</a></h4>
+<dl>
+<dt><kbd>--get, -g</kbd></dt>
+<dd>
+<p>Possible choices: labelstorage</p>
+<p>Get a project’s setting information</p>
+</dd>
+<dt><kbd>--set, -s</kbd></dt>
+<dd>
+<p>Possible choices: labelstorage</p>
+<p>Set a project setting</p>
+</dd>
+</dl>
+</section>
+<h3 id="export">export<a href="#export" class="headerlink"
+title="Link to this heading">#</a></h3>
+<p>Export data for a project</p>
+<div class="highlight-default notranslate">
+<div class="highlight">
+<pre><code>redbrick export [-h] [--with-files] [--dicom-to-nifti] [--old-format] [--without-masks] [--semantic] [--binary-mask] [--single-mask] [--no-consensus] [--png] [--rt-struct]
                 [--mhd] [--clear-cache] [--concurrency CONCURRENCY] [--stage STAGE] [--destination DESTINATION]
-                [type]
-```
-
-#### Positional Arguments
-
-#### Named Arguments
-
-### upload
-
-Upload files to a project
-
-```default
-redbrick upload [-h] [--as-frames] [--type [{DICOM3D,NIFTI3D,NRRD3D,IMAGE2D,VIDEO,VIDEOFRAMES}]] [--as-study] [--json] [--segment-map SEGMENT_MAP] [--storage STORAGE]
+                [type]</code></pre>
+</div>
+</div>
+<section id="positional-arguments_repeat7">
+<h4 id="positional-arguments-7">Positional Arguments<a
+href="#positional-arguments_repeat7" class="headerlink"
+title="Link to this heading">#</a></h4>
+<dl>
+<dt><kbd>type</kbd></dt>
+<dd>
+<p>Export type: (latest [default], groundtruth,</p>
+<p>)</p>
+<p>Default: “latest”</p>
+</dd>
+</dl>
+</section>
+<section id="named-arguments_repeat5">
+<h4 id="named-arguments-5">Named Arguments<a
+href="#named-arguments_repeat5" class="headerlink"
+title="Link to this heading">#</a></h4>
+<dl>
+<dt><kbd>--with-files</kbd></dt>
+<dd>
+<p>Export with files (e.g. images/video frames)</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--dicom-to-nifti</kbd></dt>
+<dd>
+<p>Convert DICOM images to NIfTI. Applicable when <span
+class="pre"><code
+class="code docutils literal notranslate">--with-files</code></span> is
+set.</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--old-format</kbd></dt>
+<dd>
+<p>Whether to export tasks in old format. (Default: False)</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--without-masks</kbd></dt>
+<dd>
+<p>Exports only tasks JSON without downloading any segmentation masks.
+Note: This is not recommended for tasks with overlapping labels.</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--semantic</kbd></dt>
+<dd>
+<p>Whether to export all segmentations as semantic_mask. This will
+create one segmentation file per class. If this is set to True and a
+task has multiple instances per class, then attributes belonging to each
+instance will not be exported.</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--binary-mask</kbd></dt>
+<dd>
+<p>Whether to export all segmentations as binary masks. This will create
+one segmentation file per instance.</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--single-mask</kbd></dt>
+<dd>
+<p>Whether to export all segmentations in a single file. Binary mask
+will be considered if both binary_mask and single_mask are set.</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--no-consensus</kbd></dt>
+<dd>
+<p>Whether to export tasks without consensus info. If None, will default
+to export with consensus info, if it is enabled for the given
+project.</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--png</kbd></dt>
+<dd>
+<p>Export labels as PNG masks</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--rt-struct</kbd></dt>
+<dd>
+<p>Export labels as DICOM RT-Struct. (Only for DICOM images)</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--mhd</kbd></dt>
+<dd>
+<p>Export segmentation masks in MHD format.</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--clear-cache</kbd></dt>
+<dd>
+<p>Clear local cache</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--concurrency, -c</kbd></dt>
+<dd>
+<p>Concurrency value (Default: 10)</p>
+<p>Default: 10</p>
+</dd>
+<dt><kbd>--stage, -s</kbd></dt>
+<dd>
+<p>Export tasks that are currently in the given stage. Applicable only
+with <span class="pre"><code
+class="code docutils literal notranslate">redbrick</code></span><code
+class="code docutils literal notranslate"> </code><span
+class="pre"><code
+class="code docutils literal notranslate">export</code></span> and <span
+class="pre"><code
+class="code docutils literal notranslate">redbrick</code></span><code
+class="code docutils literal notranslate"> </code><span
+class="pre"><code
+class="code docutils literal notranslate">export</code></span><code
+class="code docutils literal notranslate"> </code><span
+class="pre"><code
+class="code docutils literal notranslate">latest</code></span></p>
+</dd>
+<dt><kbd>--destination, -d</kbd></dt>
+<dd>
+<p>Destination directory (Default: current directory)</p>
+<p>Default: “.”</p>
+</dd>
+</dl>
+</section>
+<h3 id="upload">upload<a href="#upload" class="headerlink"
+title="Link to this heading">#</a></h3>
+<p>Upload files to a project</p>
+<div class="highlight-default notranslate">
+<div class="highlight">
+<pre><code>redbrick upload [-h] [--as-frames] [--type [{DICOM3D,NIFTI3D,NRRD3D,IMAGE2D,VIDEO,VIDEOFRAMES}]] [--as-study] [--json] [--segment-map SEGMENT_MAP] [--storage STORAGE]
                 [--label-storage LABEL_STORAGE] [--ground-truth] [--label-validate] [--prune-segmentations] [--rt-struct] [--mhd] [--clear-cache] [--concurrency CONCURRENCY]
-                directory
-```
+                directory</code></pre>
+</div>
+</div>
+<section id="positional-arguments_repeat8">
+<h4 id="positional-arguments-8">Positional Arguments<a
+href="#positional-arguments_repeat8" class="headerlink"
+title="Link to this heading">#</a></h4>
+<dl>
+<dt><kbd>directory</kbd></dt>
+<dd>
+<p>The directory containing files to upload to the project</p>
+</dd>
+</dl>
+</section>
+<section id="named-arguments_repeat6">
+<h4 id="named-arguments-6">Named Arguments<a
+href="#named-arguments_repeat6" class="headerlink"
+title="Link to this heading">#</a></h4>
+<dl>
+<dt><kbd>--as-frames</kbd></dt>
+<dd>
+<p>Upload video from image frames</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--type, -t</kbd></dt>
+<dd>
+<p>Possible choices: DICOM3D, NIFTI3D, NRRD3D, IMAGE2D, VIDEO,
+VIDEOFRAMES</p>
+<p>Import file type [’<span class="pre"><code
+class="code docutils literal notranslate">DICOM3D</code></span>’, ‘<span
+class="pre"><code
+class="code docutils literal notranslate">NIFTI3D</code></span>’, ‘<span
+class="pre"><code
+class="code docutils literal notranslate">NRRD3D</code></span>’, ‘<span
+class="pre"><code
+class="code docutils literal notranslate">IMAGE2D</code></span>’, ‘<span
+class="pre"><code
+class="code docutils literal notranslate">VIDEO</code></span>’, ‘<span
+class="pre"><code
+class="code docutils literal notranslate">VIDEOFRAMES</code></span>’]</p>
+<p>Please refer to <a
+href="https://docs.redbrickai.com/importing-data/direct-data-upload"
+class="reference external">our documentation</a>, to understand the
+required folder structure and supported file types.</p>
+<p>Default: “DICOM3D”</p>
+</dd>
+<dt><kbd>--as-study</kbd></dt>
+<dd>
+<p>Group files by study</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--json</kbd></dt>
+<dd>
+<p>Upload json files with list of task objects</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--segment-map, -m</kbd></dt>
+<dd>
+<p>Segmentation mapping file path</p>
+</dd>
+<dt><kbd>--storage, -s</kbd></dt>
+<dd>
+<p>Storage method: (redbrick [default], public, )</p>
+<p>Default: “redbrick”</p>
+</dd>
+<dt><kbd>--label-storage</kbd></dt>
+<dd>
+<p>Label Storage method: (same as items storage <span class="pre"><code
+class="code docutils literal notranslate">--storage</code></span>
+[default], redbrick, public, )</p>
+</dd>
+<dt><kbd>--ground-truth</kbd></dt>
+<dd>
+<p>Upload tasks directly to ground truth.</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--label-validate</kbd></dt>
+<dd>
+<p>Validate NIfTI label instances and segmentMap. By default, the
+uploaded NIfTI files are not validated during upload, which can result
+in invalid files being uploaded. Using this argument validates the files
+before upload, but may increase the upload time.</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--prune-segmentations</kbd></dt>
+<dd>
+<p>Prune segmentations that are not part of the series.</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--rt-struct</kbd></dt>
+<dd>
+<p>Upload segmentations from DICOM RT-Struct files.</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--mhd</kbd></dt>
+<dd>
+<p>Upload segmentations from MHD files.</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--clear-cache</kbd></dt>
+<dd>
+<p>Clear local cache</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--concurrency, -c</kbd></dt>
+<dd>
+<p>Concurrency value (Default: 10)</p>
+<p>Default: 10</p>
+</dd>
+</dl>
+</section>
+<h3 id="report">report<a href="#report" class="headerlink"
+title="Link to this heading">#</a></h3>
+<p>Generate an audit report for a project. Exports a JSON file
+containing all actions &amp; events associated with every task,
+including:</p>
+<ul>
+<li><p>Who annotated the task</p></li>
+<li><p>Who uploaded the data</p></li>
+<li><p>Who reviewed the task</p></li>
+<li><p>and more.</p></li>
+</ul>
+<div class="highlight-default notranslate">
+<div class="highlight">
+<pre><code>redbrick report [-h] [--concurrency CONCURRENCY] [type]</code></pre>
+</div>
+</div>
+<section id="positional-arguments_repeat9">
+<h4 id="positional-arguments-9">Positional Arguments<a
+href="#positional-arguments_repeat9" class="headerlink"
+title="Link to this heading">#</a></h4>
+<dl>
+<dt><kbd>type</kbd></dt>
+<dd>
+<p>Export type: (all [default], groundtruth)</p>
+<p>Default: “all”</p>
+</dd>
+</dl>
+</section>
+<section id="named-arguments_repeat7">
+<h4 id="named-arguments-7">Named Arguments<a
+href="#named-arguments_repeat7" class="headerlink"
+title="Link to this heading">#</a></h4>
+<dl>
+<dt><kbd>--concurrency, -c</kbd></dt>
+<dd>
+<p>Concurrency value (Default: 10)</p>
+<p>Default: 10</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+</div>
+<div class="related-pages">
+<a href="formats/index.html" class="next-page"></a>
+<div class="page-info">
+<div class="context">
+<span>Next</span>
+</div>
+<div class="title">
+Formats
+</div>
+</div>
+<img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZnVyby1yZWxhdGVkLWljb24iPjx1c2UgaHJlZj0iI3N2Zy1hcnJvdy1yaWdodCIgLz48L3N2Zz4="
+class="furo-related-icon" /> <a href="sdk.html" class="prev-page"><img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZnVyby1yZWxhdGVkLWljb24iPjx1c2UgaHJlZj0iI3N2Zy1hcnJvdy1yaWdodCIgLz48L3N2Zz4="
+class="furo-related-icon" /></a>
+<div class="page-info">
+<div class="context">
+<span>Previous</span>
+</div>
+<div class="title">
+Python SDK
+</div>
+</div>
+</div>
+<div class="bottom-of-page">
+<div class="left-details">
+<div class="copyright">
+Copyright © 2023, RedBrick AI
+</div>
+Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a
+href="https://pradyunsg.me" class="muted-link">@pradyunsg</a>'s <a
+href="https://github.com/pradyunsg/furo">Furo</a>
+</div>
+<div class="right-details">
 
-#### Positional Arguments
-
-#### Named Arguments
-
-### report
-
-Generate an audit report for a project. Exports a JSON file containing all actions & events
-associated with every task, including:
-
-- Who annotated the task
-- Who uploaded the data
-- Who reviewed the task
-- and more.
-
-```default
-redbrick report [-h] [--concurrency CONCURRENCY] [type]
-```
-
-#### Positional Arguments
-
-#### Named Arguments
+</div>
+</div>
+</div>
+<div class="toc-sticky toc-scroll">
+<div class="toc-title-container">
+<span class="toc-title"> On this page </span>
+</div>
+<div class="toc-tree-container">
+<div class="toc-tree">
+<ul>
+<li><a href="#" class="reference internal">Command Line Interface</a>
+<ul>
+<li><a href="#named-arguments" class="reference internal">Named
+Arguments</a></li>
+<li><a href="#commands" class="reference internal">Commands</a></li>
+<li><a href="#Sub-commands" class="reference internal">Sub-commands</a>
+<ul>
+<li><a href="#config" class="reference internal">config</a>
+<ul>
+<li><a href="#positional-arguments"
+class="reference internal">Positional Arguments</a></li>
+<li><a href="#named-arguments_repeat1" class="reference internal">Named
+Arguments</a></li>
+<li><a href="#Sub-commands_repeat1"
+class="reference internal">Sub-commands</a>
+<ul>
+<li><a href="#list" class="reference internal">list</a></li>
+<li><a href="#set" class="reference internal">set</a>
+<ul>
+<li><a href="#positional-arguments_repeat1"
+class="reference internal">Positional Arguments</a></li>
+</ul></li>
+<li><a href="#add" class="reference internal">add</a>
+<ul>
+<li><a href="#named-arguments_repeat2" class="reference internal">Named
+Arguments</a></li>
+</ul></li>
+<li><a href="#remove" class="reference internal">remove</a>
+<ul>
+<li><a href="#positional-arguments_repeat2"
+class="reference internal">Positional Arguments</a></li>
+</ul></li>
+<li><a href="#clear" class="reference internal">clear</a></li>
+<li><a href="#verify" class="reference internal">verify</a>
+<ul>
+<li><a href="#positional-arguments_repeat3"
+class="reference internal">Positional Arguments</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#init" class="reference internal">init</a>
+<ul>
+<li><a href="#positional-arguments_repeat4"
+class="reference internal">Positional Arguments</a></li>
+<li><a href="#named-arguments_repeat3" class="reference internal">Named
+Arguments</a></li>
+</ul></li>
+<li><a href="#clone" class="reference internal">clone</a>
+<ul>
+<li><a href="#positional-arguments_repeat5"
+class="reference internal">Positional Arguments</a></li>
+</ul></li>
+<li><a href="#info" class="reference internal">info</a>
+<ul>
+<li><a href="#positional-arguments_repeat6"
+class="reference internal">Positional Arguments</a></li>
+<li><a href="#named-arguments_repeat4" class="reference internal">Named
+Arguments</a></li>
+</ul></li>
+<li><a href="#export" class="reference internal">export</a>
+<ul>
+<li><a href="#positional-arguments_repeat7"
+class="reference internal">Positional Arguments</a></li>
+<li><a href="#named-arguments_repeat5" class="reference internal">Named
+Arguments</a></li>
+</ul></li>
+<li><a href="#upload" class="reference internal">upload</a>
+<ul>
+<li><a href="#positional-arguments_repeat8"
+class="reference internal">Positional Arguments</a></li>
+<li><a href="#named-arguments_repeat6" class="reference internal">Named
+Arguments</a></li>
+</ul></li>
+<li><a href="#report" class="reference internal">report</a>
+<ul>
+<li><a href="#positional-arguments_repeat9"
+class="reference internal">Positional Arguments</a></li>
+<li><a href="#named-arguments_repeat7" class="reference internal">Named
+Arguments</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

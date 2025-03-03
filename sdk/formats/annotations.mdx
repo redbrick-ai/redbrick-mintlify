@@ -1,454 +1,2970 @@
-# Annotation type definitions
-
-This section covers definitions of all the annotation object types. The objects are the same for importing annotations, and exporting annotations.
-
-| [`Label Type`](taxonomy.md#redbrick.types.taxonomy.ObjectType.labelType)   | Label Definition                                                                                                                                                                                                                         | 2D Image                                                                                                                                                                                                                                                                                                                                                                                | 3D Volume                                                                                                                                                                                                                                                                                                                                                                     | Video                                                                                                                                                                                                                                                                                                                                                                                   |
-|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| CLASSIFICATION (non objectType)                                            | [`Classification`](#redbrick.types.task.Classification)                                                                                                                                                                                  | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           |
-| SEGMENTATION                                                               | [`CommonLabelProps`](#redbrick.types.task.CommonLabelProps)                                                                                                                                                                              | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-disabled_by_default sd-text-danger" viewBox="0 0 24 24" aria-hidden="true"><rect fill="none" height="24" width="24"></rect><path d="M3,3v18h18V3H3z M17,15.59L15.59,17L12,13.41L8.41,17L7,15.59L10.59,12L7,8.41L8.41,7L12,10.59L15.59,7L17,8.41L13.41,12 L17,15.59z"></path></svg> |
-| LENGTH                                                                     | [`MeasureLength`](#redbrick.types.task.MeasureLength)                                                                                                                                                                                    | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-disabled_by_default sd-text-danger" viewBox="0 0 24 24" aria-hidden="true"><rect fill="none" height="24" width="24"></rect><path d="M3,3v18h18V3H3z M17,15.59L15.59,17L12,13.41L8.41,17L7,15.59L10.59,12L7,8.41L8.41,7L12,10.59L15.59,7L17,8.41L13.41,12 L17,15.59z"></path></svg> |
-| ANGLE                                                                      | [`MeasureAngle`](#redbrick.types.task.MeasureAngle)                                                                                                                                                                                      | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-disabled_by_default sd-text-danger" viewBox="0 0 24 24" aria-hidden="true"><rect fill="none" height="24" width="24"></rect><path d="M3,3v18h18V3H3z M17,15.59L15.59,17L12,13.41L8.41,17L7,15.59L10.59,12L7,8.41L8.41,7L12,10.59L15.59,7L17,8.41L13.41,12 L17,15.59z"></path></svg> |
-| POINT                                                                      | [`Landmark`](#redbrick.types.task.Landmark)                                                                                                                                                                                              | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-remove" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 13H5v-2h14v2z"></path></svg>                                                                                                                                      | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           |
-| [`Landmark3D`](#redbrick.types.task.Landmark3D)                            | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-remove" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 13H5v-2h14v2z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-remove" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 13H5v-2h14v2z"></path></svg>                                                                                                                                      |                                                                                                                                                                                                                                                                                                                                                                                         |
-| POLYLINE                                                                   | [`Polyline`](#redbrick.types.task.Polyline)                                                                                                                                                                                              | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           |
-| POLYGON                                                                    | [`Polygon`](#redbrick.types.task.Polygon)                                                                                                                                                                                                | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           |
-| ELLIPSE                                                                    | [`Ellipse`](#redbrick.types.task.Ellipse)                                                                                                                                                                                                | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-disabled_by_default sd-text-danger" viewBox="0 0 24 24" aria-hidden="true"><rect fill="none" height="24" width="24"></rect><path d="M3,3v18h18V3H3z M17,15.59L15.59,17L12,13.41L8.41,17L7,15.59L10.59,12L7,8.41L8.41,7L12,10.59L15.59,7L17,8.41L13.41,12 L17,15.59z"></path></svg> |
-| BBOX                                                                       | [`BoundingBox`](#redbrick.types.task.BoundingBox)                                                                                                                                                                                        | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>           |
-| CUBOID                                                                     | [`Cuboid`](#redbrick.types.task.Cuboid)                                                                                                                                                                                                  | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-disabled_by_default sd-text-danger" viewBox="0 0 24 24" aria-hidden="true"><rect fill="none" height="24" width="24"></rect><path d="M3,3v18h18V3H3z M17,15.59L15.59,17L12,13.41L8.41,17L7,15.59L10.59,12L7,8.41L8.41,7L12,10.59L15.59,7L17,8.41L13.41,12 L17,15.59z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-check_box sd-text-success" viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0h24v24H0z" fill="none"></path><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg> | <svg version="4.0.0.63c5cb3" width="1.5rem" height="1.5rem" class="sd-material-icon sd-material-icon-disabled_by_default sd-text-danger" viewBox="0 0 24 24" aria-hidden="true"><rect fill="none" height="24" width="24"></rect><path d="M3,3v18h18V3H3z M17,15.59L15.59,17L12,13.41L8.41,17L7,15.59L10.59,12L7,8.41L8.41,7L12,10.59L15.59,7L17,8.41L13.41,12 L17,15.59z"></path></svg> |
-
-<a id="module-redbrick.types.task"></a>
-
-### *class* redbrick.types.task.Point2D
-
-2D pixel point.
-
-The Point2D coordinates are normalized in relation to the dimensions of the image, meaning they are scaled down to a range between 0 and 1. To convert these normalized points back to their original scale on the image, you “un-normalize” them by multiplying by the image’s dimensions. This operation typically results in a floating-point number.
-
-RedBrick AI enhances the precision of annotations on its canvas by **supporting a resolution higher than that of the underlying image**. This capability facilitates sub-pixel annotation accuracy. However, if sub-pixel precision is not necessary for your application, you can simplify the process **by rounding the un-normalized coordinates to the nearest whole number**. This adjustment converts the precise floating-point values back to standard pixel coordinates, making them easier to work with for general purposes.
-
-#### IMPORTANT
-The origin point (0,0) from which these coordinates are measured is at the top left of the image. However, for mammography and DBT the origin is the top right of the image.
-
-#### xNorm *: `float`*
-
-X co-ordinate normalized by the width of the image.
-
-#### yNorm *: `float`*
-
-Y co-ordinate normalized by the height of the image.
-
-### *class* redbrick.types.task.VoxelPoint
-
-Represents a three-dimensional point in image-space, where i, j, and k  are columns, rows, and k is the slice number.
-
-#### i *: `int`*
-
-#### j *: `int`*
-
-#### k *: `int`*
-
-### *class* redbrick.types.task.WorldPoint
-
-Represents a three-dimensional point in physical space/world co-ordinates. The world co-ordinates are calculated using [`redbrick.types.task.VoxelPoint`](#redbrick.types.task.VoxelPoint) and the DICOM Image Plane Module.
-
-#### x *: `float`*
-
-#### y *: `float`*
-
-#### z *: `float`*
-
-### *class* redbrick.types.task.MeasurementStats
-
-Measurement statistics for annotations.
-
-#### average *: `float`*
-
-Average pixel/voxel intensity within the annotation. In CT, this is the average HU value.
-
-#### area *: `float`*
-
-Area contained within the annotation in mm^2.
-
-#### volume *: `float`*
-
-Volume contained within the annotation in mm^3
-
-#### minimum *: `float`*
-
-Minimum intensity value within the annotation.
-
-#### maximum *: `float`*
-
-Maximum intensity value within the annotation.
-
-### *class* redbrick.types.task.VideoMetaData
-
-Contains annotation information along the third axis. Frames for video, and slices for 3D volumes.
-
-#### WARNING
-[`redbrick.types.task.VideoMetaData`](#redbrick.types.task.VideoMetaData) has a misleading name. It contains information for both videos, and 3D volumes.
-
-#### HINT
-Watch [this video](https://share.redbrickai.com/vpKDGyBd) for a detailed explaination of all the attributes of this object.
-
-#### seriesItemIndex *: `int`*
-
-The index of the file in series “items” list that this annotation is present on.
-
-#### seriesFrameIndex *: `int`*
-
-Frame index of the annotation for nifti and dicom multipart files.
-
-#### frameIndex *: `int`*
-
-The frame number (for video) or slice index (for 3D volumes) the annotation is present on.
-
-#### trackId *: `str`*
-
-Each distinct object has a unique trackId. Two annotations on different frameIndex’s with the same trackId’s represent the same distinct object.
-
-#### keyFrame *: `bool`*
-
-If True, this annotation is user-defined. If False, this annotation is interpolated.
-
-#### endTrack *: `bool`*
-
-If True, this annotation is the last annotation of a specific track defined by trackId.
-
-### redbrick.types.task.Attributes
-
-Attributes for Taxonomy objects.
-Attributes can be boolean, textfields, select’s or multi-select’s.
-
-alias of `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]
-
-### *class* redbrick.types.task.CommonLabelProps
-
-Full version of [`redbrick.types.task.Series.segmentMap`](index.md#redbrick.types.task.Series.segmentMap).
-
-#### category *: `Union`[`int`, `str`, `List`[`str`]]*
-
-Taxonomy object category.
-
-#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
-
-Associated taxonomy object attributes.
-
-#### mask *: `Union`[`str`, `List`[`str`]]*
-
-Filepath to segmentation file for this annotation.
-
-#### overlappingGroups *: `List`[`int`]*
-
-Overlapping instances that this label is part of (when without_masks is set).
-
-#### group *: `str`*
-
-Linked label group id.
-
-#### readOnly *: `bool`*
-
-Read only status
-
-### *class* redbrick.types.task.InstanceClassification
-
-Instance level classifications for frame-by-frame (video) or slice-by-slice (volume) classifications..
-
-#### fileIndex *: `int`*
-
-For video this is the frameIndex, for DICOM volumes this is the sliceIndex.
-
-#### fileName *: `str`*
-
-The file name represented by frameIndex.
-
-#### group *: `str`*
-
-Linked label group id.
-
-#### readOnly *: `bool`*
-
-Read only status
-
-### *class* redbrick.types.task.Classification
-
-Study or series classification.
-
-#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
-
-#### group *: `str`*
-
-Linked label group id.
-
-#### readOnly *: `bool`*
-
-Read only status
-
-### *class* redbrick.types.task.Polyline
-
-Open polylines, not supported in 3D images.
-
-#### points *: `List`[[`Point2D`](#redbrick.types.task.Point2D)]*
-
-#### category *: `Union`[`int`, `str`, `List`[`str`]]*
-
-#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
-
-#### video *: [`VideoMetaData`](#redbrick.types.task.VideoMetaData)*
-
-#### group *: `str`*
-
-Linked label group id.
-
-#### readOnly *: `bool`*
-
-Read only status
-
-### *class* redbrick.types.task.Polygon
-
-Closed polygons, not supported in 3D images.
-
-#### points *: `List`[[`Point2D`](#redbrick.types.task.Point2D)]*
-
-#### category *: `Union`[`int`, `str`, `List`[`str`]]*
-
-#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
-
-#### stats *: [`MeasurementStats`](#redbrick.types.task.MeasurementStats)*
-
-#### video *: [`VideoMetaData`](#redbrick.types.task.VideoMetaData)*
-
-#### group *: `str`*
-
-Linked label group id.
-
-#### readOnly *: `bool`*
-
-Read only status
-
-### *class* redbrick.types.task.Cuboid
-
-3D bounding boxes for 3D images.
-
-#### point1 *: [`VoxelPoint`](#redbrick.types.task.VoxelPoint)*
-
-Top left diagonal corner.
-
-#### point2 *: [`VoxelPoint`](#redbrick.types.task.VoxelPoint)*
-
-Bottom right diagonal corner.
-
-#### absolutePoint1 *: [`WorldPoint`](#redbrick.types.task.WorldPoint)*
-
-#### absolutePoint2 *: [`WorldPoint`](#redbrick.types.task.WorldPoint)*
-
-#### category *: `Union`[`int`, `str`, `List`[`str`]]*
-
-#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
-
-#### stats *: [`MeasurementStats`](#redbrick.types.task.MeasurementStats)*
-
-#### group *: `str`*
-
-Linked label group id.
-
-#### readOnly *: `bool`*
-
-Read only status
-
-### *class* redbrick.types.task.BoundingBox
-
-2D bounding box for 2D images, or slice by slice annotation in 3D images.
-
-#### HINT
-See the [following diagram](https://share.redbrickai.com/T0jPZFn9) to understand the coordinate system.
-
-#### pointTopLeft *: [`Point2D`](#redbrick.types.task.Point2D)*
-
-Coordinates of the top left of the bounding box.
-
-#### wNorm *: `float`*
-
-Width of the bounding box, normalized by image width.
-
-#### hNorm *: `float`*
-
-Height of the bounding box, normalized by the image height.
-
-#### category *: `Union`[`int`, `str`, `List`[`str`]]*
-
-#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
-
-#### stats *: [`MeasurementStats`](#redbrick.types.task.MeasurementStats)*
-
-#### video *: [`VideoMetaData`](#redbrick.types.task.VideoMetaData)*
-
-#### group *: `str`*
-
-Linked label group id.
-
-#### readOnly *: `bool`*
-
-Read only status
-
-### *class* redbrick.types.task.Ellipse
-
-Ellipse annotation.
-
-#### HINT
-See [this ellipse diagram](https://share.redbrickai.com/6PH9ypkl) to understand the coordinate system. Please read the [`redbrick.types.task.Point2D`](#redbrick.types.task.Point2D) documentation to understand how normalization works & the origin of the coordinate system.
-
-#### WARNING
-For DICOM images of a certain type, ellipse annotations might be flipped i.e., rotating the ellipse clockwise would result in counter-clockwise rotation.
-If you encounter these cases, reach out to our support for instructions on how to handle this [support@redbrickai.com](mailto:support@redbrickai.com).
-
-#### pointCenter *: [`Point2D`](#redbrick.types.task.Point2D)*
-
-The normalized center of the ellipse.
-
-#### xRadiusNorm *: `float`*
-
-The x axis of the ellipse, normalized with by the image width. Adjusting for rotationRad, the x-axis of the ellipse aligns with the x-axis of the image.
-
-#### yRadiusNorm *: `float`*
-
-The y axis of the ellipse, normalized with by the image width. Adjusting for rotationRad, the y-axis of the ellipse aligns with the y-axis of the image.
-
-#### rotationRad *: `float`*
-
-The rotation of the ellipse measured clockwise as the angle between the y-axis of the ellipse and y-axis of the image.
-
-#### category *: `Union`[`int`, `str`, `List`[`str`]]*
-
-#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
-
-#### stats *: [`MeasurementStats`](#redbrick.types.task.MeasurementStats)*
-
-#### video *: [`VideoMetaData`](#redbrick.types.task.VideoMetaData)*
-
-#### group *: `str`*
-
-Linked label group id.
-
-#### readOnly *: `bool`*
-
-Read only status
-
-### *class* redbrick.types.task.MeasureAngle
-
-Angle measurement label.
-
-An angle measurement is defined by three points, where vertex is the middle point between point1 and point2. The angle between the two vectors <point1, vertex> and <point2, vertex> defines the angle measurement.
-
-#### HINT
-See [this angle diagram](https://share.redbrickai.com/rqW3sZtf) to understand the coordinate system.
-
-#### type *: `Literal`[`'angle'`]*
-
-#### point1 *: [`VoxelPoint`](#redbrick.types.task.VoxelPoint)*
-
-#### vertex *: [`VoxelPoint`](#redbrick.types.task.VoxelPoint)*
-
-#### point2 *: [`VoxelPoint`](#redbrick.types.task.VoxelPoint)*
-
-#### absolutePoint1 *: [`WorldPoint`](#redbrick.types.task.WorldPoint)*
-
-#### absoluteVertex *: [`WorldPoint`](#redbrick.types.task.WorldPoint)*
-
-#### absolutePoint2 *: [`WorldPoint`](#redbrick.types.task.WorldPoint)*
-
-#### normal *: `List`[`float`]*
-
-Measurements can be made on oblique planes. normal defines the normal unit vector to the slice on which the annotation was made. For annotations made on non-oblique planes, the normal will be [0,0,1].
-The measurement is fully defined even without normal, however, for completeness [see this angle diagram](https://share.redbrickai.com/CZ5BXXWK) for it’s definition.
-
-#### angle *: `float`*
-
-Measurement angle in degrees.
-
-#### category *: `Union`[`int`, `str`, `List`[`str`]]*
-
-#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
-
-#### group *: `str`*
-
-Linked label group id.
-
-#### readOnly *: `bool`*
-
-Read only status
-
-### *class* redbrick.types.task.MeasureLength
-
-Length measurement label.
-
-A length measurement is defined by two points, and the length measurement is the distance between the two points.
-
-#### type *: `Literal`[`'length'`]*
-
-#### point1 *: [`VoxelPoint`](#redbrick.types.task.VoxelPoint)*
-
-#### point2 *: [`VoxelPoint`](#redbrick.types.task.VoxelPoint)*
-
-#### absolutePoint1 *: [`WorldPoint`](#redbrick.types.task.WorldPoint)*
-
-#### absolutePoint2 *: [`WorldPoint`](#redbrick.types.task.WorldPoint)*
-
-#### normal *: `List`[`float`]*
-
-Measurements can be made on oblique planes. normal defines the normal unit vector to the slice on which the annotation was made. For annotations made on non-oblique planes, the normal will be [0,0,1].
-The measurement is fully defined even without normal, however, for completeness [see this length diagram](https://share.redbrickai.com/CZ5BXXWK) for it’s definition.
-
-#### length *: `float`*
-
-The value of the measurement in millimeters.
-
-#### category *: `Union`[`int`, `str`, `List`[`str`]]*
-
-#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
-
-#### group *: `str`*
-
-Linked label group id.
-
-#### readOnly *: `bool`*
-
-Read only status
-
-### *class* redbrick.types.task.Landmark3D
-
-3D landmark for 3D data.
-
-#### point *: [`VoxelPoint`](#redbrick.types.task.VoxelPoint)*
-
-#### category *: `Union`[`int`, `str`, `List`[`str`]]*
-
-#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
-
-#### group *: `str`*
-
-Linked label group id.
-
-#### readOnly *: `bool`*
-
-Read only status
-
-### *class* redbrick.types.task.Landmark
-
-2D landmark for 2D data.
-
-#### point *: [`Point2D`](#redbrick.types.task.Point2D)*
-
-#### category *: `Union`[`int`, `str`, `List`[`str`]]*
-
-#### attributes *: `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]*
-
-#### video *: [`VideoMetaData`](#redbrick.types.task.VideoMetaData)*
-
-#### group *: `str`*
-
-Linked label group id.
-
-#### readOnly *: `bool`*
-
-Read only status
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Annotation type definitions - Version 2.21.5</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Annotation type definitions - Version 2.21.5</h1>
+</header>
+<img
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSJkaXNwbGF5OiBub25lOyI+CiAgPHN5bWJvbCBpZD0ic3ZnLXRvYyIgdmlld2JveD0iMCAwIDI0IDI0Ij4KICAgIDx0aXRsZT5Db250ZW50czwvdGl0bGU+CiAgICA8c3ZnIHN0cm9rZT0iY3VycmVudENvbG9yIiBmaWxsPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMCIgdmlld2JveD0iMCAwIDEwMjQgMTAyNCI+CiAgICAgIDxwYXRoIGQ9Ik00MDggNDQyaDQ4MGM0LjQgMCA4LTMuNiA4LTh2LTU2YzAtNC40LTMuNi04LTgtOEg0MDhjLTQuNCAwLTggMy42LTggOHY1NmMwIDQuNCAzLjYgOCA4IDh6bS04IDIwNGMwIDQuNCAzLjYgOCA4IDhoNDgwYzQuNCAwIDgtMy42IDgtOHYtNTZjMC00LjQtMy42LTgtOC04SDQwOGMtNC40IDAtOCAzLjYtOCA4djU2em01MDQtNDg2SDEyMGMtNC40IDAtOCAzLjYtOCA4djU2YzAgNC40IDMuNiA4IDggOGg3ODRjNC40IDAgOC0zLjYgOC04di01NmMwLTQuNC0zLjYtOC04LTh6bTAgNjMySDEyMGMtNC40IDAtOCAzLjYtOCA4djU2YzAgNC40IDMuNiA4IDggOGg3ODRjNC40IDAgOC0zLjYgOC04di01NmMwLTQuNC0zLjYtOC04LTh6TTExNS40IDUxOC45TDI3MS43IDY0MmM1LjggNC42IDE0LjQuNSAxNC40LTYuOVYzODguOWMwLTcuNC04LjUtMTEuNS0xNC40LTYuOUwxMTUuNCA1MDUuMWE4Ljc0IDguNzQgMCAwIDAgMCAxMy44eiIgLz4KICAgIDwvc3ZnPg==" />
+Menu
+<img
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdib3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlci1tZW51Ij4KICAgICAgPGxpbmUgeDE9IjMiIHkxPSIxMiIgeDI9IjIxIiB5Mj0iMTIiPjwvbGluZT4KICAgICAgPGxpbmUgeDE9IjMiIHkxPSI2IiB4Mj0iMjEiIHkyPSI2Ij48L2xpbmU+CiAgICAgIDxsaW5lIHgxPSIzIiB5MT0iMTgiIHgyPSIyMSIgeTI9IjE4Ij48L2xpbmU+CiAgICA8L3N2Zz4="
+class="feather-menu" />
+Expand
+<img
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdib3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlci1jaGV2cm9uLXJpZ2h0Ij4KICAgICAgPHBvbHlsaW5lIHBvaW50cz0iOSAxOCAxNSAxMiA5IDYiPjwvcG9seWxpbmU+CiAgICA8L3N2Zz4="
+class="feather-chevron-right" />
+Light mode
+<img
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdib3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJmZWF0aGVyLXN1biI+CiAgICAgIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjUiPjwvY2lyY2xlPgogICAgICA8bGluZSB4MT0iMTIiIHkxPSIxIiB4Mj0iMTIiIHkyPSIzIj48L2xpbmU+CiAgICAgIDxsaW5lIHgxPSIxMiIgeTE9IjIxIiB4Mj0iMTIiIHkyPSIyMyI+PC9saW5lPgogICAgICA8bGluZSB4MT0iNC4yMiIgeTE9IjQuMjIiIHgyPSI1LjY0IiB5Mj0iNS42NCI+PC9saW5lPgogICAgICA8bGluZSB4MT0iMTguMzYiIHkxPSIxOC4zNiIgeDI9IjE5Ljc4IiB5Mj0iMTkuNzgiPjwvbGluZT4KICAgICAgPGxpbmUgeDE9IjEiIHkxPSIxMiIgeDI9IjMiIHkyPSIxMiI+PC9saW5lPgogICAgICA8bGluZSB4MT0iMjEiIHkxPSIxMiIgeDI9IjIzIiB5Mj0iMTIiPjwvbGluZT4KICAgICAgPGxpbmUgeDE9IjQuMjIiIHkxPSIxOS43OCIgeDI9IjUuNjQiIHkyPSIxOC4zNiI+PC9saW5lPgogICAgICA8bGluZSB4MT0iMTguMzYiIHkxPSI1LjY0IiB4Mj0iMTkuNzgiIHkyPSI0LjIyIj48L2xpbmU+CiAgICA8L3N2Zz4="
+class="feather-sun" />
+Dark mode
+<img
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdib3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJpY29uLXRhYmxlci1tb29uIj4KICAgICAgPHBhdGggc3Ryb2tlPSJub25lIiBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPgogICAgICA8cGF0aCBkPSJNMTIgM2MuMTMyIDAgLjI2MyAwIC4zOTMgMGE3LjUgNy41IDAgMCAwIDcuOTIgMTIuNDQ2YTkgOSAwIDEgMSAtOC4zMTMgLTEyLjQ1NHoiIC8+CiAgICA8L3N2Zz4="
+class="icon-tabler-moon" />
+Auto light/dark mode
+<img
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdib3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJpY29uLXRhYmxlci1zaGFkb3ciPgogICAgICA8cGF0aCBzdHJva2U9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiIC8+CiAgICAgIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjkiPjwvY2lyY2xlPgogICAgICA8cGF0aCBkPSJNMTMgMTJoNSIgLz4KICAgICAgPHBhdGggZD0iTTEzIDE1aDQiIC8+CiAgICAgIDxwYXRoIGQ9Ik0xMyAxOGgxIiAvPgogICAgICA8cGF0aCBkPSJNMTMgOWg0IiAvPgogICAgICA8cGF0aCBkPSJNMTMgNmgxIiAvPgogICAgPC9zdmc+"
+class="icon-tabler-shadow" />
+<div class="visually-hidden">
+Hide navigation sidebar
+</div>
+<div class="visually-hidden">
+Hide table of contents sidebar
+</div>
+<div class="page">
+<div class="mobile-header">
+<div class="header-left">
+<div class="visually-hidden">
+Toggle site navigation sidebar
+</div>
+<em><img
+src="data:image/svg+xml;base64,PHN2Zz48dXNlIGhyZWY9IiNzdmctbWVudSIgLz48L3N2Zz4=" /></em>
+</div>
+<div class="header-center">
+<a href="../index.html"></a>
+<div class="brand">
+Version 2.21.5
+</div>
+</div>
+<div class="header-right">
+<div class="theme-toggle-container theme-toggle-header">
+<div class="visually-hidden">
+Toggle Light / Dark / Auto color theme
+</div>
+<img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0idGhlbWUtaWNvbi13aGVuLWF1dG8iPjx1c2UgaHJlZj0iI3N2Zy1zdW4taGFsZiIgLz48L3N2Zz4="
+class="theme-icon-when-auto" /> <img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0idGhlbWUtaWNvbi13aGVuLWRhcmsiPjx1c2UgaHJlZj0iI3N2Zy1tb29uIiAvPjwvc3ZnPg=="
+class="theme-icon-when-dark" /> <img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0idGhlbWUtaWNvbi13aGVuLWxpZ2h0Ij48dXNlIGhyZWY9IiNzdmctc3VuIiAvPjwvc3ZnPg=="
+class="theme-icon-when-light" />
+</div>
+<div class="visually-hidden">
+Toggle table of contents sidebar
+</div>
+<em><img
+src="data:image/svg+xml;base64,PHN2Zz48dXNlIGhyZWY9IiNzdmctdG9jIiAvPjwvc3ZnPg==" /></em>
+</div>
+</div>
+<div class="sidebar-container">
+<div class="sidebar-sticky">
+<a href="../index.html" class="sidebar-brand"></a>
+<div class="sidebar-logo-container">
+<img src="/assets/logos/rbai-light.png" class="sidebar-logo only-light"
+alt="Light Logo" /> <img src="/assets/logos/rbai-dark.png"
+class="sidebar-logo only-dark" alt="Dark Logo" />
+</div>
+<span class="sidebar-brand-text">Version 2.21.5</span>
+<div id="searchbox">
+
+</div>
+<div class="sidebar-scroll">
+<div class="sidebar-tree">
+<ul>
+<li><a href="../sdk.html" class="reference internal">Python SDK</a></li>
+</ul>
+<ul>
+<li><a href="../cli.html" class="reference internal">Command Line
+Interface</a></li>
+</ul>
+<ul>
+<li><a href="index.html" class="reference internal">Formats</a>☒
+<div class="visually-hidden">
+Toggle navigation of Formats
+</div>
+<em><img
+src="data:image/svg+xml;base64,PHN2Zz48dXNlIGhyZWY9IiNzdmctYXJyb3ctcmlnaHQiIC8+PC9zdmc+" /></em>
+<ul>
+<li><a href="#" class="current reference internal">Annotation type
+definitions</a></li>
+<li><a href="taxonomy.html" class="reference internal">Taxonomy
+format</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="main">
+<div class="content">
+<div class="article-container">
+<a href="#" class="back-to-top muted-link"><img
+src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdib3g9IjAgMCAyNCAyNCI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMyAyMGgtMlY4bC01LjUgNS41LTEuNDItMS40MkwxMiA0LjE2bDcuOTIgNy45Mi0xLjQyIDEuNDJMMTMgOHYxMnoiIC8+CiAgICAgICAgICA8L3N2Zz4=" />
+<span>Back to top</span></a>
+<div class="content-icon-container">
+<div class="theme-toggle-container theme-toggle-content">
+<div class="visually-hidden">
+Toggle Light / Dark / Auto color theme
+</div>
+<img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0idGhlbWUtaWNvbi13aGVuLWF1dG8iPjx1c2UgaHJlZj0iI3N2Zy1zdW4taGFsZiIgLz48L3N2Zz4="
+class="theme-icon-when-auto" /> <img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0idGhlbWUtaWNvbi13aGVuLWRhcmsiPjx1c2UgaHJlZj0iI3N2Zy1tb29uIiAvPjwvc3ZnPg=="
+class="theme-icon-when-dark" /> <img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0idGhlbWUtaWNvbi13aGVuLWxpZ2h0Ij48dXNlIGhyZWY9IiNzdmctc3VuIiAvPjwvc3ZnPg=="
+class="theme-icon-when-light" />
+</div>
+<div class="visually-hidden">
+Toggle table of contents sidebar
+</div>
+<em><img
+src="data:image/svg+xml;base64,PHN2Zz48dXNlIGhyZWY9IiNzdmctdG9jIiAvPjwvc3ZnPg==" /></em>
+</div>
+<h1 id="annotation-type-definitions">Annotation type definitions<a
+href="#annotation-type-definitions" class="headerlink"
+title="Link to this heading">#</a></h1>
+<p>This section covers definitions of all the annotation object types.
+The objects are the same for importing annotations, and exporting
+annotations.</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd">
+<th class="head"><p><a
+href="taxonomy.html#redbrick.types.taxonomy.ObjectType.labelType"
+class="reference internal"
+title="redbrick.types.taxonomy.ObjectType.labelType"><span
+class="pre"><code class="sourceCode python">Label</code></span><code
+class="sourceCode python"> </code><span class="pre"><code
+class="sourceCode python">Type</code></span></a></p></th>
+<th class="head"><p>Label Definition</p></th>
+<th class="head"><p>2D Image</p></th>
+<th class="head"><p>3D Volume</p></th>
+<th class="head"><p>Video</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even">
+<td><p>CLASSIFICATION (non objectType)</p></td>
+<td><p><a href="#redbrick.types.task.Classification"
+class="reference internal"
+title="redbrick.types.task.Classification"><span class="pre"><code
+class="sourceCode python">Classification</code></span></a></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+</tr>
+<tr class="row-odd">
+<td><p>SEGMENTATION</p></td>
+<td><p><a href="#redbrick.types.task.CommonLabelProps"
+class="reference internal"
+title="redbrick.types.task.CommonLabelProps"><span class="pre"><code
+class="sourceCode python">CommonLabelProps</code></span></a></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1kaXNhYmxlZF9ieV9kZWZhdWx0IHNkLXRleHQtZGFuZ2VyIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cmVjdCBmaWxsPSJub25lIiBoZWlnaHQ9IjI0IiB3aWR0aD0iMjQiIC8+PHBhdGggZD0iTTMsM3YxOGgxOFYzSDN6IE0xNywxNS41OUwxNS41OSwxN0wxMiwxMy40MUw4LjQxLDE3TDcsMTUuNTlMMTAuNTksMTJMNyw4LjQxTDguNDEsN0wxMiwxMC41OUwxNS41OSw3TDE3LDguNDFMMTMuNDEsMTIgTDE3LDE1LjU5eiIgLz48L3N2Zz4="
+class="sd-material-icon sd-material-icon-disabled_by_default sd-text-danger" /></p></td>
+</tr>
+<tr class="row-even">
+<td><p>LENGTH</p></td>
+<td><p><a href="#redbrick.types.task.MeasureLength"
+class="reference internal"
+title="redbrick.types.task.MeasureLength"><span class="pre"><code
+class="sourceCode python">MeasureLength</code></span></a></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1kaXNhYmxlZF9ieV9kZWZhdWx0IHNkLXRleHQtZGFuZ2VyIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cmVjdCBmaWxsPSJub25lIiBoZWlnaHQ9IjI0IiB3aWR0aD0iMjQiIC8+PHBhdGggZD0iTTMsM3YxOGgxOFYzSDN6IE0xNywxNS41OUwxNS41OSwxN0wxMiwxMy40MUw4LjQxLDE3TDcsMTUuNTlMMTAuNTksMTJMNyw4LjQxTDguNDEsN0wxMiwxMC41OUwxNS41OSw3TDE3LDguNDFMMTMuNDEsMTIgTDE3LDE1LjU5eiIgLz48L3N2Zz4="
+class="sd-material-icon sd-material-icon-disabled_by_default sd-text-danger" /></p></td>
+</tr>
+<tr class="row-odd">
+<td><p>ANGLE</p></td>
+<td><p><a href="#redbrick.types.task.MeasureAngle"
+class="reference internal"
+title="redbrick.types.task.MeasureAngle"><span class="pre"><code
+class="sourceCode python">MeasureAngle</code></span></a></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1kaXNhYmxlZF9ieV9kZWZhdWx0IHNkLXRleHQtZGFuZ2VyIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cmVjdCBmaWxsPSJub25lIiBoZWlnaHQ9IjI0IiB3aWR0aD0iMjQiIC8+PHBhdGggZD0iTTMsM3YxOGgxOFYzSDN6IE0xNywxNS41OUwxNS41OSwxN0wxMiwxMy40MUw4LjQxLDE3TDcsMTUuNTlMMTAuNTksMTJMNyw4LjQxTDguNDEsN0wxMiwxMC41OUwxNS41OSw3TDE3LDguNDFMMTMuNDEsMTIgTDE3LDE1LjU5eiIgLz48L3N2Zz4="
+class="sd-material-icon sd-material-icon-disabled_by_default sd-text-danger" /></p></td>
+</tr>
+<tr class="row-even">
+<td rowspan="2"><p>POINT</p></td>
+<td><p><a href="#redbrick.types.task.Landmark"
+class="reference internal" title="redbrick.types.task.Landmark"><span
+class="pre"><code
+class="sourceCode python">Landmark</code></span></a></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1yZW1vdmUiIHZpZXdib3g9IjAgMCAyNCAyNCIgYXJpYS1oaWRkZW49InRydWUiPjxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiIC8+PHBhdGggZD0iTTE5IDEzSDV2LTJoMTR2MnoiIC8+PC9zdmc+"
+class="sd-material-icon sd-material-icon-remove" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+</tr>
+<tr class="row-odd">
+<td><p><a href="#redbrick.types.task.Landmark3D"
+class="reference internal" title="redbrick.types.task.Landmark3D"><span
+class="pre"><code
+class="sourceCode python">Landmark3D</code></span></a></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1yZW1vdmUiIHZpZXdib3g9IjAgMCAyNCAyNCIgYXJpYS1oaWRkZW49InRydWUiPjxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiIC8+PHBhdGggZD0iTTE5IDEzSDV2LTJoMTR2MnoiIC8+PC9zdmc+"
+class="sd-material-icon sd-material-icon-remove" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1yZW1vdmUiIHZpZXdib3g9IjAgMCAyNCAyNCIgYXJpYS1oaWRkZW49InRydWUiPjxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiIC8+PHBhdGggZD0iTTE5IDEzSDV2LTJoMTR2MnoiIC8+PC9zdmc+"
+class="sd-material-icon sd-material-icon-remove" /></p></td>
+</tr>
+<tr class="row-even">
+<td><p>POLYLINE</p></td>
+<td><p><a href="#redbrick.types.task.Polyline"
+class="reference internal" title="redbrick.types.task.Polyline"><span
+class="pre"><code
+class="sourceCode python">Polyline</code></span></a></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+</tr>
+<tr class="row-odd">
+<td><p>POLYGON</p></td>
+<td><p><a href="#redbrick.types.task.Polygon" class="reference internal"
+title="redbrick.types.task.Polygon"><span class="pre"><code
+class="sourceCode python">Polygon</code></span></a></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+</tr>
+<tr class="row-even">
+<td><p>ELLIPSE</p></td>
+<td><p><a href="#redbrick.types.task.Ellipse" class="reference internal"
+title="redbrick.types.task.Ellipse"><span class="pre"><code
+class="sourceCode python">Ellipse</code></span></a></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1kaXNhYmxlZF9ieV9kZWZhdWx0IHNkLXRleHQtZGFuZ2VyIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cmVjdCBmaWxsPSJub25lIiBoZWlnaHQ9IjI0IiB3aWR0aD0iMjQiIC8+PHBhdGggZD0iTTMsM3YxOGgxOFYzSDN6IE0xNywxNS41OUwxNS41OSwxN0wxMiwxMy40MUw4LjQxLDE3TDcsMTUuNTlMMTAuNTksMTJMNyw4LjQxTDguNDEsN0wxMiwxMC41OUwxNS41OSw3TDE3LDguNDFMMTMuNDEsMTIgTDE3LDE1LjU5eiIgLz48L3N2Zz4="
+class="sd-material-icon sd-material-icon-disabled_by_default sd-text-danger" /></p></td>
+</tr>
+<tr class="row-odd">
+<td><p>BBOX</p></td>
+<td><p><a href="#redbrick.types.task.BoundingBox"
+class="reference internal" title="redbrick.types.task.BoundingBox"><span
+class="pre"><code
+class="sourceCode python">BoundingBox</code></span></a></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+</tr>
+<tr class="row-even">
+<td><p>CUBOID</p></td>
+<td><p><a href="#redbrick.types.task.Cuboid" class="reference internal"
+title="redbrick.types.task.Cuboid"><span class="pre"><code
+class="sourceCode python">Cuboid</code></span></a></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1kaXNhYmxlZF9ieV9kZWZhdWx0IHNkLXRleHQtZGFuZ2VyIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cmVjdCBmaWxsPSJub25lIiBoZWlnaHQ9IjI0IiB3aWR0aD0iMjQiIC8+PHBhdGggZD0iTTMsM3YxOGgxOFYzSDN6IE0xNywxNS41OUwxNS41OSwxN0wxMiwxMy40MUw4LjQxLDE3TDcsMTUuNTlMMTAuNTksMTJMNyw4LjQxTDguNDEsN0wxMiwxMC41OUwxNS41OSw3TDE3LDguNDFMMTMuNDEsMTIgTDE3LDE1LjU5eiIgLz48L3N2Zz4="
+class="sd-material-icon sd-material-icon-disabled_by_default sd-text-danger" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1jaGVja19ib3ggc2QtdGV4dC1zdWNjZXNzIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIiAvPjxwYXRoIGQ9Ik0xOSAzSDVjLTEuMTEgMC0yIC45LTIgMnYxNGMwIDEuMS44OSAyIDIgMmgxNGMxLjExIDAgMi0uOSAyLTJWNWMwLTEuMS0uODktMi0yLTJ6bS05IDE0bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6IiAvPjwvc3ZnPg=="
+class="sd-material-icon sd-material-icon-check_box sd-text-success" /></p></td>
+<td><p><img
+src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSI0LjAuMC42M2M1Y2IzIiB3aWR0aD0iMS41cmVtIiBoZWlnaHQ9IjEuNXJlbSIgY2xhc3M9InNkLW1hdGVyaWFsLWljb24gc2QtbWF0ZXJpYWwtaWNvbi1kaXNhYmxlZF9ieV9kZWZhdWx0IHNkLXRleHQtZGFuZ2VyIiB2aWV3Ym94PSIwIDAgMjQgMjQiIGFyaWEtaGlkZGVuPSJ0cnVlIj48cmVjdCBmaWxsPSJub25lIiBoZWlnaHQ9IjI0IiB3aWR0aD0iMjQiIC8+PHBhdGggZD0iTTMsM3YxOGgxOFYzSDN6IE0xNywxNS41OUwxNS41OSwxN0wxMiwxMy40MUw4LjQxLDE3TDcsMTUuNTlMMTAuNTksMTJMNyw4LjQxTDguNDEsN0wxMiwxMC41OUwxNS41OSw3TDE3LDguNDFMMTMuNDEsMTIgTDE3LDE1LjU5eiIgLz48L3N2Zz4="
+class="sd-material-icon sd-material-icon-disabled_by_default sd-text-danger" /></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl>
+<dt><em><span class="pre">class</span><span class="w"> </span></em><span
+class="sig-prename descclassname"><span
+class="pre">redbrick.types.task.</span></span><span
+class="sig-name descname"><span class="pre">Point2D</span></span><a
+href="../_modules/redbrick/types/task.html#Point2D"
+class="reference internal"><span class="viewcode-link"><span
+class="pre">[source]</span></span></a><a
+href="#redbrick.types.task.Point2D" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>2D pixel point.</p>
+<p>The Point2D coordinates are normalized in relation to the dimensions
+of the image, meaning they are scaled down to a range between 0 and 1.
+To convert these normalized points back to their original scale on the
+image, you “un-normalize” them by multiplying by the image’s dimensions.
+This operation typically results in a floating-point number.</p>
+<p>RedBrick AI enhances the precision of annotations on its canvas by
+<strong>supporting a resolution higher than that of the underlying
+image</strong>. This capability facilitates sub-pixel annotation
+accuracy. However, if sub-pixel precision is not necessary for your
+application, you can simplify the process <strong>by rounding the
+un-normalized coordinates to the nearest whole number</strong>. This
+adjustment converts the precise floating-point values back to standard
+pixel coordinates, making them easier to work with for general
+purposes.</p>
+<div class="admonition important">
+<p>Important</p>
+<p>The origin point (0,0) from which these coordinates are measured is
+at the top left of the image. However, for mammography and DBT the
+origin is the top right of the image.</p>
+</div>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">xNorm</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">float</span></code></span></em><a
+href="#redbrick.types.task.Point2D.xNorm" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>X co-ordinate normalized by the width of the image.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">yNorm</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">float</span></code></span></em><a
+href="#redbrick.types.task.Point2D.yNorm" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Y co-ordinate normalized by the height of the image.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt><em><span class="pre">class</span><span class="w"> </span></em><span
+class="sig-prename descclassname"><span
+class="pre">redbrick.types.task.</span></span><span
+class="sig-name descname"><span class="pre">VoxelPoint</span></span><a
+href="../_modules/redbrick/types/task.html#VoxelPoint"
+class="reference internal"><span class="viewcode-link"><span
+class="pre">[source]</span></span></a><a
+href="#redbrick.types.task.VoxelPoint" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Represents a three-dimensional point in image-space, where i, j, and
+k are columns, rows, and k is the slice number.</p>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">i</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span></em><a
+href="#redbrick.types.task.VoxelPoint.i" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">j</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span></em><a
+href="#redbrick.types.task.VoxelPoint.j" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">k</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span></em><a
+href="#redbrick.types.task.VoxelPoint.k" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt><em><span class="pre">class</span><span class="w"> </span></em><span
+class="sig-prename descclassname"><span
+class="pre">redbrick.types.task.</span></span><span
+class="sig-name descname"><span class="pre">WorldPoint</span></span><a
+href="../_modules/redbrick/types/task.html#WorldPoint"
+class="reference internal"><span class="viewcode-link"><span
+class="pre">[source]</span></span></a><a
+href="#redbrick.types.task.WorldPoint" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Represents a three-dimensional point in physical space/world
+co-ordinates. The world co-ordinates are calculated using <a
+href="#redbrick.types.task.VoxelPoint" class="reference internal"
+title="redbrick.types.task.VoxelPoint"><span class="pre"><code
+class="sourceCode python">redbrick.types.task.VoxelPoint</code></span></a>
+and the DICOM Image Plane Module.</p>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">x</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">float</span></code></span></em><a
+href="#redbrick.types.task.WorldPoint.x" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">y</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">float</span></code></span></em><a
+href="#redbrick.types.task.WorldPoint.y" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">z</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">float</span></code></span></em><a
+href="#redbrick.types.task.WorldPoint.z" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt><em><span class="pre">class</span><span class="w"> </span></em><span
+class="sig-prename descclassname"><span
+class="pre">redbrick.types.task.</span></span><span
+class="sig-name descname"><span
+class="pre">MeasurementStats</span></span><a
+href="../_modules/redbrick/types/task.html#MeasurementStats"
+class="reference internal"><span class="viewcode-link"><span
+class="pre">[source]</span></span></a><a
+href="#redbrick.types.task.MeasurementStats" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Measurement statistics for annotations.</p>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">average</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">float</span></code></span></em><a
+href="#redbrick.types.task.MeasurementStats.average" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Average pixel/voxel intensity within the annotation. In CT, this is
+the average HU value.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">area</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">float</span></code></span></em><a
+href="#redbrick.types.task.MeasurementStats.area" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Area contained within the annotation in mm^2.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">volume</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">float</span></code></span></em><a
+href="#redbrick.types.task.MeasurementStats.volume" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Volume contained within the annotation in mm^3</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">minimum</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">float</span></code></span></em><a
+href="#redbrick.types.task.MeasurementStats.minimum" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Minimum intensity value within the annotation.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">maximum</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">float</span></code></span></em><a
+href="#redbrick.types.task.MeasurementStats.maximum" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Maximum intensity value within the annotation.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt><em><span class="pre">class</span><span class="w"> </span></em><span
+class="sig-prename descclassname"><span
+class="pre">redbrick.types.task.</span></span><span
+class="sig-name descname"><span
+class="pre">VideoMetaData</span></span><a
+href="../_modules/redbrick/types/task.html#VideoMetaData"
+class="reference internal"><span class="viewcode-link"><span
+class="pre">[source]</span></span></a><a
+href="#redbrick.types.task.VideoMetaData" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Contains annotation information along the third axis. Frames for
+video, and slices for 3D volumes.</p>
+<div class="admonition warning">
+<p>Warning</p>
+<p><a href="#redbrick.types.task.VideoMetaData"
+class="reference internal"
+title="redbrick.types.task.VideoMetaData"><span class="pre"><code
+class="sourceCode python">redbrick.types.task.VideoMetaData</code></span></a>
+has a misleading name. It contains information for both videos, and 3D
+volumes.</p>
+</div>
+<div class="admonition hint">
+<p>Hint</p>
+<p>Watch <a href="https://share.redbrickai.com/vpKDGyBd"
+class="reference external">this video</a> for a detailed explaination of
+all the attributes of this object.</p>
+</div>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">seriesItemIndex</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span></em><a
+href="#redbrick.types.task.VideoMetaData.seriesItemIndex"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
+<p>The index of the file in series “items” list that this annotation is
+present on.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">seriesFrameIndex</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span></em><a
+href="#redbrick.types.task.VideoMetaData.seriesFrameIndex"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
+<p>Frame index of the annotation for nifti and dicom multipart
+files.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">frameIndex</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span></em><a
+href="#redbrick.types.task.VideoMetaData.frameIndex" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>The frame number (for video) or slice index (for 3D volumes) the
+annotation is present on.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">trackId</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.task.VideoMetaData.trackId" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Each distinct object has a unique trackId. Two annotations on
+different frameIndex’s with the same trackId’s represent the same
+distinct object.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">keyFrame</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span></em><a
+href="#redbrick.types.task.VideoMetaData.keyFrame" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>If True, this annotation is user-defined. If False, this annotation
+is interpolated.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">endTrack</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span></em><a
+href="#redbrick.types.task.VideoMetaData.endTrack" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>If True, this annotation is the last annotation of a specific track
+defined by trackId.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-prename descclassname"><span
+class="pre">redbrick.types.task.</span></span><span
+class="sig-name descname"><span class="pre">Attributes</span></span><a
+href="#redbrick.types.task.Attributes" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Attributes for Taxonomy objects. Attributes can be boolean,
+textfields, select’s or multi-select’s.</p>
+<p>alias of <span class="pre"><code
+class="sourceCode python">Dict</code></span>[<span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span>,
+<span class="pre"><code
+class="sourceCode python">Union</code></span>[<span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span>,
+<span class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span>,
+<span class="pre"><code
+class="sourceCode python">List</code></span>[<span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span>]]]</p>
+</dd>
+</dl>
+<dl>
+<dt><em><span class="pre">class</span><span class="w"> </span></em><span
+class="sig-prename descclassname"><span
+class="pre">redbrick.types.task.</span></span><span
+class="sig-name descname"><span
+class="pre">CommonLabelProps</span></span><a
+href="../_modules/redbrick/types/task.html#CommonLabelProps"
+class="reference internal"><span class="viewcode-link"><span
+class="pre">[source]</span></span></a><a
+href="#redbrick.types.task.CommonLabelProps" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Full version of <a
+href="index.html#redbrick.types.task.Series.segmentMap"
+class="reference internal"
+title="redbrick.types.task.Series.segmentMap"><span class="pre"><code
+class="sourceCode python">redbrick.types.task.Series.segmentMap</code></span></a>.</p>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">category</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]</span></em><a
+href="#redbrick.types.task.CommonLabelProps.category" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Taxonomy object category.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">attributes</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Dict</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]]</span></em><a
+href="#redbrick.types.task.CommonLabelProps.attributes"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
+<p>Associated taxonomy object attributes.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">mask</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]</span></em><a
+href="#redbrick.types.task.CommonLabelProps.mask" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Filepath to segmentation file for this annotation.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">overlappingGroups</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span><span
+class="pre">]</span></em><a
+href="#redbrick.types.task.CommonLabelProps.overlappingGroups"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
+<p>Overlapping instances that this label is part of (when without_masks
+is set).</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">group</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.task.CommonLabelProps.group" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Linked label group id.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">readOnly</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span></em><a
+href="#redbrick.types.task.CommonLabelProps.readOnly" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Read only status</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt><em><span class="pre">class</span><span class="w"> </span></em><span
+class="sig-prename descclassname"><span
+class="pre">redbrick.types.task.</span></span><span
+class="sig-name descname"><span
+class="pre">InstanceClassification</span></span><a
+href="../_modules/redbrick/types/task.html#InstanceClassification"
+class="reference internal"><span class="viewcode-link"><span
+class="pre">[source]</span></span></a><a
+href="#redbrick.types.task.InstanceClassification" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Instance level classifications for frame-by-frame (video) or
+slice-by-slice (volume) classifications..</p>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">fileIndex</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span></em><a
+href="#redbrick.types.task.InstanceClassification.fileIndex"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
+<p>For video this is the frameIndex, for DICOM volumes this is the
+sliceIndex.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">fileName</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.task.InstanceClassification.fileName"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
+<p>The file name represented by frameIndex.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">group</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.task.InstanceClassification.group"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
+<p>Linked label group id.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">readOnly</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span></em><a
+href="#redbrick.types.task.InstanceClassification.readOnly"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
+<p>Read only status</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt><em><span class="pre">class</span><span class="w"> </span></em><span
+class="sig-prename descclassname"><span
+class="pre">redbrick.types.task.</span></span><span
+class="sig-name descname"><span
+class="pre">Classification</span></span><a
+href="../_modules/redbrick/types/task.html#Classification"
+class="reference internal"><span class="viewcode-link"><span
+class="pre">[source]</span></span></a><a
+href="#redbrick.types.task.Classification" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Study or series classification.</p>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">attributes</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Dict</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]]</span></em><a
+href="#redbrick.types.task.Classification.attributes" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">group</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.task.Classification.group" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Linked label group id.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">readOnly</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span></em><a
+href="#redbrick.types.task.Classification.readOnly" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Read only status</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt><em><span class="pre">class</span><span class="w"> </span></em><span
+class="sig-prename descclassname"><span
+class="pre">redbrick.types.task.</span></span><span
+class="sig-name descname"><span class="pre">Polyline</span></span><a
+href="../_modules/redbrick/types/task.html#Polyline"
+class="reference internal"><span class="viewcode-link"><span
+class="pre">[source]</span></span></a><a
+href="#redbrick.types.task.Polyline" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Open polylines, not supported in 3D images.</p>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">points</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">List</code></span><span
+class="pre">[</span><a href="#redbrick.types.task.Point2D"
+class="reference internal" title="redbrick.types.task.Point2D"><span
+class="pre"><code
+class="sourceCode python">Point2D</code></span></a><span
+class="pre">]</span></em><a href="#redbrick.types.task.Polyline.points"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">category</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]</span></em><a
+href="#redbrick.types.task.Polyline.category" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">attributes</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Dict</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]]</span></em><a
+href="#redbrick.types.task.Polyline.attributes" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">video</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.VideoMetaData" class="reference internal"
+title="redbrick.types.task.VideoMetaData"><span class="pre"><code
+class="sourceCode python">VideoMetaData</code></span></a></em><a
+href="#redbrick.types.task.Polyline.video" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">group</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.task.Polyline.group" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Linked label group id.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">readOnly</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span></em><a
+href="#redbrick.types.task.Polyline.readOnly" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Read only status</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt><em><span class="pre">class</span><span class="w"> </span></em><span
+class="sig-prename descclassname"><span
+class="pre">redbrick.types.task.</span></span><span
+class="sig-name descname"><span class="pre">Polygon</span></span><a
+href="../_modules/redbrick/types/task.html#Polygon"
+class="reference internal"><span class="viewcode-link"><span
+class="pre">[source]</span></span></a><a
+href="#redbrick.types.task.Polygon" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Closed polygons, not supported in 3D images.</p>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">points</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">List</code></span><span
+class="pre">[</span><a href="#redbrick.types.task.Point2D"
+class="reference internal" title="redbrick.types.task.Point2D"><span
+class="pre"><code
+class="sourceCode python">Point2D</code></span></a><span
+class="pre">]</span></em><a href="#redbrick.types.task.Polygon.points"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">category</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]</span></em><a
+href="#redbrick.types.task.Polygon.category" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">attributes</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Dict</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]]</span></em><a
+href="#redbrick.types.task.Polygon.attributes" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">stats</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.MeasurementStats" class="reference internal"
+title="redbrick.types.task.MeasurementStats"><span class="pre"><code
+class="sourceCode python">MeasurementStats</code></span></a></em><a
+href="#redbrick.types.task.Polygon.stats" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">video</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.VideoMetaData" class="reference internal"
+title="redbrick.types.task.VideoMetaData"><span class="pre"><code
+class="sourceCode python">VideoMetaData</code></span></a></em><a
+href="#redbrick.types.task.Polygon.video" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">group</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.task.Polygon.group" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Linked label group id.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">readOnly</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span></em><a
+href="#redbrick.types.task.Polygon.readOnly" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Read only status</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt><em><span class="pre">class</span><span class="w"> </span></em><span
+class="sig-prename descclassname"><span
+class="pre">redbrick.types.task.</span></span><span
+class="sig-name descname"><span class="pre">Cuboid</span></span><a
+href="../_modules/redbrick/types/task.html#Cuboid"
+class="reference internal"><span class="viewcode-link"><span
+class="pre">[source]</span></span></a><a
+href="#redbrick.types.task.Cuboid" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>3D bounding boxes for 3D images.</p>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">point1</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.VoxelPoint" class="reference internal"
+title="redbrick.types.task.VoxelPoint"><span class="pre"><code
+class="sourceCode python">VoxelPoint</code></span></a></em><a
+href="#redbrick.types.task.Cuboid.point1" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Top left diagonal corner.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">point2</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.VoxelPoint" class="reference internal"
+title="redbrick.types.task.VoxelPoint"><span class="pre"><code
+class="sourceCode python">VoxelPoint</code></span></a></em><a
+href="#redbrick.types.task.Cuboid.point2" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Bottom right diagonal corner.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">absolutePoint1</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.WorldPoint" class="reference internal"
+title="redbrick.types.task.WorldPoint"><span class="pre"><code
+class="sourceCode python">WorldPoint</code></span></a></em><a
+href="#redbrick.types.task.Cuboid.absolutePoint1" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">absolutePoint2</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.WorldPoint" class="reference internal"
+title="redbrick.types.task.WorldPoint"><span class="pre"><code
+class="sourceCode python">WorldPoint</code></span></a></em><a
+href="#redbrick.types.task.Cuboid.absolutePoint2" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">category</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]</span></em><a href="#redbrick.types.task.Cuboid.category"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">attributes</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Dict</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]]</span></em><a
+href="#redbrick.types.task.Cuboid.attributes" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">stats</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.MeasurementStats" class="reference internal"
+title="redbrick.types.task.MeasurementStats"><span class="pre"><code
+class="sourceCode python">MeasurementStats</code></span></a></em><a
+href="#redbrick.types.task.Cuboid.stats" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">group</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.task.Cuboid.group" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Linked label group id.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">readOnly</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span></em><a
+href="#redbrick.types.task.Cuboid.readOnly" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Read only status</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt><em><span class="pre">class</span><span class="w"> </span></em><span
+class="sig-prename descclassname"><span
+class="pre">redbrick.types.task.</span></span><span
+class="sig-name descname"><span class="pre">BoundingBox</span></span><a
+href="../_modules/redbrick/types/task.html#BoundingBox"
+class="reference internal"><span class="viewcode-link"><span
+class="pre">[source]</span></span></a><a
+href="#redbrick.types.task.BoundingBox" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>2D bounding box for 2D images, or slice by slice annotation in 3D
+images.</p>
+<div class="admonition hint">
+<p>Hint</p>
+<p>See the <a href="https://share.redbrickai.com/T0jPZFn9"
+class="reference external">following diagram</a> to understand the
+coordinate system.</p>
+</div>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">pointTopLeft</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.Point2D" class="reference internal"
+title="redbrick.types.task.Point2D"><span class="pre"><code
+class="sourceCode python">Point2D</code></span></a></em><a
+href="#redbrick.types.task.BoundingBox.pointTopLeft" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Coordinates of the top left of the bounding box.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">wNorm</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">float</span></code></span></em><a
+href="#redbrick.types.task.BoundingBox.wNorm" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Width of the bounding box, normalized by image width.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">hNorm</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">float</span></code></span></em><a
+href="#redbrick.types.task.BoundingBox.hNorm" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Height of the bounding box, normalized by the image height.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">category</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]</span></em><a
+href="#redbrick.types.task.BoundingBox.category" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">attributes</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Dict</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]]</span></em><a
+href="#redbrick.types.task.BoundingBox.attributes" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">stats</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.MeasurementStats" class="reference internal"
+title="redbrick.types.task.MeasurementStats"><span class="pre"><code
+class="sourceCode python">MeasurementStats</code></span></a></em><a
+href="#redbrick.types.task.BoundingBox.stats" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">video</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.VideoMetaData" class="reference internal"
+title="redbrick.types.task.VideoMetaData"><span class="pre"><code
+class="sourceCode python">VideoMetaData</code></span></a></em><a
+href="#redbrick.types.task.BoundingBox.video" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">group</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.task.BoundingBox.group" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Linked label group id.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">readOnly</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span></em><a
+href="#redbrick.types.task.BoundingBox.readOnly" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Read only status</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt><em><span class="pre">class</span><span class="w"> </span></em><span
+class="sig-prename descclassname"><span
+class="pre">redbrick.types.task.</span></span><span
+class="sig-name descname"><span class="pre">Ellipse</span></span><a
+href="../_modules/redbrick/types/task.html#Ellipse"
+class="reference internal"><span class="viewcode-link"><span
+class="pre">[source]</span></span></a><a
+href="#redbrick.types.task.Ellipse" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Ellipse annotation.</p>
+<div class="admonition hint">
+<p>Hint</p>
+<p>See <a href="https://share.redbrickai.com/6PH9ypkl"
+class="reference external">this ellipse diagram</a> to understand the
+coordinate system. Please read the <a
+href="#redbrick.types.task.Point2D" class="reference internal"
+title="redbrick.types.task.Point2D"><span class="pre"><code
+class="sourceCode python">redbrick.types.task.Point2D</code></span></a>
+documentation to understand how normalization works &amp; the origin of
+the coordinate system.</p>
+</div>
+<div class="admonition warning">
+<p>Warning</p>
+<p>For DICOM images of a certain type, ellipse annotations might be
+flipped i.e., rotating the ellipse clockwise would result in
+counter-clockwise rotation. If you encounter these cases, reach out to
+our support for instructions on how to handle this <a
+href="mailto:support%40redbrickai.com"
+class="reference external">support<span>@</span>redbrickai<span>.</span>com</a>.</p>
+</div>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">pointCenter</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.Point2D" class="reference internal"
+title="redbrick.types.task.Point2D"><span class="pre"><code
+class="sourceCode python">Point2D</code></span></a></em><a
+href="#redbrick.types.task.Ellipse.pointCenter" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>The normalized center of the ellipse.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">xRadiusNorm</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">float</span></code></span></em><a
+href="#redbrick.types.task.Ellipse.xRadiusNorm" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>The x axis of the ellipse, normalized with by the image width.
+Adjusting for rotationRad, the x-axis of the ellipse aligns with the
+x-axis of the image.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">yRadiusNorm</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">float</span></code></span></em><a
+href="#redbrick.types.task.Ellipse.yRadiusNorm" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>The y axis of the ellipse, normalized with by the image width.
+Adjusting for rotationRad, the y-axis of the ellipse aligns with the
+y-axis of the image.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">rotationRad</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">float</span></code></span></em><a
+href="#redbrick.types.task.Ellipse.rotationRad" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>The rotation of the ellipse measured clockwise as the angle between
+the y-axis of the ellipse and y-axis of the image.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">category</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]</span></em><a
+href="#redbrick.types.task.Ellipse.category" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">attributes</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Dict</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]]</span></em><a
+href="#redbrick.types.task.Ellipse.attributes" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">stats</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.MeasurementStats" class="reference internal"
+title="redbrick.types.task.MeasurementStats"><span class="pre"><code
+class="sourceCode python">MeasurementStats</code></span></a></em><a
+href="#redbrick.types.task.Ellipse.stats" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">video</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.VideoMetaData" class="reference internal"
+title="redbrick.types.task.VideoMetaData"><span class="pre"><code
+class="sourceCode python">VideoMetaData</code></span></a></em><a
+href="#redbrick.types.task.Ellipse.video" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">group</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.task.Ellipse.group" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Linked label group id.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">readOnly</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span></em><a
+href="#redbrick.types.task.Ellipse.readOnly" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Read only status</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt><em><span class="pre">class</span><span class="w"> </span></em><span
+class="sig-prename descclassname"><span
+class="pre">redbrick.types.task.</span></span><span
+class="sig-name descname"><span class="pre">MeasureAngle</span></span><a
+href="../_modules/redbrick/types/task.html#MeasureAngle"
+class="reference internal"><span class="viewcode-link"><span
+class="pre">[source]</span></span></a><a
+href="#redbrick.types.task.MeasureAngle" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Angle measurement label.</p>
+<p>An angle measurement is defined by three points, where vertex is the
+middle point between point1 and point2. The angle between the two
+vectors &lt;point1, vertex&gt; and &lt;point2, vertex&gt; defines the
+angle measurement.</p>
+<div class="admonition hint">
+<p>Hint</p>
+<p>See <a href="https://share.redbrickai.com/rqW3sZtf"
+class="reference external">this angle diagram</a> to understand the
+coordinate system.</p>
+</div>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">type</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Literal</code></span><span
+class="pre">[</span><span class="pre"><code
+class="docutils literal notranslate">'angle'</code></span><span
+class="pre">]</span></em><a
+href="#redbrick.types.task.MeasureAngle.type" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">point1</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.VoxelPoint" class="reference internal"
+title="redbrick.types.task.VoxelPoint"><span class="pre"><code
+class="sourceCode python">VoxelPoint</code></span></a></em><a
+href="#redbrick.types.task.MeasureAngle.point1" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">vertex</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.VoxelPoint" class="reference internal"
+title="redbrick.types.task.VoxelPoint"><span class="pre"><code
+class="sourceCode python">VoxelPoint</code></span></a></em><a
+href="#redbrick.types.task.MeasureAngle.vertex" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">point2</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.VoxelPoint" class="reference internal"
+title="redbrick.types.task.VoxelPoint"><span class="pre"><code
+class="sourceCode python">VoxelPoint</code></span></a></em><a
+href="#redbrick.types.task.MeasureAngle.point2" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">absolutePoint1</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.WorldPoint" class="reference internal"
+title="redbrick.types.task.WorldPoint"><span class="pre"><code
+class="sourceCode python">WorldPoint</code></span></a></em><a
+href="#redbrick.types.task.MeasureAngle.absolutePoint1"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">absoluteVertex</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.WorldPoint" class="reference internal"
+title="redbrick.types.task.WorldPoint"><span class="pre"><code
+class="sourceCode python">WorldPoint</code></span></a></em><a
+href="#redbrick.types.task.MeasureAngle.absoluteVertex"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">absolutePoint2</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.WorldPoint" class="reference internal"
+title="redbrick.types.task.WorldPoint"><span class="pre"><code
+class="sourceCode python">WorldPoint</code></span></a></em><a
+href="#redbrick.types.task.MeasureAngle.absolutePoint2"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">normal</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">float</span></code></span><span
+class="pre">]</span></em><a
+href="#redbrick.types.task.MeasureAngle.normal" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Measurements can be made on oblique planes. normal defines the normal
+unit vector to the slice on which the annotation was made. For
+annotations made on non-oblique planes, the normal will be [0,0,1]. The
+measurement is fully defined even without normal, however, for
+completeness <a href="https://share.redbrickai.com/CZ5BXXWK"
+class="reference external">see this angle diagram</a> for it’s
+definition.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">angle</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">float</span></code></span></em><a
+href="#redbrick.types.task.MeasureAngle.angle" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Measurement angle in degrees.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">category</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]</span></em><a
+href="#redbrick.types.task.MeasureAngle.category" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">attributes</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Dict</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]]</span></em><a
+href="#redbrick.types.task.MeasureAngle.attributes" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">group</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.task.MeasureAngle.group" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Linked label group id.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">readOnly</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span></em><a
+href="#redbrick.types.task.MeasureAngle.readOnly" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Read only status</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt><em><span class="pre">class</span><span class="w"> </span></em><span
+class="sig-prename descclassname"><span
+class="pre">redbrick.types.task.</span></span><span
+class="sig-name descname"><span
+class="pre">MeasureLength</span></span><a
+href="../_modules/redbrick/types/task.html#MeasureLength"
+class="reference internal"><span class="viewcode-link"><span
+class="pre">[source]</span></span></a><a
+href="#redbrick.types.task.MeasureLength" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Length measurement label.</p>
+<p>A length measurement is defined by two points, and the length
+measurement is the distance between the two points.</p>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">type</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Literal</code></span><span
+class="pre">[</span><span class="pre"><code
+class="docutils literal notranslate">'length'</code></span><span
+class="pre">]</span></em><a
+href="#redbrick.types.task.MeasureLength.type" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">point1</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.VoxelPoint" class="reference internal"
+title="redbrick.types.task.VoxelPoint"><span class="pre"><code
+class="sourceCode python">VoxelPoint</code></span></a></em><a
+href="#redbrick.types.task.MeasureLength.point1" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">point2</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.VoxelPoint" class="reference internal"
+title="redbrick.types.task.VoxelPoint"><span class="pre"><code
+class="sourceCode python">VoxelPoint</code></span></a></em><a
+href="#redbrick.types.task.MeasureLength.point2" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">absolutePoint1</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.WorldPoint" class="reference internal"
+title="redbrick.types.task.WorldPoint"><span class="pre"><code
+class="sourceCode python">WorldPoint</code></span></a></em><a
+href="#redbrick.types.task.MeasureLength.absolutePoint1"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">absolutePoint2</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.WorldPoint" class="reference internal"
+title="redbrick.types.task.WorldPoint"><span class="pre"><code
+class="sourceCode python">WorldPoint</code></span></a></em><a
+href="#redbrick.types.task.MeasureLength.absolutePoint2"
+class="headerlink" title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">normal</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">float</span></code></span><span
+class="pre">]</span></em><a
+href="#redbrick.types.task.MeasureLength.normal" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Measurements can be made on oblique planes. normal defines the normal
+unit vector to the slice on which the annotation was made. For
+annotations made on non-oblique planes, the normal will be [0,0,1]. The
+measurement is fully defined even without normal, however, for
+completeness <a href="https://share.redbrickai.com/CZ5BXXWK"
+class="reference external">see this length diagram</a> for it’s
+definition.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">length</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">float</span></code></span></em><a
+href="#redbrick.types.task.MeasureLength.length" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>The value of the measurement in millimeters.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">category</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]</span></em><a
+href="#redbrick.types.task.MeasureLength.category" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">attributes</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Dict</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]]</span></em><a
+href="#redbrick.types.task.MeasureLength.attributes" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">group</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.task.MeasureLength.group" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Linked label group id.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">readOnly</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span></em><a
+href="#redbrick.types.task.MeasureLength.readOnly" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Read only status</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt><em><span class="pre">class</span><span class="w"> </span></em><span
+class="sig-prename descclassname"><span
+class="pre">redbrick.types.task.</span></span><span
+class="sig-name descname"><span class="pre">Landmark3D</span></span><a
+href="../_modules/redbrick/types/task.html#Landmark3D"
+class="reference internal"><span class="viewcode-link"><span
+class="pre">[source]</span></span></a><a
+href="#redbrick.types.task.Landmark3D" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>3D landmark for 3D data.</p>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">point</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.VoxelPoint" class="reference internal"
+title="redbrick.types.task.VoxelPoint"><span class="pre"><code
+class="sourceCode python">VoxelPoint</code></span></a></em><a
+href="#redbrick.types.task.Landmark3D.point" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">category</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]</span></em><a
+href="#redbrick.types.task.Landmark3D.category" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">attributes</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Dict</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]]</span></em><a
+href="#redbrick.types.task.Landmark3D.attributes" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">group</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.task.Landmark3D.group" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Linked label group id.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">readOnly</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span></em><a
+href="#redbrick.types.task.Landmark3D.readOnly" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Read only status</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl>
+<dt><em><span class="pre">class</span><span class="w"> </span></em><span
+class="sig-prename descclassname"><span
+class="pre">redbrick.types.task.</span></span><span
+class="sig-name descname"><span class="pre">Landmark</span></span><a
+href="../_modules/redbrick/types/task.html#Landmark"
+class="reference internal"><span class="viewcode-link"><span
+class="pre">[source]</span></span></a><a
+href="#redbrick.types.task.Landmark" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>2D landmark for 2D data.</p>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">point</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.Point2D" class="reference internal"
+title="redbrick.types.task.Point2D"><span class="pre"><code
+class="sourceCode python">Point2D</code></span></a></em><a
+href="#redbrick.types.task.Landmark.point" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">category</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">int</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]</span></em><a
+href="#redbrick.types.task.Landmark.category" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">attributes</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code class="sourceCode python">Dict</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">Union</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span><span
+class="pre">,</span> <span class="pre"><code
+class="sourceCode python">List</code></span><span
+class="pre">[</span><span class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span><span
+class="pre">]]]</span></em><a
+href="#redbrick.types.task.Landmark.attributes" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">video</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><a
+href="#redbrick.types.task.VideoMetaData" class="reference internal"
+title="redbrick.types.task.VideoMetaData"><span class="pre"><code
+class="sourceCode python">VideoMetaData</code></span></a></em><a
+href="#redbrick.types.task.Landmark.video" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">group</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">str</span></code></span></em><a
+href="#redbrick.types.task.Landmark.group" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Linked label group id.</p>
+</dd>
+</dl>
+<dl>
+<dt><span class="sig-name descname"><span
+class="pre">readOnly</span></span><em><span class="p"><span
+class="pre">:</span></span><span class="w"> </span><span
+class="pre"><code
+class="sourceCode python"><span class="bu">bool</span></code></span></em><a
+href="#redbrick.types.task.Landmark.readOnly" class="headerlink"
+title="Link to this definition">#</a></dt>
+<dd>
+<p>Read only status</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="related-pages">
+<a href="taxonomy.html" class="next-page"></a>
+<div class="page-info">
+<div class="context">
+<span>Next</span>
+</div>
+<div class="title">
+Taxonomy format
+</div>
+</div>
+<img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZnVyby1yZWxhdGVkLWljb24iPjx1c2UgaHJlZj0iI3N2Zy1hcnJvdy1yaWdodCIgLz48L3N2Zz4="
+class="furo-related-icon" /> <a href="index.html" class="prev-page"><img
+src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iZnVyby1yZWxhdGVkLWljb24iPjx1c2UgaHJlZj0iI3N2Zy1hcnJvdy1yaWdodCIgLz48L3N2Zz4="
+class="furo-related-icon" /></a>
+<div class="page-info">
+<div class="context">
+<span>Previous</span>
+</div>
+<div class="title">
+Formats
+</div>
+</div>
+</div>
+<div class="bottom-of-page">
+<div class="left-details">
+<div class="copyright">
+Copyright © 2023, RedBrick AI
+</div>
+Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a
+href="https://pradyunsg.me" class="muted-link">@pradyunsg</a>'s <a
+href="https://github.com/pradyunsg/furo">Furo</a>
+</div>
+<div class="right-details">
+
+</div>
+</div>
+</div>
+<div class="toc-sticky toc-scroll">
+<div class="toc-title-container">
+<span class="toc-title"> On this page </span>
+</div>
+<div class="toc-tree-container">
+<div class="toc-tree">
+<ul>
+<li><a href="#" class="reference internal">Annotation type
+definitions</a>
+<ul>
+<li><a href="#redbrick.types.task.Point2D"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Point2D</code></span></a>
+<ul>
+<li><a href="#redbrick.types.task.Point2D.xNorm"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Point2D.xNorm</code></span></a></li>
+<li><a href="#redbrick.types.task.Point2D.yNorm"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Point2D.yNorm</code></span></a></li>
+</ul></li>
+<li><a href="#redbrick.types.task.VoxelPoint"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">VoxelPoint</code></span></a>
+<ul>
+<li><a href="#redbrick.types.task.VoxelPoint.i"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">VoxelPoint.i</code></span></a></li>
+<li><a href="#redbrick.types.task.VoxelPoint.j"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">VoxelPoint.j</code></span></a></li>
+<li><a href="#redbrick.types.task.VoxelPoint.k"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">VoxelPoint.k</code></span></a></li>
+</ul></li>
+<li><a href="#redbrick.types.task.WorldPoint"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">WorldPoint</code></span></a>
+<ul>
+<li><a href="#redbrick.types.task.WorldPoint.x"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">WorldPoint.x</code></span></a></li>
+<li><a href="#redbrick.types.task.WorldPoint.y"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">WorldPoint.y</code></span></a></li>
+<li><a href="#redbrick.types.task.WorldPoint.z"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">WorldPoint.z</code></span></a></li>
+</ul></li>
+<li><a href="#redbrick.types.task.MeasurementStats"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasurementStats</code></span></a>
+<ul>
+<li><a href="#redbrick.types.task.MeasurementStats.average"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasurementStats.average</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasurementStats.area"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasurementStats.area</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasurementStats.volume"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasurementStats.volume</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasurementStats.minimum"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasurementStats.minimum</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasurementStats.maximum"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasurementStats.maximum</code></span></a></li>
+</ul></li>
+<li><a href="#redbrick.types.task.VideoMetaData"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">VideoMetaData</code></span></a>
+<ul>
+<li><a href="#redbrick.types.task.VideoMetaData.seriesItemIndex"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">VideoMetaData.seriesItemIndex</code></span></a></li>
+<li><a href="#redbrick.types.task.VideoMetaData.seriesFrameIndex"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">VideoMetaData.seriesFrameIndex</code></span></a></li>
+<li><a href="#redbrick.types.task.VideoMetaData.frameIndex"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">VideoMetaData.frameIndex</code></span></a></li>
+<li><a href="#redbrick.types.task.VideoMetaData.trackId"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">VideoMetaData.trackId</code></span></a></li>
+<li><a href="#redbrick.types.task.VideoMetaData.keyFrame"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">VideoMetaData.keyFrame</code></span></a></li>
+<li><a href="#redbrick.types.task.VideoMetaData.endTrack"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">VideoMetaData.endTrack</code></span></a></li>
+</ul></li>
+<li><a href="#redbrick.types.task.Attributes"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Attributes</code></span></a></li>
+<li><a href="#redbrick.types.task.CommonLabelProps"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">CommonLabelProps</code></span></a>
+<ul>
+<li><a href="#redbrick.types.task.CommonLabelProps.category"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">CommonLabelProps.category</code></span></a></li>
+<li><a href="#redbrick.types.task.CommonLabelProps.attributes"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">CommonLabelProps.attributes</code></span></a></li>
+<li><a href="#redbrick.types.task.CommonLabelProps.mask"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">CommonLabelProps.mask</code></span></a></li>
+<li><a href="#redbrick.types.task.CommonLabelProps.overlappingGroups"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">CommonLabelProps.overlappingGroups</code></span></a></li>
+<li><a href="#redbrick.types.task.CommonLabelProps.group"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">CommonLabelProps.group</code></span></a></li>
+<li><a href="#redbrick.types.task.CommonLabelProps.readOnly"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">CommonLabelProps.readOnly</code></span></a></li>
+</ul></li>
+<li><a href="#redbrick.types.task.InstanceClassification"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">InstanceClassification</code></span></a>
+<ul>
+<li><a href="#redbrick.types.task.InstanceClassification.fileIndex"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">InstanceClassification.fileIndex</code></span></a></li>
+<li><a href="#redbrick.types.task.InstanceClassification.fileName"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">InstanceClassification.fileName</code></span></a></li>
+<li><a href="#redbrick.types.task.InstanceClassification.group"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">InstanceClassification.group</code></span></a></li>
+<li><a href="#redbrick.types.task.InstanceClassification.readOnly"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">InstanceClassification.readOnly</code></span></a></li>
+</ul></li>
+<li><a href="#redbrick.types.task.Classification"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Classification</code></span></a>
+<ul>
+<li><a href="#redbrick.types.task.Classification.attributes"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Classification.attributes</code></span></a></li>
+<li><a href="#redbrick.types.task.Classification.group"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Classification.group</code></span></a></li>
+<li><a href="#redbrick.types.task.Classification.readOnly"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Classification.readOnly</code></span></a></li>
+</ul></li>
+<li><a href="#redbrick.types.task.Polyline"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Polyline</code></span></a>
+<ul>
+<li><a href="#redbrick.types.task.Polyline.points"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Polyline.points</code></span></a></li>
+<li><a href="#redbrick.types.task.Polyline.category"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Polyline.category</code></span></a></li>
+<li><a href="#redbrick.types.task.Polyline.attributes"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Polyline.attributes</code></span></a></li>
+<li><a href="#redbrick.types.task.Polyline.video"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Polyline.video</code></span></a></li>
+<li><a href="#redbrick.types.task.Polyline.group"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Polyline.group</code></span></a></li>
+<li><a href="#redbrick.types.task.Polyline.readOnly"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Polyline.readOnly</code></span></a></li>
+</ul></li>
+<li><a href="#redbrick.types.task.Polygon"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Polygon</code></span></a>
+<ul>
+<li><a href="#redbrick.types.task.Polygon.points"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Polygon.points</code></span></a></li>
+<li><a href="#redbrick.types.task.Polygon.category"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Polygon.category</code></span></a></li>
+<li><a href="#redbrick.types.task.Polygon.attributes"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Polygon.attributes</code></span></a></li>
+<li><a href="#redbrick.types.task.Polygon.stats"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Polygon.stats</code></span></a></li>
+<li><a href="#redbrick.types.task.Polygon.video"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Polygon.video</code></span></a></li>
+<li><a href="#redbrick.types.task.Polygon.group"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Polygon.group</code></span></a></li>
+<li><a href="#redbrick.types.task.Polygon.readOnly"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Polygon.readOnly</code></span></a></li>
+</ul></li>
+<li><a href="#redbrick.types.task.Cuboid"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Cuboid</code></span></a>
+<ul>
+<li><a href="#redbrick.types.task.Cuboid.point1"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Cuboid.point1</code></span></a></li>
+<li><a href="#redbrick.types.task.Cuboid.point2"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Cuboid.point2</code></span></a></li>
+<li><a href="#redbrick.types.task.Cuboid.absolutePoint1"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Cuboid.absolutePoint1</code></span></a></li>
+<li><a href="#redbrick.types.task.Cuboid.absolutePoint2"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Cuboid.absolutePoint2</code></span></a></li>
+<li><a href="#redbrick.types.task.Cuboid.category"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Cuboid.category</code></span></a></li>
+<li><a href="#redbrick.types.task.Cuboid.attributes"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Cuboid.attributes</code></span></a></li>
+<li><a href="#redbrick.types.task.Cuboid.stats"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Cuboid.stats</code></span></a></li>
+<li><a href="#redbrick.types.task.Cuboid.group"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Cuboid.group</code></span></a></li>
+<li><a href="#redbrick.types.task.Cuboid.readOnly"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Cuboid.readOnly</code></span></a></li>
+</ul></li>
+<li><a href="#redbrick.types.task.BoundingBox"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">BoundingBox</code></span></a>
+<ul>
+<li><a href="#redbrick.types.task.BoundingBox.pointTopLeft"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">BoundingBox.pointTopLeft</code></span></a></li>
+<li><a href="#redbrick.types.task.BoundingBox.wNorm"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">BoundingBox.wNorm</code></span></a></li>
+<li><a href="#redbrick.types.task.BoundingBox.hNorm"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">BoundingBox.hNorm</code></span></a></li>
+<li><a href="#redbrick.types.task.BoundingBox.category"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">BoundingBox.category</code></span></a></li>
+<li><a href="#redbrick.types.task.BoundingBox.attributes"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">BoundingBox.attributes</code></span></a></li>
+<li><a href="#redbrick.types.task.BoundingBox.stats"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">BoundingBox.stats</code></span></a></li>
+<li><a href="#redbrick.types.task.BoundingBox.video"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">BoundingBox.video</code></span></a></li>
+<li><a href="#redbrick.types.task.BoundingBox.group"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">BoundingBox.group</code></span></a></li>
+<li><a href="#redbrick.types.task.BoundingBox.readOnly"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">BoundingBox.readOnly</code></span></a></li>
+</ul></li>
+<li><a href="#redbrick.types.task.Ellipse"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Ellipse</code></span></a>
+<ul>
+<li><a href="#redbrick.types.task.Ellipse.pointCenter"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Ellipse.pointCenter</code></span></a></li>
+<li><a href="#redbrick.types.task.Ellipse.xRadiusNorm"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Ellipse.xRadiusNorm</code></span></a></li>
+<li><a href="#redbrick.types.task.Ellipse.yRadiusNorm"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Ellipse.yRadiusNorm</code></span></a></li>
+<li><a href="#redbrick.types.task.Ellipse.rotationRad"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Ellipse.rotationRad</code></span></a></li>
+<li><a href="#redbrick.types.task.Ellipse.category"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Ellipse.category</code></span></a></li>
+<li><a href="#redbrick.types.task.Ellipse.attributes"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Ellipse.attributes</code></span></a></li>
+<li><a href="#redbrick.types.task.Ellipse.stats"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Ellipse.stats</code></span></a></li>
+<li><a href="#redbrick.types.task.Ellipse.video"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Ellipse.video</code></span></a></li>
+<li><a href="#redbrick.types.task.Ellipse.group"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Ellipse.group</code></span></a></li>
+<li><a href="#redbrick.types.task.Ellipse.readOnly"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Ellipse.readOnly</code></span></a></li>
+</ul></li>
+<li><a href="#redbrick.types.task.MeasureAngle"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureAngle</code></span></a>
+<ul>
+<li><a href="#redbrick.types.task.MeasureAngle.type"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureAngle.type</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureAngle.point1"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureAngle.point1</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureAngle.vertex"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureAngle.vertex</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureAngle.point2"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureAngle.point2</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureAngle.absolutePoint1"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureAngle.absolutePoint1</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureAngle.absoluteVertex"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureAngle.absoluteVertex</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureAngle.absolutePoint2"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureAngle.absolutePoint2</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureAngle.normal"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureAngle.normal</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureAngle.angle"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureAngle.angle</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureAngle.category"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureAngle.category</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureAngle.attributes"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureAngle.attributes</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureAngle.group"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureAngle.group</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureAngle.readOnly"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureAngle.readOnly</code></span></a></li>
+</ul></li>
+<li><a href="#redbrick.types.task.MeasureLength"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureLength</code></span></a>
+<ul>
+<li><a href="#redbrick.types.task.MeasureLength.type"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureLength.type</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureLength.point1"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureLength.point1</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureLength.point2"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureLength.point2</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureLength.absolutePoint1"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureLength.absolutePoint1</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureLength.absolutePoint2"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureLength.absolutePoint2</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureLength.normal"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureLength.normal</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureLength.length"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureLength.length</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureLength.category"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureLength.category</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureLength.attributes"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureLength.attributes</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureLength.group"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureLength.group</code></span></a></li>
+<li><a href="#redbrick.types.task.MeasureLength.readOnly"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">MeasureLength.readOnly</code></span></a></li>
+</ul></li>
+<li><a href="#redbrick.types.task.Landmark3D"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Landmark3D</code></span></a>
+<ul>
+<li><a href="#redbrick.types.task.Landmark3D.point"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Landmark3D.point</code></span></a></li>
+<li><a href="#redbrick.types.task.Landmark3D.category"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Landmark3D.category</code></span></a></li>
+<li><a href="#redbrick.types.task.Landmark3D.attributes"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Landmark3D.attributes</code></span></a></li>
+<li><a href="#redbrick.types.task.Landmark3D.group"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Landmark3D.group</code></span></a></li>
+<li><a href="#redbrick.types.task.Landmark3D.readOnly"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Landmark3D.readOnly</code></span></a></li>
+</ul></li>
+<li><a href="#redbrick.types.task.Landmark"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Landmark</code></span></a>
+<ul>
+<li><a href="#redbrick.types.task.Landmark.point"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Landmark.point</code></span></a></li>
+<li><a href="#redbrick.types.task.Landmark.category"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Landmark.category</code></span></a></li>
+<li><a href="#redbrick.types.task.Landmark.attributes"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Landmark.attributes</code></span></a></li>
+<li><a href="#redbrick.types.task.Landmark.video"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Landmark.video</code></span></a></li>
+<li><a href="#redbrick.types.task.Landmark.group"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Landmark.group</code></span></a></li>
+<li><a href="#redbrick.types.task.Landmark.readOnly"
+class="reference internal"><span class="pre"><code
+class="docutils literal notranslate">Landmark.readOnly</code></span></a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
