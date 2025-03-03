@@ -161,7 +161,6 @@
         "python-sdk/full-documentation",
         "python-sdk/installation-and-api-keys",
         "python-sdk/importing-annotations-guide",
-        "sdk/index",
         {
           "group": "SDK Overview",
           "pages": [
@@ -169,8 +168,7 @@
             "python-sdk/sdk-overview/importing-data-and-annotations",
             "python-sdk/sdk-overview/programmatic-label-and-review",
             "python-sdk/sdk-overview/assigning-and-querying-tasks",
-            "python-sdk/sdk-overview/exporting-annotations",
-            "sdk/sdk"
+            "python-sdk/sdk-overview/exporting-annotations"
           ]
         },
         {
@@ -178,8 +176,7 @@
           "pages": [
             "python-sdk/cli-overview/home",
             "python-sdk/cli-overview/creating-and-cloning-projects",
-            "python-sdk/cli-overview/exporting-annotations",
-            "sdk/cli"
+            "python-sdk/cli-overview/exporting-annotations"
           ]
         },
         "python-sdk/importing-annotations-guide",
@@ -187,12 +184,10 @@
           "group": "Formats Overview",
           "pages": [
             "python-sdk/formats/full-format-reference",
-            "python-sdk/formats/export-structure",
-            "sdk/formats/index",
-            "sdk/formats/taxonomy",
-            "sdk/formats/annotations"
+            "python-sdk/formats/export-structure"
           ]
-        }
+        },
+        "sdk"
       ]
     },
     {
