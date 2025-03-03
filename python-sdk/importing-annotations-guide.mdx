@@ -5,30 +5,33 @@ title: Importing Annotations Guide
 You can import all annotation types that are supported in RedBrick AI, including segmentations, classifications, bounding boxes, and more. Imported annotations will appear automatically on your annotator's interface.
 
 <Warning>
-Annotations and images must be imported together at the start.&#x20;
+  Annotations and images must be imported together at the start.&#x20;
 </Warning>
 
 <Warning>
-If you want to add annotations programmatically to images that have already been uploaded, [please use the programmatic label & review](./sdk-overview/programmatic-label-and-review).
+  If you want to add annotations programmatically to images that have already been uploaded, [please use the programmatic label & review](./sdk-overview/programmatic-label-and-review).
 </Warning>
 
 <Warning>
-Annotation import is only supported through the SDK and CLI.&#x20;
+  Annotation import is only supported through the SDK and CLI.&#x20;
 </Warning>
 
 <Warning>
-That is, you cannot use the [direct upload UI](./importing-data/uploading-data-to-redbrick) to import annotations, and you must use the items list with the SDK/CLI to provide the required metadata along with annotations.
+  That is, you cannot use the [direct upload UI](./importing-data/uploading-data-to-redbrick) to import annotations, and you must use the items list with the SDK/CLI to provide the required metadata along with annotations.
 </Warning>
 
 To import images along with segmentations, you must provide us with:
 
 1. Images in any supported format and NIftI segmentation files.
+
 2. [An items list](./importing-annotations-guide#items-list-for-importing-segmentations) that provides a mapping of:
+
    * Segmentation files to volumes so that segmentations are applied to correct images.
+
    * Values within segmentation file to taxonomy categories.
 
 <Check>
-Once you've prepared the [items list in the format defined below](./importing-annotations-guide#items-list-for-importing-segmentations), you can import the images and annotations using the [`create_datapoints` SDK method](./sdk-overview/importing-data-and-annotations) or [CLI `upload` method](./cli-overview/import-data-and-annotations).
+  Once you've prepared the [items list in the format defined below](./importing-annotations-guide#items-list-for-importing-segmentations), you can import the images and annotations using the [`create_datapoints` SDK method](./sdk-overview/importing-data-and-annotations) or [CLI `upload` method](./cli-overview/import-data-and-annotations).
 </Check>
 
 ## Items list for importing segmentations
@@ -36,110 +39,115 @@ Once you've prepared the [items list in the format defined below](./importing-an
 You can find the [full format reference here](./formats/full-format-reference#items-list-and-tasks.json). In this section, we will focus on importing segmentations. In the examples below, pay attention to the following fields:&#x20;
 
 1. `segmentations`: The segmentation files to be applied to the task.
+
 2. `segmentMap`: Map the values present in the segmentation files to their corresponding taxonomy categories.
 
 ### I: One segmentation file per task
 
 <pre class="language-json" data-line-numbers>
-    <code class="lang-json">
+  <code class="lang-json">
+    \{
+      "name": "...",
+      "series": \[
         \{
-            "name": "...",
-            "series": [
-                \{
-                    "items": ["instance-01.dcm", "instance-02.dcm", ...],
-                    
-                    "segmentations": "segmentation.nii.gz",
-                    
-                    "segmentMap": \{
-                        "1": "category-a", 
-                        "2": "category-b"
-                    }
-                }
-            ]
+        "items": \["instance-01.dcm", "instance-02.dcm", ...],
+    
+        "segmentations": "segmentation.nii.gz",
+    
+        "segmentMap": \{
+        "1": "category-a",
+        "2": "category-b"
+          }
         }
-    </code>
+      ]
+    }
+  </code>
 </pre>
 
 ### II: Multiple segmentation files per task
 
 Sometimes, segmentations for a single volume are stored in multiple segmentation files, but these segmentation files are not binary masks. In this case, follow the format below.
 
-<pre class="language-json5"><code class="lang-json5">
+<pre class="language-json5">
+  <code class="lang-json5">
     \{
-    "name": "...", 
-    "series": [
+      "name": "...",
+      "series": \[
         \{
-            "items": ["instance-01.dcm", "instance-02.dcm", ...],
-            
-            "segmentations": ["segmentation-1.nii.gz", "segmentation-2.nii.gz"],
-            
-            "segmentMap": \{
-                "1": "category-a", 
-                "2": "category-b"
-            }
+        "items": \["instance-01.dcm", "instance-02.dcm", ...],
+    
+        "segmentations": \["segmentation-1.nii.gz", "segmentation-2.nii.gz"],
+    
+        "segmentMap": \{
+        "1": "category-a",
+        "2": "category-b"
+          }
         }
-    ]
-}
-</code></pre>
+      ]
+    }
+  </code>
+</pre>
 
 ### Common mistakes for I and II.&#x20;
 
 <Warning>
-* The values 1 and 2 must be present in either `segmentation-1.nii.gz` or `segmentation-2.nii.gz.`
+  * The values 1 and 2 must be present in either `segmentation-1.nii.gz` or `segmentation-2.nii.gz.`
 </Warning>
+
 <Warning>
-* All values in `segmentation.nii.gz` that are not in `segmentMap` will not be mapped to any taxonomy category in the editor.
+  * All values in `segmentation.nii.gz` that are not in `segmentMap` will not be mapped to any taxonomy category in the editor.
 </Warning>
 
 ### III: Multiple binary segmentation files per task
 
 A common pattern is to store each segmentation instance in a separate NIfTI file as a binary mask. In the example below, all non-zero values in `segmentation-1.nii.gz` are meant to correspond to the taxonomy category `category-a`.&#x20;
 
-<pre class="language-json"><code class="lang-json">
+<pre class="language-json">
+  <code class="lang-json">
     \{
-    "name": "...", 
-    "series": [
+      "name": "...",
+      "series": \[
         \{
-            "items": ["instance-01.dcm", "instance-02.dcm", ...],
-            
-            "segmentations": ["path/segmentation-1.nii.gz", "path/segmentation-2.nii.gz"]
-            
-            "segmentMap": \{
-            
-                <a data-footnote-ref href="#user-content-fn-5">// Read more about "1"</a>
-                "1": \{
-                
-                    <a data-footnote-ref href="#user-content-fn-6">// Read more about "category"</a>
-                    "category": "category-a", 
-                    
-                    <a data-footnote-ref href="#user-content-fn-7">// Read more about "mask"</a>
-                    "mask": "path/segmentation-1.nii.gz",                 
-                }, 
-                "2": \{
-                    "category": "category-b", 
-                    "mask": "path/segmentation-2.nii.gz"
-                }, 
-                
-            }
+        "items": \["instance-01.dcm", "instance-02.dcm", ...],
+    
+        "segmentations": \["path/segmentation-1.nii.gz", "path/segmentation-2.nii.gz"]
+    
+        "segmentMap": \{
+    
+        <a data-footnote-ref href="#user-content-fn-5">// Read more about "1"</a>
+        "1": \{
+    
+        <a data-footnote-ref href="#user-content-fn-6">// Read more about "category"</a>
+        "category": "category-a",
+    
+        <a data-footnote-ref href="#user-content-fn-7">// Read more about "mask"</a>
+        "mask": "path/segmentation-1.nii.gz",\
+        },
+        "2": \{
+        "category": "category-b",
+        "mask": "path/segmentation-2.nii.gz"
+        },
         }
-    ]
-}
-</code></pre>
+        }
+      ]
+    }
+  </code>
+</pre>
 
-[^1]: All "1" within segmentation.nii will map to "category-a".
+\[^1]: All "1" within segmentation.nii will map to "category-a".
 
-[^2]: The masks here are not necessarily binary masks, i.e., they might have multiple values within them. \
-    \
-    The mapping between value and category should be stable across files.&#x20;
+\[^2]: The masks here are not necessarily binary masks, i.e., they might have multiple values within them.&#x20;
 
-[^3]: All "1" within both segmentation files will map to "category-a".
+The mapping between value and category should be stable across files.&#x20;
 
-[^4]: For this example, each segmentation file is a binary mask, i.e., all non-zero values in a file will be mapped to a single category.
+\[^3]: All "1" within both segmentation files will map to "category-a".
 
-[^5]: When exported, this segmentation will be represented by "1" in the exported NIfTI.
+\[^4]: For this example, each segmentation file is a binary mask, i.e., all non-zero values in a file will be mapped to a single category.
 
-[^6]: This segmentation will be mapped to "category". The "category" must exist in your Project's Taxonomy.
+\[^5]: When exported, this segmentation will be represented by "1" in the exported NIfTI.
 
-[^7]: This mapping will apply to the segmentation file defined by "mask".
+\[^6]: This segmentation will be mapped to "category". The "category" must exist in your Project's Taxonomy.
 
-[^8]: This defines that all segmentation files are binary masks, i.e., all non-zero values represent a single category.&#x20;
+\[^7]: This mapping will apply to the segmentation file defined by "mask".
+
+\[^8]: This defines that all segmentation files are binary masks, i.e., all non-zero values represent a single category.&#x20;
