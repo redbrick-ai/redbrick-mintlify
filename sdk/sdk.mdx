@@ -1,0 +1,2122 @@
+# Python SDK
+
+The SDK is best for writing Python scripts to interact with your RedBrick AI organization & projects. The SDK offers granular
+functions for programmatically manipulating data, importing annotations, assigning tasks, and more.
+
+## RedBrick
+
+<dl>
+    <dt>class redbrick.StorageMethod</dt>
+    <dd>
+    Storage method integration for organizations.
+
+      - `PUBLIC` - Access files from a public cloud storage service using their absolute URLs.
+      - `REDBRICK` - Access files stored on RedBrick AI’s servers
+
+
+    <dl>
+        <dt>class Public</dt>
+        <dd>
+        Public storage provider (Sub class of [StorageProvider](#redbrick.StorageProvider)`StorageProvider`).
+
+        Variables: 
+          - <strong>storage_id</strong> (<em>str</em>) – `redbrick.StorageMethod.PUBLIC`
+          - <strong>name</strong> (<em>str</em>) – `"Public"`
+          - <strong>details</strong> ([redbrick.StorageMethod.Public.Details](#redbrick.StorageMethod.Public.Details)<em>redbrick.StorageMethod.Public.Details</em>) – Public storage method details.
+
+
+        <dl>
+            <dt>class Details</dt>
+            <dd>
+            Public storage provider details.
+
+            <dl>
+                <dt>property key`:` str</dt>
+                <dd>Public storage proivder details key.</dd>
+            </dl>
+            <dl>
+                <dt>classmethod from_entity</dt>
+                <dd>
+                Get object from entity
+
+                Return type: `[Details](#redbrick.StorageMethod.Public.Details)`Details``
+                </dd>
+            </dl>
+            <dl>
+                <dt>abstract to_entity</dt>
+                <dd>
+                Get entity from object.
+
+                Return type: ``Dict`[`str`, `Any`]`
+                </dd>
+            </dl>
+            <dl>
+                <dt>validate</dt>
+                <dd>
+                Validate Public storage provider details.
+
+                Return type: ``None``
+                </dd>
+            </dl>
+            </dd>
+        </dl>
+        <dl>
+            <dt>classmethod from_entity</dt>
+            <dd>
+            Get object from entity
+
+            Return type: `[Public](#redbrick.StorageMethod.Public)`Public``
+            </dd>
+        </dl>
+        </dd>
+    </dl>
+    <dl>
+        <dt>class RedBrick</dt>
+        <dd>
+        RedBrick storage provider (Sub class of [StorageProvider](#redbrick.StorageProvider)`StorageProvider`).
+
+        Variables: 
+          - <strong>storage_id</strong> (<em>str</em>) – `redbrick.StorageMethod.REDBRICK`
+          - <strong>name</strong> (<em>str</em>) – `"Direct Upload"`
+          - <strong>details</strong> ([redbrick.StorageMethod.RedBrick.Details](#redbrick.StorageMethod.RedBrick.Details)<em>redbrick.StorageMethod.RedBrick.Details</em>) – RedBrick storage method details.
+
+
+        <dl>
+            <dt>class Details</dt>
+            <dd>
+            RedBrick storage provider details.
+
+            <dl>
+                <dt>property key`:` str</dt>
+                <dd>RedBrick storage proivder details key.</dd>
+            </dl>
+            <dl>
+                <dt>classmethod from_entity</dt>
+                <dd>
+                Get object from entity
+
+                Return type: `[Details](#redbrick.StorageMethod.RedBrick.Details)`Details``
+                </dd>
+            </dl>
+            <dl>
+                <dt>abstract to_entity</dt>
+                <dd>
+                Get entity from object.
+
+                Return type: ``Dict`[`str`, `Any`]`
+                </dd>
+            </dl>
+            <dl>
+                <dt>validate</dt>
+                <dd>
+                Validate RedBrick storage provider details.
+
+                Return type: ``None``
+                </dd>
+            </dl>
+            </dd>
+        </dl>
+        <dl>
+            <dt>classmethod from_entity</dt>
+            <dd>
+            Get object from entity
+
+            Return type: `[RedBrick](#redbrick.StorageMethod.RedBrick)`RedBrick``
+            </dd>
+        </dl>
+        </dd>
+    </dl>
+    <dl>
+        <dt>class AWSS3</dt>
+        <dd>
+        AWS S3 storage provider (Sub class of [StorageProvider](#redbrick.StorageProvider)`StorageProvider`).
+
+        Variables: 
+          - <strong>storage_id</strong> (<em>str</em>) – AWS S3 storage id.
+          - <strong>name</strong> (<em>str</em>) – AWS S3 storage name.
+          - <strong>details</strong> ([redbrick.StorageMethod.AWSS3.Details](#redbrick.StorageMethod.AWSS3.Details)<em>redbrick.StorageMethod.AWSS3.Details</em>) – AWS S3 storage method details.
+
+
+        <dl>
+            <dt>class Details</dt>
+            <dd>
+            AWS S3 storage provider details.
+
+            Variables: 
+              - <strong>bucket</strong> (<em>str</em>) – AWS S3 bucket.
+              - <strong>region</strong> (<em>str</em>) – AWS S3 region.
+              - <strong>transfer_acceleration</strong> (<em>bool</em>) – AWS S3 transfer acceleration.
+              - <strong>endpoint</strong> (<em>str</em>) – Custom endpoint (For S3 compatible storage, e.g. MinIO).
+              - <strong>access_key_id</strong> (<em>str</em>) – AWS access key id.
+              - <strong>secret_access_key</strong> (<em>str</em>) – AWS secret access key. (Will be None in output for security reasons)
+              - <strong>role_arn</strong> (<em>str</em>) – AWS assume_role ARN. (For short-lived credentials instead of access keys)
+              - <strong>role_external_id</strong> (<em>str</em>) – AWS assume_role external id. (Will be None in output for security reasons)
+              - <strong>session_duration</strong> (<em>int</em>) – AWS S3 assume_role session duration.
+
+
+            <dl>
+                <dt>property key`:` str</dt>
+                <dd>AWS S3 storage proivder details key.</dd>
+            </dl>
+            <dl>
+                <dt>classmethod from_entity</dt>
+                <dd>
+                Get object from entity
+
+                Return type: `[Details](#redbrick.StorageMethod.AWSS3.Details)`Details``
+                </dd>
+            </dl>
+            <dl>
+                <dt>abstract to_entity</dt>
+                <dd>
+                Get entity from object.
+
+                Return type: ``Dict`[`str`, `Any`]`
+                </dd>
+            </dl>
+            <dl>
+                <dt>validate</dt>
+                <dd>
+                Validate AWS S3 storage provider details.
+
+                Return type: ``None``
+                </dd>
+            </dl>
+            </dd>
+        </dl>
+        </dd>
+    </dl>
+    <dl>
+        <dt>class GoogleCloud</dt>
+        <dd>
+        Google cloud storage provider (Sub class of [StorageProvider](#redbrick.StorageProvider)`StorageProvider`).
+
+        Variables: 
+          - <strong>storage_id</strong> (<em>str</em>) – Google cloud storage id.
+          - <strong>name</strong> (<em>str</em>) – Google cloud storage name.
+          - <strong>details</strong> ([redbrick.StorageMethod.GoogleCloud.Details](#redbrick.StorageMethod.GoogleCloud.Details)<em>redbrick.StorageMethod.GoogleCloud.Details</em>) – Google cloud storage method details.
+
+
+        <dl>
+            <dt>class Details</dt>
+            <dd>
+            Google cloud storage provider details.
+
+            Variables: 
+              - <strong>bucket</strong> (<em>str</em>) – GCS bucket.
+              - <strong>service_account_json</strong> (<em>str</em>) – GCS service account JSON. (Will be None in output for security reasons)
+
+
+            <dl>
+                <dt>property key`:` str</dt>
+                <dd>Google cloud storage proivder details key.</dd>
+            </dl>
+            <dl>
+                <dt>classmethod from_entity</dt>
+                <dd>
+                Get object from entity
+
+                Return type: `[Details](#redbrick.StorageMethod.GoogleCloud.Details)`Details``
+                </dd>
+            </dl>
+            <dl>
+                <dt>abstract to_entity</dt>
+                <dd>
+                Get entity from object.
+
+                Return type: ``Dict`[`str`, `Any`]`
+                </dd>
+            </dl>
+            <dl>
+                <dt>validate</dt>
+                <dd>
+                Validate Google cloud storage provider details.
+
+                Return type: ``None``
+                </dd>
+            </dl>
+            </dd>
+        </dl>
+        </dd>
+    </dl>
+    <dl>
+        <dt>class AzureBlob</dt>
+        <dd>
+        Azure blob storage provider (Sub class of [StorageProvider](#redbrick.StorageProvider)`StorageProvider`).
+
+        Variables: 
+          - <strong>storage_id</strong> (<em>str</em>) – Azure blob storage id.
+          - <strong>name</strong> (<em>str</em>) – Azure blob storage name.
+          - <strong>details</strong> ([redbrick.StorageMethod.AzureBlob.Details](#redbrick.StorageMethod.AzureBlob.Details)<em>redbrick.StorageMethod.AzureBlob.Details</em>) – Azure blob storage method details.
+
+
+        <dl>
+            <dt>class Details</dt>
+            <dd>
+            Azure blob storage provider details.
+
+            Variables: 
+              - <strong>connection_string</strong> (<em>str</em>) – Azure connection string. (Will be None in output for security reasons)
+              - <strong>sas_url</strong> (<em>str</em>) – Azure Shared Access Signature URL for granular blob access. (Will be None in output for security reasons)
+
+
+            <dl>
+                <dt>property key`:` str</dt>
+                <dd>Azure blob storage proivder details key.</dd>
+            </dl>
+            <dl>
+                <dt>classmethod from_entity</dt>
+                <dd>
+                Get object from entity
+
+                Return type: `[Details](#redbrick.StorageMethod.AzureBlob.Details)`Details``
+                </dd>
+            </dl>
+            <dl>
+                <dt>abstract to_entity</dt>
+                <dd>
+                Get entity from object.
+
+                Return type: ``Dict`[`str`, `Any`]`
+                </dd>
+            </dl>
+            <dl>
+                <dt>validate</dt>
+                <dd>
+                Validate Azure blob storage provider details.
+
+                Return type: ``None``
+                </dd>
+            </dl>
+            </dd>
+        </dl>
+        </dd>
+    </dl>
+    <dl>
+        <dt>class AltaDB</dt>
+        <dd>
+        AltaDB storage provider (Sub class of [StorageProvider](#redbrick.StorageProvider)`StorageProvider`).
+
+        Variables: 
+          - <strong>storage_id</strong> (<em>str</em>) – AltaDB storage id.
+          - <strong>name</strong> (<em>str</em>) – AltaDB storage name.
+          - <strong>details</strong> ([redbrick.StorageMethod.AltaDB.Details](#redbrick.StorageMethod.AltaDB.Details)<em>redbrick.StorageMethod.AltaDB.Details</em>) – AltaDB storage method details.
+
+
+        <dl>
+            <dt>class Details</dt>
+            <dd>
+            AltaDB storage provider details.
+
+            Variables: 
+              - <strong>access_key_id</strong> (<em>str</em>) – AltaDB access key id.
+              - <strong>secret_access_key</strong> (<em>str</em>) – AltaDB secret access key. (Will be None in output for security reasons)
+              - <strong>endpoint</strong> (<em>str</em>) – Custom endpoint.
+
+
+            <dl>
+                <dt>property key`:` str</dt>
+                <dd>AltaDB storage proivder details key.</dd>
+            </dl>
+            <dl>
+                <dt>classmethod from_entity</dt>
+                <dd>
+                Get object from entity
+
+                Return type: `[Details](#redbrick.StorageMethod.AltaDB.Details)`Details``
+                </dd>
+            </dl>
+            <dl>
+                <dt>abstract to_entity</dt>
+                <dd>
+                Get entity from object.
+
+                Return type: ``Dict`[`str`, `Any`]`
+                </dd>
+            </dl>
+            <dl>
+                <dt>validate</dt>
+                <dd>
+                Validate AltaDB storage provider details.
+
+                Return type: ``None``
+                </dd>
+            </dl>
+            </dd>
+        </dl>
+        </dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.StorageProvider</dt>
+    <dd>
+    Base storage provider.
+
+    ### Sub-classes:
+
+      - redbrick.StorageMethod.Public ([Public](#redbrick.StorageMethod.Public)`Public`)
+      - redbrick.StorageMethod.RedBrick ([RedBrick](#redbrick.StorageMethod.RedBrick)`RedBrick`)
+      - redbrick.StorageMethod.AWSS3 ([AWSS3](#redbrick.StorageMethod.AWSS3)`AWSS3`)
+      - redbrick.StorageMethod.GoogleCloud ([GoogleCloud](#redbrick.StorageMethod.GoogleCloud)`GoogleCloud`)
+      - redbrick.StorageMethod.AzureBlob ([AzureBlob](#redbrick.StorageMethod.AzureBlob)`AzureBlob`)
+      - redbrick.StorageMethod.AltaDB ([AltaDB](#redbrick.StorageMethod.AltaDB)`AltaDB`)
+
+
+    <dl>
+        <dt>class Details</dt>
+        <dd>
+        Storage details.
+
+        <dl>
+            <dt>abstract property key`:` str</dt>
+            <dd>Storage proivder details key.</dd>
+        </dl>
+        <dl>
+            <dt>abstract classmethod from_entity</dt>
+            <dd>
+            Get object from entity
+
+            Return type: `[Details](#redbrick.StorageProvider.Details)`Details``
+            </dd>
+        </dl>
+        <dl>
+            <dt>abstract to_entity</dt>
+            <dd>
+            Get entity from object.
+
+            Return type: ``Dict`[`str`, `Any`]`
+            </dd>
+        </dl>
+        <dl>
+            <dt>abstract validate</dt>
+            <dd>
+            Validate storage provider details.
+
+            Return type: ``None``
+            </dd>
+        </dl>
+        </dd>
+    </dl>
+    <dl>
+        <dt>classmethod from_entity</dt>
+        <dd>
+        Get object from entity
+
+        Return type: `[StorageProvider](#redbrick.StorageProvider)`StorageProvider``
+        </dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.ImportTypes</dt>
+    <dd>
+    Enumerates the supported data import types.
+
+    Please see supported data types, and file extensions
+    in our [documentation here](https://docs.redbrickai.com/importing-data/direct-data-upload).
+
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.TaskEventTypes</dt>
+    <dd>
+    Enumerate the different types of task events.
+
+      - `TASK_CREATED` - A new task has been created.
+      - `TASK_SUBMITTED` - A task has been submitted for review.
+      - `TASK_ACCEPTED` - A submitted task has been accepted in review.
+      - `TASK_REJECTED` - A submitted task has been rejected in review.
+      - `TASK_CORRECTED` - A submitted task has been corrected in review.
+      - `TASK_ASSIGNED` - A task has been assigned to a worker.
+      - `TASK_REASSIGNED` - A task has been reassigned to another worker.
+      - `TASK_UNASSIGNED` - A task has been unassigned from a worker.
+      - `TASK_SKIPPED` - A task has been skipped by a worker.
+      - `TASK_SAVED` - A task has been saved but not yet submitted.
+      - `GROUNDTRUTH_TASK_EDITED` - A ground truth task has been edited.
+      - `CONSENSUS_COMPUTED` - The consensus for a task has been computed.
+      - `COMMENT_ADDED` - A comment has been added to a task.
+      - `CONSENSUS_TASK_EDITED` - A consensus task has been edited.
+
+
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.TaskFilters</dt>
+    <dd>
+    Enumerate the different task filters.
+
+      - `ALL` - All tasks.
+      - `GROUNDTRUTH` - Ground truth tasks only.
+      - `UNASSIGNED` - Tasks that have not yet been assigned to a worker.
+      - `QUEUED` - Tasks that are queued for labeling/review.
+      - `DRAFT` - Tasks that have been saved as draft.
+      - `SKIPPED` - Tasks that have been skipped by a worker.
+      - `COMPLETED` - Tasks that have been completed successfully.
+      - `FAILED` - Tasks that have been rejected in review.
+      - `ISSUES` - Tasks that have issues raised and cannot be completed.
+
+
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.TaskStates</dt>
+    <dd>
+    Task Status.
+
+      - `UNASSIGNED` - The Task has not been assigned to a Project Admin or Member.
+      - `ASSIGNED` - The Task has been assigned to a Project Admin or Member,
+      - `IN_PROGRESS` - The Task is currently being worked on by a Project Admin or Member.
+      - `COMPLETED` - The Task has been completed successfully.
+      - `PROBLEM` - A Project Admin or Member has raised an Issue regarding the Task,
+      - `SKIPPED` - The Task has been skipped.
+      - `STAGED` - The Task has been saved as a Draft.
+
+
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.Stage</dt>
+    <dd>
+    Base stage.
+
+    <dl>
+        <dt>class Config</dt>
+        <dd>
+        Stage config.
+
+        <dl>
+            <dt>abstract classmethod from_entity</dt>
+            <dd>
+            Get object from entity
+
+            Return type: `[Config](#redbrick.Stage.Config)`Config``
+            </dd>
+        </dl>
+        <dl>
+            <dt>abstract to_entity</dt>
+            <dd>
+            Get entity from object.
+
+            Return type: ``Dict``
+            </dd>
+        </dl>
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract classmethod from_entity</dt>
+        <dd>
+        Get object from entity
+
+        Return type: `[Stage](#redbrick.Stage)`Stage``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract to_entity</dt>
+        <dd>
+        Get entity from object.
+
+        Return type: ``Dict``
+        </dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.LabelStage</dt>
+    <dd>
+    Label Stage.
+
+    Parameters: 
+      - <strong>stage_name</strong> (<em>str</em>) – Stage name.
+      - <strong>on_submit</strong> (<em>Union</em><em>[</em><em>bool</em><em>, </em><em>str</em><em>] </em><em>= True</em>) – The next stage for the task when submitted in current stage.
+      - <strong>config</strong> (<em>Config = Config</em><em>(</em><em>)</em>) – Stage config.
+
+
+    <dl>
+        <dt>class Config</dt>
+        <dd>
+        Label Stage Config.
+
+        Parameters: 
+          - <strong>auto_assignment</strong> (<em>Optional</em><em>[</em><em>bool</em><em>]</em>) – Enable task auto assignment. (Default: True)
+          - <strong>auto_assignment_queue_size</strong> (<em>Optional</em><em>[</em><em>int</em><em>]</em>) – Task auto-assignment queue size. (Default: 5)
+          - <strong>show_uploaded_annotations</strong> (<em>Optional</em><em>[</em><em>bool</em><em>]</em>) – Show uploaded annotations to users. (Default: True)
+          - <strong>read_only_labels_edit_access</strong> (<em>Optional</em><em>[</em>[ProjectMember.Role](#redbrick.ProjectMember.Role)<em>ProjectMember.Role</em><em>]</em>) – Access level to change the read only labels. (Default: None)
+          - <strong>is_pre_label</strong> (<em>Optional</em><em>[</em><em>bool</em><em>]</em>) – Is pre-labeling stage. (Default: False)
+          - <strong>is_consensus_label</strong> (<em>Optional</em><em>[</em><em>bool</em><em>]</em>) – Is consensus-labeling stage. (Default: False)
+
+
+        <dl>
+            <dt>classmethod from_entity</dt>
+            <dd>
+            Get object from entity.
+
+            Return type: `[Config](#redbrick.LabelStage.Config)`Config``
+            </dd>
+        </dl>
+        <dl>
+            <dt>to_entity</dt>
+            <dd>
+            Get entity from object.
+
+            Return type: ``Dict``
+            </dd>
+        </dl>
+        </dd>
+    </dl>
+    <dl>
+        <dt>classmethod from_entity</dt>
+        <dd>
+        Get object from entity
+
+        Return type: `[LabelStage](#redbrick.LabelStage)`LabelStage``
+        </dd>
+    </dl>
+    <dl>
+        <dt>to_entity</dt>
+        <dd>
+        Get entity from object.
+
+        Return type: ``Dict``
+        </dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.ReviewStage</dt>
+    <dd>
+    Review Stage.
+
+    Parameters: 
+      - <strong>stage_name</strong> (<em>str</em>) – Stage name.
+      - <strong>on_accept</strong> (<em>Union</em><em>[</em><em>bool</em><em>, </em><em>str</em><em>] </em><em>= True</em>) – The next stage for the task when accepted in current stage.
+      - <strong>on_reject</strong> (<em>Union</em><em>[</em><em>bool</em><em>, </em><em>str</em><em>] </em><em>= False</em>) – The next stage for the task when rejected in current stage.
+      - <strong>config</strong> (<em>Config = Config</em><em>(</em><em>)</em>) – Stage config.
+
+
+    <dl>
+        <dt>class Config</dt>
+        <dd>
+        Review Stage Config.
+
+        Parameters: 
+          - <strong>review_percentage</strong> (<em>Optional</em><em>[</em><em>float</em><em>]</em>) – Percentage of tasks in [0, 1] that will be sampled for review. (Default: 1)
+          - <strong>auto_assignment</strong> (<em>Optional</em><em>[</em><em>bool</em><em>]</em>) – Enable task auto assignment. (Default: True)
+          - <strong>auto_assignment_queue_size</strong> (<em>Optional</em><em>[</em><em>int</em><em>]</em>) – Task auto-assignment queue size. (Default: 5)
+          - <strong>read_only_labels_edit_access</strong> (<em>Optional</em><em>[</em>[ProjectMember.Role](#redbrick.ProjectMember.Role)<em>ProjectMember.Role</em><em>]</em>) – Access level to change the read only labels. (Default: None)
+          - <strong>is_pre_review</strong> (<em>Optional</em><em>[</em><em>bool</em><em>]</em>) – Is pre-review stage. (Default: False)
+          - <strong>is_consensus_merge</strong> (<em>Optional</em><em>[</em><em>bool</em><em>]</em>) – Is consensus-merge (V2) stage. (Default: False)
+
+
+        <dl>
+            <dt>classmethod from_entity</dt>
+            <dd>
+            Get object from entity.
+
+            Return type: `[Config](#redbrick.ReviewStage.Config)`Config``
+            </dd>
+        </dl>
+        <dl>
+            <dt>to_entity</dt>
+            <dd>
+            Get entity from object.
+
+            Return type: ``Dict``
+            </dd>
+        </dl>
+        </dd>
+    </dl>
+    <dl>
+        <dt>classmethod from_entity</dt>
+        <dd>
+        Get object from entity
+
+        Return type: `[ReviewStage](#redbrick.ReviewStage)`ReviewStage``
+        </dd>
+    </dl>
+    <dl>
+        <dt>to_entity</dt>
+        <dd>
+        Get entity from object.
+
+        Return type: ``Dict``
+        </dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.ModelStage</dt>
+    <dd>
+    Model Stage.
+
+    Parameters: 
+      - <strong>stage_name</strong> (<em>str</em>) – Stage name.
+      - <strong>on_submit</strong> (<em>Union</em><em>[</em><em>bool</em><em>, </em><em>str</em><em>] </em><em>= True</em>) – The next stage for the task when submitted in current stage.
+      - <strong>config</strong> (<em>Config = Config</em><em>(</em><em>)</em>) – Stage config.
+
+
+    <dl>
+        <dt>class ModelTaxonomyMap</dt>
+        <dd>
+        Model taxonomy map.
+
+        Parameters: 
+          - <strong>modelCategory</strong> (<em>str</em>) – Model category name.
+          - <strong>rbCategory</strong> (<em>str</em>) – Category name as it appears in the RedBrick project’s taxonomy.
+
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>class Config</dt>
+        <dd>
+        Model Stage Config.
+
+        Parameters: 
+          - <strong>name</strong> (<em>str</em>) – Model name.
+          - <strong>sub_type</strong> (<em>str</em>) – Model sub type.
+          - <strong>url</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – URL for self-hosted model.
+          - <strong>taxonomy_objects</strong> (<em>Optional</em><em>[</em><em>List</em><em>[</em>[ModelStage.ModelTaxonomyMap](#redbrick.ModelStage.ModelTaxonomyMap)<em>ModelStage.ModelTaxonomyMap</em><em>]</em><em>]</em>) – Mapping of model classes to project’s taxonomy objects.
+
+
+        <dl>
+            <dt>classmethod from_entity</dt>
+            <dd>
+            Get object from entity.
+
+            Return type: `[Config](#redbrick.ModelStage.Config)`Config``
+            </dd>
+        </dl>
+        <dl>
+            <dt>to_entity</dt>
+            <dd>
+            Get entity from object.
+
+            Return type: ``Dict``
+            </dd>
+        </dl>
+        </dd>
+    </dl>
+    <dl>
+        <dt>classmethod from_entity</dt>
+        <dd>
+        Get object from entity
+
+        Return type: `[ModelStage](#redbrick.ModelStage)`ModelStage``
+        </dd>
+    </dl>
+    <dl>
+        <dt>to_entity</dt>
+        <dd>
+        Get entity from object.
+
+        Return type: ``Dict``
+        </dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.OrgMember</dt>
+    <dd>
+    Organization Member.
+
+    Parameters: 
+      - <strong>user_id</strong> (<em>str</em>) – User ID.
+      - <strong>email</strong> (<em>str</em>) – User email.
+      - <strong>given_name</strong> (<em>str</em>) – User given name.
+      - <strong>family_name</strong> (<em>str</em>) – User family name.
+      - <strong>role</strong> ([OrgMember.Role](#redbrick.OrgMember.Role)<em>OrgMember.Role</em>) – User role in organization.
+      - <strong>tags</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Tags associated with the user.
+      - <strong>is_2fa_enabled</strong> (<em>bool</em>) – Whether 2FA is enabled for the user.
+      - <strong>last_active</strong> (<em>Optional</em><em>[</em><em>datetime</em><em>] </em><em>= None</em>) – Last time the user was active.
+      - <strong>sso_provider</strong> (<em>Optional</em><em>[</em><em>str</em><em>] </em><em>= None</em>) – User identity SSO provider.
+
+
+    <dl>
+        <dt>class Role</dt>
+        <dd>
+        Enumerate access levels for Organization.
+
+          - `OWNER` - Organization Owner
+          - `ADMIN` - Organization Admin
+          - `MEMBER` - Organization Member
+
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>classmethod from_entity</dt>
+        <dd>
+        Get object from entity.
+
+        Return type: `[OrgMember](#redbrick.OrgMember)`OrgMember``
+        </dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.OrgInvite</dt>
+    <dd>
+    Organization Invite.
+
+    Parameters: 
+      - <strong>email</strong> (<em>str</em>) – User email.
+      - <strong>role</strong> ([OrgMember.Role](#redbrick.OrgMember.Role)<em>OrgMember.Role</em>) – User role in organization.
+      - <strong>sso_provider</strong> (<em>Optional</em><em>[</em><em>str</em><em>] </em><em>= None</em>) – User identity SSO provider.
+      - <strong>status</strong> (<em>OrgInvite.Status = OrgInvite.Status.PENDING</em>) – Invite status.
+
+
+    <dl>
+        <dt>class Status</dt>
+        <dd>
+        Enumerate invite status.
+
+          - `PENDING` - Pending invitation
+          - `ACCEPTED` - Accepted invitation
+          - `DECLINED` - Declined invitation
+
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>classmethod from_entity</dt>
+        <dd>
+        Get object from entity.
+
+        Return type: `[OrgInvite](#redbrick.OrgInvite)`OrgInvite``
+        </dd>
+    </dl>
+    <dl>
+        <dt>to_entity</dt>
+        <dd>
+        Get entity from object.
+
+        Return type: ``Dict``
+        </dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.ProjectMember</dt>
+    <dd>
+    Project Member.
+
+    Parameters: 
+      - <strong>member_id</strong> (<em>str</em>) – Unique user ID or email.
+      - <strong>role</strong> ([ProjectMember.Role](#redbrick.ProjectMember.Role)<em>ProjectMember.Role</em>) – User role in project.
+      - <strong>stages</strong> (<em>Optional</em><em>[</em><em>List</em><em>[</em><em>str</em><em>]</em><em>] </em><em>= None</em>) – Stages that the member has access to (Applicable for MEMBER role).
+      - <strong>org_membership</strong> (<em>Optional</em><em>[</em>[OrgMember](#redbrick.OrgMember)<em>OrgMember</em><em>] </em><em>= None</em>) – Organization memberhip.
+
+
+    <dl>
+        <dt>class Role</dt>
+        <dd>
+        Enumerate access levels for Project.
+
+          - `ADMIN` - Project Admin
+          - `MANAGER` - Project Manager
+          - `MEMBER` - Project Member (Labeler/Reviewer)
+
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>classmethod from_entity</dt>
+        <dd>
+        Get object from entity.
+
+        Return type: `[ProjectMember](#redbrick.ProjectMember)`ProjectMember``
+        </dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>redbrick.get_org</dt>
+    <dd>
+    Get an existing redbrick organization object.
+
+    Organization object allows you to interact with your organization
+    and perform high level actions like creating a project.
+
+    Parameters: 
+      - <strong>org_id</strong> (<em>str</em>) – Your organizations unique id [https://app.redbrickai.com](https://app.redbrickai.com)/<org_id>/.
+      - <strong>api_key</strong> (<em>str</em>) – Your secret api_key, can be created from the RedBrick AI platform.
+      - <strong>url</strong> (<em>str = DEFAULT_URL</em>) – Should default to [https://api.redbrickai.com](https://api.redbrickai.com)
+
+
+    Return type: `[RBOrganization](#redbrick.RBOrganization)`RBOrganization``
+    </dd>
+</dl>
+<dl>
+    <dt>redbrick.get_workspace</dt>
+    <dd>
+    Get an existing RedBrick workspace object.
+
+    Workspace objects allow you to interact with your RedBrick AI workspaces,
+    and perform actions like importing data, exporting data etc.
+
+    Parameters: 
+      - <strong>org_id</strong> (<em>str</em>) – Your organizations unique id [https://app.redbrickai.com](https://app.redbrickai.com)/<org_id>/
+      - <strong>workspace_id</strong> (<em>str</em>) – Your workspaces unique id.
+      - <strong>api_key</strong> (<em>str</em>) – Your secret api_key, can be created from the RedBrick AI platform.
+      - <strong>url</strong> (<em>str = DEFAULT_URL</em>) – Should default to [https://api.redbrickai.com](https://api.redbrickai.com)
+
+
+    Return type: `[RBWorkspace](#redbrick.RBWorkspace)`RBWorkspace``
+    </dd>
+</dl>
+<dl>
+    <dt>redbrick.get_project</dt>
+    <dd>
+    Get an existing RedBrick project object.
+
+    Project objects allow you to interact with your RedBrick Ai projects,
+    and perform actions like importing data, exporting data etc.
+
+    Parameters: 
+      - <strong>org_id</strong> (<em>str</em>) – Your organizations unique id [https://app.redbrickai.com](https://app.redbrickai.com)/<org_id>/
+      - <strong>project_id</strong> (<em>str</em>) – Your projects unique id [https://app.redbrickai.com](https://app.redbrickai.com)/<org_id>/<project_id>/
+      - <strong>api_key</strong> (<em>str</em>) – Your secret api_key, can be created from the RedBrick AI platform.
+      - <strong>url</strong> (<em>str = DEFAULT_URL</em>) – Should default to [https://api.redbrickai.com](https://api.redbrickai.com)
+
+
+    Return type: `[RBProject](#redbrick.RBProject)`RBProject``
+    </dd>
+</dl>
+<dl>
+    <dt>redbrick.get_org_from_profile</dt>
+    <dd>
+    Get the org from the profile name in credentials file
+
+    Parameters: <strong>profile_name</strong> (<em>str</em>) – Name of the profile stored in the credentials fileReturn type: `[RBOrganization](#redbrick.RBOrganization)`RBOrganization``
+    </dd>
+</dl>
+<dl>
+    <dt>redbrick.get_project_from_profile</dt>
+    <dd>
+    Get the RBProject object using the credentials file
+
+    project = get_project_from_profile()
+
+    Parameters: 
+      - <strong>project_id</strong> (<em>Optional</em><em>[</em><em>str</em><em>] </em><em>= None</em>) – project id which has to be fetched.
+      - <strong>profile_name</strong> (<em>str</em>) – Name of the profile stored in the credentials file
+
+
+    Return type: `[RBProject](#redbrick.RBProject)`RBProject``
+    </dd>
+</dl>
+## Organization
+
+<dl>
+    <dt>class redbrick.RBOrganization</dt>
+    <dd>
+    Bases: `ABC`
+
+    Representation of RedBrick organization.
+
+    The [redbrick.RBOrganization](#redbrick.RBOrganization)`redbrick.RBOrganization` object allows you to programmatically interact with
+    your RedBrick organization. This class provides methods for querying your
+    organization and doing other high level actions. Retrieve the organization object in the following way:
+
+    Variables: 
+      - <strong>team</strong> ([redbrick.common.member.Team](#redbrick.common.member.Team)<em>redbrick.common.member.Team</em>) – Organization team management.
+      - <strong>storage</strong> ([redbrick.common.storage.Storage](#redbrick.common.storage.Storage)<em>redbrick.common.storage.Storage</em>) – Organization storage methods integration.
+
+
+        ```python
+        >>> org = redbrick.get_org(org_id="", api_key="")
+        ```
+    <dl>
+        <dt>abstract property org_id`:` str</dt>
+        <dd>Retrieve the unique org_id of this organization.</dd>
+    </dl>
+    <dl>
+        <dt>abstract property name`:` str</dt>
+        <dd>Retrieve unique name of this organization.</dd>
+    </dl>
+    <dl>
+        <dt>abstract taxonomies</dt>
+        <dd>
+        Get a list of taxonomy names/objects in the organization.
+
+        Return type: ``Union`[`List`[`str`], `List`[[Taxonomy](formats/taxonomy.mdx#redbrick.types.taxonomy.Taxonomy)`Taxonomy`]]`
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract workspaces_raw</dt>
+        <dd>
+        Get a list of active workspaces as raw objects in the organization.
+
+        Return type: ``List`[`Dict`]`
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract projects_raw</dt>
+        <dd>
+        Get a list of active projects as raw objects in the organization.
+
+        Return type: ``List`[`Dict`]`
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract projects</dt>
+        <dd>
+        Get a list of active projects in the organization.
+
+        Return type: ``List`[[RBProject](#redbrick.RBProject)`RBProject`]`
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract create_workspace</dt>
+        <dd>
+        Create a workspace within the organization.
+
+        This method creates a worspace in a similar fashion to the
+        quickstart on the RedBrick AI create workspace page.
+
+        Parameters: 
+          - <strong>name</strong> (<em>str</em>) – A unique name for your workspace
+          - <strong>exists_okay</strong> (<em>bool = False</em>) – Allow workspaces with the same name to be returned instead of trying to create
+
+
+        Returns: A RedBrick Workspace object.Return type: [redbrick.RBWorkspace](#redbrick.RBWorkspace)
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract create_project_advanced</dt>
+        <dd>
+        Create a project within the organization.
+
+        This method creates a project in a similar fashion to the
+        quickstart on the RedBrick AI create project page.
+
+        Parameters: 
+          - <strong>name</strong> (<em>str</em>) – A unique name for your project
+          - <strong>taxonomy_name</strong> (<em>str</em>) – The name of the taxonomy you want to use for this project.
+          - <strong>stages</strong> (<em>List</em><em>[</em>[Stage](#redbrick.Stage)<em>Stage</em><em>]</em>) – List of stage configs.
+          - <strong>exists_okay</strong> (<em>bool = False</em>) – Allow projects with the same name to be returned instead of trying to create
+          - <strong>workspace_id</strong> (<em>Optional</em><em>[</em><em>str</em><em>] </em><em>= None</em>) – The id of the workspace that you want to add this project to.
+          - <strong>sibling_tasks</strong> (<em>Optional</em><em>[</em><em>int</em><em>] </em><em>= None</em>) – Number of tasks created for each uploaded datapoint.
+          - <strong>consensus_settings</strong> (<em>Optional</em><em>[</em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em><em>] </em><em>= None</em>) – 
+
+            Consensus settings for the project. It has keys:
+                  - minAnnotations: int
+                  - autoAcceptThreshold?: float (range [0, 1])
+
+
+        Returns: A RedBrick Project object.Return type: [redbrick.RBProject](#redbrick.RBProject)Raises: <strong>ValueError:</strong> – If a project with the same name exists but has a different type or taxonomy.
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract create_project</dt>
+        <dd>
+        Create a project within the organization.
+
+        This method creates a project in a similar fashion to the
+        quickstart on the RedBrick AI create project page.
+
+        Parameters: 
+          - <strong>name</strong> (<em>str</em>) – A unique name for your project
+          - <strong>taxonomy_name</strong> (<em>str</em>) – The name of the taxonomy you want to use for this project.
+          - <strong>reviews</strong> (<em>int = 0</em>) – The number of review stages that you want to add after the label
+          - <strong>exists_okay</strong> (<em>bool = False</em>) – Allow projects with the same name to be returned instead of trying to create
+          - <strong>workspace_id</strong> (<em>Optional</em><em>[</em><em>str</em><em>] </em><em>= None</em>) – The id of the workspace that you want to add this project to.
+          - <strong>sibling_tasks</strong> (<em>Optional</em><em>[</em><em>int</em><em>] </em><em>= None</em>) – Number of tasks created for each uploaded datapoint.
+          - <strong>consensus_settings</strong> (<em>Optional</em><em>[</em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em><em>] </em><em>= None</em>) – 
+
+            Consensus settings for the project. It has keys:
+                  - minAnnotations: int
+                  - autoAcceptThreshold?: float (range [0, 1])
+
+
+        Returns: A RedBrick Project object.Return type: [redbrick.RBProject](#redbrick.RBProject)Raises: <strong>ValueError:</strong> – If a project with the same name exists but has a different type or taxonomy.
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract get_project</dt>
+        <dd>
+        Get project by id/name.
+
+        Return type: `[RBProject](#redbrick.RBProject)`RBProject``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract delete_project</dt>
+        <dd>
+        Delete a project by ID.
+
+        Return type: ``bool``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract labeling_time</dt>
+        <dd>
+        Get information of tasks labeled between two dates (both inclusive).
+
+        Return type: ``List`[`Dict`]`
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract create_taxonomy</dt>
+        <dd>
+        Create a Taxonomy V2.
+
+        Parameters: 
+          - <strong>name</strong> (``str``) – Unique identifier for the taxonomy.
+          - <strong>study_classify</strong> (``Optional`[`List`[[Attribute](formats/taxonomy.mdx#redbrick.types.taxonomy.Attribute)`Attribute`]]`) – Study level classification applies to the task.
+          - <strong>series_classify</strong> (``Optional`[`List`[[Attribute](formats/taxonomy.mdx#redbrick.types.taxonomy.Attribute)`Attribute`]]`) – Series level classification applies to a single series within a task.
+          - <strong>instance_classify</strong> (``Optional`[`List`[[Attribute](formats/taxonomy.mdx#redbrick.types.taxonomy.Attribute)`Attribute`]]`) – Instance classification applies to a single frame (video) or slice (3D volume).
+          - <strong>object_types</strong> (``Optional`[`List`[[ObjectType](formats/taxonomy.mdx#redbrick.types.taxonomy.ObjectType)`ObjectType`]]`) – Object types are used to annotate features/objects in tasks, for example, segmentation or bounding boxes.
+
+
+        Raises: <strong>ValueError:</strong> – If there are validation errors.Return type: ``None``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract get_taxonomy</dt>
+        <dd>
+        Get a taxonomy created in your organization based on id or name.
+
+        Format reference for categories and attributes objects:
+        [https://sdk.redbrickai.com/formats/taxonomy.html](https://sdk.redbrickai.com/formats/taxonomy.html)
+
+        Return type: `[Taxonomy](formats/taxonomy.mdx#redbrick.types.taxonomy.Taxonomy)`Taxonomy``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract update_taxonomy</dt>
+        <dd>
+        Update the categories/attributes of Taxonomy (V2) in the organization.
+
+        Format reference for categories and attributes objects:
+        [https://sdk.redbrickai.com/formats/taxonomy.html](https://sdk.redbrickai.com/formats/taxonomy.html)
+
+        Raises: <strong>ValueError:</strong> – If there are validation errors.Return type: ``None``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract delete_taxonomy</dt>
+        <dd>
+        Delete a taxonomy by name or ID.
+
+        Return type: ``bool``
+        </dd>
+    </dl>
+    </dd>
+</dl>
+## Team
+
+<dl>
+    <dt>class redbrick.common.member.Team</dt>
+    <dd>
+    Bases: `ABC`
+
+    Abstract interface to Team module.
+
+    <dl>
+        <dt>abstract get_member</dt>
+        <dd>
+        Get a team member.
+
+            ```python
+            org = redbrick.get_org(org_id, api_key)
+            member = org.team.get_member(member_id)
+            ```
+        Parameters: <strong>member_id</strong> (<em>str</em>) – Unique member userId or email.Return type: [OrgMember](#redbrick.OrgMember)
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract list_members</dt>
+        <dd>
+        Get a list of all organization members.
+
+            ```python
+            org = redbrick.get_org(org_id, api_key)
+            members = org.team.list_members()
+            ```
+        Return type: List[[OrgMember](#redbrick.OrgMember)]
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract remove_members</dt>
+        <dd>
+        Remove members from the organization.
+
+            ```python
+            org = redbrick.get_org(org_id, api_key)
+            org.team.remove_members(member_ids)
+            ```
+        Parameters: <strong>member_ids</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Unique member ids (userId or email).Return type: ``None``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract list_invites</dt>
+        <dd>
+        Get a list of all pending or declined invites.
+
+            ```python
+            org = redbrick.get_org(org_id, api_key)
+            members = org.team.list_invites()
+            ```
+        Return type: List[[OrgInvite](#redbrick.OrgInvite)]
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract invite_user</dt>
+        <dd>
+        Invite a user to the organization.
+
+            ```python
+            org = redbrick.get_org(org_id, api_key)
+            invitation = org.team.invite_user(OrgInvite(email="...", role=OrgMember.Role.MEMBER))
+            ```
+        Parameters: <strong>invitation</strong> ([OrgInvite](#redbrick.OrgInvite)<em>OrgInvite</em>) – Organization inviteReturn type: [OrgInvite](#redbrick.OrgInvite)
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract revoke_invitation</dt>
+        <dd>
+        Revoke org user invitation.
+
+            ```python
+            org = redbrick.get_org(org_id, api_key)
+            org.team.revoke_invitation(OrgInvite(email="..."))
+            ```
+        Parameters: <strong>invitation</strong> ([OrgInvite](#redbrick.OrgInvite)<em>OrgInvite</em>) – Organization inviteReturn type: ``None``
+        </dd>
+    </dl>
+    </dd>
+</dl>
+## Storage
+
+<dl>
+    <dt>class redbrick.common.storage.Storage</dt>
+    <dd>
+    Bases: `ABC`
+
+    Storage Method Controller.
+
+    <dl>
+        <dt>abstract get_storage</dt>
+        <dd>
+        Get a storage method by ID.
+
+        Return type: `[StorageProvider](#redbrick.StorageProvider)`StorageProvider``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract list_storages</dt>
+        <dd>
+        Get a list of storage methods in the organization.
+
+        Return type: ``List`[[StorageProvider](#redbrick.StorageProvider)`StorageProvider`]`
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract create_storage</dt>
+        <dd>
+        Create a storage method.
+
+        Return type: `[StorageProvider](#redbrick.StorageProvider)`StorageProvider``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract update_storage</dt>
+        <dd>
+        Update a storage method.
+
+        Return type: `[StorageProvider](#redbrick.StorageProvider)`StorageProvider``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract delete_storage</dt>
+        <dd>
+        Delete a storage method.
+
+        Return type: ``bool``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract verify_storage</dt>
+        <dd>
+        Verify a storage method by ID.
+
+        Return type: ``bool``
+        </dd>
+    </dl>
+    </dd>
+</dl>
+## Workspace
+
+<dl>
+    <dt>class redbrick.RBWorkspace</dt>
+    <dd>
+    Bases: `ABC`
+
+    Interface for interacting with your RedBrick AI Workspaces.
+
+    <dl>
+        <dt>abstract property org_id`:` str</dt>
+        <dd>
+        Read only property.
+
+        Retrieves the unique Organization UUID that this workspace belongs to
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract property workspace_id`:` str</dt>
+        <dd>
+        Read only property.
+
+        Retrieves the unique Workspace ID UUID.
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract property name`:` str</dt>
+        <dd>
+        Read only name property.
+
+        Retrieves the workspace name.
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract property metadata_schema`:` List`[`Dict`]`</dt>
+        <dd>Retrieves the workspace metadata schema.</dd>
+    </dl>
+    <dl>
+        <dt>abstract property classification_schema`:` List`[`Dict`]`</dt>
+        <dd>Retrieves the workspace classification schema.</dd>
+    </dl>
+    <dl>
+        <dt>abstract property cohorts`:` List`[`Dict`]`</dt>
+        <dd>Retrieves the workspace cohorts.</dd>
+    </dl>
+    <dl>
+        <dt>abstract update_schema</dt>
+        <dd>
+        Update workspace metadata and classification schema.
+
+        Return type: ``None``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract update_cohorts</dt>
+        <dd>
+        Update workspace cohorts.
+
+        Return type: ``None``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract get_datapoints</dt>
+        <dd>
+        Get datapoints in a workspace.
+
+        Return type: ``Iterator`[`Dict`]`
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract archive_datapoints</dt>
+        <dd>
+        Archive datapoints.
+
+        Return type: ``None``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract unarchive_datapoints</dt>
+        <dd>
+        Unarchive datapoints.
+
+        Return type: ``None``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract add_datapoints_to_cohort</dt>
+        <dd>
+        Add datapoints to a cohort.
+
+        Return type: ``None``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract remove_datapoints_from_cohort</dt>
+        <dd>
+        Remove datapoints from a cohort.
+
+        Return type: ``None``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract update_datapoint_attributes</dt>
+        <dd>
+        Update datapoint attributes.
+
+        Return type: ``None``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract add_datapoints_to_projects</dt>
+        <dd>
+        Add datapoints to project.
+
+        Parameters: 
+          - <strong>project_ids</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – The projects in which you’d like to add the given datapoints.
+          - <strong>dp_ids</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of datapoints that need to be added to projects.
+          - <strong>is_ground_truth</strong> (<em>bool = False</em>) – Whether to create tasks directly in ground truth stage.
+
+
+        Return type: ``None``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract create_datapoints</dt>
+        <dd>
+        Create datapoints in workspace.
+
+        Upload data to your workspace (without annotations). Please visit
+        [our documentation](https://sdk.redbrickai.com/formats/index.html#import)
+        to understand the format for `points`.
+
+            ```python
+            workspace = redbrick.get_workspace(org_id, workspace_id, api_key, url)
+            points = [
+                {
+                    "name": "...",
+                    "series": [
+                        {
+                            "items": "...",
+                        }
+                    ]
+                }
+            ]
+            workspace.create_datapoints(storage_id, points)
+            ```
+        Parameters: 
+          - <strong>storage_id</strong> (<em>str</em>) – Your RedBrick AI external storage_id. This can be found under the Storage Tab
+          - <strong>points</strong> (List[[InputTask](formats/index.mdx#redbrick.types.task.InputTask)`InputTask`]) – Please see the RedBrick AI reference documentation for overview of the format.
+          - <strong>concurrency</strong> (<em>int = 50</em>) – 
+
+
+        Returns: List of datapoint objects with key xxxresponsexxx if successful, else xxxerrorxxxReturn type: List[Dict]
+        Note: 1. If doing direct upload, please use `redbrick.StorageMethod.REDBRICK`
+              as the storage id. Your items path must be a valid path to a locally stored image.
+
+              2. When doing direct upload i.e. `redbrick.StorageMethod.REDBRICK`,
+              if you didn’t specify a “name” field in your datapoints object,
+              we will assign the “items” path to it.
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract update_datapoints_metadata</dt>
+        <dd>
+        Update datapoints metadata.
+
+        Update metadata for datapoints in workspace.
+
+            ```python
+            workspace = redbrick.get_workspace(org_id, workspace_id, api_key, url)
+            points = [
+                {
+                    "dpId": "...",
+                    "metaData": {
+                        "property": "value",
+                    }
+                }
+            ]
+            workspace.update_datapoints_metadata(storage_id, points)
+            ```
+        Parameters: 
+          - <strong>storage_id</strong> (<em>str</em>) – Storage method where the datapoints are stored.
+          - <strong>points</strong> (List[[InputTask](formats/index.mdx#redbrick.types.task.InputTask)`InputTask`]) – List of datapoints with dpId and metaData values.
+
+
+        Return type: ``None``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract delete_datapoints</dt>
+        <dd>
+        Delete workspace datapoints based on ids.
+
+        Parameters: 
+          - <strong>dp_ids</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of datapoint ids to delete.
+          - <strong>concurrency</strong> (<em>int = 50</em>) – The number of datapoints to delete at a time.
+
+
+        Returns: True if successful, else False.Return type: bool
+        </dd>
+    </dl>
+    </dd>
+</dl>
+## Project
+
+<dl>
+    <dt>class redbrick.RBProject</dt>
+    <dd>
+    Bases: `ABC`
+
+    Abstract interface to RBProject.
+
+    Variables: 
+      - <strong>upload</strong> ([redbrick.common.upload.Upload](#redbrick.common.upload.Upload)<em>redbrick.common.upload.Upload</em>) – Upload data to project.
+      - <strong>labeling</strong> ([redbrick.common.labeling.Labeling](#redbrick.common.labeling.Labeling)<em>redbrick.common.labeling.Labeling</em>) – Labeling activities.
+      - <strong>review</strong> ([redbrick.common.labeling.Labeling](#redbrick.common.labeling.Labeling)<em>redbrick.common.labeling.Labeling</em>) – Review activities.
+      - <strong>export</strong> ([redbrick.common.export.Export](#redbrick.common.export.Export)<em>redbrick.common.export.Export</em>) – Project data export.
+      - <strong>settings</strong> ([redbrick.common.settings.Settings](#redbrick.common.settings.Settings)<em>redbrick.common.settings.Settings</em>) – Project settings management.
+      - <strong>workforce</strong> ([redbrick.common.member.Workforce](#redbrick.common.member.Workforce)<em>redbrick.common.member.Workforce</em>) – Project workforce management.
+
+
+        ```python
+        >>> project = redbrick.get_project(org_id="", project_id="", api_key="")
+        ```
+    <dl>
+        <dt>abstract property org_id`:` str</dt>
+        <dd>
+        Read only property.
+
+        Retrieves the unique Organization UUID that this project belongs to
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract property project_id`:` str</dt>
+        <dd>
+        Read only property.
+
+        Retrieves the unique Project ID UUID.
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract property name`:` str</dt>
+        <dd>
+        Read only name property.
+
+        Retrieves the project name.
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract property url`:` str</dt>
+        <dd>
+        Read only property.
+
+        Retrieves the project URL.
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract property taxonomy_name`:` str</dt>
+        <dd>
+        Read only taxonomy_name property.
+
+        Retrieves the taxonomy name.
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract property taxonomy`:` [Taxonomy](formats/taxonomy.mdx#redbrick.types.taxonomy.Taxonomy)</dt>
+        <dd>Retrieves the project taxonomy.</dd>
+    </dl>
+    <dl>
+        <dt>abstract property workspace_id`:` str `|` None</dt>
+        <dd>
+        Read only workspace_id property.
+
+        Retrieves the workspace id.
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract property label_storage`:` Tuple`[`str`,` str`]`</dt>
+        <dd>
+        Read only label_storage property.
+
+        Retrieves the label storage id and path.
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract property stages`:` List`[`[Stage](#redbrick.Stage)`]`</dt>
+        <dd>Get list of stages.</dd>
+    </dl>
+    <dl>
+        <dt>abstract set_label_storage</dt>
+        <dd>
+        Set label storage method for a project.
+
+        By default, all annotations get stored in RedBrick AI’s storage
+        i.e. `redbrick.StorageMethod.REDBRICK`.
+        Set a custom external storage, within which RedBrick AI will write all annotations.
+
+        Parameters: 
+          - <strong>storage_id</strong> (<em>str</em>) – The unique ID of your RedBrick AI storage method integration.
+          - <strong>path</strong> (<em>str</em>) – A prefix path within which the annotations will be written.
+
+
+        Returns: Returns [storage_id, path]Return type: Tuple[str, str]
+        Important: You only need to run this command once per project.
+
+        Raises: <strong>ValueError:</strong> – If there are validation errors.
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract update_stage</dt>
+        <dd>
+        Update stage.
+
+        Return type: ``None``
+        </dd>
+    </dl>
+    </dd>
+</dl>
+## Export
+
+<dl>
+    <dt>class redbrick.common.export.Export</dt>
+    <dd>
+    Bases: `ABC`
+
+    Primary interface for various export methods.
+
+    The export module has many functions for exporting annotations and meta-data from projects. The export module is available from the [redbrick.RBProject](#redbrick.RBProject)`redbrick.RBProject` module.
+
+        ```python
+        >>> project = redbrick.get_project(api_key="", org_id="", project_id="")
+        >>> project.export # Export
+        ```
+    <dl>
+        <dt>abstract export_tasks</dt>
+        <dd>
+        Export annotation data.
+
+        Meta-data and category information returned as an Object. Segmentations are written to
+        your disk in NIfTI-1 format. Please [visit our
+        documentation](https://sdk.redbrickai.com/formats/index.html#export)
+        for more information on the format.
+
+        Parameters: 
+          - <strong>concurrency</strong> (<em>int = 10</em>) – 
+          - <strong>only_ground_truth</strong> (<em>bool = False</em>) – If set to True, will only return data that has
+          - <strong>stage_name</strong> (<em>Optional</em><em>[</em><em>str</em><em>] </em><em>= None</em>) – If set, will only export tasks that are currently
+          - <strong>task_id</strong> (<em>Optional</em><em>[</em><em>str</em><em>] </em><em>= None</em>) – If the unique task_id is mentioned, only a single
+          - <strong>from_timestamp</strong> (<em>Optional</em><em>[</em><em>float</em><em>] </em><em>= None</em>) – If the timestamp is mentioned, will only export tasks
+          - <strong>old_format</strong> (<em>bool = False</em>) – Whether to export tasks in old format.
+          - <strong>without_masks</strong> (<em>bool = False</em>) – Exports only tasks JSON without downloading any segmentation masks.
+          - <strong>without_json</strong> (<em>bool = False</em>) – Doesn’t create the tasks JSON file.
+          - <strong>semantic_mask</strong> (<em>bool = False</em>) – Whether to export all segmentations as semantic_mask.
+          - <strong>binary_mask</strong> (<em>Optional</em><em>[</em><em>bool</em><em>] </em><em>= None</em>) – Whether to export all segmentations as binary masks.
+          - <strong>no_consensus</strong> (<em>Optional</em><em>[</em><em>bool</em><em>] </em><em>= None</em>) – Whether to export tasks without consensus info.
+          - <strong>with_files</strong> (<em>bool = False</em>) – Export with files (e.g. images/video frames)
+          - <strong>dicom_to_nifti</strong> (<em>bool = False</em>) – Convert DICOM images to NIfTI. Applicable when xxxwith_filesxxx is True.
+          - <strong>png</strong> (<em>bool = False</em>) – Export labels as PNG masks.
+          - <strong>rt_struct</strong> (<em>bool = False</em>) – Export labels as DICOM RT-Struct. (Only for DICOM images)
+          - <strong>mhd</strong> (<em>bool = False</em>) – Export segmentation masks in MHD format.
+          - <strong>destination</strong> (<em>Optional</em><em>[</em><em>str</em><em>] </em><em>= None</em>) – Destination directory (Default: current directory)
+
+
+        Returns: Datapoint and labels in RedBrick AI format. See
+        [https://sdk.redbrickai.com/formats/index.html#export](https://sdk.redbrickai.com/formats/index.html#export)Return type: Iterator[[OutputTask](formats/index.mdx#redbrick.types.task.OutputTask)`OutputTask`]
+        Note: If both xxxsemantic_maskxxx and xxxbinary_maskxxx options are True,
+              then one binary mask will be generated per class.
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract list_tasks</dt>
+        <dd>
+        Search tasks based on multiple queries for a project.
+        This function returns minimal meta-data about the queried tasks.
+
+        Parameters: 
+          - <strong>search</strong> ([TaskFilters](#redbrick.TaskFilters)`TaskFilters` = TaskFilters.ALL) – Task filter type.
+          - <strong>concurrency</strong> (<em>int = 10</em>) – The number of requests that will be made in parallel.
+          - <strong>limit</strong> (<em>Optional</em><em>[</em><em>int</em><em>] </em><em>= 50</em>) – The number of tasks to return.
+          - <strong>stage_name</strong> (<em>Optional</em><em>[</em><em>str</em><em>] </em><em>= None</em>) – 
+
+            If present, will return tasks that are:
+                1. Available in stage_name: If search == TaskFilters.QUEUED
+                2. Completed in stage_name: If search == TaskFilters.COMPLETED
+          - <strong>user_id</strong> (<em>Optional</em><em>[</em><em>str</em><em>] </em><em>= None</em>) – 
+
+            User id/email. If present, will return tasks that are:
+                1. Assigned to user_id: If search == TaskFilters.QUEUED
+                2. Completed by user_id: If search == TaskFilters.COMPLETED
+          - <strong>task_id</strong> (<em>Optional</em><em>[</em><em>str</em><em>] </em><em>= None</em>) – If present, will return data for the given task id.
+          - <strong>task_name</strong> (<em>Optional</em><em>[</em><em>str</em><em>] </em><em>= None</em>) – If present, will return data for the given task name.
+          - <strong>exact_match</strong> (<em>bool = False</em>) – Applicable when searching for tasks by task_name.
+          - <strong>completed_at</strong> (<em>Optional</em><em>[</em><em>Tuple</em><em>[</em><em>Optional</em><em>[</em><em>float</em><em>]</em><em>, </em><em>Optional</em><em>[</em><em>float</em><em>]</em><em>]</em><em>] </em><em>= None</em>) – If present, will return tasks that were completed in the given time range.
+
+
+        Returns: Return type: Iterator[Dict]
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract get_task_events</dt>
+        <dd>
+        Generate an audit log of all actions performed on tasks.
+
+        Use this method to get a detailed summary of all the actions performed on your
+        tasks, including:
+
+          - Who uploaded the data
+          - Who annotated your tasks
+          - Who reviewed your tasks
+          - and more.
+
+
+        This can be particulary useful to present to auditors who are interested in your
+        quality control workflows.
+
+        Parameters: 
+          - <strong>task_id</strong> (<em>Optional</em><em>[</em><em>str</em><em>] </em><em>= None</em>) – If set, returns events only for the given task.
+          - <strong>only_ground_truth</strong> (<em>bool = True</em>) – If set to True, will return events for tasks
+          - <strong>concurrency</strong> (<em>int = 10</em>) – The number of requests that will be made in parallel.
+          - <strong>from_timestamp</strong> (<em>Optional</em><em>[</em><em>float</em><em>] </em><em>= None</em>) – If the timestamp is mentioned, will only export tasks
+          - <strong>with_labels</strong> (<em>bool = False</em>) – Get metadata of labels submitted in each stage.
+
+
+        Returns: Return type: Iterator[Dict]
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract get_active_time</dt>
+        <dd>
+        Get active time spent on tasks for labeling/reviewing.
+
+        Parameters: 
+          - <strong>stage_name</strong> (<em>str</em>) – Stage for which to return the time info.
+          - <strong>task_id</strong> (<em>Optional</em><em>[</em><em>str</em><em>] </em><em>= None</em>) – If set, will return info for the given task in the given stage.
+          - <strong>concurrency</strong> (<em>int = 100</em>) – Request batch size.
+
+
+        Returns: Return type: Iterator[Dict]
+        </dd>
+    </dl>
+    </dd>
+</dl>
+## Upload
+
+<dl>
+    <dt>class redbrick.common.upload.Upload</dt>
+    <dd>
+    Bases: `ABC`
+
+    Primary interface for uploading to a project.
+
+        ```python
+        >>> project = redbrick.get_project(api_key="", org_id="", project_id="")
+        >>> project.upload
+        ```
+    <dl>
+        <dt>abstract create_datapoints</dt>
+        <dd>
+        Create datapoints in project.
+
+        Upload data, and optionally annotations, to your project. Please visit
+        [our documentation](https://sdk.redbrickai.com/formats/index.html#import)
+        to understand the format for `points`.
+
+            ```python
+            project = redbrick.get_project(org_id, project_id, api_key, url)
+            points = [
+                {
+                    "name": "...",
+                    "series": [
+                        {
+                            "items": "...",
+
+                            # These fields are needed for importing segmentations.
+                            "segmentations": "...",
+                            "segmentMap": {...}
+                        }
+                    ]
+                }
+            ]
+            project.upload.create_datapoints(storage_id, points)
+            ```
+        Parameters: 
+          - <strong>storage_id</strong> (<em>str</em>) – Your RedBrick AI external storage_id. This can be found under the Storage Tab
+          - <strong>points</strong> (List[[InputTask](formats/index.mdx#redbrick.types.task.InputTask)`InputTask`]) – Please see the RedBrick AI reference documentation for overview of the format.
+          - <strong>is_ground_truth</strong> (<em>bool = False</em>) – If labels are provided in `points`, and this parameters
+          - <strong>segmentation_mapping</strong> (<em>Optional</em><em>[</em><em>Dict</em><em>] </em><em>= None</em>) – Optional mapping of semantic_mask segmentation class ids and RedBrick categories.
+          - <strong>rt_struct</strong> (<em>bool = False</em>) – Upload segmentations from DICOM RT-Struct files.
+          - <strong>mhd</strong> (<em>bool = False</em>) – Upload segmentations from MHD files.
+          - <strong>label_storage_id</strong> (<em>Optional</em><em>[</em><em>str</em><em>] </em><em>= None</em>) – Optional label storage id to reference nifti segmentations.
+          - <strong>label_validate</strong> (<em>bool = False</em>) – Validate label nifti instances and segment map.
+          - <strong>prune_segmentations</strong> (<em>bool = False</em>) – Prune segmentations that are not part of the series.
+          - <strong>concurrency</strong> (<em>int = 50</em>) – 
+
+
+        Returns: List of task objects with key xxxresponsexxx if successful, else xxxerrorxxxReturn type: List[Dict]
+        Note: 1. If doing direct upload, please use `redbrick.StorageMethod.REDBRICK`
+              as the storage id. Your items path must be a valid path to a locally stored image.
+
+              2. When doing direct upload i.e. `redbrick.StorageMethod.REDBRICK`,
+              if you didn’t specify a “name” field in your datapoints object,
+              we will assign the “items” path to it.
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract delete_tasks</dt>
+        <dd>
+        Delete project tasks based on task ids.
+
+        Parameters: 
+          - <strong>task_ids</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of task ids to delete.
+          - <strong>concurrency</strong> (<em>int = 50</em>) – The number of tasks to delete at a time.
+
+
+        Returns: True if successful, else False.Return type: bool
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract delete_tasks_by_name</dt>
+        <dd>
+        Delete project tasks based on task names.
+
+        Parameters: 
+          - <strong>task_names</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of task names to delete.
+          - <strong>concurrency</strong> (<em>int = 50</em>) – The number of tasks to delete at a time.
+
+
+        Returns: True if successful, else False.Return type: bool
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract update_task_items</dt>
+        <dd>
+        Update task items, meta data, heat maps, transforms, etc. for the mentioned task ids.
+
+            ```python
+            project = redbrick.get_project(org_id, project_id, api_key, url)
+            points = [
+                {
+                    "taskId": "...",
+                    "series": [
+                        {
+                            "items": "...",
+                        }
+                    ]
+                }
+            ]
+            project.upload.update_task_items(storage_id, points)
+            ```
+        Parameters: 
+          - <strong>storage_id</strong> (<em>str</em>) – Your RedBrick AI external storage_id. This can be found under the Storage Tab
+          - <strong>points</strong> (List[[InputTask](formats/index.mdx#redbrick.types.task.InputTask)`InputTask`]) – List of objects with xxxtaskIdxxx and xxxseriesxxx, where xxxseriesxxx contains
+          - <strong>concurrency</strong> (<em>int = 50</em>) – 
+
+
+        Returns: List of task objects with key xxxresponsexxx if successful, else xxxerrorxxxReturn type: List[Dict]
+        Note: 1. If doing direct upload, please use `redbrick.StorageMethod.REDBRICK`
+              as the storage id. Your items path must be a valid path to a locally stored image.
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract import_tasks_from_workspace</dt>
+        <dd>
+        Import tasks from another project in the same workspace.
+
+            ```python
+            project = redbrick.get_project(org_id, project_id, api_key, url)
+            project.upload.import_tasks_from_workspace(source_project_id, task_ids)
+            ```
+        Parameters: 
+          - <strong>source_project_id</strong> (<em>str</em>) – The source project id from which tasks are to be imported.
+          - <strong>task_ids</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of task ids to be imported.
+          - <strong>with_labels</strong> (<em>bool = False</em>) – If True, the labels will also be imported.
+
+
+        Return type: None
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract update_tasks_priority</dt>
+        <dd>
+        Update tasks’ priorities.
+        Used to determine how the tasks get assigned to annotators/reviewers in auto-assignment.
+
+        Parameters: 
+          - <strong>tasks</strong> (<em>List</em><em>[</em><em>Dict</em><em>]</em>) – List of taskIds and their priorities.
+          - <strong>concurrency</strong> (<em>int = 50</em>) – The number of tasks to update at a time.
+
+
+        Return type: ``None``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract update_tasks_labels</dt>
+        <dd>
+        Update tasks labels at any point in project pipeline.
+
+            ```python
+            project = redbrick.get_project(...)
+            tasks = [
+                {
+                    "taskId": "...",
+                    "series": [{...}]
+                },
+            ]
+
+            # Overwrite labels in tasks
+            project.upload.update_tasks_labels(tasks)
+            ```
+        Parameters: 
+          - <strong>points</strong> (List[[OutputTask](formats/index.mdx#redbrick.types.task.OutputTask)`OutputTask`]) – Please see the RedBrick AI reference documentation for overview of the format.
+          - <strong>rt_struct</strong> (<em>bool = False</em>) – Upload segmentations from DICOM RT-Struct files.
+          - <strong>mhd</strong> (<em>bool = False</em>) – Upload segmentations from MHD files.
+          - <strong>label_storage_id</strong> (<em>Optional</em><em>[</em><em>str</em><em>] </em><em>= None</em>) – Optional label storage id to reference nifti segmentations.
+          - <strong>label_validate</strong> (<em>bool = False</em>) – Validate label nifti instances and segment map.
+          - <strong>prune_segmentations</strong> (<em>bool = False</em>) – Prune segmentations that are not part of the series.
+          - <strong>concurrency</strong> (<em>int = 50</em>) – 
+          - <strong>finalize</strong> (<em>bool = False</em>) – Submit the task in current stage.
+          - <strong>time_spent_ms</strong> (<em>Optional</em><em>[</em><em>int</em><em>] </em><em>= None</em>) – Time spent on the task in milliseconds.
+          - <strong>extra_data</strong> (<em>Optional</em><em>[</em><em>Dict</em><em>] </em><em>= None</em>) – Extra data to be stored along with the task.
+
+
+        Return type: ``None``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract send_tasks_to_stage</dt>
+        <dd>
+        Send tasks to different stage.
+
+        Parameters: 
+          - <strong>task_ids</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of tasks to move.
+          - <strong>stage_name</strong> (<em>str</em>) – The stage to which you want to move the tasks.
+          - <strong>concurrency</strong> (<em>int = 50</em>) – Batch size per request.
+
+
+        Return type: ``None``
+        </dd>
+    </dl>
+    </dd>
+</dl>
+## Labeling
+
+<dl>
+    <dt>class redbrick.common.labeling.Labeling</dt>
+    <dd>
+    Bases: `ABC`
+
+    Perform programmatic labeling and review tasks.
+
+    The Labeling class allows you to programmatically submit tasks.
+    This can be useful for times when you want to make bulk actions
+    e.g accepting several tasks, or make automated actions like using automated
+    methods for review.
+
+    Information:
+
+    The Labeling module provides several methods to query tasks and assign tasks to
+    different users. Refer to this section for guidance on when to use each method:
+
+      - [assign_tasks](#redbrick.common.labeling.Labeling.assign_tasks)`assign_tasks`.
+
+
+    <dl>
+        <dt>abstract put_tasks</dt>
+        <dd>
+        Put tasks with new labels or a review result.
+
+        Use this method to programmatically submit tasks with labels in xxxLabel stagexxx, or to
+        programmatically accept/reject/correct tasks in a xxxReview stagexxx. If you don’t already
+        have a list of `task_id`, you can use [list_tasks](#redbrick.common.export.Export.list_tasks)`list_tasks` to
+        get a filtered list of tasks in your project, that you want to work upon.
+
+        Parameters: 
+          - <strong>stage_name</strong> (<em>str</em>) – The stage to which you want to submit the tasks. This must be the
+          - <strong>tasks</strong> (List[[OutputTask](formats/index.mdx#redbrick.types.task.OutputTask)`OutputTask`]) – Tasks with new labels or review result.
+          - <strong>finalize</strong> (<em>bool = True</em>) – Finalize the task. If you want to save the task without submitting, set this to False.
+          - <strong>existing_labels</strong> (<em>bool = False</em>) – If True, the tasks will be submitted with their existing labels.
+          - <strong>rt_struct</strong> (<em>bool = False</em>) – Upload segmentations from DICOM RT-Struct files.
+          - <strong>mhd</strong> (<em>bool = False</em>) – Upload segmentations from MHD files.
+          - <strong>review_result</strong> (<em>Optional</em><em>[</em><em>bool</em><em>] </em><em>= None</em>) – Accepts or rejects the task based on the boolean value.
+          - <strong>label_storage_id</strong> (<em>Optional</em><em>[</em><em>str</em><em>] </em><em>= None</em>) – Optional label storage id to reference external nifti segmentations.
+          - <strong>label_validate</strong> (<em>bool = False</em>) – Validate label nifti instances and segment map.
+          - <strong>prune_segmentations</strong> (<em>bool = False</em>) – Prune segmentations that are not part of the series.
+          - <strong>concurrency</strong> (<em>int = 50</em>) – 
+
+
+        Returns: A list of tasks that failed.Return type: List[[OutputTask](formats/index.mdx#redbrick.types.task.OutputTask)`OutputTask`]
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract assign_tasks</dt>
+        <dd>
+        Assign tasks to specified email or current API key.
+
+        Unassigns all users from the task if neither of the `email` or `current_user` are set.
+
+        Parameters: 
+          - <strong>task_ids</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of unique `task_id` of the tasks you want to assign.
+          - <strong>email</strong> (<em>Optional</em><em>[</em><em>str</em><em>] </em><em>= None</em>) – The email of the user you want to assign this task to. Make sure the
+          - <strong>emails</strong> (<em>Optional</em><em>[</em><em>List</em><em>[</em><em>str</em><em>]</em><em>] </em><em>= None</em>) – Used for projects with Consensus activated.
+          - <strong>refresh</strong> (<em>bool = True</em>) – Used for projects with Consensus activated.
+
+
+        Returns: 
+        List of affected tasks.
+        Return type: List[Dict]
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract move_tasks_to_start</dt>
+        <dd>
+        Move groundtruth tasks back to start.
+
+        Return type: ``None``
+        </dd>
+    </dl>
+    </dd>
+</dl>
+## Settings
+
+<dl>
+    <dt>class redbrick.common.settings.Settings</dt>
+    <dd>
+    Bases: `ABC`
+
+    Abstract interface to Settings module.
+
+    <dl>
+        <dt>abstract property label_validation`:` LabelValidation</dt>
+        <dd>
+        Label Validation.
+
+        Use custom label validation to prevent annotation errors in real-time. Please visit
+        [label validation](https://docs.redbrickai.com/projects/custom-label-validation)
+        for more info.
+
+        Format: {“enabled”: bool, “enforce”: bool, “script”: str}
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract property hanging_protocol`:` HangingProtocol</dt>
+        <dd>
+        Hanging Protocol.
+
+        Use hanging protocol to define the visual layout of tool. Please visit
+        [hanging protocol](https://docs.redbrickai.com/annotation/layout-and-multiple-volumes/custom-hanging-protocol)
+        for more info.
+
+        Format: {“enabled”: bool, “script”: str}
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract property webhook`:` Webhook</dt>
+        <dd>
+        Project webhook.
+
+        Use webhooks to receive custom events like tasks entering stages, and many more.
+
+        Format: {“enabled”: bool, “url”: str}
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract toggle_reference_standard_task</dt>
+        <dd>
+        Toggle reference standard task.
+
+        Return type: ``None``
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract property task_duplication`:` int `|` None</dt>
+        <dd>
+        Sibling task count.
+
+        Use task duplication to create multiple tasks for a single uploaded datapoint. Please visit
+        [task duplication](https://docs.redbrickai.com/projects/multiple-labeling/task-duplication)
+        for more info.
+
+        Format: Optional[int]
+
+        </dd>
+    </dl>
+    </dd>
+</dl>
+## Workforce
+
+<dl>
+    <dt>class redbrick.common.member.Workforce</dt>
+    <dd>
+    Bases: `ABC`
+
+    Abstract interface to Workforce module.
+
+    <dl>
+        <dt>abstract get_member</dt>
+        <dd>
+        Get a project member.
+
+            ```python
+            project = redbrick.get_project(org_id, project_id, api_key)
+            member = project.workforce.get_member(member_id)
+            ```
+        Parameters: <strong>member_id</strong> (<em>str</em>) – Unique member userId or email.Return type: [ProjectMember](#redbrick.ProjectMember)
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract list_members</dt>
+        <dd>
+        Get a list of all project members.
+
+            ```python
+            project = redbrick.get_project(org_id, project_id, api_key)
+            members = project.workforce.list_members()
+            ```
+        Return type: List[[ProjectMember](#redbrick.ProjectMember)]
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract add_members</dt>
+        <dd>
+        Add project members.
+
+            ```python
+            project = redbrick.get_project(org_id, project_id, api_key)
+            member = project.workforce.add_members([{"member_id": "...", "role": "...", "stages": ["..."]}, ...])
+            ```
+        Parameters: <strong>members</strong> (<em>List</em><em>[</em>[ProjectMember](#redbrick.ProjectMember)<em>ProjectMember</em><em>]</em>) – List of members to add.Returns: List of added project members.Return type: List[[ProjectMember](#redbrick.ProjectMember)]
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract update_members</dt>
+        <dd>
+        Update project members.
+
+            ```python
+            project = redbrick.get_project(org_id, project_id, api_key)
+            member = project.workforce.update_members([{"member_id": "...", "role": "...", "stages": ["..."]}, ...])
+            ```
+        Parameters: <strong>members</strong> (<em>List</em><em>[</em>[ProjectMember](#redbrick.ProjectMember)<em>ProjectMember</em><em>]</em>) – List of members to update.Returns: List of updated project members.Return type: List[[ProjectMember](#redbrick.ProjectMember)]
+        </dd>
+    </dl>
+    <dl>
+        <dt>abstract remove_members</dt>
+        <dd>
+        Remove project members.
+
+            ```python
+            project = redbrick.get_project(org_id, project_id, api_key)
+            member = project.workforce.remove_members([...])
+            ```
+        Parameters: <strong>member_ids</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of member ids (user_id/email) to remove from the project.Return type: ``None``
+        </dd>
+    </dl>
+    </dd>
+</dl>

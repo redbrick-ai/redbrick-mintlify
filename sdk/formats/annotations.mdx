@@ -1,0 +1,605 @@
+# Annotation type definitions
+
+This section covers definitions of all the annotation object types. The objects are the same for importing annotations, and exporting annotations.
+
+| [Label Type](taxonomy.mdx#redbrick.types.taxonomy.ObjectType.labelType)`Label Type` | Label Definition | 2D Image | 3D Volume | Video |
+| :------------------------------------------------------------------ | :---------------------------------------------------------------- | :-------------------------------------------------------------- | :-------------------------------------------------------------- | :-------------------------------------------------------------- |
+| CLASSIFICATION (non objectType) | [Classification](#redbrick.types.task.Classification)`Classification` |  |  |  |
+| SEGMENTATION | [CommonLabelProps](#redbrick.types.task.CommonLabelProps)`CommonLabelProps` |  |  |  |
+| LENGTH | [MeasureLength](#redbrick.types.task.MeasureLength)`MeasureLength` |  |  |  |
+| ANGLE | [MeasureAngle](#redbrick.types.task.MeasureAngle)`MeasureAngle` |  |  |  |
+| POINT | [Landmark](#redbrick.types.task.Landmark)`Landmark` |  |  |  |
+| [Landmark3D](#redbrick.types.task.Landmark3D)`Landmark3D` |  |  |  |
+| POLYLINE | [Polyline](#redbrick.types.task.Polyline)`Polyline` |  |  |  |
+| POLYGON | [Polygon](#redbrick.types.task.Polygon)`Polygon` |  |  |  |
+| ELLIPSE | [Ellipse](#redbrick.types.task.Ellipse)`Ellipse` |  |  |  |
+| BBOX | [BoundingBox](#redbrick.types.task.BoundingBox)`BoundingBox` |  |  |  |
+| CUBOID | [Cuboid](#redbrick.types.task.Cuboid)`Cuboid` |  |  |  |
+
+
+<dl>
+    <dt>class redbrick.types.task.Point2D</dt>
+    <dd>
+    2D pixel point.
+
+    The Point2D coordinates are normalized in relation to the dimensions of the image, meaning they are scaled down to a range between 0 and 1. To convert these normalized points back to their original scale on the image, you “un-normalize” them by multiplying by the image’s dimensions. This operation typically results in a floating-point number.
+
+    RedBrick AI enhances the precision of annotations on its canvas by <strong>supporting a resolution higher than that of the underlying image</strong>. This capability facilitates sub-pixel annotation accuracy. However, if sub-pixel precision is not necessary for your application, you can simplify the process <strong>by rounding the un-normalized coordinates to the nearest whole number</strong>. This adjustment converts the precise floating-point values back to standard pixel coordinates, making them easier to work with for general purposes.
+
+    Important: The origin point (0,0) from which these coordinates are measured is at the top left of the image. However, for mammography and DBT the origin is the top right of the image.
+
+    <dl>
+        <dt>xNorm`:` `float`</dt>
+        <dd>X co-ordinate normalized by the width of the image.</dd>
+    </dl>
+    <dl>
+        <dt>yNorm`:` `float`</dt>
+        <dd>Y co-ordinate normalized by the height of the image.</dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.types.task.VoxelPoint</dt>
+    <dd>
+    Represents a three-dimensional point in image-space, where i, j, and k  are columns, rows, and k is the slice number.
+
+    <dl>
+        <dt>i`:` `int`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>j`:` `int`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>k`:` `int`</dt>
+        <dd></dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.types.task.WorldPoint</dt>
+    <dd>
+    Represents a three-dimensional point in physical space/world co-ordinates. The world co-ordinates are calculated using [redbrick.types.task.VoxelPoint](#redbrick.types.task.VoxelPoint)`redbrick.types.task.VoxelPoint` and the DICOM Image Plane Module.
+
+    <dl>
+        <dt>x`:` `float`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>y`:` `float`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>z`:` `float`</dt>
+        <dd></dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.types.task.MeasurementStats</dt>
+    <dd>
+    Measurement statistics for annotations.
+
+    <dl>
+        <dt>average`:` `float`</dt>
+        <dd>Average pixel/voxel intensity within the annotation. In CT, this is the average HU value.</dd>
+    </dl>
+    <dl>
+        <dt>area`:` `float`</dt>
+        <dd>Area contained within the annotation in mm^2.</dd>
+    </dl>
+    <dl>
+        <dt>volume`:` `float`</dt>
+        <dd>Volume contained within the annotation in mm^3</dd>
+    </dl>
+    <dl>
+        <dt>minimum`:` `float`</dt>
+        <dd>Minimum intensity value within the annotation.</dd>
+    </dl>
+    <dl>
+        <dt>maximum`:` `float`</dt>
+        <dd>Maximum intensity value within the annotation.</dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.types.task.VideoMetaData</dt>
+    <dd>
+    Contains annotation information along the third axis. Frames for video, and slices for 3D volumes.
+
+    Warning: [redbrick.types.task.VideoMetaData](#redbrick.types.task.VideoMetaData)`redbrick.types.task.VideoMetaData` has a misleading name. It contains information for both videos, and 3D volumes.
+
+    Hint: Watch [this video](https://share.redbrickai.com/vpKDGyBd) for a detailed explaination of all the attributes of this object.
+
+    <dl>
+        <dt>seriesItemIndex`:` `int`</dt>
+        <dd>The index of the file in series “items” list that this annotation is present on.</dd>
+    </dl>
+    <dl>
+        <dt>seriesFrameIndex`:` `int`</dt>
+        <dd>Frame index of the annotation for nifti and dicom multipart files.</dd>
+    </dl>
+    <dl>
+        <dt>frameIndex`:` `int`</dt>
+        <dd>The frame number (for video) or slice index (for 3D volumes) the annotation is present on.</dd>
+    </dl>
+    <dl>
+        <dt>trackId`:` `str`</dt>
+        <dd>Each distinct object has a unique trackId. Two annotations on different frameIndex’s with the same trackId’s represent the same distinct object.</dd>
+    </dl>
+    <dl>
+        <dt>keyFrame`:` `bool`</dt>
+        <dd>If True, this annotation is user-defined. If False, this annotation is interpolated.</dd>
+    </dl>
+    <dl>
+        <dt>endTrack`:` `bool`</dt>
+        <dd>If True, this annotation is the last annotation of a specific track defined by trackId.</dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>redbrick.types.task.Attributes</dt>
+    <dd>
+    Attributes for Taxonomy objects.
+    Attributes can be boolean, textfields, select’s or multi-select’s.
+
+    alias of `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]
+
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.types.task.CommonLabelProps</dt>
+    <dd>
+    Full version of [redbrick.types.task.Series.segmentMap](index.mdx#redbrick.types.task.Series.segmentMap)`redbrick.types.task.Series.segmentMap`.
+
+    <dl>
+        <dt>category`:` `Union`[`int`, `str`, `List`[`str`]]</dt>
+        <dd>Taxonomy object category.</dd>
+    </dl>
+    <dl>
+        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
+        <dd>Associated taxonomy object attributes.</dd>
+    </dl>
+    <dl>
+        <dt>mask`:` `Union`[`str`, `List`[`str`]]</dt>
+        <dd>Filepath to segmentation file for this annotation.</dd>
+    </dl>
+    <dl>
+        <dt>overlappingGroups`:` `List`[`int`]</dt>
+        <dd>Overlapping instances that this label is part of (when without_masks is set).</dd>
+    </dl>
+    <dl>
+        <dt>group`:` `str`</dt>
+        <dd>Linked label group id.</dd>
+    </dl>
+    <dl>
+        <dt>readOnly`:` `bool`</dt>
+        <dd>Read only status</dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.types.task.InstanceClassification</dt>
+    <dd>
+    Instance level classifications for frame-by-frame (video) or slice-by-slice (volume) classifications..
+
+    <dl>
+        <dt>fileIndex`:` `int`</dt>
+        <dd>For video this is the frameIndex, for DICOM volumes this is the sliceIndex.</dd>
+    </dl>
+    <dl>
+        <dt>fileName`:` `str`</dt>
+        <dd>The file name represented by frameIndex.</dd>
+    </dl>
+    <dl>
+        <dt>group`:` `str`</dt>
+        <dd>Linked label group id.</dd>
+    </dl>
+    <dl>
+        <dt>readOnly`:` `bool`</dt>
+        <dd>Read only status</dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.types.task.Classification</dt>
+    <dd>
+    Study or series classification.
+
+    <dl>
+        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>group`:` `str`</dt>
+        <dd>Linked label group id.</dd>
+    </dl>
+    <dl>
+        <dt>readOnly`:` `bool`</dt>
+        <dd>Read only status</dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.types.task.Polyline</dt>
+    <dd>
+    Open polylines, not supported in 3D images.
+
+    <dl>
+        <dt>points`:` `List`[[Point2D](#redbrick.types.task.Point2D)`Point2D`]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>category`:` `Union`[`int`, `str`, `List`[`str`]]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>video`:` [VideoMetaData](#redbrick.types.task.VideoMetaData)`VideoMetaData`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>group`:` `str`</dt>
+        <dd>Linked label group id.</dd>
+    </dl>
+    <dl>
+        <dt>readOnly`:` `bool`</dt>
+        <dd>Read only status</dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.types.task.Polygon</dt>
+    <dd>
+    Closed polygons, not supported in 3D images.
+
+    <dl>
+        <dt>points`:` `List`[[Point2D](#redbrick.types.task.Point2D)`Point2D`]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>category`:` `Union`[`int`, `str`, `List`[`str`]]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>stats`:` [MeasurementStats](#redbrick.types.task.MeasurementStats)`MeasurementStats`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>video`:` [VideoMetaData](#redbrick.types.task.VideoMetaData)`VideoMetaData`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>group`:` `str`</dt>
+        <dd>Linked label group id.</dd>
+    </dl>
+    <dl>
+        <dt>readOnly`:` `bool`</dt>
+        <dd>Read only status</dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.types.task.Cuboid</dt>
+    <dd>
+    3D bounding boxes for 3D images.
+
+    <dl>
+        <dt>point1`:` [VoxelPoint](#redbrick.types.task.VoxelPoint)`VoxelPoint`</dt>
+        <dd>Top left diagonal corner.</dd>
+    </dl>
+    <dl>
+        <dt>point2`:` [VoxelPoint](#redbrick.types.task.VoxelPoint)`VoxelPoint`</dt>
+        <dd>Bottom right diagonal corner.</dd>
+    </dl>
+    <dl>
+        <dt>absolutePoint1`:` [WorldPoint](#redbrick.types.task.WorldPoint)`WorldPoint`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>absolutePoint2`:` [WorldPoint](#redbrick.types.task.WorldPoint)`WorldPoint`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>category`:` `Union`[`int`, `str`, `List`[`str`]]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>stats`:` [MeasurementStats](#redbrick.types.task.MeasurementStats)`MeasurementStats`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>group`:` `str`</dt>
+        <dd>Linked label group id.</dd>
+    </dl>
+    <dl>
+        <dt>readOnly`:` `bool`</dt>
+        <dd>Read only status</dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.types.task.BoundingBox</dt>
+    <dd>
+    2D bounding box for 2D images, or slice by slice annotation in 3D images.
+
+    Hint: See the [following diagram](https://share.redbrickai.com/T0jPZFn9) to understand the coordinate system.
+
+    <dl>
+        <dt>pointTopLeft`:` [Point2D](#redbrick.types.task.Point2D)`Point2D`</dt>
+        <dd>Coordinates of the top left of the bounding box.</dd>
+    </dl>
+    <dl>
+        <dt>wNorm`:` `float`</dt>
+        <dd>Width of the bounding box, normalized by image width.</dd>
+    </dl>
+    <dl>
+        <dt>hNorm`:` `float`</dt>
+        <dd>Height of the bounding box, normalized by the image height.</dd>
+    </dl>
+    <dl>
+        <dt>category`:` `Union`[`int`, `str`, `List`[`str`]]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>stats`:` [MeasurementStats](#redbrick.types.task.MeasurementStats)`MeasurementStats`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>video`:` [VideoMetaData](#redbrick.types.task.VideoMetaData)`VideoMetaData`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>group`:` `str`</dt>
+        <dd>Linked label group id.</dd>
+    </dl>
+    <dl>
+        <dt>readOnly`:` `bool`</dt>
+        <dd>Read only status</dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.types.task.Ellipse</dt>
+    <dd>
+    Ellipse annotation.
+
+    Hint: See [this ellipse diagram](https://share.redbrickai.com/6PH9ypkl) to understand the coordinate system. Please read the [redbrick.types.task.Point2D](#redbrick.types.task.Point2D)`redbrick.types.task.Point2D` documentation to understand how normalization works & the origin of the coordinate system.
+
+    Warning: For DICOM images of a certain type, ellipse annotations might be flipped i.e., rotating the ellipse clockwise would result in counter-clockwise rotation.
+             If you encounter these cases, reach out to our support for instructions on how to handle this [support@redbrickai.com](mailto:support@redbrickai.com).
+
+    <dl>
+        <dt>pointCenter`:` [Point2D](#redbrick.types.task.Point2D)`Point2D`</dt>
+        <dd>The normalized center of the ellipse.</dd>
+    </dl>
+    <dl>
+        <dt>xRadiusNorm`:` `float`</dt>
+        <dd>The x axis of the ellipse, normalized with by the image width. Adjusting for xxxrotationRadxxx, the x-axis of the ellipse aligns with the x-axis of the image.</dd>
+    </dl>
+    <dl>
+        <dt>yRadiusNorm`:` `float`</dt>
+        <dd>The y axis of the ellipse, normalized with by the image width. Adjusting for xxxrotationRadxxx, the y-axis of the ellipse aligns with the y-axis of the image.</dd>
+    </dl>
+    <dl>
+        <dt>rotationRad`:` `float`</dt>
+        <dd>The rotation of the ellipse measured clockwise as the angle between the y-axis of the ellipse and y-axis of the image.</dd>
+    </dl>
+    <dl>
+        <dt>category`:` `Union`[`int`, `str`, `List`[`str`]]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>stats`:` [MeasurementStats](#redbrick.types.task.MeasurementStats)`MeasurementStats`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>video`:` [VideoMetaData](#redbrick.types.task.VideoMetaData)`VideoMetaData`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>group`:` `str`</dt>
+        <dd>Linked label group id.</dd>
+    </dl>
+    <dl>
+        <dt>readOnly`:` `bool`</dt>
+        <dd>Read only status</dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.types.task.MeasureAngle</dt>
+    <dd>
+    Angle measurement label.
+
+    An angle measurement is defined by three points, where xxxvertexxxx is the middle point between xxxpoint1xxx and xxxpoint2xxx. The angle between the two vectors <point1, vertex> and <point2, vertex> defines the angle measurement.
+
+    Hint: See [this angle diagram](https://share.redbrickai.com/rqW3sZtf) to understand the coordinate system.
+
+    <dl>
+        <dt>type`:` `Literal`[`'angle'`]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>point1`:` [VoxelPoint](#redbrick.types.task.VoxelPoint)`VoxelPoint`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>vertex`:` [VoxelPoint](#redbrick.types.task.VoxelPoint)`VoxelPoint`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>point2`:` [VoxelPoint](#redbrick.types.task.VoxelPoint)`VoxelPoint`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>absolutePoint1`:` [WorldPoint](#redbrick.types.task.WorldPoint)`WorldPoint`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>absoluteVertex`:` [WorldPoint](#redbrick.types.task.WorldPoint)`WorldPoint`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>absolutePoint2`:` [WorldPoint](#redbrick.types.task.WorldPoint)`WorldPoint`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>normal`:` `List`[`float`]</dt>
+        <dd>Measurements can be made on oblique planes. xxxnormalxxx defines the normal unit vector to the slice on which the annotation was made. For annotations made on non-oblique planes, the normal will be [0,0,1].
+        The measurement is fully defined even without xxxnormalxxx, however, for completeness [see this angle diagram](https://share.redbrickai.com/CZ5BXXWK) for it’s definition.</dd>
+    </dl>
+    <dl>
+        <dt>angle`:` `float`</dt>
+        <dd>Measurement angle in degrees.</dd>
+    </dl>
+    <dl>
+        <dt>category`:` `Union`[`int`, `str`, `List`[`str`]]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>group`:` `str`</dt>
+        <dd>Linked label group id.</dd>
+    </dl>
+    <dl>
+        <dt>readOnly`:` `bool`</dt>
+        <dd>Read only status</dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.types.task.MeasureLength</dt>
+    <dd>
+    Length measurement label.
+
+    A length measurement is defined by two points, and the length measurement is the distance between the two points.
+
+    <dl>
+        <dt>type`:` `Literal`[`'length'`]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>point1`:` [VoxelPoint](#redbrick.types.task.VoxelPoint)`VoxelPoint`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>point2`:` [VoxelPoint](#redbrick.types.task.VoxelPoint)`VoxelPoint`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>absolutePoint1`:` [WorldPoint](#redbrick.types.task.WorldPoint)`WorldPoint`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>absolutePoint2`:` [WorldPoint](#redbrick.types.task.WorldPoint)`WorldPoint`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>normal`:` `List`[`float`]</dt>
+        <dd>Measurements can be made on oblique planes. xxxnormalxxx defines the normal unit vector to the slice on which the annotation was made. For annotations made on non-oblique planes, the normal will be [0,0,1].
+        The measurement is fully defined even without xxxnormalxxx, however, for completeness [see this length diagram](https://share.redbrickai.com/CZ5BXXWK) for it’s definition.</dd>
+    </dl>
+    <dl>
+        <dt>length`:` `float`</dt>
+        <dd>The value of the measurement in millimeters.</dd>
+    </dl>
+    <dl>
+        <dt>category`:` `Union`[`int`, `str`, `List`[`str`]]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>group`:` `str`</dt>
+        <dd>Linked label group id.</dd>
+    </dl>
+    <dl>
+        <dt>readOnly`:` `bool`</dt>
+        <dd>Read only status</dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.types.task.Landmark3D</dt>
+    <dd>
+    3D landmark for 3D data.
+
+    <dl>
+        <dt>point`:` [VoxelPoint](#redbrick.types.task.VoxelPoint)`VoxelPoint`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>category`:` `Union`[`int`, `str`, `List`[`str`]]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>group`:` `str`</dt>
+        <dd>Linked label group id.</dd>
+    </dl>
+    <dl>
+        <dt>readOnly`:` `bool`</dt>
+        <dd>Read only status</dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.types.task.Landmark</dt>
+    <dd>
+    2D landmark for 2D data.
+
+    <dl>
+        <dt>point`:` [Point2D](#redbrick.types.task.Point2D)`Point2D`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>category`:` `Union`[`int`, `str`, `List`[`str`]]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>attributes`:` `Dict`[`str`, `Union`[`str`, `bool`, `List`[`str`]]]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>video`:` [VideoMetaData](#redbrick.types.task.VideoMetaData)`VideoMetaData`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>group`:` `str`</dt>
+        <dd>Linked label group id.</dd>
+    </dl>
+    <dl>
+        <dt>readOnly`:` `bool`</dt>
+        <dd>Read only status</dd>
+    </dl>
+    </dd>
+</dl>

@@ -1,0 +1,159 @@
+# Taxonomy format
+
+Section covering the formats for all Taxonomy objects. Taxonomies define a labeling schema for your RedBrick AI projects.
+
+<dl>
+    <dt>class redbrick.types.taxonomy.AttributeOption</dt>
+    <dd>
+    Attribute Option.
+
+    <dl>
+        <dt>name`:` `str`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>optionId`:` `int`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>color`:` `str`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>archived`:` `bool`</dt>
+        <dd></dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.types.taxonomy.Attribute</dt>
+    <dd>
+    Attribute.
+
+    <dl>
+        <dt>name`:` `str`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>attrType`:` `Literal`[`'BOOL'`, `'TEXT'`, `'SELECT'`, `'MULTISELECT'`]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>attrId`:` `int`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>options`:` `Optional`[`List`[[AttributeOption](#redbrick.types.taxonomy.AttributeOption)`AttributeOption`]]</dt>
+        <dd>For attrType SELECT and MULTISELECT this defines the list of selection options.</dd>
+    </dl>
+    <dl>
+        <dt>archived`:` `bool`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>parents`:` `Optional`[`List`[`str`]]</dt>
+        <dd>
+        Defining parents will add a nested structure to the taxonomy.
+        Multiple attributes with parent [“Type A”] will be visually nested under a expansion panel Type A in the user interface.
+
+        Note: Only supported for Classifications, not for Object Attributes.
+
+        </dd>
+    </dl>
+    <dl>
+        <dt>hint`:` `Optional`[`str`]</dt>
+        <dd>A string containing raw text, or HTML. The hints will appear in the viewer.</dd>
+    </dl>
+    <dl>
+        <dt>defaultValue`:` `Union`[`str`, `bool`, `int`, `List`[`int`], `None`]</dt>
+        <dd>For SELECT or MULTISELECT types, defaultValue will pre-populate the UI with the selection.</dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.types.taxonomy.ObjectType</dt>
+    <dd>
+    Object’s are used to annotate features or objects in tasks.
+
+    <dl>
+        <dt>category`:` `str`</dt>
+        <dd>Category of the Taxonomy object is a string descriptor.</dd>
+    </dl>
+    <dl>
+        <dt>classId`:` `int`</dt>
+        <dd>A unique integer for this object. Segmentation files can be exported to contain classId as the values in the file.</dd>
+    </dl>
+    <dl>
+        <dt>labelType`:` `Literal`[`'BBOX'`, `'CUBOID'`, `'POINT'`, `'POLYLINE'`, `'POLYGON'`, `'ELLIPSE'`, `'SEGMENTATION'`, `'LENGTH'`, `'ANGLE'`]</dt>
+        <dd>They type of label for this object.</dd>
+    </dl>
+    <dl>
+        <dt>attributes`:` `Optional`[`List`[[Attribute](#redbrick.types.taxonomy.Attribute)`Attribute`]]</dt>
+        <dd>Attributes allow further classification of objects.</dd>
+    </dl>
+    <dl>
+        <dt>color`:` `str`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>archived`:` `bool`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>parents`:` `Optional`[`List`[`str`]]</dt>
+        <dd>Defining parents will add a nested structure to the taxonomy.
+        Multiple objects with parent [“Type A”] will be visually nested under a expansion panel Type A in the user interface.</dd>
+    </dl>
+    <dl>
+        <dt>hint`:` `Optional`[`str`]</dt>
+        <dd>A string containing raw text, or HTML. The hints will appear in the viewer.</dd>
+    </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>class redbrick.types.taxonomy.Taxonomy</dt>
+    <dd>
+    Taxonomy object.
+
+    <dl>
+        <dt>orgId`:` `str`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>taxId`:` `str`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>name`:` `str`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>studyClassify`:` `List`[[Attribute](#redbrick.types.taxonomy.Attribute)`Attribute`]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>seriesClassify`:` `List`[[Attribute](#redbrick.types.taxonomy.Attribute)`Attribute`]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>instanceClassify`:` `List`[[Attribute](#redbrick.types.taxonomy.Attribute)`Attribute`]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>objectTypes`:` `List`[[ObjectType](#redbrick.types.taxonomy.ObjectType)`ObjectType`]</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>createdAt`:` `str`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>archived`:` `bool`</dt>
+        <dd></dd>
+    </dl>
+    <dl>
+        <dt>isNew`:` `bool`</dt>
+        <dd></dd>
+    </dl>
+    </dd>
+</dl>
