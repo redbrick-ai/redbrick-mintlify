@@ -1,39 +1,49 @@
 ---
 title: "Python SDK"
-description: "The SDK is best for writing Python scripts to interact with your RedBrick AI organization & projects. The SDK offers granular functions for programmatically manipulating data, importing annotations, assigning tasks, and more."
+description: "The SDK is best for writing Python scripts to interact with your RedBrick AI Organization & Projects. The SDK offers granular functions for programmatically manipulating data, importing annotations, assigning tasks, and more."
 ---
 
-## RedBrick
+# RedBrick
 
-*class* redbrick.StorageMethod[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod)
+Storage Methods
 
-Storage method integration for organizations.
+## **`class** redbrick.StorageMethod` [\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod)
+
+Storage method integrations for RedBrick Organizations.
 
 * `PUBLIC` - Access files from a public cloud storage service using their absolute URLs.(i.e. files available publicly)
 
-* `REDBRICK` - Access files stored on RedBrick AI’s servers(i.e. files uploaded directly to RBAI from a local machine)
+* `REDBRICK` - Access files stored on RedBrick AI’s servers (i.e. files uploaded directly to RBAI from a local machine)
 
-*class* Public[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.Public)
+* `AWSS3` - Access files stored in an external S3 bucket that has been integrated with RedBrick AI
+
+* `GoogleCloud` - Access files stored in an external Google Cloud bucket that has been integrated with RedBrick AI
+
+* `AzureBlob` - Access files stored in an external Azure Blob that has been integrated with RedBrick AI
+
+* `AltaDB` - Access files stored in an AltaDB dataset
+
+### **`class** Public` [\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.Public)
 
 Public storage provider (Sub class of [`StorageProvider`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageProvider "redbrick.StorageProvider")).
 
 Variables:
 
-* **storage\_id** (*str*) – `redbrick.StorageMethod.PUBLIC`
+* **storage_id** (*str*) – `redbrick.StorageMethod.PUBLIC`
 
 * **name** (*str*) – `"Public"`
 
 * **details** ([*redbrick.StorageMethod.Public.Details*](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.Public.Details "redbrick.StorageMethod.Public.Details")) – Public storage method details.
 
-*class* Details[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.Public.Details)
+#### **`class** Details` [\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.Public.Details)
 
 Public storage provider details.
 
-*property* ke&#x79;*: str*
+*property* key*: str*
 
-Public storage proivder details key.
+Public storage provider details key.
 
-*classmethod* from\_entity(*entity=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.Public.Details.from_entity)
+*classmethod* from_entity(*entity=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.Public.Details.from_entity)
 
 Get object from entity
 
@@ -57,7 +67,7 @@ Return type:
 
 `None`
 
-*classmethod* from\_entity(*entity*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.Public.from_entity)
+*classmethod* from_entity(*entity*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.Public.from_entity)
 
 Get object from entity
 
@@ -81,11 +91,11 @@ Variables:
 
 RedBrick storage provider details.
 
-*property* ke&#x79;*: str*
+*property* key*: str*
 
-RedBrick storage proivder details key.
+RedBrick storage provider details key.
 
-*classmethod* from\_entity(*entity=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.RedBrick.Details.from_entity)
+*classmethod* from_entity(*entity=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.RedBrick.Details.from_entity)
 
 Get object from entity
 
@@ -109,7 +119,7 @@ Return type:
 
 `None`
 
-*classmethod* from\_entity(*entity*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.RedBrick.from_entity)
+*classmethod* from_entity(*entity*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.RedBrick.from_entity)
 
 Get object from entity
 
@@ -153,11 +163,11 @@ Variables:
 
 * **session\_duration** (*int*) – AWS S3 assume\_role session duration.
 
-*property* ke&#x79;*: str*
+*property* key*: str*
 
-AWS S3 storage proivder details key.
+AWS S3 storage provider details key.
 
-*classmethod* from\_entity(*entity=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.AWSS3.Details.from_entity)
+*classmethod* from_entity(*entity=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.AWSS3.Details.from_entity)
 
 Get object from entity
 
@@ -203,11 +213,11 @@ Variables:
 
 * **service\_account\_json** (*str*) – GCS service account JSON. (Will be None in output for security reasons)
 
-*property* ke&#x79;*: str*
+*property* key*: str*
 
-Google cloud storage proivder details key.
+Google cloud storage provider details key.
 
-*classmethod* from\_entity(*entity=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.GoogleCloud.Details.from_entity)
+*classmethod* from_entity(*entity=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.GoogleCloud.Details.from_entity)
 
 Get object from entity
 
@@ -253,11 +263,11 @@ Variables:
 
 * **sas\_url** (*str*) – Azure Shared Access Signature URL for granular blob access. (Will be None in output for security reasons)
 
-*property* ke&#x79;*: str*
+*property* key*: str*
 
-Azure blob storage proivder details key.
+Azure blob storage provider details key.
 
-*classmethod* from\_entity(*entity=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.AzureBlob.Details.from_entity)
+*classmethod* from_entity(*entity=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.AzureBlob.Details.from_entity)
 
 Get object from entity
 
@@ -305,11 +315,11 @@ Variables:
 
 * **endpoint** (*str*) – Custom endpoint.
 
-*property* ke&#x79;*: str*
+*property* key*: str*
 
-AltaDB storage proivder details key.
+AltaDB storage provider details key.
 
-*classmethod* from\_entity(*entity=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.AltaDB.Details.from_entity)
+*classmethod* from_entity(*entity=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.AltaDB.Details.from_entity)
 
 Get object from entity
 
@@ -355,11 +365,11 @@ Base storage provider.
 
 Storage details.
 
-*abstract property* ke&#x79;*: str*
+*abstract property* key*: str*
 
-Storage proivder details key.
+Storage provider details key.
 
-*abstract classmethod* from\_entity(*entity=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageProvider.Details.from_entity)
+*abstract classmethod* from_entity(*entity=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageProvider.Details.from_entity)
 
 Get object from entity
 
@@ -383,7 +393,7 @@ Return type:
 
 `None`
 
-*classmethod* from\_entity(*entity*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageProvider.from_entity)
+*classmethod* from_entity(*entity*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageProvider.from_entity)
 
 Get object from entity
 
@@ -477,7 +487,7 @@ Base stage.
 
 Stage config.
 
-*abstract classmethod* from\_entity(*entity=None*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/stage.html#Stage.Config.from_entity)
+*abstract classmethod* from_entity(*entity=None*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/stage.html#Stage.Config.from_entity)
 
 Get object from entity
 
@@ -493,7 +503,7 @@ Return type:
 
 `Dict`
 
-*abstract classmethod* from\_entity(*entity*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/stage.html#Stage.from_entity)
+*abstract classmethod* from_entity(*entity*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/stage.html#Stage.from_entity)
 
 Get object from entity
 
@@ -539,7 +549,7 @@ Parameters:
 
 * **is\_consensus\_label** (*Optional\[bool]*) – Is consensus-labeling stage. (Default: False)
 
-*classmethod* from\_entity(*entity=None*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/label.html#LabelStage.Config.from_entity)
+*classmethod* from_entity(*entity=None*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/label.html#LabelStage.Config.from_entity)
 
 Get object from entity.
 
@@ -555,7 +565,7 @@ Return type:
 
 `Dict`
 
-*classmethod* from\_entity(*entity*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/label.html#LabelStage.from_entity)
+*classmethod* from_entity(*entity*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/label.html#LabelStage.from_entity)
 
 Get object from entity
 
@@ -603,7 +613,7 @@ Parameters:
 
 * **is\_consensus\_merge** (*Optional\[bool]*) – Is consensus-merge (V2) stage. (Default: False)
 
-*classmethod* from\_entity(*entity=None*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/review.html#ReviewStage.Config.from_entity)
+*classmethod* from_entity(*entity=None*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/review.html#ReviewStage.Config.from_entity)
 
 Get object from entity.
 
@@ -619,7 +629,7 @@ Return type:
 
 `Dict`
 
-*classmethod* from\_entity(*entity*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/review.html#ReviewStage.from_entity)
+*classmethod* from_entity(*entity*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/review.html#ReviewStage.from_entity)
 
 Get object from entity
 
@@ -671,7 +681,7 @@ Parameters:
 
 * **taxonomy\_objects** (*Optional\[List\[*[*ModelStage.ModelTaxonomyMap*](https://sdk.redbrickai.com/sdk.html#redbrick.ModelStage.ModelTaxonomyMap "redbrick.ModelStage.ModelTaxonomyMap")*]]*) – Mapping of model classes to project’s taxonomy objects.
 
-*classmethod* from\_entity(*entity=None*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/model.html#ModelStage.Config.from_entity)
+*classmethod* from_entity(*entity=None*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/model.html#ModelStage.Config.from_entity)
 
 Get object from entity.
 
@@ -687,7 +697,7 @@ Return type:
 
 `Dict`
 
-*classmethod* from\_entity(*entity*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/model.html#ModelStage.from_entity)
+*classmethod* from_entity(*entity*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/model.html#ModelStage.from_entity)
 
 Get object from entity
 
@@ -737,7 +747,7 @@ Enumerate access levels for Organization.
 
 * `MEMBER` - Organization Member
 
-*classmethod* from\_entity(*member*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#OrgMember.from_entity)
+*classmethod* from_entity(*member*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#OrgMember.from_entity)
 
 Get object from entity.
 
@@ -769,7 +779,7 @@ Enumerate invite status.
 
 * `DECLINED` - Declined invitation
 
-*classmethod* from\_entity(*invite*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#OrgInvite.from_entity)
+*classmethod* from_entity(*invite*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#OrgInvite.from_entity)
 
 Get object from entity.
 
@@ -809,7 +819,7 @@ Enumerate access levels for Project.
 
 * `MEMBER` - Project Member (Labeler/Reviewer)
 
-*classmethod* from\_entity(*member*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#ProjectMember.from_entity)
+*classmethod* from_entity(*member*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#ProjectMember.from_entity)
 
 Get object from entity.
 
@@ -823,7 +833,7 @@ Get an existing redbrick organization object.
 
 Organization object allows you to interact with your organization and perform high level actions like creating a project.
 
-\>>> org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_ke&#x79;**)**
+\>>> org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_key**)**
 
 Parameters:
 
@@ -843,7 +853,7 @@ Get an existing RedBrick workspace object.
 
 Workspace objects allow you to interact with your RedBrick AI workspaces, and perform actions like importing data, exporting data etc.
 
-\>>> workspace **=** redbric&#x6B;**.**&#x67;et\_workspac&#x65;**(**&#x6F;rg\_i&#x64;**,** workspace\_i&#x64;**,** api\_ke&#x79;**)**
+\>>> workspace **=** redbric&#x6B;**.**&#x67;et\_workspac&#x65;**(**&#x6F;rg\_i&#x64;**,** workspace\_i&#x64;**,** api\_key**)**
 
 Parameters:
 
@@ -865,7 +875,7 @@ Get an existing RedBrick project object.
 
 Project objects allow you to interact with your RedBrick Ai projects, and perform actions like importing data, exporting data etc.
 
-\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
+\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_key**)**
 
 Parameters:
 
@@ -927,7 +937,7 @@ Variables:
 
 * **storage** ([*redbrick.common.storage.Storage*](https://sdk.redbrickai.com/sdk.html#redbrick.common.storage.Storage "redbrick.common.storage.Storage")) – Organization storage methods integration.
 
-\>>> org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**=**""**,** api\_ke&#x79;**=**""**)**
+\>>> org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**=**""**,** api\_key**=**""**)**
 
 *abstract property* org\_i&#x64;*: str*
 
@@ -1091,7 +1101,7 @@ Return type:
 
 *abstract* create\_taxonomy(*name*, *study\_classify=None*, *series\_classify=None*, *instance\_classify=None*, *object\_types=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBOrganization.create_taxonomy)
 
-Create a Taxonomy V2.
+Create a Taxonomy.
 
 Parameters:
 
@@ -1115,7 +1125,7 @@ Return type:
 
 *abstract* get\_taxonomy(*name=None*, *tax\_id=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBOrganization.get_taxonomy)
 
-Get a taxonomy created in your organization based on id or name.
+Get (fetch, export) a Taxonomy associated with your Organization based on id or name. Useful for reviewing a Taxonomy in RedBrick-proprietary format or modifying a Taxonomy (with update\_taxonomy())
 
 Format reference for categories and attributes objects: [https://sdk.redbrickai.com/formats/taxonomy.html](https://sdk.redbrickai.com/formats/taxonomy.html)
 
@@ -1157,7 +1167,7 @@ Abstract interface to Team module.
 
 Get a team member.
 
-org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_ke&#x79;**)**
+org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_key**)**
 member **=** or&#x67;**.**&#x74;ea&#x6D;**.**&#x67;et\_membe&#x72;**(**&#x6D;ember\_i&#x64;**)**
 
 Parameters:
@@ -1172,7 +1182,7 @@ Return type:
 
 Get a list of all organization members.
 
-org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_ke&#x79;**)**
+org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_key**)**
 members **=** or&#x67;**.**&#x74;ea&#x6D;**.**&#x6C;ist\_member&#x73;**()**
 
 Return type:
@@ -1183,7 +1193,7 @@ List\[[OrgMember](https://sdk.redbrickai.com/sdk.html#redbrick.OrgMember "redbri
 
 Remove members from the organization.
 
-org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_ke&#x79;**)**
+org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_key**)**
 or&#x67;**.**&#x74;ea&#x6D;**.**&#x72;emove\_member&#x73;**(**&#x6D;ember\_id&#x73;**)**
 
 Parameters:
@@ -1198,7 +1208,7 @@ Return type:
 
 Get a list of all pending or declined invites.
 
-org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_ke&#x79;**)**
+org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_key**)**
 members **=** or&#x67;**.**&#x74;ea&#x6D;**.**&#x6C;ist\_invite&#x73;**()**
 
 Return type:
@@ -1209,7 +1219,7 @@ List\[[OrgInvite](https://sdk.redbrickai.com/sdk.html#redbrick.OrgInvite "redbri
 
 Invite a user to the organization.
 
-org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_ke&#x79;**)**
+org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_key**)**
 invitation **=** or&#x67;**.**&#x74;ea&#x6D;**.**&#x69;nvite\_use&#x72;**(**&#x4F;rgInvit&#x65;**(**&#x65;mai&#x6C;**=**"..."**,** rol&#x65;**=**&#x4F;rgMembe&#x72;**.**&#x52;ol&#x65;**.**&#x4D;EMBE&#x52;**))**
 
 Parameters:
@@ -1224,7 +1234,7 @@ Return type:
 
 Revoke org user invitation.
 
-org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_ke&#x79;**)**
+org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_key**)**
 or&#x67;**.**&#x74;ea&#x6D;**.**&#x72;evoke\_invitatio&#x6E;**(**&#x4F;rgInvit&#x65;**(**&#x65;mai&#x6C;**=**"..."**))**
 
 Parameters:
@@ -1415,7 +1425,7 @@ Create datapoints in workspace.
 
 Upload data to your workspace (without annotations). Please visit [our documentation](https://sdk.redbrickai.com/formats/index.html#import) to understand the format for `points`.
 
-workspace **=** redbric&#x6B;**.**&#x67;et\_workspac&#x65;**(**&#x6F;rg\_i&#x64;**,** workspace\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+workspace **=** redbric&#x6B;**.**&#x67;et\_workspac&#x65;**(**&#x6F;rg\_i&#x64;**,** workspace\_i&#x64;**,** api\_key**,** ur&#x6C;**)**
 points **=** **\[**
 &#x20;   **\{**
 &#x20;       "name"**:** "..."**,**
@@ -1456,7 +1466,7 @@ Update datapoints metadata.
 
 Update metadata for datapoints in workspace.
 
-workspace **=** redbric&#x6B;**.**&#x67;et\_workspac&#x65;**(**&#x6F;rg\_i&#x64;**,** workspace\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+workspace **=** redbric&#x6B;**.**&#x67;et\_workspac&#x65;**(**&#x6F;rg\_i&#x64;**,** workspace\_i&#x64;**,** api\_key**,** ur&#x6C;**)**
 points **=** **\[**
 &#x20;   **\{**
 &#x20;       "dpId"**:** "..."**,**
@@ -1481,7 +1491,7 @@ Return type:
 
 Delete workspace datapoints based on ids.
 
-\>>> workspace **=** redbric&#x6B;**.**&#x67;et\_workspac&#x65;**(**&#x6F;rg\_i&#x64;**,** workspace\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+\>>> workspace **=** redbric&#x6B;**.**&#x67;et\_workspac&#x65;**(**&#x6F;rg\_i&#x64;**,** workspace\_i&#x64;**,** api\_key**,** ur&#x6C;**)**
 \>>> workspac&#x65;**.**&#x64;elete\_datapoint&#x73;**(\[...])**
 
 Parameters:
@@ -1520,7 +1530,7 @@ Variables:
 
 * **workforce** ([*redbrick.common.member.Workforce*](https://sdk.redbrickai.com/sdk.html#redbrick.common.member.Workforce "redbrick.common.member.Workforce")) – Project workforce management.
 
-\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**=**""**,** project\_i&#x64;**=**""**,** api\_ke&#x79;**=**""**)**
+\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**=**""**,** project\_i&#x64;**=**""**,** api\_key**=**""**)**
 
 *abstract property* org\_i&#x64;*: str*
 
@@ -1552,7 +1562,7 @@ Read only taxonomy\_name property.
 
 Retrieves the taxonomy name.
 
-*abstract property* taxonom&#x79;*:* [*Taxonomy*](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Taxonomy "redbrick.types.taxonomy.Taxonomy")
+*abstract property* taxonomy*:* [*Taxonomy*](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Taxonomy "redbrick.types.taxonomy.Taxonomy")
 
 Retrieves the project taxonomy.
 
@@ -1578,7 +1588,7 @@ Set label storage method for a project.
 
 By default, all annotations get stored in RedBrick AI’s storage i.e. `redbrick.StorageMethod.REDBRICK`. Set a custom external storage, within which RedBrick AI will write all annotations.
 
-\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
+\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_key**)**
 \>>> projec&#x74;**.**&#x73;et\_label\_storag&#x65;**(**&#x73;torage\_i&#x64;**)**
 
 Parameters:
@@ -1621,7 +1631,7 @@ Primary interface for various export methods.
 
 The export module has many functions for exporting annotations and meta-data from projects. The export module is available from the [`redbrick.RBProject`](https://sdk.redbrickai.com/sdk.html#redbrick.RBProject "redbrick.RBProject") module.
 
-\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x61;pi\_ke&#x79;**=**""**,** org\_i&#x64;**=**""**,** project\_i&#x64;**=**""**)**
+\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x61;pi\_key**=**""**,** org\_i&#x64;**=**""**,** project\_i&#x64;**=**""**)**
 \>>> projec&#x74;**.**&#x65;xport *# Export*
 
 *abstract* export\_tasks(*\**, *concurrency=10*, *only\_ground\_truth=False*, *stage\_name=None*, *task\_id=None*, *from\_timestamp=None*, *old\_format=False*, *without\_masks=False*, *without\_json=False*, *semantic\_mask=False*, *binary\_mask=None*, *no\_consensus=None*, *with\_files=False*, *dicom\_to\_nifti=False*, *png=False*, *rt\_struct=False*, *mhd=False*, *destination=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/export.html#Export.export_tasks)
@@ -1630,7 +1640,7 @@ Export annotation data.
 
 Meta-data and category information returned as an Object. Segmentations are written to your disk in NIfTI-1 format. Please [visit our documentation](https://sdk.redbrickai.com/formats/index.html#export) for more information on the format.
 
-\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_key**,** ur&#x6C;**)**
 \>>> projec&#x74;**.**&#x65;xpor&#x74;**.**&#x65;xport\_task&#x73;**()**
 
 Parameters:
@@ -1685,7 +1695,7 @@ If both semantic\_mask and binary\_mask options are True, then one binary ma
 
 Search tasks based on multiple queries for a project. This function returns minimal meta-data about the queried tasks.
 
-\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_key**,** ur&#x6C;**)**
 \>>> result **=** projec&#x74;**.**&#x65;xpor&#x74;**.**&#x6C;ist\_task&#x73;**()**
 
 Parameters:
@@ -1819,7 +1829,7 @@ Bases: `ABC`
 
 Primary interface for uploading to a project.
 
-\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x61;pi\_ke&#x79;**=**""**,** org\_i&#x64;**=**""**,** project\_i&#x64;**=**""**)**
+\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x61;pi\_key**=**""**,** org\_i&#x64;**=**""**,** project\_i&#x64;**=**""**)**
 \>>> projec&#x74;**.**&#x75;pload
 
 *abstract* create\_datapoints(*storage\_id*, *points*, *\**, *is\_ground\_truth=False*, *segmentation\_mapping=None*, *rt\_struct=False*, *mhd=False*, *label\_storage\_id=None*, *label\_validate=False*, *prune\_segmentations=False*, *concurrency=50*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/upload.html#Upload.create_datapoints)
@@ -1828,7 +1838,7 @@ Create datapoints in project.
 
 Upload data, and optionally annotations, to your project. Please visit [our documentation](https://sdk.redbrickai.com/formats/index.html#import) to understand the format for `points`.
 
-project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_key**,** ur&#x6C;**)**
 points **=** **\[**
 &#x20;   **\{**
 &#x20;       "name"**:** "..."**,**
@@ -1885,7 +1895,7 @@ Note
 
 Delete project tasks based on task ids.
 
-\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_key**,** ur&#x6C;**)**
 \>>> projec&#x74;**.**&#x75;ploa&#x64;**.**&#x64;elete\_task&#x73;**(\[...])**
 
 Parameters:
@@ -1906,7 +1916,7 @@ bool
 
 Delete project tasks based on task names.
 
-\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_key**,** ur&#x6C;**)**
 \>>> projec&#x74;**.**&#x75;ploa&#x64;**.**&#x64;elete\_tasks\_by\_nam&#x65;**(\[...])**
 
 Parameters:
@@ -1927,7 +1937,7 @@ bool
 
 Update task items, meta data, heat maps, transforms, etc. for the mentioned task ids.
 
-project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_key**,** ur&#x6C;**)**
 points **=** **\[**
 &#x20;   **\{**
 &#x20;       "taskId"**:** "..."**,**
@@ -1964,7 +1974,7 @@ Note
 
 Import tasks from another project in the same workspace.
 
-project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_key**,** ur&#x6C;**)**
 projec&#x74;**.**&#x75;ploa&#x64;**.**&#x69;mport\_tasks\_from\_workspac&#x65;**(**&#x73;ource\_project\_i&#x64;**,** task\_id&#x73;**)**
 
 Parameters:
@@ -2131,7 +2141,7 @@ Assign tasks to specified email or current API key.
 
 Unassigns all users from the task if neither of the `email` or `current_user` are set.
 
-\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
+\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_key**)**
 \>>> projec&#x74;**.**&#x6C;abelin&#x67;**.**&#x61;ssign\_task&#x73;**(\[**&#x74;ask\_i&#x64;**],** emai&#x6C;**=**&#x65;mai&#x6C;**)**
 
 Parameters:
@@ -2180,7 +2190,7 @@ Format: \{“enabled”: bool, “enforce”: bool, “script”: str}
 
 Get
 
-project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_key**,** ur&#x6C;**)**
 label\_validation **=** projec&#x74;**.**&#x73;etting&#x73;**.**&#x6C;abel\_validation
 
 Set
@@ -2195,7 +2205,7 @@ Format: \{“enabled”: bool, “script”: str}
 
 Get
 
-project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_key**,** ur&#x6C;**)**
 hanging\_protocol **=** projec&#x74;**.**&#x73;etting&#x73;**.**&#x68;anging\_protocol
 
 Set
@@ -2210,7 +2220,7 @@ Format: \{“enabled”: bool, “url”: str}
 
 Get
 
-project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_key**,** ur&#x6C;**)**
 webhook **=** projec&#x74;**.**&#x73;etting&#x73;**.**&#x77;ebhook
 
 Set
@@ -2233,7 +2243,7 @@ Format: Optional\[int]
 
 Get
 
-project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_key**,** ur&#x6C;**)**
 count **=** projec&#x74;**.**&#x73;etting&#x73;**.**&#x74;ask\_duplication
 
 Set
@@ -2250,7 +2260,7 @@ Abstract interface to Workforce module.
 
 Get a project member.
 
-project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_key**)**
 member **=** projec&#x74;**.**&#x77;orkforc&#x65;**.**&#x67;et\_membe&#x72;**(**&#x6D;ember\_i&#x64;**)**
 
 Parameters:
@@ -2265,7 +2275,7 @@ Return type:
 
 Get a list of all project members.
 
-project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_key**)**
 members **=** projec&#x74;**.**&#x77;orkforc&#x65;**.**&#x6C;ist\_member&#x73;**()**
 
 Return type:
@@ -2276,7 +2286,7 @@ List\[[ProjectMember](https://sdk.redbrickai.com/sdk.html#redbrick.ProjectMember
 
 Add project members.
 
-project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_key**)**
 member **=** projec&#x74;**.**&#x77;orkforc&#x65;**.**&#x61;dd\_member&#x73;**(\[\{**"member\_id"**:** "..."**,** "role"**:** "..."**,** "stages"**:** **\[**"..."**]},** **...])**
 
 Parameters:
@@ -2295,7 +2305,7 @@ List\[[ProjectMember](https://sdk.redbrickai.com/sdk.html#redbrick.ProjectMember
 
 Update project members.
 
-project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_key**)**
 member **=** projec&#x74;**.**&#x77;orkforc&#x65;**.**&#x75;pdate\_member&#x73;**(\[\{**"member\_id"**:** "..."**,** "role"**:** "..."**,** "stages"**:** **\[**"..."**]},** **...])**
 
 Parameters:
@@ -2314,7 +2324,7 @@ List\[[ProjectMember](https://sdk.redbrickai.com/sdk.html#redbrick.ProjectMember
 
 Remove project members.
 
-project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_key**)**
 member **=** projec&#x74;**.**&#x77;orkforc&#x65;**.**&#x72;emove\_member&#x73;**(\[...])**
 
 Parameters:
