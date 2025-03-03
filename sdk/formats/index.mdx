@@ -1,0 +1,512 @@
+---
+title: 'New file'
+description: 'Description of your new file.'
+---
+
+
+
+[![Light Logo](https://sdk.redbrickai.com/_static/redbrick.svg)Version 2.21.5](https://sdk.redbrickai.com/index.html)
+
+* [Python SDK](https://sdk.redbrickai.com/sdk.html)
+
+* [Command Line Interface](https://sdk.redbrickai.com/cli.html)
+
+* [Formats](https://sdk.redbrickai.com/formats/index.html#)
+
+
+
+
+  Toggle navigation of Formats
+
+  * [Annotation type definitions](https://sdk.redbrickai.com/formats/annotations.html)
+
+  * [Taxonomy format](https://sdk.redbrickai.com/formats/taxonomy.html)
+
+Toggle Light / Dark / Auto color theme
+
+# Formats
+
+This section will document the structure used for importing and exporting data from RedBrick AI.
+
+## Import
+
+The RedBrick AI SDK uses a list of [`redbrick.types.task.InputTask`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.InputTask "redbrick.types.task.InputTask") objects for importing data. To import data through the CLI or SDK, create a JSON file that follows the same format.
+
+*class* redbrick.types.task.InputTask[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#InputTask)
+
+Represents a single task in RedBrick AI, which is a unit of labeling work. This user-defined object can contain one or more series of mixed modalities.
+
+nam&#x65;*: `str`*
+
+A unique user defined string for quickly identifying and searching tasks.
+
+serie&#x73;*: `List`\[*[*`Series`*](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series "redbrick.types.task.Series")*]*
+
+Add more than one series per task by adding multiple entries to series list.
+
+classificatio&#x6E;*:* [*`Classification`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Classification "redbrick.types.task.Classification")
+
+For importing Study level classifications [`redbrick.types.task.Classification`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Classification "redbrick.types.task.Classification").
+
+priorit&#x79;*: `float`*
+
+priority must between \[0, 1]. Tasks will be ordered in descending order of priority.
+
+metaDat&#x61;*: `Dict`\[`str`, `str`]*
+
+Used for displaying Task level meta-data within the annotation viewer.
+
+preAssig&#x6E;*: `Dict`\[`str`, `Union`\[`str`, `List`\[`str`]]]*
+
+Specify user email(s) to automatically assign this task to them.
+
+*class* redbrick.types.task.Series[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#Series)
+
+A single series represents a single volume, image, or video. A [`redbrick.types.task.InputTask`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.InputTask "redbrick.types.task.InputTask") can have multiple series.
+
+item&#x73;*: `Union`\[`str`, `List`\[`str`]] = \<method 'items' of 'dict' objects>*
+
+Path(s) to the image instances of this series.
+
+DICOM 3D
+
+*# DICOM instances don't need to be in order.*
+items **=** **\[**"instance001.dcm"**,** "instance000.dcm"**,** "instance003.dcm]
+
+
+DICOM 2DNIfTIVideo frames
+
+nam&#x65;*: `str`*
+
+Unique identifier for the series that will be displayed on the annotation viewport.
+
+metaDat&#x61;*: `Dict`\[`str`, `str`]*
+
+Series level meta-data will be displayed on the viewport.
+
+segmentation&#x73;*: `Union`\[`str`, `List`\[`str`]]*
+
+Path to your NIfTI segmentation files for uploading annotations.
+
+Read our guide on [importing annotation](https://docs.redbrickai.com/python-sdk/importing-annotations-guide) to learn more.
+
+Single
+
+If your series has a single segmentation file.
+
+items **=** "path/to/segmentation.nii"
+
+
+Multiple
+
+segmentMa&#x70;*: `Dict`\[`Union`\[`str`, `int`], `Union`\[`str`, `int`, `List`\[`str`],* [*`CommonLabelProps`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.CommonLabelProps "redbrick.types.task.CommonLabelProps")*]]*
+
+A mapping between your segmentation file instance values (values inside your NIfTI files) and your RedBrick AI taxonomy categories.
+
+Read our guide on [importing annotation](https://docs.redbrickai.com/python-sdk/importing-annotations-guide) to learn more.
+
+Shorthand
+
+“1” and “2” are values present the NIfTI files defined by [`redbrick.types.task.Series.segmentations`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.segmentations "redbrick.types.task.Series.segmentations"). Those values will be mapped to your RedBrick AI taxonomy categories “category a” and “category b”.
+
+segmentMap **=** **\{**
+&#x20;   "1"**:** "category a"**,**
+&#x20;   "2"**:** "category b"
+**}**
+
+
+Full
+
+heatMap&#x73;*: `List`\[*[*`HeatMap`*](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.HeatMap "redbrick.types.task.HeatMap")*]*
+
+Heatmaps for the series.
+
+transform&#x73;*: `List`\[*[*`Transform`*](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Transform "redbrick.types.task.Transform")*]*
+
+Transforms for the series.
+
+centerlin&#x65;*: `List`\[*[*`Centerline`*](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Centerline "redbrick.types.task.Centerline")*]*
+
+Centerline info for the series.
+
+binaryMas&#x6B;*: `bool`*
+
+Treats all files in [`redbrick.types.task.Series.segmentations`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.segmentations "redbrick.types.task.Series.segmentations") as binary masks. That is, any non-zero value will be treated as a single instance.
+
+pngMas&#x6B;*: `bool`*
+
+Set to true if uploading PNG masks.
+
+landmark&#x73;*: `List`\[*[*`Landmark`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Landmark "redbrick.types.task.Landmark")*]*
+
+2D landmarks for 2D data.
+
+landmarks3&#x64;*: `List`\[*[*`Landmark3D`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Landmark3D "redbrick.types.task.Landmark3D")*]*
+
+3D landmarks for 3D data.
+
+measurement&#x73;*: `List`\[`Union`\[*[*`MeasureLength`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureLength "redbrick.types.task.MeasureLength")*,* [*`MeasureAngle`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureAngle "redbrick.types.task.MeasureAngle")*]]*
+
+Length or angle measurements. Not supported in videos.
+
+ellipse&#x73;*: `List`\[*[*`Ellipse`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Ellipse "redbrick.types.task.Ellipse")*]*
+
+Ellipse annotation. Not supported in Videos.
+
+boundingBoxe&#x73;*: `List`\[*[*`BoundingBox`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.BoundingBox "redbrick.types.task.BoundingBox")*]*
+
+2D bounding box for 2D images, or slice by slice annotation in 3D images.
+
+cuboid&#x73;*: `List`\[*[*`Cuboid`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Cuboid "redbrick.types.task.Cuboid")*]*
+
+3D bounding boxes for 3D images.
+
+polygon&#x73;*: `List`\[*[*`Polygon`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Polygon "redbrick.types.task.Polygon")*]*
+
+Closed polygons, not supported in 3D images.
+
+polyline&#x73;*: `List`\[*[*`Polyline`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Polyline "redbrick.types.task.Polyline")*]*
+
+Open polylines, not supported in 3D images.
+
+classification&#x73;*: `List`\[*[*`Classification`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Classification "redbrick.types.task.Classification")*]*
+
+Series level classifications.
+
+instanceClassification&#x73;*: `List`\[*[*`InstanceClassification`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.InstanceClassification "redbrick.types.task.InstanceClassification")*]*
+
+Instance level classifications for frame-by-frame (video) or slice-by-slice (volume) classifications.
+
+*class* redbrick.types.task.HeatMap[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#HeatMap)
+
+Heat map.
+
+nam&#x65;*: `str`*
+
+Name.
+
+ite&#x6D;*: `str`*
+
+File path.
+
+prese&#x74;*: `str`*
+
+Preset.
+
+dataRang&#x65;*: `List`\[`float`]*
+
+Data range.
+
+opacityPoint&#x73;*: `List`\[`float`]*
+
+Opacity points.
+
+opacityPoints3&#x64;*: `List`\[`float`]*
+
+Opacity points 3D.
+
+rgbPoint&#x73;*: `List`\[`float`]*
+
+RGB points.
+
+*class* redbrick.types.task.Transform[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#Transform)
+
+Transform.
+
+transfor&#x6D;*: `List`\[`List`\[`float`]]*
+
+Transformation matrix (4x4).
+
+*class* redbrick.types.task.Centerline[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#Centerline)
+
+Centerline info.
+
+nam&#x65;*: `str`*
+
+Centerline name
+
+centerlin&#x65;*: `Dict`*
+
+Centerline polydata
+
+## Export
+
+The RedBrick SDK will export a list of [`redbrick.types.task.OutputTask`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask "redbrick.types.task.OutputTask") objects, along with NIfTI segmentation files if they exist, written to the disk. The CLI will export in the same format in a JSON file.
+
+*class* redbrick.types.task.OutputTask[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#OutputTask)
+
+Single task object on export.
+
+taskI&#x64;*: `str`*
+
+System generated unique identifier for the task.
+
+nam&#x65;*: `str`*
+
+A unique user defined string for quickly identifying and searching tasks.
+
+serie&#x73;*: `List`\[*[*`Series`*](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series "redbrick.types.task.Series")*]*
+
+List of series in the task [`redbrick.types.task.Series`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series "redbrick.types.task.Series").
+
+classificatio&#x6E;*:* [*`Classification`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Classification "redbrick.types.task.Classification")
+
+Study level classifications [`redbrick.types.task.Classification`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Classification "redbrick.types.task.Classification").
+
+priorit&#x79;*: `float`*
+
+Task priority in the range \[0, 1].
+
+metaDat&#x61;*: `Dict`\[`str`, `str`]*
+
+Task level meta-data within the annotation viewer.
+
+currentStageNam&#x65;*: `str`*
+
+Name of the stage in which this task currently is.
+
+statu&#x73;*:* [*`TaskStates`*](https://sdk.redbrickai.com/formats/index.html#redbrick.common.enums.TaskStates "redbrick.common.enums.TaskStates")
+
+Current status of the task in the workflow.
+
+createdB&#x79;*: `str`*
+
+E-mail of the user who uploaded this task.
+
+createdA&#x74;*: `str`*
+
+Timestamp of when this task was uploaded.
+
+updatedB&#x79;*: `str`*
+
+E-mail of the user who last edited this task.
+
+updatedByUserI&#x64;*: `str`*
+
+System generated unique user ID of user who last edited this task.
+
+updatedA&#x74;*: `str`*
+
+Timestamp of when this task was last edited.
+
+consensu&#x73;*: `bool`*
+
+If true, this task is a consensus task, i.e., it was labeled by more than one person.
+
+consensusScor&#x65;*: `float`*
+
+Agreement score between annotators who labeled this task.
+
+Read more about the score calculation [here](https://docs.redbrickai.com/projects/consensus-inter-annotator-agreement/agreement-calculation).
+
+consensusTask&#x73;*: `List`\[*[*`OutputTask`*](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask "redbrick.types.task.OutputTask")*]*
+
+A list of all the results from consensus. One entry for each annotator.
+
+score&#x73;*: `List`\[*[*`ConsensusScore`*](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.ConsensusScore "redbrick.types.task.ConsensusScore")*]*
+
+Matrix of the agreement scores between the labelers.
+
+superTrut&#x68;*:* [*`OutputTask`*](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask "redbrick.types.task.OutputTask")
+
+Supertruth version produced in consensus review stage.
+
+datapointClassificatio&#x6E;*:* [*`Classification`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Classification "redbrick.types.task.Classification")
+
+Datapoint classification attributes.
+
+*class* redbrick.types.task.ConsensusScore[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#ConsensusScore)
+
+Consensus score for a pair of annotators for a consensus task.
+
+secondaryUse&#x72;*: `str`*
+
+User who is compared to primary user.
+
+secondaryUserI&#x64;*: `str`*
+
+User id of user who is compared to primary user.
+
+secondaryUserEmai&#x6C;*: `str`*
+
+User email of user who is compared to the primary user.
+
+scor&#x65;*: `float`*
+
+Agreement score between the primary user and this secondary user.
+
+*class* redbrick.common.enums.TaskStates(*value*, *names=None*, *\**, *module=None*, *qualname=None*, *type=None*, *start=1*, *boundary=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/enums.html#TaskStates)
+
+Task Status.
+
+* `UNASSIGNED` - The Task has not been assigned to a Project Admin or Member.
+
+* `ASSIGNED` - The Task has been assigned to a Project Admin or Member,
+
+
+
+
+  but work has not begun on it.
+
+* `IN_PROGRESS` - The Task is currently being worked on by a Project Admin or Member.
+
+* `COMPLETED` - The Task has been completed successfully.
+
+* `PROBLEM` - A Project Admin or Member has raised an Issue regarding the Task,
+
+
+
+
+  and work cannot continue until the Issue is resolved by a Project Admin.
+
+* `SKIPPED` - The Task has been skipped.
+
+* `STAGED` - The Task has been saved as a Draft.
+
+[NextAnnotation type definitions](https://sdk.redbrickai.com/formats/annotations.html)[PreviousCommand Line Interface](https://sdk.redbrickai.com/cli.html)
+
+Copyright © 2023, RedBrick AI
+
+Made with [Sphinx](https://www.sphinx-doc.org/) and [@pradyunsg](https://pradyunsg.me/)'s [Furo](https://github.com/pradyunsg/furo)
+
+On this page
+
+* [Import](https://sdk.redbrickai.com/formats/index.html#import)
+
+  * [`InputTask`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.InputTask)
+
+    * [`InputTask.name`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.InputTask.name)
+
+    * [`InputTask.series`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.InputTask.series)
+
+    * [`InputTask.classification`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.InputTask.classification)
+
+    * [`InputTask.priority`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.InputTask.priority)
+
+    * [`InputTask.metaData`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.InputTask.metaData)
+
+    * [`InputTask.preAssign`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.InputTask.preAssign)
+
+  * [`Series`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series)
+
+    * [`Series.items`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.items)
+
+    * [`Series.name`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.name)
+
+    * [`Series.metaData`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.metaData)
+
+    * [`Series.segmentations`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.segmentations)
+
+    * [`Series.segmentMap`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.segmentMap)
+
+    * [`Series.heatMaps`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.heatMaps)
+
+    * [`Series.transforms`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.transforms)
+
+    * [`Series.centerline`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.centerline)
+
+    * [`Series.binaryMask`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.binaryMask)
+
+    * [`Series.pngMask`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.pngMask)
+
+    * [`Series.landmarks`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.landmarks)
+
+    * [`Series.landmarks3d`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.landmarks3d)
+
+    * [`Series.measurements`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.measurements)
+
+    * [`Series.ellipses`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.ellipses)
+
+    * [`Series.boundingBoxes`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.boundingBoxes)
+
+    * [`Series.cuboids`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.cuboids)
+
+    * [`Series.polygons`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.polygons)
+
+    * [`Series.polylines`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.polylines)
+
+    * [`Series.classifications`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.classifications)
+
+    * [`Series.instanceClassifications`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.instanceClassifications)
+
+  * [`HeatMap`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.HeatMap)
+
+    * [`HeatMap.name`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.HeatMap.name)
+
+    * [`HeatMap.item`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.HeatMap.item)
+
+    * [`HeatMap.preset`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.HeatMap.preset)
+
+    * [`HeatMap.dataRange`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.HeatMap.dataRange)
+
+    * [`HeatMap.opacityPoints`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.HeatMap.opacityPoints)
+
+    * [`HeatMap.opacityPoints3d`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.HeatMap.opacityPoints3d)
+
+    * [`HeatMap.rgbPoints`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.HeatMap.rgbPoints)
+
+  * [`Transform`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Transform)
+
+    * [`Transform.transform`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Transform.transform)
+
+  * [`Centerline`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Centerline)
+
+    * [`Centerline.name`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Centerline.name)
+
+    * [`Centerline.centerline`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Centerline.centerline)
+
+* [Export](https://sdk.redbrickai.com/formats/index.html#export)
+
+  * [`OutputTask`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask)
+
+    * [`OutputTask.taskId`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask.taskId)
+
+    * [`OutputTask.name`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask.name)
+
+    * [`OutputTask.series`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask.series)
+
+    * [`OutputTask.classification`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask.classification)
+
+    * [`OutputTask.priority`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask.priority)
+
+    * [`OutputTask.metaData`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask.metaData)
+
+    * [`OutputTask.currentStageName`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask.currentStageName)
+
+    * [`OutputTask.status`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask.status)
+
+    * [`OutputTask.createdBy`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask.createdBy)
+
+    * [`OutputTask.createdAt`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask.createdAt)
+
+    * [`OutputTask.updatedBy`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask.updatedBy)
+
+    * [`OutputTask.updatedByUserId`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask.updatedByUserId)
+
+    * [`OutputTask.updatedAt`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask.updatedAt)
+
+    * [`OutputTask.consensus`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask.consensus)
+
+    * [`OutputTask.consensusScore`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask.consensusScore)
+
+    * [`OutputTask.consensusTasks`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask.consensusTasks)
+
+    * [`OutputTask.scores`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask.scores)
+
+    * [`OutputTask.superTruth`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask.superTruth)
+
+    * [`OutputTask.datapointClassification`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask.datapointClassification)
+
+  * [`ConsensusScore`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.ConsensusScore)
+
+    * [`ConsensusScore.secondaryUser`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.ConsensusScore.secondaryUser)
+
+    * [`ConsensusScore.secondaryUserId`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.ConsensusScore.secondaryUserId)
+
+    * [`ConsensusScore.secondaryUserEmail`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.ConsensusScore.secondaryUserEmail)
+
+    * [`ConsensusScore.score`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.ConsensusScore.score)
+
+  * [`TaskStates`](https://sdk.redbrickai.com/formats/index.html#redbrick.common.enums.TaskStates)
+
+![Read the Docs](data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmc6c3ZnCiAgIHZlcnNpb249IjEuMSIKICAgaWQ9InN2ZyIKICAgeD0iMHB4IgogICB5PSIwcHgiCiAgIHZpZXdCb3g9IjY5NCAxOTcgMzQ2LjY5ODU1IDM5OS45ODQ3NyIKICAgc29kaXBvZGk6ZG9jbmFtZT0ibG9nby1saWdodC5zdmciCiAgIHdpZHRoPSIzNDYuNjk4NTUiCiAgIGhlaWdodD0iMzk5Ljk4NDc3IgogICBpbmtzY2FwZTp2ZXJzaW9uPSIxLjMuMiAoMDkxZTIwZWYwZiwgMjAyMy0xMS0yNSwgY3VzdG9tKSIKICAgeG1sbnM6aW5rc2NhcGU9Imh0dHA6Ly93d3cuaW5rc2NhcGUub3JnL25hbWVzcGFjZXMvaW5rc2NhcGUiCiAgIHhtbG5zOnNvZGlwb2RpPSJodHRwOi8vc29kaXBvZGkuc291cmNlZm9yZ2UubmV0L0RURC9zb2RpcG9kaS0wLmR0ZCIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHN2ZzpkZWZzCiAgICAgaWQ9ImRlZnMxMiIgLz4KICA8c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgaWQ9Im5hbWVkdmlldzEyIgogICAgIHBhZ2Vjb2xvcj0iI2ZmZmZmZiIKICAgICBib3JkZXJjb2xvcj0iIzAwMDAwMCIKICAgICBib3JkZXJvcGFjaXR5PSIwLjI1IgogICAgIGlua3NjYXBlOnNob3dwYWdlc2hhZG93PSIyIgogICAgIGlua3NjYXBlOnBhZ2VvcGFjaXR5PSIwLjAiCiAgICAgaW5rc2NhcGU6cGFnZWNoZWNrZXJib2FyZD0iMCIKICAgICBpbmtzY2FwZTpkZXNrY29sb3I9IiNkMWQxZDEiCiAgICAgaW5rc2NhcGU6em9vbT0iMS4yNTIiCiAgICAgaW5rc2NhcGU6Y3g9Ijk5OC40MDI1NiIKICAgICBpbmtzY2FwZTpjeT0iMTk5LjY4MDUxIgogICAgIGlua3NjYXBlOndpbmRvdy13aWR0aD0iMzQ0MCIKICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSIxMzg5IgogICAgIGlua3NjYXBlOndpbmRvdy14PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy15PSIyNyIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9InN2ZyIgLz4KICA8c3ZnOmcKICAgICBpZD0ibG9nbyIKICAgICB0cmFuc2Zvcm09Im1hdHJpeCgwLjU1NzUzNjQ0LDAsMCwwLjU1NzUzNjQ0LDY2LjUzMTgxMiwxMDUwLjEyNjIpIj4KICAgIDxzdmc6cGF0aAogICAgICAgc3R5bGU9ImZpbGw6I2ZjZmNmYyIKICAgICAgIGQ9Im0gMTQwOC4xLC0xMTgxLjcgYyAtNy41LDEgLTEyLjcsNy44IC0xMS43LDE1LjMgMC43LDUuNCA0LjYsOS45IDkuOSwxMS4zIDAsMCAzMy4yLDExIDg5LjcsMTUuNiA0NS40LDMuNyA5Ni45LC0zLjIgOTYuOSwtMy4yIDcuNSwtMC4yIDEzLjUsLTYuNSAxMy4yLC0xNCAtMC4zLC03LjUgLTYuNSwtMTMuNSAtMTQsLTEzLjIgLTAuOSwwIC0xLjgsMC4xIC0yLjYsMC4zIDAsMCAtNTAuNCw2LjIgLTkxLjMsMi45IC01NCwtNC40IC04My40LC0xNC4zIC04My40LC0xNC4zIC0yLjIsLTAuNyAtNC41LC0xIC02LjcsLTAuNyB6IG0gMCwtNjcuNiBjIC03LjUsMSAtMTIuNyw3LjggLTExLjcsMTUuMyAwLjcsNS40IDQuNiw5LjkgOS45LDExLjMgMCwwIDMzLjIsMTEgODkuNywxNS42IDQ1LjQsMy43IDk2LjksLTMuMiA5Ni45LC0zLjIgNy41LC0wLjIgMTMuNSwtNi41IDEzLjIsLTE0IC0wLjMsLTcuNSAtNi41LC0xMy41IC0xNCwtMTMuMiAtMC45LDAgLTEuOCwwLjEgLTIuNiwwLjMgMCwwIC01MC40LDYuMiAtOTEuMywyLjkgLTU0LC00LjQgLTgzLjQsLTE0LjMgLTgzLjQsLTE0LjMgLTIuMiwtMC43IC00LjUsLTEgLTYuNywtMC43IHogbSAwLC02Ny42IGMgLTcuNSwxIC0xMi43LDcuOCAtMTEuNywxNS4zIDAuNyw1LjQgNC42LDkuOSA5LjksMTEuMyAwLDAgMzMuMiwxMSA4OS43LDE1LjYgNDUuNCwzLjcgOTYuOSwtMy4yIDk2LjksLTMuMiA3LjUsLTAuMiAxMy41LC02LjUgMTMuMiwtMTQgLTAuMywtNy41IC02LjUsLTEzLjUgLTE0LC0xMy4yIC0wLjksMCAtMS44LDAuMSAtMi42LDAuMyAwLDAgLTUwLjQsNi4yIC05MS4zLDIuOSAtNTQsLTQuNCAtODMuNCwtMTQuMyAtODMuNCwtMTQuMyAtMi4yLC0wLjcgLTQuNSwtMSAtNi43LC0wLjcgeiBtIDAsLTY3LjUgYyAtNy41LDEgLTEyLjcsNy44IC0xMS43LDE1LjMgMC43LDUuNCA0LjYsOS45IDkuOSwxMS4zIDAsMCAzMy4yLDExIDg5LjcsMTUuNiA0NS40LDMuNyA5Ni45LC0zLjIgOTYuOSwtMy4yIDcuNSwtMC4yIDEzLjUsLTYuNSAxMy4yLC0xNCAtMC4zLC03LjUgLTYuNSwtMTMuNSAtMTQsLTEzLjIgLTAuOSwwIC0xLjgsMC4xIC0yLjYsMC4zIDAsMCAtNTAuNCw2LjIgLTkxLjMsMi45IC01NCwtNC40IC04My40LC0xNC4zIC04My40LC0xNC4zIC0yLjIsLTAuOCAtNC41LC0xIC02LjcsLTAuNyB6IG0gLTk0LjcsLTcxLjMgYyAtNzEsMC41IC05Ny41LDIyLjMgLTk3LjUsMjIuMyB2IDUzMC4zIGMgMCwwIDI1LjgsLTIyLjMgMTA5LC0xOC45IDgzLjIsMy40IDEwMC4zLDMyLjYgMjAyLjUsMzQuNiAxMDIuMiwyLjEgMTI3LjksLTE1LjcgMTI3LjksLTE1LjcgbCAxLjUsLTU0MC42IGMgMCwwIC00NiwxMyAtMTM1LjUsMTMuNyAtODkuNSwwLjcgLTExMSwtMjIuOCAtMTkzLjIsLTI1LjUgLTUuMSwtMC4xIC0xMCwtMC4yIC0xNC43LC0wLjIgeiBtIDU5LjQsMzQuNiBjIDAsMCA0MywxNC4yIDEyMi41LDE4LjIgNjcuMiwzLjMgMTM0LjUsLTYuNiAxMzQuNSwtNi42IFYgLTkyOSBjIDAsMCAtMzQuMSwxNy45IC0xMTkuMywxMS44IC02NiwtNC43IC0xMzguNywtMjkuNyAtMTM4LjcsLTI5LjcgeiBtIC00MS41LDEyLjUgYyA3LjYsMCAxMy43LDYuMiAxMy43LDEzLjcgMCw3LjUgLTYuMiwxMy43IC0xMy43LDEzLjcgMCwwIC0yMi4zLDAuMSAtMzUuOCwxLjUgLTIyLjgsMi4zIC0zOC4zLDEwLjYgLTM4LjMsMTAuNiAtNi43LDMuNSAtMTUsMSAtMTguNSwtNS43IC0zLjUsLTYuNyAtMSwtMTUgNS43LC0xOC41IDAsMCAwLDAgMCwwIDAsMCAyMC4yLC0xMC43IDQ4LjQsLTEzLjUgMTYuMywtMS43IDM4LjUsLTEuOCAzOC41LC0xLjggeiBtIC0xMy4yLDY3LjggYyA3LjYsLTAuMiAxMy4zLDAgMTMuMywwIDcuNSwwLjkgMTIuOSw3LjggMTIsMTUuMyAtMC44LDYuMyAtNS43LDExLjIgLTEyLDEyIDAsMCAtMjIuMywwLjEgLTM1LjgsMS41IC0yMi44LDIuMyAtMzguMywxMC42IC0zOC4zLDEwLjYgLTYuNywzLjUgLTE1LDAuOSAtMTguNSwtNS44IC0zLjUsLTYuNyAtMC45LC0xNSA1LjgsLTE4LjUgMCwwIDIwLjIsLTEwLjcgNDguNCwtMTMuNSA3LjksLTAuOSAxNy41LC0xLjQgMjUuMSwtMS42IHogbSAxMy4yLDY3LjUgYyA3LjYsMCAxMy43LDYuMiAxMy43LDEzLjcgMCw3LjYgLTYuMiwxMy43IC0xMy43LDEzLjcgMCwwIC0yMi4zLC0wLjEgLTM1LjgsMS4yIC0yMi44LDIuMyAtMzguMywxMC42IC0zOC4zLDEwLjYgLTYuNywzLjUgLTE1LDAuOSAtMTguNSwtNS44IC0zLjUsLTYuNyAtMC45LC0xNSA1LjgsLTE4LjUgMCwwIDIwLjIsLTEwLjcgNDguNCwtMTMuNSAxNi4yLC0xLjUgMzguNCwtMS40IDM4LjQsLTEuNCB6IgogICAgICAgaWQ9InBhdGgxIiAvPgogIDwvc3ZnOmc+CiAgPGRpdgogICAgIGlkPSJzYWthLWd1aS1yb290Ij4KICAgIDxkaXY+CiAgICAgIDxkaXY+CiAgICAgICAgPHN0eWxlIC8+CiAgICAgIDwvZGl2PgogICAgPC9kaXY+CiAgPC9kaXY+Cjwvc3ZnOnN2Zz4K)

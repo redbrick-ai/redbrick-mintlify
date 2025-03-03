@@ -1,0 +1,2833 @@
+---
+title: 'New file'
+description: 'Description of your new file.'
+---
+
+
+
+[![Light Logo](https://sdk.redbrickai.com/_static/redbrick.svg)Version 2.21.5](https://sdk.redbrickai.com/index.html)
+
+* [Python SDK](https://sdk.redbrickai.com/sdk.html#)
+
+* [Command Line Interface](https://sdk.redbrickai.com/cli.html)
+
+* [Formats](https://sdk.redbrickai.com/formats/index.html)
+
+# Python SDK
+
+The SDK is best for writing Python scripts to interact with your RedBrick AI organization & projects. The SDK offers granular functions for programmatically manipulating data, importing annotations, assigning tasks, and more.
+
+## RedBrick
+
+*class* redbrick.StorageMethod[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod)
+
+Storage method integration for organizations.
+
+* `PUBLIC` - Access files from a public cloud storage service using their absolute URLs.
+
+
+
+
+  (i.e. files available publicly)
+
+* `REDBRICK` - Access files stored on RedBrick AI’s servers
+
+
+
+
+  (i.e. files uploaded directly to RBAI from a local machine)
+
+*class* Public[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.Public)
+
+Public storage provider (Sub class of [`StorageProvider`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageProvider "redbrick.StorageProvider")).
+
+Variables:
+
+* **storage\_id** (*str*) – `redbrick.StorageMethod.PUBLIC`
+
+* **name** (*str*) – `"Public"`
+
+* **details** ([*redbrick.StorageMethod.Public.Details*](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.Public.Details "redbrick.StorageMethod.Public.Details")) – Public storage method details.
+
+*class* Details[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.Public.Details)
+
+Public storage provider details.
+
+*property* ke&#x79;*: str*
+
+Public storage proivder details key.
+
+*classmethod* from\_entity(*entity=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.Public.Details.from_entity)
+
+Get object from entity
+
+Return type:
+
+[`Details`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.Public.Details "redbrick.common.storage.StorageMethod.Public.Details")
+
+*abstract* to\_entity()[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.Public.Details.to_entity)
+
+Get entity from object.
+
+Return type:
+
+`Dict`\[`str`, `Any`]
+
+validate(*check\_secrets=False*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.Public.Details.validate)
+
+Validate Public storage provider details.
+
+Return type:
+
+`None`
+
+*classmethod* from\_entity(*entity*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.Public.from_entity)
+
+Get object from entity
+
+Return type:
+
+[`Public`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.Public "redbrick.common.storage.StorageMethod.Public")
+
+*class* RedBrick[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.RedBrick)
+
+RedBrick storage provider (Sub class of [`StorageProvider`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageProvider "redbrick.StorageProvider")).
+
+Variables:
+
+* **storage\_id** (*str*) – `redbrick.StorageMethod.REDBRICK`
+
+* **name** (*str*) – `"Direct Upload"`
+
+* **details** ([*redbrick.StorageMethod.RedBrick.Details*](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.RedBrick.Details "redbrick.StorageMethod.RedBrick.Details")) – RedBrick storage method details.
+
+*class* Details[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.RedBrick.Details)
+
+RedBrick storage provider details.
+
+*property* ke&#x79;*: str*
+
+RedBrick storage proivder details key.
+
+*classmethod* from\_entity(*entity=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.RedBrick.Details.from_entity)
+
+Get object from entity
+
+Return type:
+
+[`Details`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.RedBrick.Details "redbrick.common.storage.StorageMethod.RedBrick.Details")
+
+*abstract* to\_entity()[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.RedBrick.Details.to_entity)
+
+Get entity from object.
+
+Return type:
+
+`Dict`\[`str`, `Any`]
+
+validate(*check\_secrets=False*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.RedBrick.Details.validate)
+
+Validate RedBrick storage provider details.
+
+Return type:
+
+`None`
+
+*classmethod* from\_entity(*entity*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.RedBrick.from_entity)
+
+Get object from entity
+
+Return type:
+
+[`RedBrick`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.RedBrick "redbrick.common.storage.StorageMethod.RedBrick")
+
+*class* AWSS3(*storage\_id*, *name*, *details*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.AWSS3)
+
+AWS S3 storage provider (Sub class of [`StorageProvider`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageProvider "redbrick.StorageProvider")).
+
+Variables:
+
+* **storage\_id** (*str*) – AWS S3 storage id.
+
+* **name** (*str*) – AWS S3 storage name.
+
+* **details** ([*redbrick.StorageMethod.AWSS3.Details*](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AWSS3.Details "redbrick.StorageMethod.AWSS3.Details")) – AWS S3 storage method details.
+
+*class* Details(*bucket*, *region*, *transfer\_acceleration=False*, *endpoint=None*, *access\_key\_id=None*, *secret\_access\_key=None*, *role\_arn=None*, *role\_external\_id=None*, *session\_duration=3600*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.AWSS3.Details)
+
+AWS S3 storage provider details.
+
+Variables:
+
+* **bucket** (*str*) – AWS S3 bucket.
+
+* **region** (*str*) – AWS S3 region.
+
+* **transfer\_acceleration** (*bool*) – AWS S3 transfer acceleration.
+
+* **endpoint** (*str*) – Custom endpoint (For S3 compatible storage, e.g. MinIO).
+
+* **access\_key\_id** (*str*) – AWS access key id.
+
+* **secret\_access\_key** (*str*) – AWS secret access key. (Will be None in output for security reasons)
+
+* **role\_arn** (*str*) – AWS assume\_role ARN. (For short-lived credentials instead of access keys)
+
+* **role\_external\_id** (*str*) – AWS assume\_role external id. (Will be None in output for security reasons)
+
+* **session\_duration** (*int*) – AWS S3 assume\_role session duration.
+
+*property* ke&#x79;*: str*
+
+AWS S3 storage proivder details key.
+
+*classmethod* from\_entity(*entity=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.AWSS3.Details.from_entity)
+
+Get object from entity
+
+Return type:
+
+[`Details`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AWSS3.Details "redbrick.common.storage.StorageMethod.AWSS3.Details")
+
+*abstract* to\_entity()[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.AWSS3.Details.to_entity)
+
+Get entity from object.
+
+Return type:
+
+`Dict`\[`str`, `Any`]
+
+validate(*check\_secrets=False*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.AWSS3.Details.validate)
+
+Validate AWS S3 storage provider details.
+
+Return type:
+
+`None`
+
+*class* GoogleCloud(*storage\_id*, *name*, *details*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.GoogleCloud)
+
+Google cloud storage provider (Sub class of [`StorageProvider`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageProvider "redbrick.StorageProvider")).
+
+Variables:
+
+* **storage\_id** (*str*) – Google cloud storage id.
+
+* **name** (*str*) – Google cloud storage name.
+
+* **details** ([*redbrick.StorageMethod.GoogleCloud.Details*](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.GoogleCloud.Details "redbrick.StorageMethod.GoogleCloud.Details")) – Google cloud storage method details.
+
+*class* Details(*bucket*, *service\_account\_json=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.GoogleCloud.Details)
+
+Google cloud storage provider details.
+
+Variables:
+
+* **bucket** (*str*) – GCS bucket.
+
+* **service\_account\_json** (*str*) – GCS service account JSON. (Will be None in output for security reasons)
+
+*property* ke&#x79;*: str*
+
+Google cloud storage proivder details key.
+
+*classmethod* from\_entity(*entity=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.GoogleCloud.Details.from_entity)
+
+Get object from entity
+
+Return type:
+
+[`Details`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.GoogleCloud.Details "redbrick.common.storage.StorageMethod.GoogleCloud.Details")
+
+*abstract* to\_entity()[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.GoogleCloud.Details.to_entity)
+
+Get entity from object.
+
+Return type:
+
+`Dict`\[`str`, `Any`]
+
+validate(*check\_secrets=False*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.GoogleCloud.Details.validate)
+
+Validate Google cloud storage provider details.
+
+Return type:
+
+`None`
+
+*class* AzureBlob(*storage\_id*, *name*, *details*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.AzureBlob)
+
+Azure blob storage provider (Sub class of [`StorageProvider`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageProvider "redbrick.StorageProvider")).
+
+Variables:
+
+* **storage\_id** (*str*) – Azure blob storage id.
+
+* **name** (*str*) – Azure blob storage name.
+
+* **details** ([*redbrick.StorageMethod.AzureBlob.Details*](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AzureBlob.Details "redbrick.StorageMethod.AzureBlob.Details")) – Azure blob storage method details.
+
+*class* Details(*connection\_string=None*, *sas\_url=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.AzureBlob.Details)
+
+Azure blob storage provider details.
+
+Variables:
+
+* **connection\_string** (*str*) – Azure connection string. (Will be None in output for security reasons)
+
+* **sas\_url** (*str*) – Azure Shared Access Signature URL for granular blob access. (Will be None in output for security reasons)
+
+*property* ke&#x79;*: str*
+
+Azure blob storage proivder details key.
+
+*classmethod* from\_entity(*entity=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.AzureBlob.Details.from_entity)
+
+Get object from entity
+
+Return type:
+
+[`Details`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AzureBlob.Details "redbrick.common.storage.StorageMethod.AzureBlob.Details")
+
+*abstract* to\_entity()[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.AzureBlob.Details.to_entity)
+
+Get entity from object.
+
+Return type:
+
+`Dict`\[`str`, `Any`]
+
+validate(*check\_secrets=False*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.AzureBlob.Details.validate)
+
+Validate Azure blob storage provider details.
+
+Return type:
+
+`None`
+
+*class* AltaDB(*storage\_id*, *name*, *details*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.AltaDB)
+
+AltaDB storage provider (Sub class of [`StorageProvider`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageProvider "redbrick.StorageProvider")).
+
+Variables:
+
+* **storage\_id** (*str*) – AltaDB storage id.
+
+* **name** (*str*) – AltaDB storage name.
+
+* **details** ([*redbrick.StorageMethod.AltaDB.Details*](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AltaDB.Details "redbrick.StorageMethod.AltaDB.Details")) – AltaDB storage method details.
+
+*class* Details(*access\_key\_id*, *endpoint=None*, *secret\_access\_key=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.AltaDB.Details)
+
+AltaDB storage provider details.
+
+Variables:
+
+* **access\_key\_id** (*str*) – AltaDB access key id.
+
+* **secret\_access\_key** (*str*) – AltaDB secret access key. (Will be None in output for security reasons)
+
+* **endpoint** (*str*) – Custom endpoint.
+
+*property* ke&#x79;*: str*
+
+AltaDB storage proivder details key.
+
+*classmethod* from\_entity(*entity=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.AltaDB.Details.from_entity)
+
+Get object from entity
+
+Return type:
+
+[`Details`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AltaDB.Details "redbrick.common.storage.StorageMethod.AltaDB.Details")
+
+*abstract* to\_entity()[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.AltaDB.Details.to_entity)
+
+Get entity from object.
+
+Return type:
+
+`Dict`\[`str`, `Any`]
+
+validate(*check\_secrets=False*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageMethod.AltaDB.Details.validate)
+
+Validate AltaDB storage provider details.
+
+Return type:
+
+`None`
+
+*class* redbrick.StorageProvider(*storage\_id*, *name*, *details*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageProvider)
+
+Base storage provider.
+
+### Sub-classes:
+
+* redbrick.StorageMethod.Public ([`Public`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.Public "redbrick.StorageMethod.Public"))
+
+* redbrick.StorageMethod.RedBrick ([`RedBrick`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.RedBrick "redbrick.StorageMethod.RedBrick"))
+
+* redbrick.StorageMethod.AWSS3 ([`AWSS3`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AWSS3 "redbrick.StorageMethod.AWSS3"))
+
+* redbrick.StorageMethod.GoogleCloud ([`GoogleCloud`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.GoogleCloud "redbrick.StorageMethod.GoogleCloud"))
+
+* redbrick.StorageMethod.AzureBlob ([`AzureBlob`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AzureBlob "redbrick.StorageMethod.AzureBlob"))
+
+* redbrick.StorageMethod.AltaDB ([`AltaDB`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AltaDB "redbrick.StorageMethod.AltaDB"))
+
+*class* Details[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageProvider.Details)
+
+Storage details.
+
+*abstract property* ke&#x79;*: str*
+
+Storage proivder details key.
+
+*abstract classmethod* from\_entity(*entity=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageProvider.Details.from_entity)
+
+Get object from entity
+
+Return type:
+
+[`Details`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageProvider.Details "redbrick.common.storage.StorageProvider.Details")
+
+*abstract* to\_entity()[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageProvider.Details.to_entity)
+
+Get entity from object.
+
+Return type:
+
+`Dict`\[`str`, `Any`]
+
+*abstract* validate(*check\_secrets=False*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageProvider.Details.validate)
+
+Validate storage provider details.
+
+Return type:
+
+`None`
+
+*classmethod* from\_entity(*entity*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#StorageProvider.from_entity)
+
+Get object from entity
+
+Return type:
+
+[`StorageProvider`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageProvider "redbrick.common.storage.StorageProvider")
+
+*class* redbrick.ImportTypes(*value*, *names=None*, *\**, *module=None*, *qualname=None*, *type=None*, *start=1*, *boundary=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/enums.html#ImportTypes)
+
+Enumerates the supported data import types.
+
+Please see supported data types, and file extensions in our [documentation here](https://docs.redbrickai.com/importing-data/direct-data-upload).
+
+*class* redbrick.TaskEventTypes(*value*, *names=None*, *\**, *module=None*, *qualname=None*, *type=None*, *start=1*, *boundary=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/enums.html#TaskEventTypes)
+
+Enumerate the different types of task events.
+
+* `TASK_CREATED` - A new task has been created.
+
+* `TASK_SUBMITTED` - A task has been submitted for review.
+
+* `TASK_ACCEPTED` - A submitted task has been accepted in review.
+
+* `TASK_REJECTED` - A submitted task has been rejected in review.
+
+* `TASK_CORRECTED` - A submitted task has been corrected in review.
+
+* `TASK_ASSIGNED` - A task has been assigned to a worker.
+
+* `TASK_REASSIGNED` - A task has been reassigned to another worker.
+
+* `TASK_UNASSIGNED` - A task has been unassigned from a worker.
+
+* `TASK_SKIPPED` - A task has been skipped by a worker.
+
+* `TASK_SAVED` - A task has been saved but not yet submitted.
+
+* `GROUNDTRUTH_TASK_EDITED` - A ground truth task has been edited.
+
+* `CONSENSUS_COMPUTED` - The consensus for a task has been computed.
+
+* `COMMENT_ADDED` - A comment has been added to a task.
+
+* `CONSENSUS_TASK_EDITED` - A consensus task has been edited.
+
+*class* redbrick.TaskFilters(*value*, *names=None*, *\**, *module=None*, *qualname=None*, *type=None*, *start=1*, *boundary=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/enums.html#TaskFilters)
+
+Enumerate the different task filters.
+
+* `ALL` - All tasks.
+
+* `GROUNDTRUTH` - Ground truth tasks only.
+
+* `UNASSIGNED` - Tasks that have not yet been assigned to a worker.
+
+* `QUEUED` - Tasks that are queued for labeling/review.
+
+* `DRAFT` - Tasks that have been saved as draft.
+
+* `SKIPPED` - Tasks that have been skipped by a worker.
+
+* `COMPLETED` - Tasks that have been completed successfully.
+
+* `FAILED` - Tasks that have been rejected in review.
+
+* `ISSUES` - Tasks that have issues raised and cannot be completed.
+
+*class* redbrick.TaskStates(*value*, *names=None*, *\**, *module=None*, *qualname=None*, *type=None*, *start=1*, *boundary=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/enums.html#TaskStates)
+
+Task Status.
+
+* `UNASSIGNED` - The Task has not been assigned to a Project Admin or Member.
+
+* `ASSIGNED` - The Task has been assigned to a Project Admin or Member,
+
+
+
+
+  but work has not begun on it.
+
+* `IN_PROGRESS` - The Task is currently being worked on by a Project Admin or Member.
+
+* `COMPLETED` - The Task has been completed successfully.
+
+* `PROBLEM` - A Project Admin or Member has raised an Issue regarding the Task,
+
+
+
+
+  and work cannot continue until the Issue is resolved by a Project Admin.
+
+* `SKIPPED` - The Task has been skipped.
+
+* `STAGED` - The Task has been saved as a Draft.
+
+*class* redbrick.Stage(*stage\_name*, *config*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/stage.html#Stage)
+
+Base stage.
+
+*class* Config[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/stage.html#Stage.Config)
+
+Stage config.
+
+*abstract classmethod* from\_entity(*entity=None*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/stage.html#Stage.Config.from_entity)
+
+Get object from entity
+
+Return type:
+
+[`Config`](https://sdk.redbrickai.com/sdk.html#redbrick.Stage.Config "redbrick.common.stage.Stage.Config")
+
+*abstract* to\_entity(*taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/stage.html#Stage.Config.to_entity)
+
+Get entity from object.
+
+Return type:
+
+`Dict`
+
+*abstract classmethod* from\_entity(*entity*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/stage.html#Stage.from_entity)
+
+Get object from entity
+
+Return type:
+
+[`Stage`](https://sdk.redbrickai.com/sdk.html#redbrick.Stage "redbrick.common.stage.Stage")
+
+*abstract* to\_entity(*taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/stage.html#Stage.to_entity)
+
+Get entity from object.
+
+Return type:
+
+`Dict`
+
+*class* redbrick.LabelStage(*stage\_name*, *config=\<factory>*, *on\_submit=True*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/label.html#LabelStage)
+
+Label Stage.
+
+Parameters:
+
+* **stage\_name** (*str*) – Stage name.
+
+* **on\_submit** (*Union\[bool, str] = True*) – The next stage for the task when submitted in current stage. If True, the task will go to ground truth. If False, the task will be archived.
+
+* **config** (*Config = Config()*) – Stage config.
+
+*class* Config(*auto\_assignment=None*, *auto\_assignment\_queue\_size=None*, *show\_uploaded\_annotations=None*, *read\_only\_labels\_edit\_access=None*, *is\_pre\_label=None*, *is\_consensus\_label=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/label.html#LabelStage.Config)
+
+Label Stage Config.
+
+Parameters:
+
+* **auto\_assignment** (*Optional\[bool]*) – Enable task auto assignment. (Default: True)
+
+* **auto\_assignment\_queue\_size** (*Optional\[int]*) – Task auto-assignment queue size. (Default: 5)
+
+* **show\_uploaded\_annotations** (*Optional\[bool]*) – Show uploaded annotations to users. (Default: True)
+
+* **read\_only\_labels\_edit\_access** (*Optional\[*[*ProjectMember.Role*](https://sdk.redbrickai.com/sdk.html#redbrick.ProjectMember.Role "redbrick.ProjectMember.Role")*]*) – Access level to change the read only labels. (Default: None)
+
+* **is\_pre\_label** (*Optional\[bool]*) – Is pre-labeling stage. (Default: False)
+
+* **is\_consensus\_label** (*Optional\[bool]*) – Is consensus-labeling stage. (Default: False)
+
+*classmethod* from\_entity(*entity=None*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/label.html#LabelStage.Config.from_entity)
+
+Get object from entity.
+
+Return type:
+
+[`Config`](https://sdk.redbrickai.com/sdk.html#redbrick.LabelStage.Config "redbrick.stage.label.LabelStage.Config")
+
+to\_entity(*taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/label.html#LabelStage.Config.to_entity)
+
+Get entity from object.
+
+Return type:
+
+`Dict`
+
+*classmethod* from\_entity(*entity*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/label.html#LabelStage.from_entity)
+
+Get object from entity
+
+Return type:
+
+[`LabelStage`](https://sdk.redbrickai.com/sdk.html#redbrick.LabelStage "redbrick.stage.label.LabelStage")
+
+to\_entity(*taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/label.html#LabelStage.to_entity)
+
+Get entity from object.
+
+Return type:
+
+`Dict`
+
+*class* redbrick.ReviewStage(*stage\_name*, *config=\<factory>*, *on\_accept=True*, *on\_reject=False*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/review.html#ReviewStage)
+
+Review Stage.
+
+Parameters:
+
+* **stage\_name** (*str*) – Stage name.
+
+* **on\_accept** (*Union\[bool, str] = True*) – The next stage for the task when accepted in current stage. If True, the task will go to ground truth. If False, the task will be archived.
+
+* **on\_reject** (*Union\[bool, str] = False*) – The next stage for the task when rejected in current stage. If True, the task will go to ground truth. If False, the task will be archived.
+
+* **config** (*Config = Config()*) – Stage config.
+
+*class* Config(*review\_percentage=None*, *auto\_assignment=None*, *auto\_assignment\_queue\_size=None*, *read\_only\_labels\_edit\_access=None*, *is\_pre\_review=None*, *is\_consensus\_merge=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/review.html#ReviewStage.Config)
+
+Review Stage Config.
+
+Parameters:
+
+* **review\_percentage** (*Optional\[float]*) – Percentage of tasks in \[0, 1] that will be sampled for review. (Default: 1)
+
+* **auto\_assignment** (*Optional\[bool]*) – Enable task auto assignment. (Default: True)
+
+* **auto\_assignment\_queue\_size** (*Optional\[int]*) – Task auto-assignment queue size. (Default: 5)
+
+* **read\_only\_labels\_edit\_access** (*Optional\[*[*ProjectMember.Role*](https://sdk.redbrickai.com/sdk.html#redbrick.ProjectMember.Role "redbrick.ProjectMember.Role")*]*) – Access level to change the read only labels. (Default: None)
+
+* **is\_pre\_review** (*Optional\[bool]*) – Is pre-review stage. (Default: False)
+
+* **is\_consensus\_merge** (*Optional\[bool]*) – Is consensus-merge (V2) stage. (Default: False)
+
+*classmethod* from\_entity(*entity=None*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/review.html#ReviewStage.Config.from_entity)
+
+Get object from entity.
+
+Return type:
+
+[`Config`](https://sdk.redbrickai.com/sdk.html#redbrick.ReviewStage.Config "redbrick.stage.review.ReviewStage.Config")
+
+to\_entity(*taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/review.html#ReviewStage.Config.to_entity)
+
+Get entity from object.
+
+Return type:
+
+`Dict`
+
+*classmethod* from\_entity(*entity*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/review.html#ReviewStage.from_entity)
+
+Get object from entity
+
+Return type:
+
+[`ReviewStage`](https://sdk.redbrickai.com/sdk.html#redbrick.ReviewStage "redbrick.stage.review.ReviewStage")
+
+to\_entity(*taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/review.html#ReviewStage.to_entity)
+
+Get entity from object.
+
+Return type:
+
+`Dict`
+
+*class* redbrick.ModelStage(*stage\_name*, *config=\<factory>*, *on\_submit=True*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/model.html#ModelStage)
+
+Model Stage.
+
+Parameters:
+
+* **stage\_name** (*str*) – Stage name.
+
+* **on\_submit** (*Union\[bool, str] = True*) – The next stage for the task when submitted in current stage. If True, the task will go to ground truth. If False, the task will be archived.
+
+* **config** (*Config = Config()*) – Stage config.
+
+*class* ModelTaxonomyMap[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/model.html#ModelStage.ModelTaxonomyMap)
+
+Model taxonomy map.
+
+Parameters:
+
+* **modelCategory** (*str*) – Model category name.
+
+* **rbCategory** (*str*) – Category name as it appears in the RedBrick project’s taxonomy.
+
+*class* Config(*name*, *sub\_type=None*, *url=None*, *taxonomy\_objects=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/model.html#ModelStage.Config)
+
+Model Stage Config.
+
+Parameters:
+
+* **name** (*str*) – Model name.
+
+* **sub\_type** (*str*) – Model sub type.
+
+* **url** (*Optional\[str]*) – URL for self-hosted model.
+
+* **taxonomy\_objects** (*Optional\[List\[*[*ModelStage.ModelTaxonomyMap*](https://sdk.redbrickai.com/sdk.html#redbrick.ModelStage.ModelTaxonomyMap "redbrick.ModelStage.ModelTaxonomyMap")*]]*) – Mapping of model classes to project’s taxonomy objects.
+
+*classmethod* from\_entity(*entity=None*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/model.html#ModelStage.Config.from_entity)
+
+Get object from entity.
+
+Return type:
+
+[`Config`](https://sdk.redbrickai.com/sdk.html#redbrick.ModelStage.Config "redbrick.stage.model.ModelStage.Config")
+
+to\_entity(*taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/model.html#ModelStage.Config.to_entity)
+
+Get entity from object.
+
+Return type:
+
+`Dict`
+
+*classmethod* from\_entity(*entity*, *taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/model.html#ModelStage.from_entity)
+
+Get object from entity
+
+Return type:
+
+[`ModelStage`](https://sdk.redbrickai.com/sdk.html#redbrick.ModelStage "redbrick.stage.model.ModelStage")
+
+to\_entity(*taxonomy=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/stage/model.html#ModelStage.to_entity)
+
+Get entity from object.
+
+Return type:
+
+`Dict`
+
+*class* redbrick.OrgMember(*user\_id*, *email*, *given\_name*, *family\_name*, *role*, *tags*, *is\_2fa\_enabled*, *last\_active=None*, *sso\_provider=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#OrgMember)
+
+Organization Member.
+
+Parameters:
+
+* **user\_id** (*str*) – User ID.
+
+* **email** (*str*) – User email.
+
+* **given\_name** (*str*) – User given name.
+
+* **family\_name** (*str*) – User family name.
+
+* **role** ([*OrgMember.Role*](https://sdk.redbrickai.com/sdk.html#redbrick.OrgMember.Role "redbrick.OrgMember.Role")) – User role in organization.
+
+* **tags** (*List\[str]*) – Tags associated with the user.
+
+* **is\_2fa\_enabled** (*bool*) – Whether 2FA is enabled for the user.
+
+* **last\_active** (*Optional\[datetime] = None*) – Last time the user was active.
+
+* **sso\_provider** (*Optional\[str] = None*) – User identity SSO provider.
+
+*class* Role(*value*, *names=None*, *\**, *module=None*, *qualname=None*, *type=None*, *start=1*, *boundary=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#OrgMember.Role)
+
+Enumerate access levels for Organization.
+
+* `OWNER` - Organization Owner
+
+* `ADMIN` - Organization Admin
+
+* `MEMBER` - Organization Member
+
+*classmethod* from\_entity(*member*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#OrgMember.from_entity)
+
+Get object from entity.
+
+Return type:
+
+[`OrgMember`](https://sdk.redbrickai.com/sdk.html#redbrick.OrgMember "redbrick.common.member.OrgMember")
+
+*class* redbrick.OrgInvite(*email*, *role*, *sso\_provider=None*, *status=Status.PENDING*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#OrgInvite)
+
+Organization Invite.
+
+Parameters:
+
+* **email** (*str*) – User email.
+
+* **role** ([*OrgMember.Role*](https://sdk.redbrickai.com/sdk.html#redbrick.OrgMember.Role "redbrick.OrgMember.Role")) – User role in organization.
+
+* **sso\_provider** (*Optional\[str] = None*) – User identity SSO provider.
+
+* **status** (*OrgInvite.Status = OrgInvite.Status.PENDING*) – Invite status.
+
+*class* Status(*value*, *names=None*, *\**, *module=None*, *qualname=None*, *type=None*, *start=1*, *boundary=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#OrgInvite.Status)
+
+Enumerate invite status.
+
+* `PENDING` - Pending invitation
+
+* `ACCEPTED` - Accepted invitation
+
+* `DECLINED` - Declined invitation
+
+*classmethod* from\_entity(*invite*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#OrgInvite.from_entity)
+
+Get object from entity.
+
+Return type:
+
+[`OrgInvite`](https://sdk.redbrickai.com/sdk.html#redbrick.OrgInvite "redbrick.common.member.OrgInvite")
+
+to\_entity()[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#OrgInvite.to_entity)
+
+Get entity from object.
+
+Return type:
+
+`Dict`
+
+*class* redbrick.ProjectMember(*member\_id*, *role*, *stages=None*, *org\_membership=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#ProjectMember)
+
+Project Member.
+
+Parameters:
+
+* **member\_id** (*str*) – Unique user ID or email.
+
+* **role** ([*ProjectMember.Role*](https://sdk.redbrickai.com/sdk.html#redbrick.ProjectMember.Role "redbrick.ProjectMember.Role")) – User role in project.
+
+* **stages** (*Optional\[List\[str]] = None*) – Stages that the member has access to (Applicable for MEMBER role).
+
+* **org\_membership** (*Optional\[*[*OrgMember*](https://sdk.redbrickai.com/sdk.html#redbrick.OrgMember "redbrick.OrgMember")*] = None*) – Organization memberhip. This is not required when adding/updating a member.
+
+*class* Role(*value*, *names=None*, *\**, *module=None*, *qualname=None*, *type=None*, *start=1*, *boundary=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#ProjectMember.Role)
+
+Enumerate access levels for Project.
+
+* `ADMIN` - Project Admin
+
+* `MANAGER` - Project Manager
+
+* `MEMBER` - Project Member (Labeler/Reviewer)
+
+*classmethod* from\_entity(*member*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#ProjectMember.from_entity)
+
+Get object from entity.
+
+Return type:
+
+[`ProjectMember`](https://sdk.redbrickai.com/sdk.html#redbrick.ProjectMember "redbrick.common.member.ProjectMember")
+
+redbrick.get\_org(*org\_id*, *api\_key*, *url='https://api.redbrickai.com'*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick.html#get_org)
+
+Get an existing redbrick organization object.
+
+Organization object allows you to interact with your organization and perform high level actions like creating a project.
+
+\>>> org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_ke&#x79;**)**
+
+
+Parameters:
+
+* **org\_id** (*str*) – Your organizations unique id [https://app.redbrickai.com](https://app.redbrickai.com/)/\<org\_id>/.
+
+* **api\_key** (*str*) – Your secret api\_key, can be created from the RedBrick AI platform.
+
+* **url** (*str = DEFAULT\_URL*) – Should default to [https://api.redbrickai.com](https://api.redbrickai.com/)
+
+Return type:
+
+[`RBOrganization`](https://sdk.redbrickai.com/sdk.html#redbrick.RBOrganization "redbrick.common.entities.RBOrganization")
+
+redbrick.get\_workspace(*org\_id*, *workspace\_id*, *api\_key*, *url='https://api.redbrickai.com'*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick.html#get_workspace)
+
+Get an existing RedBrick workspace object.
+
+Workspace objects allow you to interact with your RedBrick AI workspaces, and perform actions like importing data, exporting data etc.
+
+\>>> workspace **=** redbric&#x6B;**.**&#x67;et\_workspac&#x65;**(**&#x6F;rg\_i&#x64;**,** workspace\_i&#x64;**,** api\_ke&#x79;**)**
+
+
+Parameters:
+
+* **org\_id** (*str*) – Your organizations unique id [https://app.redbrickai.com](https://app.redbrickai.com/)/\<org\_id>/
+
+* **workspace\_id** (*str*) – Your workspaces unique id.
+
+* **api\_key** (*str*) – Your secret api\_key, can be created from the RedBrick AI platform.
+
+* **url** (*str = DEFAULT\_URL*) – Should default to [https://api.redbrickai.com](https://api.redbrickai.com/)
+
+Return type:
+
+[`RBWorkspace`](https://sdk.redbrickai.com/sdk.html#redbrick.RBWorkspace "redbrick.common.entities.RBWorkspace")
+
+redbrick.get\_project(*org\_id*, *project\_id*, *api\_key*, *url='https://api.redbrickai.com'*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick.html#get_project)
+
+Get an existing RedBrick project object.
+
+Project objects allow you to interact with your RedBrick Ai projects, and perform actions like importing data, exporting data etc.
+
+\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
+
+
+Parameters:
+
+* **org\_id** (*str*) – Your organizations unique id [https://app.redbrickai.com](https://app.redbrickai.com/)/\<org\_id>/
+
+* **project\_id** (*str*) – Your projects unique id [https://app.redbrickai.com](https://app.redbrickai.com/)/\<org\_id>/\<project\_id>/
+
+* **api\_key** (*str*) – Your secret api\_key, can be created from the RedBrick AI platform.
+
+* **url** (*str = DEFAULT\_URL*) – Should default to [https://api.redbrickai.com](https://api.redbrickai.com/)
+
+Return type:
+
+[`RBProject`](https://sdk.redbrickai.com/sdk.html#redbrick.RBProject "redbrick.common.entities.RBProject")
+
+redbrick.get\_org\_from\_profile(*profile\_name=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick.html#get_org_from_profile)
+
+Get the org from the profile name in credentials file
+
+\>>> org **=** get\_org\_from\_profil&#x65;**()**
+
+
+Parameters:
+
+**profile\_name** (*str*) – Name of the profile stored in the credentials file
+
+Return type:
+
+[`RBOrganization`](https://sdk.redbrickai.com/sdk.html#redbrick.RBOrganization "redbrick.common.entities.RBOrganization")
+
+redbrick.get\_project\_from\_profile(*project\_id=None*, *profile\_name=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick.html#get_project_from_profile)
+
+Get the RBProject object using the credentials file
+
+project = get\_project\_from\_profile()
+
+Parameters:
+
+* **project\_id** (*Optional\[str] = None*) – project id which has to be fetched. None is valid only when called within project directory.
+
+* **profile\_name** (*str*) – Name of the profile stored in the credentials file
+
+Return type:
+
+[`RBProject`](https://sdk.redbrickai.com/sdk.html#redbrick.RBProject "redbrick.common.entities.RBProject")
+
+## Organization
+
+*class* redbrick.RBOrganization[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBOrganization)
+
+Bases: `ABC`
+
+Representation of RedBrick organization.
+
+The [`redbrick.RBOrganization`](https://sdk.redbrickai.com/sdk.html#redbrick.RBOrganization "redbrick.RBOrganization") object allows you to programmatically interact with your RedBrick organization. This class provides methods for querying your organization and doing other high level actions. Retrieve the organization object in the following way:
+
+Variables:
+
+* **team** ([*redbrick.common.member.Team*](https://sdk.redbrickai.com/sdk.html#redbrick.common.member.Team "redbrick.common.member.Team")) – Organization team management.
+
+* **storage** ([*redbrick.common.storage.Storage*](https://sdk.redbrickai.com/sdk.html#redbrick.common.storage.Storage "redbrick.common.storage.Storage")) – Organization storage methods integration.
+
+\>>> org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**=**""**,** api\_ke&#x79;**=**""**)**
+
+
+*abstract property* org\_i&#x64;*: str*
+
+Retrieve the unique org\_id of this organization.
+
+*abstract property* nam&#x65;*: str*
+
+Retrieve unique name of this organization.
+
+*abstract* taxonomies(*only\_name=True*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBOrganization.taxonomies)
+
+Get a list of taxonomy names/objects in the organization.
+
+Return type:
+
+`Union`\[`List`\[`str`], `List`\[[`Taxonomy`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Taxonomy "redbrick.types.taxonomy.Taxonomy")]]
+
+*abstract* workspaces\_raw()[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBOrganization.workspaces_raw)
+
+Get a list of active workspaces as raw objects in the organization.
+
+Return type:
+
+`List`\[`Dict`]
+
+*abstract* projects\_raw()[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBOrganization.projects_raw)
+
+Get a list of active projects as raw objects in the organization.
+
+Return type:
+
+`List`\[`Dict`]
+
+*abstract* projects()[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBOrganization.projects)
+
+Get a list of active projects in the organization.
+
+Return type:
+
+`List`\[[`RBProject`](https://sdk.redbrickai.com/sdk.html#redbrick.RBProject "redbrick.common.entities.RBProject")]
+
+*abstract* create\_workspace(*name*, *exists\_okay=False*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBOrganization.create_workspace)
+
+Create a workspace within the organization.
+
+This method creates a worspace in a similar fashion to the quickstart on the RedBrick AI create workspace page.
+
+Parameters:
+
+* **name** (*str*) – A unique name for your workspace
+
+* **exists\_okay** (*bool = False*) – Allow workspaces with the same name to be returned instead of trying to create a new workspace. Useful for when running the same script repeatedly when you do not want to keep creating new workspaces.
+
+Returns:
+
+A RedBrick Workspace object.
+
+Return type:
+
+[redbrick.RBWorkspace](https://sdk.redbrickai.com/sdk.html#redbrick.RBWorkspace "redbrick.RBWorkspace")
+
+*abstract* create\_project\_advanced(*name*, *taxonomy\_name*, *stages*, *exists\_okay=False*, *workspace\_id=None*, *sibling\_tasks=None*, *consensus\_settings=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBOrganization.create_project_advanced)
+
+Create a project within the organization.
+
+This method creates a project in a similar fashion to the quickstart on the RedBrick AI create project page.
+
+Parameters:
+
+* **name** (*str*) – A unique name for your project
+
+* **taxonomy\_name** (*str*) – The name of the taxonomy you want to use for this project. Taxonomies can be found on the left side bar of the platform.
+
+* **stages** (*List\[*[*Stage*](https://sdk.redbrickai.com/sdk.html#redbrick.Stage "redbrick.Stage")*]*) – List of stage configs.
+
+* **exists\_okay** (*bool = False*) – Allow projects with the same name to be returned instead of trying to create a new project. Useful for when running the same script repeatedly when you do not want to keep creating new projects.
+
+* **workspace\_id** (*Optional\[str] = None*) – The id of the workspace that you want to add this project to.
+
+* **sibling\_tasks** (*Optional\[int] = None*) – Number of tasks created for each uploaded datapoint.
+
+* **consensus\_settings** (*Optional\[Dict\[str, Any]] = None*) –
+
+
+
+
+  Consensus settings for the project. It has keys:
+
+  * minAnnotations: int
+
+  * autoAcceptThreshold?: float (range \[0, 1])
+
+Returns:
+
+A RedBrick Project object.
+
+Return type:
+
+[redbrick.RBProject](https://sdk.redbrickai.com/sdk.html#redbrick.RBProject "redbrick.RBProject")
+
+Raises:
+
+**ValueError:** – If a project with the same name exists but has a different type or taxonomy.
+
+*abstract* create\_project(*name*, *taxonomy\_name*, *reviews=0*, *exists\_okay=False*, *workspace\_id=None*, *sibling\_tasks=None*, *consensus\_settings=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBOrganization.create_project)
+
+Create a project within the organization.
+
+This method creates a project in a similar fashion to the quickstart on the RedBrick AI create project page.
+
+Parameters:
+
+* **name** (*str*) – A unique name for your project
+
+* **taxonomy\_name** (*str*) – The name of the taxonomy you want to use for this project. Taxonomies can be found on the left side bar of the platform.
+
+* **reviews** (*int = 0*) – The number of review stages that you want to add after the label stage.
+
+* **exists\_okay** (*bool = False*) – Allow projects with the same name to be returned instead of trying to create a new project. Useful for when running the same script repeatedly when you do not want to keep creating new projects.
+
+* **workspace\_id** (*Optional\[str] = None*) – The id of the workspace that you want to add this project to.
+
+* **sibling\_tasks** (*Optional\[int] = None*) – Number of tasks created for each uploaded datapoint.
+
+* **consensus\_settings** (*Optional\[Dict\[str, Any]] = None*) –
+
+
+
+
+  Consensus settings for the project. It has keys:
+
+  * minAnnotations: int
+
+  * autoAcceptThreshold?: float (range \[0, 1])
+
+Returns:
+
+A RedBrick Project object.
+
+Return type:
+
+[redbrick.RBProject](https://sdk.redbrickai.com/sdk.html#redbrick.RBProject "redbrick.RBProject")
+
+Raises:
+
+**ValueError:** – If a project with the same name exists but has a different type or taxonomy.
+
+*abstract* get\_project(*project\_id=None*, *name=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBOrganization.get_project)
+
+Get project by id/name.
+
+Return type:
+
+[`RBProject`](https://sdk.redbrickai.com/sdk.html#redbrick.RBProject "redbrick.common.entities.RBProject")
+
+*abstract* delete\_project(*project\_id*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBOrganization.delete_project)
+
+Delete a project by ID.
+
+Return type:
+
+`bool`
+
+*abstract* labeling\_time(*start\_date*, *end\_date*, *concurrency=50*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBOrganization.labeling_time)
+
+Get information of tasks labeled between two dates (both inclusive).
+
+Return type:
+
+`List`\[`Dict`]
+
+*abstract* create\_taxonomy(*name*, *study\_classify=None*, *series\_classify=None*, *instance\_classify=None*, *object\_types=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBOrganization.create_taxonomy)
+
+Create a Taxonomy V2.
+
+Parameters:
+
+* **name** (`str`) – Unique identifier for the taxonomy.
+
+* **study\_classify** (`Optional`\[`List`\[[`Attribute`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Attribute "redbrick.types.taxonomy.Attribute")]]) – Study level classification applies to the task.
+
+* **series\_classify** (`Optional`\[`List`\[[`Attribute`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Attribute "redbrick.types.taxonomy.Attribute")]]) – Series level classification applies to a single series within a task.
+
+* **instance\_classify** (`Optional`\[`List`\[[`Attribute`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Attribute "redbrick.types.taxonomy.Attribute")]]) – Instance classification applies to a single frame (video) or slice (3D volume).
+
+* **object\_types** (`Optional`\[`List`\[[`ObjectType`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.ObjectType "redbrick.types.taxonomy.ObjectType")]]) – Object types are used to annotate features/objects in tasks, for example, segmentation or bounding boxes.
+
+Raises:
+
+**ValueError:** – If there are validation errors.
+
+Return type:
+
+`None`
+
+*abstract* get\_taxonomy(*name=None*, *tax\_id=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBOrganization.get_taxonomy)
+
+Get a taxonomy created in your organization based on id or name.
+
+Format reference for categories and attributes objects: [https://sdk.redbrickai.com/formats/taxonomy.html](https://sdk.redbrickai.com/formats/taxonomy.html)
+
+Return type:
+
+[`Taxonomy`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Taxonomy "redbrick.types.taxonomy.Taxonomy")
+
+*abstract* update\_taxonomy(*tax\_id*, *study\_classify=None*, *series\_classify=None*, *instance\_classify=None*, *object\_types=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBOrganization.update_taxonomy)
+
+Update the categories/attributes of Taxonomy (V2) in the organization.
+
+Format reference for categories and attributes objects: [https://sdk.redbrickai.com/formats/taxonomy.html](https://sdk.redbrickai.com/formats/taxonomy.html)
+
+Raises:
+
+**ValueError:** – If there are validation errors.
+
+Return type:
+
+`None`
+
+*abstract* delete\_taxonomy(*name=None*, *tax\_id=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBOrganization.delete_taxonomy)
+
+Delete a taxonomy by name or ID.
+
+Return type:
+
+`bool`
+
+## Team
+
+*class* redbrick.common.member.Team[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#Team)
+
+Bases: `ABC`
+
+Abstract interface to Team module.
+
+*abstract* get\_member(*member\_id*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#Team.get_member)
+
+Get a team member.
+
+org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_ke&#x79;**)**
+member **=** or&#x67;**.**&#x74;ea&#x6D;**.**&#x67;et\_membe&#x72;**(**&#x6D;ember\_i&#x64;**)**
+
+
+Parameters:
+
+**member\_id** (*str*) – Unique member userId or email.
+
+Return type:
+
+[OrgMember](https://sdk.redbrickai.com/sdk.html#redbrick.OrgMember "redbrick.common.member.OrgMember")
+
+*abstract* list\_members()[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#Team.list_members)
+
+Get a list of all organization members.
+
+org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_ke&#x79;**)**
+members **=** or&#x67;**.**&#x74;ea&#x6D;**.**&#x6C;ist\_member&#x73;**()**
+
+
+Return type:
+
+List\[[OrgMember](https://sdk.redbrickai.com/sdk.html#redbrick.OrgMember "redbrick.common.member.OrgMember")]
+
+*abstract* remove\_members(*member\_ids*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#Team.remove_members)
+
+Remove members from the organization.
+
+org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_ke&#x79;**)**
+or&#x67;**.**&#x74;ea&#x6D;**.**&#x72;emove\_member&#x73;**(**&#x6D;ember\_id&#x73;**)**
+
+
+Parameters:
+
+**member\_ids** (*List\[str]*) – Unique member ids (userId or email).
+
+Return type:
+
+`None`
+
+*abstract* list\_invites()[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#Team.list_invites)
+
+Get a list of all pending or declined invites.
+
+org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_ke&#x79;**)**
+members **=** or&#x67;**.**&#x74;ea&#x6D;**.**&#x6C;ist\_invite&#x73;**()**
+
+
+Return type:
+
+List\[[OrgInvite](https://sdk.redbrickai.com/sdk.html#redbrick.OrgInvite "redbrick.common.member.OrgInvite")]
+
+*abstract* invite\_user(*invitation*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#Team.invite_user)
+
+Invite a user to the organization.
+
+org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_ke&#x79;**)**
+invitation **=** or&#x67;**.**&#x74;ea&#x6D;**.**&#x69;nvite\_use&#x72;**(**&#x4F;rgInvit&#x65;**(**&#x65;mai&#x6C;**=**"..."**,** rol&#x65;**=**&#x4F;rgMembe&#x72;**.**&#x52;ol&#x65;**.**&#x4D;EMBE&#x52;**))**
+
+
+Parameters:
+
+**invitation** ([*OrgInvite*](https://sdk.redbrickai.com/sdk.html#redbrick.OrgInvite "redbrick.common.member.OrgInvite")) – Organization invite
+
+Return type:
+
+[OrgInvite](https://sdk.redbrickai.com/sdk.html#redbrick.OrgInvite "redbrick.common.member.OrgInvite")
+
+*abstract* revoke\_invitation(*invitation*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#Team.revoke_invitation)
+
+Revoke org user invitation.
+
+org **=** redbric&#x6B;**.**&#x67;et\_or&#x67;**(**&#x6F;rg\_i&#x64;**,** api\_ke&#x79;**)**
+or&#x67;**.**&#x74;ea&#x6D;**.**&#x72;evoke\_invitatio&#x6E;**(**&#x4F;rgInvit&#x65;**(**&#x65;mai&#x6C;**=**"..."**))**
+
+
+Parameters:
+
+**invitation** ([*OrgInvite*](https://sdk.redbrickai.com/sdk.html#redbrick.OrgInvite "redbrick.common.member.OrgInvite")) – Organization invite
+
+Return type:
+
+`None`
+
+## Storage
+
+*class* redbrick.common.storage.Storage[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#Storage)
+
+Bases: `ABC`
+
+Storage Method Controller.
+
+*abstract* get\_storage(*storage\_id*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#Storage.get_storage)
+
+Get a storage method by ID.
+
+Return type:
+
+[`StorageProvider`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageProvider "redbrick.common.storage.StorageProvider")
+
+*abstract* list\_storages()[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#Storage.list_storages)
+
+Get a list of storage methods in the organization.
+
+Return type:
+
+`List`\[[`StorageProvider`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageProvider "redbrick.common.storage.StorageProvider")]
+
+*abstract* create\_storage(*storage*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#Storage.create_storage)
+
+Create a storage method.
+
+Return type:
+
+[`StorageProvider`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageProvider "redbrick.common.storage.StorageProvider")
+
+*abstract* update\_storage(*storage\_id*, *details*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#Storage.update_storage)
+
+Update a storage method.
+
+Return type:
+
+[`StorageProvider`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageProvider "redbrick.common.storage.StorageProvider")
+
+*abstract* delete\_storage(*storage\_id*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#Storage.delete_storage)
+
+Delete a storage method.
+
+Return type:
+
+`bool`
+
+*abstract* verify\_storage(*storage\_id*, *path*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/storage.html#Storage.verify_storage)
+
+Verify a storage method by ID.
+
+Return type:
+
+`bool`
+
+## Workspace
+
+*class* redbrick.RBWorkspace[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBWorkspace)
+
+Bases: `ABC`
+
+Interface for interacting with your RedBrick AI Workspaces.
+
+*abstract property* org\_i&#x64;*: str*
+
+Read only property.
+
+Retrieves the unique Organization UUID that this workspace belongs to
+
+*abstract property* workspace\_i&#x64;*: str*
+
+Read only property.
+
+Retrieves the unique Workspace ID UUID.
+
+*abstract property* nam&#x65;*: str*
+
+Read only name property.
+
+Retrieves the workspace name.
+
+*abstract property* metadata\_schem&#x61;*: List\[Dict]*
+
+Retrieves the workspace metadata schema.
+
+*abstract property* classification\_schem&#x61;*: List\[Dict]*
+
+Retrieves the workspace classification schema.
+
+*abstract property* cohort&#x73;*: List\[Dict]*
+
+Retrieves the workspace cohorts.
+
+*abstract* update\_schema(*metadata\_schema=None*, *classification\_schema=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBWorkspace.update_schema)
+
+Update workspace metadata and classification schema.
+
+Return type:
+
+`None`
+
+*abstract* update\_cohorts(*cohorts*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBWorkspace.update_cohorts)
+
+Update workspace cohorts.
+
+Return type:
+
+`None`
+
+*abstract* get\_datapoints(*\**, *concurrency=10*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBWorkspace.get_datapoints)
+
+Get datapoints in a workspace.
+
+Return type:
+
+`Iterator`\[`Dict`]
+
+*abstract* archive\_datapoints(*dp\_ids*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBWorkspace.archive_datapoints)
+
+Archive datapoints.
+
+Return type:
+
+`None`
+
+*abstract* unarchive\_datapoints(*dp\_ids*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBWorkspace.unarchive_datapoints)
+
+Unarchive datapoints.
+
+Return type:
+
+`None`
+
+*abstract* add\_datapoints\_to\_cohort(*cohort\_name*, *dp\_ids*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBWorkspace.add_datapoints_to_cohort)
+
+Add datapoints to a cohort.
+
+Return type:
+
+`None`
+
+*abstract* remove\_datapoints\_from\_cohort(*cohort\_name*, *dp\_ids*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBWorkspace.remove_datapoints_from_cohort)
+
+Remove datapoints from a cohort.
+
+Return type:
+
+`None`
+
+*abstract* update\_datapoint\_attributes(*dp\_id*, *attributes*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBWorkspace.update_datapoint_attributes)
+
+Update datapoint attributes.
+
+Return type:
+
+`None`
+
+*abstract* add\_datapoints\_to\_projects(*project\_ids*, *dp\_ids*, *is\_ground\_truth=False*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBWorkspace.add_datapoints_to_projects)
+
+Add datapoints to project.
+
+Parameters:
+
+* **project\_ids** (*List\[str]*) – The projects in which you’d like to add the given datapoints.
+
+* **dp\_ids** (*List\[str]*) – List of datapoints that need to be added to projects.
+
+* **is\_ground\_truth** (*bool = False*) – Whether to create tasks directly in ground truth stage.
+
+Return type:
+
+`None`
+
+*abstract* create\_datapoints(*storage\_id*, *points*, *\**, *concurrency=50*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBWorkspace.create_datapoints)
+
+Create datapoints in workspace.
+
+Upload data to your workspace (without annotations). Please visit [our documentation](https://sdk.redbrickai.com/formats/index.html#import) to understand the format for `points`.
+
+workspace **=** redbric&#x6B;**.**&#x67;et\_workspac&#x65;**(**&#x6F;rg\_i&#x64;**,** workspace\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+points **=** **\[**
+&#x20;   **\{**
+&#x20;       "name"**:** "..."**,**
+&#x20;       "series"**:** **\[**
+&#x20;           **\{**
+&#x20;               "items"**:** "..."**,**
+&#x20;           **}**
+&#x20;       **]**
+&#x20;   **}**
+**]**
+workspac&#x65;**.**&#x63;reate\_datapoint&#x73;**(**&#x73;torage\_i&#x64;**,** point&#x73;**)**
+
+
+Parameters:
+
+* **storage\_id** (*str*) – Your RedBrick AI external storage\_id. This can be found under the Storage Tab on the RedBrick AI platform. To directly upload images to rbai, use redbrick.StorageMethod.REDBRICK.
+
+* **points** (List\[[`InputTask`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.InputTask "redbrick.types.task.InputTask")]) – Please see the RedBrick AI reference documentation for overview of the format. [https://sdk.redbrickai.com/formats/index.html#import](https://sdk.redbrickai.com/formats/index.html#import). Fields with annotation information are not supported in workspace.
+
+* **concurrency** (*int = 50*) –
+
+Returns:
+
+List of datapoint objects with key response if successful, else error
+
+Return type:
+
+List\[Dict]
+
+Note
+
+1\. If doing direct upload, please use `redbrick.StorageMethod.REDBRICK` as the storage id. Your items path must be a valid path to a locally stored image.
+
+2\. When doing direct upload i.e. `redbrick.StorageMethod.REDBRICK`, if you didn’t specify a “name” field in your datapoints object, we will assign the “items” path to it.
+
+*abstract* update\_datapoints\_metadata(*storage\_id*, *points*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBWorkspace.update_datapoints_metadata)
+
+Update datapoints metadata.
+
+Update metadata for datapoints in workspace.
+
+workspace **=** redbric&#x6B;**.**&#x67;et\_workspac&#x65;**(**&#x6F;rg\_i&#x64;**,** workspace\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+points **=** **\[**
+&#x20;   **\{**
+&#x20;       "dpId"**:** "..."**,**
+&#x20;       "metaData"**:** **\{**
+&#x20;           "property"**:** "value"**,**
+&#x20;       **}**
+&#x20;   **}**
+**]**
+workspac&#x65;**.**&#x75;pdate\_datapoints\_metadat&#x61;**(**&#x73;torage\_i&#x64;**,** point&#x73;**)**
+
+
+Parameters:
+
+* **storage\_id** (*str*) – Storage method where the datapoints are stored.
+
+* **points** (List\[[`InputTask`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.InputTask "redbrick.types.task.InputTask")]) – List of datapoints with dpId and metaData values.
+
+Return type:
+
+`None`
+
+*abstract* delete\_datapoints(*dp\_ids*, *concurrency=50*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBWorkspace.delete_datapoints)
+
+Delete workspace datapoints based on ids.
+
+\>>> workspace **=** redbric&#x6B;**.**&#x67;et\_workspac&#x65;**(**&#x6F;rg\_i&#x64;**,** workspace\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+\>>> workspac&#x65;**.**&#x64;elete\_datapoint&#x73;**(\[...])**
+
+
+Parameters:
+
+* **dp\_ids** (*List\[str]*) – List of datapoint ids to delete.
+
+* **concurrency** (*int = 50*) – The number of datapoints to delete at a time. We recommend keeping this \<= 50.
+
+Returns:
+
+True if successful, else False.
+
+Return type:
+
+bool
+
+## Project
+
+*class* redbrick.RBProject[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBProject)
+
+Bases: `ABC`
+
+Abstract interface to RBProject.
+
+Variables:
+
+* **upload** ([*redbrick.common.upload.Upload*](https://sdk.redbrickai.com/sdk.html#redbrick.common.upload.Upload "redbrick.common.upload.Upload")) – Upload data to project.
+
+* **labeling** ([*redbrick.common.labeling.Labeling*](https://sdk.redbrickai.com/sdk.html#redbrick.common.labeling.Labeling "redbrick.common.labeling.Labeling")) – Labeling activities.
+
+* **review** ([*redbrick.common.labeling.Labeling*](https://sdk.redbrickai.com/sdk.html#redbrick.common.labeling.Labeling "redbrick.common.labeling.Labeling")) – Review activities.
+
+* **export** ([*redbrick.common.export.Export*](https://sdk.redbrickai.com/sdk.html#redbrick.common.export.Export "redbrick.common.export.Export")) – Project data export.
+
+* **settings** ([*redbrick.common.settings.Settings*](https://sdk.redbrickai.com/sdk.html#redbrick.common.settings.Settings "redbrick.common.settings.Settings")) – Project settings management.
+
+* **workforce** ([*redbrick.common.member.Workforce*](https://sdk.redbrickai.com/sdk.html#redbrick.common.member.Workforce "redbrick.common.member.Workforce")) – Project workforce management.
+
+\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**=**""**,** project\_i&#x64;**=**""**,** api\_ke&#x79;**=**""**)**
+
+
+*abstract property* org\_i&#x64;*: str*
+
+Read only property.
+
+Retrieves the unique Organization UUID that this project belongs to
+
+*abstract property* project\_i&#x64;*: str*
+
+Read only property.
+
+Retrieves the unique Project ID UUID.
+
+*abstract property* nam&#x65;*: str*
+
+Read only name property.
+
+Retrieves the project name.
+
+*abstract property* ur&#x6C;*: str*
+
+Read only property.
+
+Retrieves the project URL.
+
+*abstract property* taxonomy\_nam&#x65;*: str*
+
+Read only taxonomy\_name property.
+
+Retrieves the taxonomy name.
+
+*abstract property* taxonom&#x79;*:* [*Taxonomy*](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Taxonomy "redbrick.types.taxonomy.Taxonomy")
+
+Retrieves the project taxonomy.
+
+*abstract property* workspace\_i&#x64;*: str | None*
+
+Read only workspace\_id property.
+
+Retrieves the workspace id.
+
+*abstract property* label\_storag&#x65;*: Tuple\[str, str]*
+
+Read only label\_storage property.
+
+Retrieves the label storage id and path.
+
+*abstract property* stage&#x73;*: List\[*[*Stage*](https://sdk.redbrickai.com/sdk.html#redbrick.Stage "redbrick.common.stage.Stage")*]*
+
+Get list of stages.
+
+*abstract* set\_label\_storage(*storage\_id*, *path*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBProject.set_label_storage)
+
+Set label storage method for a project.
+
+By default, all annotations get stored in RedBrick AI’s storage i.e. `redbrick.StorageMethod.REDBRICK`. Set a custom external storage, within which RedBrick AI will write all annotations.
+
+\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
+\>>> projec&#x74;**.**&#x73;et\_label\_storag&#x65;**(**&#x73;torage\_i&#x64;**)**
+
+
+Parameters:
+
+* **storage\_id** (*str*) – The unique ID of your RedBrick AI storage method integration. Found on the storage method tab on the left sidebar.
+
+* **path** (*str*) – A prefix path within which the annotations will be written.
+
+Returns:
+
+Returns \[storage\_id, path]
+
+Return type:
+
+Tuple\[str, str]
+
+Important
+
+You only need to run this command once per project.
+
+Raises:
+
+**ValueError:** – If there are validation errors.
+
+*abstract* update\_stage(*stage*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/entities.html#RBProject.update_stage)
+
+Update stage.
+
+Return type:
+
+`None`
+
+## Export
+
+*class* redbrick.common.export.Export[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/export.html#Export)
+
+Bases: `ABC`
+
+Primary interface for various export methods.
+
+The export module has many functions for exporting annotations and meta-data from projects. The export module is available from the [`redbrick.RBProject`](https://sdk.redbrickai.com/sdk.html#redbrick.RBProject "redbrick.RBProject") module.
+
+\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x61;pi\_ke&#x79;**=**""**,** org\_i&#x64;**=**""**,** project\_i&#x64;**=**""**)**
+\>>> projec&#x74;**.**&#x65;xport *# Export*
+
+
+*abstract* export\_tasks(*\**, *concurrency=10*, *only\_ground\_truth=False*, *stage\_name=None*, *task\_id=None*, *from\_timestamp=None*, *old\_format=False*, *without\_masks=False*, *without\_json=False*, *semantic\_mask=False*, *binary\_mask=None*, *no\_consensus=None*, *with\_files=False*, *dicom\_to\_nifti=False*, *png=False*, *rt\_struct=False*, *mhd=False*, *destination=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/export.html#Export.export_tasks)
+
+Export annotation data.
+
+Meta-data and category information returned as an Object. Segmentations are written to your disk in NIfTI-1 format. Please [visit our documentation](https://sdk.redbrickai.com/formats/index.html#export) for more information on the format.
+
+\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+\>>> projec&#x74;**.**&#x65;xpor&#x74;**.**&#x65;xport\_task&#x73;**()**
+
+
+Parameters:
+
+* **concurrency** (*int = 10*) –
+
+* **only\_ground\_truth** (*bool = False*) – If set to True, will only return data that has been completed in your workflow. If False, will export latest state.
+
+* **stage\_name** (*Optional\[str] = None*) – If set, will only export tasks that are currently in the given stage.
+
+* **task\_id** (*Optional\[str] = None*) – If the unique task\_id is mentioned, only a single datapoint will be exported.
+
+* **from\_timestamp** (*Optional\[float] = None*) – If the timestamp is mentioned, will only export tasks that were labeled/updated since the given timestamp. Format - output from datetime.timestamp()
+
+* **old\_format** (*bool = False*) – Whether to export tasks in old format.
+
+* **without\_masks** (*bool = False*) – Exports only tasks JSON without downloading any segmentation masks. Note: This is not recommended for tasks with overlapping labels.
+
+* **without\_json** (*bool = False*) – Doesn’t create the tasks JSON file.
+
+* **semantic\_mask** (*bool = False*) – Whether to export all segmentations as semantic\_mask. This will create one instance per class. If this is set to True and a task has multiple instances per class, then attributes belonging to each instance will not be exported.
+
+* **binary\_mask** (*Optional\[bool] = None*) – Whether to export all segmentations as binary masks. This will create one segmentation file per instance. If this is set to None and a task has overlapping labels, then binary\_mask option will be True for that particular task.
+
+* **no\_consensus** (*Optional\[bool] = None*) – Whether to export tasks without consensus info. If None, will default to export with consensus info, if it is enabled for the given project. (Applicable only for new format export)
+
+* **with\_files** (*bool = False*) – Export with files (e.g. images/video frames)
+
+* **dicom\_to\_nifti** (*bool = False*) – Convert DICOM images to NIfTI. Applicable when with\_files is True.
+
+* **png** (*bool = False*) – Export labels as PNG masks.
+
+* **rt\_struct** (*bool = False*) – Export labels as DICOM RT-Struct. (Only for DICOM images)
+
+* **mhd** (*bool = False*) – Export segmentation masks in MHD format.
+
+* **destination** (*Optional\[str] = None*) – Destination directory (Default: current directory)
+
+Returns:
+
+Datapoint and labels in RedBrick AI format. See [https://sdk.redbrickai.com/formats/index.html#export](https://sdk.redbrickai.com/formats/index.html#export)
+
+Return type:
+
+Iterator\[[`OutputTask`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask "redbrick.types.task.OutputTask")]
+
+Note
+
+If both semantic\_mask and binary\_mask options are True, then one binary mask will be generated per class.
+
+*abstract* list\_tasks(*search=TaskFilters.ALL*, *concurrency=10*, *limit=50*, *\**, *stage\_name=None*, *user\_id=None*, *task\_id=None*, *task\_name=None*, *exact\_match=False*, *completed\_at=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/export.html#Export.list_tasks)
+
+Search tasks based on multiple queries for a project. This function returns minimal meta-data about the queried tasks.
+
+\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+\>>> result **=** projec&#x74;**.**&#x65;xpor&#x74;**.**&#x6C;ist\_task&#x73;**()**
+
+
+Parameters:
+
+* **search** ([`TaskFilters`](https://sdk.redbrickai.com/sdk.html#redbrick.TaskFilters "redbrick.common.enums.TaskFilters") = TaskFilters.ALL) – Task filter type.
+
+* **concurrency** (*int = 10*) – The number of requests that will be made in parallel.
+
+* **limit** (*Optional\[int] = 50*) – The number of tasks to return. Use None to return all tasks matching the search query.
+
+* **stage\_name** (*Optional\[str] = None*) –
+
+
+
+
+  If present, will return tasks that are:
+
+  1. Available in stage\_name: If search == TaskFilters.QUEUED
+
+  2. Completed in stage\_name: If search == TaskFilters.COMPLETED
+
+* **user\_id** (*Optional\[str] = None*) –
+
+
+
+
+  User id/email. If present, will return tasks that are:
+
+  1. Assigned to user\_id: If search == TaskFilters.QUEUED
+
+  2. Completed by user\_id: If search == TaskFilters.COMPLETED
+
+* **task\_id** (*Optional\[str] = None*) – If present, will return data for the given task id.
+
+* **task\_name** (*Optional\[str] = None*) – If present, will return data for the given task name. This will do a prefix search with the given task name.
+
+* **exact\_match** (*bool = False*) – Applicable when searching for tasks by task\_name. If True, will do a full match instead of partial match.
+
+* **completed\_at** (*Optional\[Tuple\[Optional\[float], Optional\[float]]] = None*) – If present, will return tasks that were completed in the given time range. The tuple contains the from and to timestamps respectively.
+
+Returns:
+
+
+
+\>>> **\[\{**
+&#x20;   *"taskId": str,*
+&#x20;   *"name": str,*
+&#x20;   *"createdAt": str,*
+&#x20;   *"updatedAt": str,*
+&#x20;   *"currentStageName": str,*
+&#x20;   *"createdBy"?: \{"userId": str, "email": str},*
+&#x20;   *"priority"?: float(\[0, 1]),*
+&#x20;   *"metaData"?: dict,*
+&#x20;   *"series"?: \[\{"name"?: str, "metaData"?: dict}],*
+&#x20;   *"assignees"?: \[\{*
+&#x20;       *"user": str,*
+&#x20;       *"status": TaskStates,*
+&#x20;       *"assignedAt": datetime,*
+&#x20;       *"lastSavedAt"?: datetime,*
+&#x20;       *"completedAt"?: datetime,*
+&#x20;       *"timeSpentMs"?: float,*
+&#x20;   *}]*
+*}]*
+
+
+
+
+Return type:
+
+Iterator\[Dict]
+
+*abstract* get\_task\_events(*\**, *task\_id=None*, *only\_ground\_truth=True*, *concurrency=10*, *from\_timestamp=None*, *with\_labels=False*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/export.html#Export.get_task_events)
+
+Generate an audit log of all actions performed on tasks.
+
+Use this method to get a detailed summary of all the actions performed on your tasks, including:
+
+* Who uploaded the data
+
+* Who annotated your tasks
+
+* Who reviewed your tasks
+
+* and more.
+
+This can be particulary useful to present to auditors who are interested in your quality control workflows.
+
+Parameters:
+
+* **task\_id** (*Optional\[str] = None*) – If set, returns events only for the given task.
+
+* **only\_ground\_truth** (*bool = True*) – If set to True, will return events for tasks that have been completed in your workflow.
+
+* **concurrency** (*int = 10*) – The number of requests that will be made in parallel.
+
+* **from\_timestamp** (*Optional\[float] = None*) – If the timestamp is mentioned, will only export tasks that were labeled/updated since the given timestamp. Format - output from datetime.timestamp()
+
+* **with\_labels** (*bool = False*) – Get metadata of labels submitted in each stage.
+
+Returns:
+
+
+
+\>>> **\[\{**
+&#x20;   *"taskId": string,*
+&#x20;   *"currentStageName": string,*
+&#x20;   *"events": List\[Dict]*
+*}]*
+
+
+
+
+Return type:
+
+Iterator\[Dict]
+
+*abstract* get\_active\_time(*\**, *stage\_name*, *task\_id=None*, *concurrency=100*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/export.html#Export.get_active_time)
+
+Get active time spent on tasks for labeling/reviewing.
+
+Parameters:
+
+* **stage\_name** (*str*) – Stage for which to return the time info.
+
+* **task\_id** (*Optional\[str] = None*) – If set, will return info for the given task in the given stage.
+
+* **concurrency** (*int = 100*) – Request batch size.
+
+Returns:
+
+
+
+\>>> **\[\{**
+&#x20;   *"orgId": string,*
+&#x20;   *"projectId": string,*
+&#x20;   *"stageName": string,*
+&#x20;   *"taskId": string,*
+&#x20;   *"completedBy": string,*
+&#x20;   *"timeSpent": number,  # In milliseconds*
+&#x20;   *"completedAt": datetime,*
+&#x20;   *"cycle": number  # Task cycle*
+*}]*
+
+
+
+
+Return type:
+
+Iterator\[Dict]
+
+## Upload
+
+*class* redbrick.common.upload.Upload[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/upload.html#Upload)
+
+Bases: `ABC`
+
+Primary interface for uploading to a project.
+
+\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x61;pi\_ke&#x79;**=**""**,** org\_i&#x64;**=**""**,** project\_i&#x64;**=**""**)**
+\>>> projec&#x74;**.**&#x75;pload
+
+
+*abstract* create\_datapoints(*storage\_id*, *points*, *\**, *is\_ground\_truth=False*, *segmentation\_mapping=None*, *rt\_struct=False*, *mhd=False*, *label\_storage\_id=None*, *label\_validate=False*, *prune\_segmentations=False*, *concurrency=50*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/upload.html#Upload.create_datapoints)
+
+Create datapoints in project.
+
+Upload data, and optionally annotations, to your project. Please visit [our documentation](https://sdk.redbrickai.com/formats/index.html#import) to understand the format for `points`.
+
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+points **=** **\[**
+&#x20;   **\{**
+&#x20;       "name"**:** "..."**,**
+&#x20;       "series"**:** **\[**
+&#x20;           **\{**
+&#x20;               "items"**:** "..."**,**
+
+&#x20;               *# These fields are needed for importing segmentations.*
+&#x20;               "segmentations"**:** "..."**,**
+&#x20;               "segmentMap"**:** **\{...}**
+&#x20;           **}**
+&#x20;       **]**
+&#x20;   **}**
+**]**
+projec&#x74;**.**&#x75;ploa&#x64;**.**&#x63;reate\_datapoint&#x73;**(**&#x73;torage\_i&#x64;**,** point&#x73;**)**
+
+
+Parameters:
+
+* **storage\_id** (*str*) – Your RedBrick AI external storage\_id. This can be found under the Storage Tab on the RedBrick AI platform. To directly upload images to rbai, use redbrick.StorageMethod.REDBRICK.
+
+* **points** (List\[[`InputTask`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.InputTask "redbrick.types.task.InputTask")]) – Please see the RedBrick AI reference documentation for overview of the format. [https://sdk.redbrickai.com/formats/index.html#import](https://sdk.redbrickai.com/formats/index.html#import). All the fields with annotation information are optional.
+
+* **is\_ground\_truth** (*bool = False*) – If labels are provided in `points`, and this parameters is set to true, the labels will be added to the Ground Truth stage.
+
+* **segmentation\_mapping** (*Optional\[Dict] = None*) – Optional mapping of semantic\_mask segmentation class ids and RedBrick categories.
+
+* **rt\_struct** (*bool = False*) – Upload segmentations from DICOM RT-Struct files.
+
+* **mhd** (*bool = False*) – Upload segmentations from MHD files.
+
+* **label\_storage\_id** (*Optional\[str] = None*) – Optional label storage id to reference nifti segmentations. Defaults to items storage\_id if not specified.
+
+* **label\_validate** (*bool = False*) – Validate label nifti instances and segment map.
+
+* **prune\_segmentations** (*bool = False*) – Prune segmentations that are not part of the series.
+
+* **concurrency** (*int = 50*) –
+
+Returns:
+
+List of task objects with key response if successful, else error
+
+Return type:
+
+List\[Dict]
+
+Note
+
+1\. If doing direct upload, please use `redbrick.StorageMethod.REDBRICK` as the storage id. Your items path must be a valid path to a locally stored image.
+
+2\. When doing direct upload i.e. `redbrick.StorageMethod.REDBRICK`, if you didn’t specify a “name” field in your datapoints object, we will assign the “items” path to it.
+
+*abstract* delete\_tasks(*task\_ids*, *concurrency=50*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/upload.html#Upload.delete_tasks)
+
+Delete project tasks based on task ids.
+
+\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+\>>> projec&#x74;**.**&#x75;ploa&#x64;**.**&#x64;elete\_task&#x73;**(\[...])**
+
+
+Parameters:
+
+* **task\_ids** (*List\[str]*) – List of task ids to delete.
+
+* **concurrency** (*int = 50*) – The number of tasks to delete at a time. We recommend keeping this \<= 50.
+
+Returns:
+
+True if successful, else False.
+
+Return type:
+
+bool
+
+*abstract* delete\_tasks\_by\_name(*task\_names*, *concurrency=50*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/upload.html#Upload.delete_tasks_by_name)
+
+Delete project tasks based on task names.
+
+\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+\>>> projec&#x74;**.**&#x75;ploa&#x64;**.**&#x64;elete\_tasks\_by\_nam&#x65;**(\[...])**
+
+
+Parameters:
+
+* **task\_names** (*List\[str]*) – List of task names to delete.
+
+* **concurrency** (*int = 50*) – The number of tasks to delete at a time. We recommend keeping this \<= 50.
+
+Returns:
+
+True if successful, else False.
+
+Return type:
+
+bool
+
+*abstract* update\_task\_items(*storage\_id*, *points*, *concurrency=50*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/upload.html#Upload.update_task_items)
+
+Update task items, meta data, heat maps, transforms, etc. for the mentioned task ids.
+
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+points **=** **\[**
+&#x20;   **\{**
+&#x20;       "taskId"**:** "..."**,**
+&#x20;       "series"**:** **\[**
+&#x20;           **\{**
+&#x20;               "items"**:** "..."**,**
+&#x20;           **}**
+&#x20;       **]**
+&#x20;   **}**
+**]**
+projec&#x74;**.**&#x75;ploa&#x64;**.**&#x75;pdate\_task\_item&#x73;**(**&#x73;torage\_i&#x64;**,** point&#x73;**)**
+
+
+Parameters:
+
+* **storage\_id** (*str*) – Your RedBrick AI external storage\_id. This can be found under the Storage Tab on the RedBrick AI platform. To directly upload images to rbai, use redbrick.StorageMethod.REDBRICK.
+
+* **points** (List\[[`InputTask`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.InputTask "redbrick.types.task.InputTask")]) – List of objects with taskId and series, where series contains a list of items paths to be updated for the task.
+
+* **concurrency** (*int = 50*) –
+
+Returns:
+
+List of task objects with key response if successful, else error
+
+Return type:
+
+List\[Dict]
+
+Note
+
+1\. If doing direct upload, please use `redbrick.StorageMethod.REDBRICK` as the storage id. Your items path must be a valid path to a locally stored image.
+
+*abstract* import\_tasks\_from\_workspace(*source\_project\_id*, *task\_ids*, *with\_labels=False*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/upload.html#Upload.import_tasks_from_workspace)
+
+Import tasks from another project in the same workspace.
+
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+projec&#x74;**.**&#x75;ploa&#x64;**.**&#x69;mport\_tasks\_from\_workspac&#x65;**(**&#x73;ource\_project\_i&#x64;**,** task\_id&#x73;**)**
+
+
+Parameters:
+
+* **source\_project\_id** (*str*) – The source project id from which tasks are to be imported.
+
+* **task\_ids** (*List\[str]*) – List of task ids to be imported.
+
+* **with\_labels** (*bool = False*) – If True, the labels will also be imported.
+
+Return type:
+
+None
+
+*abstract* update\_tasks\_priority(*tasks*, *concurrency=50*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/upload.html#Upload.update_tasks_priority)
+
+Update tasks’ priorities. Used to determine how the tasks get assigned to annotators/reviewers in auto-assignment.
+
+Parameters:
+
+* **tasks** (*List\[Dict]*) – List of taskIds and their priorities. - \[\{“taskId”: str, “priority”: float(\[0, 1]), “user”?: str}]
+
+* **concurrency** (*int = 50*) – The number of tasks to update at a time. We recommend keeping this \<= 50.
+
+Return type:
+
+`None`
+
+*abstract* update\_tasks\_labels(*tasks*, *\**, *rt\_struct=False*, *mhd=False*, *label\_storage\_id='22222222-2222-2222-2222-222222222222'*, *label\_validate=False*, *prune\_segmentations=False*, *concurrency=50*, *finalize=False*, *time\_spent\_ms=None*, *extra\_data=None*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/upload.html#Upload.update_tasks_labels)
+
+Update tasks labels at any point in project pipeline.
+
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(...)**
+tasks **=** **\[**
+&#x20;   **\{**
+&#x20;       "taskId"**:** "..."**,**
+&#x20;       "series"**:** **\[\{...}]**
+&#x20;   **},**
+**]**
+
+*# Overwrite labels in tasks*
+projec&#x74;**.**&#x75;ploa&#x64;**.**&#x75;pdate\_tasks\_label&#x73;**(**&#x74;ask&#x73;**)**
+
+
+Parameters:
+
+* **points** (List\[[`OutputTask`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask "redbrick.types.task.OutputTask")]) – Please see the RedBrick AI reference documentation for overview of the format. [https://sdk.redbrickai.com/formats/index.html#export](https://sdk.redbrickai.com/formats/index.html#export). All the fields with annotation information are optional.
+
+* **rt\_struct** (*bool = False*) – Upload segmentations from DICOM RT-Struct files.
+
+* **mhd** (*bool = False*) – Upload segmentations from MHD files.
+
+* **label\_storage\_id** (*Optional\[str] = None*) – Optional label storage id to reference nifti segmentations. Defaults to project annnotation storage\_id if not specified.
+
+* **label\_validate** (*bool = False*) – Validate label nifti instances and segment map.
+
+* **prune\_segmentations** (*bool = False*) – Prune segmentations that are not part of the series.
+
+* **concurrency** (*int = 50*) –
+
+* **finalize** (*bool = False*) – Submit the task in current stage.
+
+* **time\_spent\_ms** (*Optional\[int] = None*) – Time spent on the task in milliseconds.
+
+* **extra\_data** (*Optional\[Dict] = None*) – Extra data to be stored along with the task.
+
+Return type:
+
+`None`
+
+*abstract* send\_tasks\_to\_stage(*task\_ids*, *stage\_name*, *concurrency=50*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/upload.html#Upload.send_tasks_to_stage)
+
+Send tasks to different stage.
+
+Parameters:
+
+* **task\_ids** (*List\[str]*) – List of tasks to move.
+
+* **stage\_name** (*str*) – The stage to which you want to move the tasks. Use “END” to move tasks to ground truth.
+
+* **concurrency** (*int = 50*) – Batch size per request.
+
+Return type:
+
+`None`
+
+## Labeling
+
+*class* redbrick.common.labeling.Labeling[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/labeling.html#Labeling)
+
+Bases: `ABC`
+
+Perform programmatic labeling and review tasks.
+
+The Labeling class allows you to programmatically submit tasks. This can be useful for times when you want to make bulk actions e.g accepting several tasks, or make automated actions like using automated methods for review.
+
+Information
+
+The Labeling module provides several methods to query tasks and assign tasks to different users. Refer to this section for guidance on when to use each method:
+
+* [`assign_tasks`](https://sdk.redbrickai.com/sdk.html#redbrick.common.labeling.Labeling.assign_tasks "redbrick.common.labeling.Labeling.assign_tasks"). Use this method when you already have the `task_ids` you want to assign to a particular user. If you don’t have the `task_ids`, you can query the tasks using [`list_tasks`](https://sdk.redbrickai.com/sdk.html#redbrick.common.export.Export.list_tasks "redbrick.common.export.Export.list_tasks").
+
+*abstract* put\_tasks(*stage\_name*, *tasks*, *\**, *finalize=True*, *existing\_labels=False*, *rt\_struct=False*, *mhd=False*, *review\_result=None*, *label\_storage\_id='22222222-2222-2222-2222-222222222222'*, *label\_validate=False*, *prune\_segmentations=False*, *concurrency=50*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/labeling.html#Labeling.put_tasks)
+
+Put tasks with new labels or a review result.
+
+Use this method to programmatically submit tasks with labels in Label stage, or to programmatically accept/reject/correct tasks in a Review stage. If you don’t already have a list of `task_id`, you can use [`list_tasks`](https://sdk.redbrickai.com/sdk.html#redbrick.common.export.Export.list_tasks "redbrick.common.export.Export.list_tasks") to get a filtered list of tasks in your project, that you want to work upon.
+
+Label
+
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(...)**
+tasks **=** **\[**
+&#x20;   **\{**
+&#x20;       "taskId"**:** "..."**,**
+&#x20;       "series"**:** **\[\{...}]**
+&#x20;   **},**
+**]**
+
+*# Submit tasks with new labels*
+projec&#x74;**.**&#x6C;abelin&#x67;**.**&#x70;ut\_task&#x73;**(**"Label"**,** task&#x73;**)**
+
+*# Save tasks with new labels, without submitting*
+projec&#x74;**.**&#x6C;abelin&#x67;**.**&#x70;ut\_task&#x73;**(**"Label"**,** task&#x73;**,** finaliz&#x65;**=False)**
+
+*# Submit tasks with existing labels*
+projec&#x74;**.**&#x6C;abelin&#x67;**.**&#x70;ut\_task&#x73;**(**"Label"**,** **\[\{**"taskId"**:**"..."**}],** existing\_label&#x73;**=True)**
+
+
+Review
+
+Parameters:
+
+* **stage\_name** (*str*) – The stage to which you want to submit the tasks. This must be the same stage as which you called get\_tasks on.
+
+* **tasks** (List\[[`OutputTask`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask "redbrick.types.task.OutputTask")]) – Tasks with new labels or review result.
+
+* **finalize** (*bool = True*) – Finalize the task. If you want to save the task without submitting, set this to False.
+
+* **existing\_labels** (*bool = False*) – If True, the tasks will be submitted with their existing labels. Applies only to Label stage.
+
+* **rt\_struct** (*bool = False*) – Upload segmentations from DICOM RT-Struct files.
+
+* **mhd** (*bool = False*) – Upload segmentations from MHD files.
+
+* **review\_result** (*Optional\[bool] = None*) – Accepts or rejects the task based on the boolean value. Applies only to Review stage.
+
+* **label\_storage\_id** (*Optional\[str] = None*) – Optional label storage id to reference external nifti segmentations. Defaults to project settings’ annotation storage\_id if not specified.
+
+* **label\_validate** (*bool = False*) – Validate label nifti instances and segment map.
+
+* **prune\_segmentations** (*bool = False*) – Prune segmentations that are not part of the series.
+
+* **concurrency** (*int = 50*) –
+
+Returns:
+
+A list of tasks that failed.
+
+Return type:
+
+List\[[`OutputTask`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.OutputTask "redbrick.types.task.OutputTask")]
+
+*abstract* assign\_tasks(*task\_ids*, *\**, *email=None*, *emails=None*, *refresh=True*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/labeling.html#Labeling.assign_tasks)
+
+Assign tasks to specified email or current API key.
+
+Unassigns all users from the task if neither of the `email` or `current_user` are set.
+
+\>>> project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
+\>>> projec&#x74;**.**&#x6C;abelin&#x67;**.**&#x61;ssign\_task&#x73;**(\[**&#x74;ask\_i&#x64;**],** emai&#x6C;**=**&#x65;mai&#x6C;**)**
+
+
+Parameters:
+
+* **task\_ids** (*List\[str]*) – List of unique `task_id` of the tasks you want to assign.
+
+* **email** (*Optional\[str] = None*) – The email of the user you want to assign this task to. Make sure the user has adequate permissions to be assigned this task in the project.
+
+* **emails** (*Optional\[List\[str]] = None*) – Used for projects with Consensus activated. The emails of the users you want to assign this task to. Make sure the users have adequate permissions to be assigned this task in the project.
+
+* **refresh** (*bool = True*) – Used for projects with Consensus activated. If True, will overwrite the assignment to the current users.
+
+Returns:
+
+
+
+List of affected tasks.
+
+\>>> **\[\{**"taskId"**,** "name"**,** "stageName"**}]**
+
+
+
+
+Return type:
+
+List\[Dict]
+
+*abstract* move\_tasks\_to\_start(*task\_ids*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/labeling.html#Labeling.move_tasks_to_start)
+
+Move groundtruth tasks back to start.
+
+Return type:
+
+`None`
+
+## Settings
+
+*class* redbrick.common.settings.Settings[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/settings.html#Settings)
+
+Bases: `ABC`
+
+Abstract interface to Settings module.
+
+*abstract property* label\_validatio&#x6E;*: LabelValidation*
+
+Label Validation.
+
+Use custom label validation to prevent annotation errors in real-time. Please visit [label validation](https://docs.redbrickai.com/projects/custom-label-validation) for more info.
+
+Format: \{“enabled”: bool, “enforce”: bool, “script”: str}
+
+Get
+
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+label\_validation **=** projec&#x74;**.**&#x73;etting&#x73;**.**&#x6C;abel\_validation
+
+
+Set
+
+*abstract property* hanging\_protoco&#x6C;*: HangingProtocol*
+
+Hanging Protocol.
+
+Use hanging protocol to define the visual layout of tool. Please visit [hanging protocol](https://docs.redbrickai.com/annotation/layout-and-multiple-volumes/custom-hanging-protocol) for more info.
+
+Format: \{“enabled”: bool, “script”: str}
+
+Get
+
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+hanging\_protocol **=** projec&#x74;**.**&#x73;etting&#x73;**.**&#x68;anging\_protocol
+
+
+Set
+
+*abstract property* webhoo&#x6B;*: Webhook*
+
+Project webhook.
+
+Use webhooks to receive custom events like tasks entering stages, and many more.
+
+Format: \{“enabled”: bool, “url”: str}
+
+Get
+
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+webhook **=** projec&#x74;**.**&#x73;etting&#x73;**.**&#x77;ebhook
+
+
+Set
+
+*abstract* toggle\_reference\_standard\_task(*task\_id*, *enable*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/settings.html#Settings.toggle_reference_standard_task)
+
+Toggle reference standard task.
+
+Return type:
+
+`None`
+
+*abstract property* task\_duplicatio&#x6E;*: int | None*
+
+Sibling task count.
+
+Use task duplication to create multiple tasks for a single uploaded datapoint. Please visit [task duplication](https://docs.redbrickai.com/projects/multiple-labeling/task-duplication) for more info.
+
+Format: Optional\[int]
+
+Get
+
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**,** ur&#x6C;**)**
+count **=** projec&#x74;**.**&#x73;etting&#x73;**.**&#x74;ask\_duplication
+
+
+Set
+
+## Workforce
+
+*class* redbrick.common.member.Workforce[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#Workforce)
+
+Bases: `ABC`
+
+Abstract interface to Workforce module.
+
+*abstract* get\_member(*member\_id*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#Workforce.get_member)
+
+Get a project member.
+
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
+member **=** projec&#x74;**.**&#x77;orkforc&#x65;**.**&#x67;et\_membe&#x72;**(**&#x6D;ember\_i&#x64;**)**
+
+
+Parameters:
+
+**member\_id** (*str*) – Unique member userId or email.
+
+Return type:
+
+[ProjectMember](https://sdk.redbrickai.com/sdk.html#redbrick.ProjectMember "redbrick.common.member.ProjectMember")
+
+*abstract* list\_members()[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#Workforce.list_members)
+
+Get a list of all project members.
+
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
+members **=** projec&#x74;**.**&#x77;orkforc&#x65;**.**&#x6C;ist\_member&#x73;**()**
+
+
+Return type:
+
+List\[[ProjectMember](https://sdk.redbrickai.com/sdk.html#redbrick.ProjectMember "redbrick.common.member.ProjectMember")]
+
+*abstract* add\_members(*members*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#Workforce.add_members)
+
+Add project members.
+
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
+member **=** projec&#x74;**.**&#x77;orkforc&#x65;**.**&#x61;dd\_member&#x73;**(\[\{**"member\_id"**:** "..."**,** "role"**:** "..."**,** "stages"**:** **\[**"..."**]},** **...])**
+
+
+Parameters:
+
+**members** (*List\[*[*ProjectMember*](https://sdk.redbrickai.com/sdk.html#redbrick.ProjectMember "redbrick.common.member.ProjectMember")*]*) – List of members to add.
+
+Returns:
+
+List of added project members.
+
+Return type:
+
+List\[[ProjectMember](https://sdk.redbrickai.com/sdk.html#redbrick.ProjectMember "redbrick.common.member.ProjectMember")]
+
+*abstract* update\_members(*members*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#Workforce.update_members)
+
+Update project members.
+
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
+member **=** projec&#x74;**.**&#x77;orkforc&#x65;**.**&#x75;pdate\_member&#x73;**(\[\{**"member\_id"**:** "..."**,** "role"**:** "..."**,** "stages"**:** **\[**"..."**]},** **...])**
+
+
+Parameters:
+
+**members** (*List\[*[*ProjectMember*](https://sdk.redbrickai.com/sdk.html#redbrick.ProjectMember "redbrick.common.member.ProjectMember")*]*) – List of members to update.
+
+Returns:
+
+List of updated project members.
+
+Return type:
+
+List\[[ProjectMember](https://sdk.redbrickai.com/sdk.html#redbrick.ProjectMember "redbrick.common.member.ProjectMember")]
+
+*abstract* remove\_members(*member\_ids*)[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/common/member.html#Workforce.remove_members)
+
+Remove project members.
+
+project **=** redbric&#x6B;**.**&#x67;et\_projec&#x74;**(**&#x6F;rg\_i&#x64;**,** project\_i&#x64;**,** api\_ke&#x79;**)**
+member **=** projec&#x74;**.**&#x77;orkforc&#x65;**.**&#x72;emove\_member&#x73;**(\[...])**
+
+
+Parameters:
+
+**member\_ids** (*List\[str]*) – List of member ids (user\_id/email) to remove from the project.
+
+Return type:
+
+`None`
+
+[NextCommand Line Interface](https://sdk.redbrickai.com/cli.html)[PreviousHome](https://sdk.redbrickai.com/index.html)
+
+Copyright © 2023, RedBrick AI
+
+Made with [Sphinx](https://www.sphinx-doc.org/) and [@pradyunsg](https://pradyunsg.me/)'s [Furo](https://github.com/pradyunsg/furo)
+
+On this page
+
+* [RedBrick](https://sdk.redbrickai.com/sdk.html#module-redbrick)
+
+  * [`StorageMethod`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod)
+
+    * [`StorageMethod.Public`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.Public)
+
+      * [`StorageMethod.Public.Details`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.Public.Details)
+
+        * [`StorageMethod.Public.Details.key`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.Public.Details.key)
+
+        * [`StorageMethod.Public.Details.from_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.Public.Details.from_entity)
+
+        * [`StorageMethod.Public.Details.to_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.Public.Details.to_entity)
+
+        * [`StorageMethod.Public.Details.validate()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.Public.Details.validate)
+
+      * [`StorageMethod.Public.from_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.Public.from_entity)
+
+    * [`StorageMethod.RedBrick`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.RedBrick)
+
+      * [`StorageMethod.RedBrick.Details`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.RedBrick.Details)
+
+        * [`StorageMethod.RedBrick.Details.key`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.RedBrick.Details.key)
+
+        * [`StorageMethod.RedBrick.Details.from_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.RedBrick.Details.from_entity)
+
+        * [`StorageMethod.RedBrick.Details.to_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.RedBrick.Details.to_entity)
+
+        * [`StorageMethod.RedBrick.Details.validate()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.RedBrick.Details.validate)
+
+      * [`StorageMethod.RedBrick.from_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.RedBrick.from_entity)
+
+    * [`StorageMethod.AWSS3`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AWSS3)
+
+      * [`StorageMethod.AWSS3.Details`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AWSS3.Details)
+
+        * [`StorageMethod.AWSS3.Details.key`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AWSS3.Details.key)
+
+        * [`StorageMethod.AWSS3.Details.from_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AWSS3.Details.from_entity)
+
+        * [`StorageMethod.AWSS3.Details.to_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AWSS3.Details.to_entity)
+
+        * [`StorageMethod.AWSS3.Details.validate()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AWSS3.Details.validate)
+
+    * [`StorageMethod.GoogleCloud`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.GoogleCloud)
+
+      * [`StorageMethod.GoogleCloud.Details`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.GoogleCloud.Details)
+
+        * [`StorageMethod.GoogleCloud.Details.key`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.GoogleCloud.Details.key)
+
+        * [`StorageMethod.GoogleCloud.Details.from_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.GoogleCloud.Details.from_entity)
+
+        * [`StorageMethod.GoogleCloud.Details.to_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.GoogleCloud.Details.to_entity)
+
+        * [`StorageMethod.GoogleCloud.Details.validate()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.GoogleCloud.Details.validate)
+
+    * [`StorageMethod.AzureBlob`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AzureBlob)
+
+      * [`StorageMethod.AzureBlob.Details`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AzureBlob.Details)
+
+        * [`StorageMethod.AzureBlob.Details.key`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AzureBlob.Details.key)
+
+        * [`StorageMethod.AzureBlob.Details.from_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AzureBlob.Details.from_entity)
+
+        * [`StorageMethod.AzureBlob.Details.to_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AzureBlob.Details.to_entity)
+
+        * [`StorageMethod.AzureBlob.Details.validate()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AzureBlob.Details.validate)
+
+    * [`StorageMethod.AltaDB`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AltaDB)
+
+      * [`StorageMethod.AltaDB.Details`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AltaDB.Details)
+
+        * [`StorageMethod.AltaDB.Details.key`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AltaDB.Details.key)
+
+        * [`StorageMethod.AltaDB.Details.from_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AltaDB.Details.from_entity)
+
+        * [`StorageMethod.AltaDB.Details.to_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AltaDB.Details.to_entity)
+
+        * [`StorageMethod.AltaDB.Details.validate()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageMethod.AltaDB.Details.validate)
+
+  * [`StorageProvider`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageProvider)
+
+    * [`StorageProvider.Details`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageProvider.Details)
+
+      * [`StorageProvider.Details.key`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageProvider.Details.key)
+
+      * [`StorageProvider.Details.from_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageProvider.Details.from_entity)
+
+      * [`StorageProvider.Details.to_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageProvider.Details.to_entity)
+
+      * [`StorageProvider.Details.validate()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageProvider.Details.validate)
+
+    * [`StorageProvider.from_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.StorageProvider.from_entity)
+
+  * [`ImportTypes`](https://sdk.redbrickai.com/sdk.html#redbrick.ImportTypes)
+
+  * [`TaskEventTypes`](https://sdk.redbrickai.com/sdk.html#redbrick.TaskEventTypes)
+
+  * [`TaskFilters`](https://sdk.redbrickai.com/sdk.html#redbrick.TaskFilters)
+
+  * [`TaskStates`](https://sdk.redbrickai.com/sdk.html#redbrick.TaskStates)
+
+  * [`Stage`](https://sdk.redbrickai.com/sdk.html#redbrick.Stage)
+
+    * [`Stage.Config`](https://sdk.redbrickai.com/sdk.html#redbrick.Stage.Config)
+
+      * [`Stage.Config.from_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.Stage.Config.from_entity)
+
+      * [`Stage.Config.to_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.Stage.Config.to_entity)
+
+    * [`Stage.from_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.Stage.from_entity)
+
+    * [`Stage.to_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.Stage.to_entity)
+
+  * [`LabelStage`](https://sdk.redbrickai.com/sdk.html#redbrick.LabelStage)
+
+    * [`LabelStage.Config`](https://sdk.redbrickai.com/sdk.html#redbrick.LabelStage.Config)
+
+      * [`LabelStage.Config.from_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.LabelStage.Config.from_entity)
+
+      * [`LabelStage.Config.to_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.LabelStage.Config.to_entity)
+
+    * [`LabelStage.from_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.LabelStage.from_entity)
+
+    * [`LabelStage.to_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.LabelStage.to_entity)
+
+  * [`ReviewStage`](https://sdk.redbrickai.com/sdk.html#redbrick.ReviewStage)
+
+    * [`ReviewStage.Config`](https://sdk.redbrickai.com/sdk.html#redbrick.ReviewStage.Config)
+
+      * [`ReviewStage.Config.from_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.ReviewStage.Config.from_entity)
+
+      * [`ReviewStage.Config.to_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.ReviewStage.Config.to_entity)
+
+    * [`ReviewStage.from_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.ReviewStage.from_entity)
+
+    * [`ReviewStage.to_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.ReviewStage.to_entity)
+
+  * [`ModelStage`](https://sdk.redbrickai.com/sdk.html#redbrick.ModelStage)
+
+    * [`ModelStage.ModelTaxonomyMap`](https://sdk.redbrickai.com/sdk.html#redbrick.ModelStage.ModelTaxonomyMap)
+
+    * [`ModelStage.Config`](https://sdk.redbrickai.com/sdk.html#redbrick.ModelStage.Config)
+
+      * [`ModelStage.Config.from_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.ModelStage.Config.from_entity)
+
+      * [`ModelStage.Config.to_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.ModelStage.Config.to_entity)
+
+    * [`ModelStage.from_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.ModelStage.from_entity)
+
+    * [`ModelStage.to_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.ModelStage.to_entity)
+
+  * [`OrgMember`](https://sdk.redbrickai.com/sdk.html#redbrick.OrgMember)
+
+    * [`OrgMember.Role`](https://sdk.redbrickai.com/sdk.html#redbrick.OrgMember.Role)
+
+    * [`OrgMember.from_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.OrgMember.from_entity)
+
+  * [`OrgInvite`](https://sdk.redbrickai.com/sdk.html#redbrick.OrgInvite)
+
+    * [`OrgInvite.Status`](https://sdk.redbrickai.com/sdk.html#redbrick.OrgInvite.Status)
+
+    * [`OrgInvite.from_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.OrgInvite.from_entity)
+
+    * [`OrgInvite.to_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.OrgInvite.to_entity)
+
+  * [`ProjectMember`](https://sdk.redbrickai.com/sdk.html#redbrick.ProjectMember)
+
+    * [`ProjectMember.Role`](https://sdk.redbrickai.com/sdk.html#redbrick.ProjectMember.Role)
+
+    * [`ProjectMember.from_entity()`](https://sdk.redbrickai.com/sdk.html#redbrick.ProjectMember.from_entity)
+
+  * [`get_org()`](https://sdk.redbrickai.com/sdk.html#redbrick.get_org)
+
+  * [`get_workspace()`](https://sdk.redbrickai.com/sdk.html#redbrick.get_workspace)
+
+  * [`get_project()`](https://sdk.redbrickai.com/sdk.html#redbrick.get_project)
+
+  * [`get_org_from_profile()`](https://sdk.redbrickai.com/sdk.html#redbrick.get_org_from_profile)
+
+  * [`get_project_from_profile()`](https://sdk.redbrickai.com/sdk.html#redbrick.get_project_from_profile)
+
+* [Organization](https://sdk.redbrickai.com/sdk.html#organization)
+
+  * [`RBOrganization`](https://sdk.redbrickai.com/sdk.html#redbrick.RBOrganization)
+
+    * [`RBOrganization.org_id`](https://sdk.redbrickai.com/sdk.html#redbrick.RBOrganization.org_id)
+
+    * [`RBOrganization.name`](https://sdk.redbrickai.com/sdk.html#redbrick.RBOrganization.name)
+
+    * [`RBOrganization.taxonomies()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBOrganization.taxonomies)
+
+    * [`RBOrganization.workspaces_raw()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBOrganization.workspaces_raw)
+
+    * [`RBOrganization.projects_raw()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBOrganization.projects_raw)
+
+    * [`RBOrganization.projects()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBOrganization.projects)
+
+    * [`RBOrganization.create_workspace()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBOrganization.create_workspace)
+
+    * [`RBOrganization.create_project_advanced()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBOrganization.create_project_advanced)
+
+    * [`RBOrganization.create_project()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBOrganization.create_project)
+
+    * [`RBOrganization.get_project()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBOrganization.get_project)
+
+    * [`RBOrganization.delete_project()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBOrganization.delete_project)
+
+    * [`RBOrganization.labeling_time()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBOrganization.labeling_time)
+
+    * [`RBOrganization.create_taxonomy()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBOrganization.create_taxonomy)
+
+    * [`RBOrganization.get_taxonomy()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBOrganization.get_taxonomy)
+
+    * [`RBOrganization.update_taxonomy()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBOrganization.update_taxonomy)
+
+    * [`RBOrganization.delete_taxonomy()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBOrganization.delete_taxonomy)
+
+* [Team](https://sdk.redbrickai.com/sdk.html#team)
+
+  * [`Team`](https://sdk.redbrickai.com/sdk.html#redbrick.common.member.Team)
+
+    * [`Team.get_member()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.member.Team.get_member)
+
+    * [`Team.list_members()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.member.Team.list_members)
+
+    * [`Team.remove_members()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.member.Team.remove_members)
+
+    * [`Team.list_invites()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.member.Team.list_invites)
+
+    * [`Team.invite_user()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.member.Team.invite_user)
+
+    * [`Team.revoke_invitation()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.member.Team.revoke_invitation)
+
+* [Storage](https://sdk.redbrickai.com/sdk.html#storage)
+
+  * [`Storage`](https://sdk.redbrickai.com/sdk.html#redbrick.common.storage.Storage)
+
+    * [`Storage.get_storage()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.storage.Storage.get_storage)
+
+    * [`Storage.list_storages()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.storage.Storage.list_storages)
+
+    * [`Storage.create_storage()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.storage.Storage.create_storage)
+
+    * [`Storage.update_storage()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.storage.Storage.update_storage)
+
+    * [`Storage.delete_storage()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.storage.Storage.delete_storage)
+
+    * [`Storage.verify_storage()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.storage.Storage.verify_storage)
+
+* [Workspace](https://sdk.redbrickai.com/sdk.html#workspace)
+
+  * [`RBWorkspace`](https://sdk.redbrickai.com/sdk.html#redbrick.RBWorkspace)
+
+    * [`RBWorkspace.org_id`](https://sdk.redbrickai.com/sdk.html#redbrick.RBWorkspace.org_id)
+
+    * [`RBWorkspace.workspace_id`](https://sdk.redbrickai.com/sdk.html#redbrick.RBWorkspace.workspace_id)
+
+    * [`RBWorkspace.name`](https://sdk.redbrickai.com/sdk.html#redbrick.RBWorkspace.name)
+
+    * [`RBWorkspace.metadata_schema`](https://sdk.redbrickai.com/sdk.html#redbrick.RBWorkspace.metadata_schema)
+
+    * [`RBWorkspace.classification_schema`](https://sdk.redbrickai.com/sdk.html#redbrick.RBWorkspace.classification_schema)
+
+    * [`RBWorkspace.cohorts`](https://sdk.redbrickai.com/sdk.html#redbrick.RBWorkspace.cohorts)
+
+    * [`RBWorkspace.update_schema()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBWorkspace.update_schema)
+
+    * [`RBWorkspace.update_cohorts()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBWorkspace.update_cohorts)
+
+    * [`RBWorkspace.get_datapoints()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBWorkspace.get_datapoints)
+
+    * [`RBWorkspace.archive_datapoints()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBWorkspace.archive_datapoints)
+
+    * [`RBWorkspace.unarchive_datapoints()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBWorkspace.unarchive_datapoints)
+
+    * [`RBWorkspace.add_datapoints_to_cohort()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBWorkspace.add_datapoints_to_cohort)
+
+    * [`RBWorkspace.remove_datapoints_from_cohort()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBWorkspace.remove_datapoints_from_cohort)
+
+    * [`RBWorkspace.update_datapoint_attributes()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBWorkspace.update_datapoint_attributes)
+
+    * [`RBWorkspace.add_datapoints_to_projects()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBWorkspace.add_datapoints_to_projects)
+
+    * [`RBWorkspace.create_datapoints()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBWorkspace.create_datapoints)
+
+    * [`RBWorkspace.update_datapoints_metadata()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBWorkspace.update_datapoints_metadata)
+
+    * [`RBWorkspace.delete_datapoints()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBWorkspace.delete_datapoints)
+
+* [Project](https://sdk.redbrickai.com/sdk.html#project)
+
+  * [`RBProject`](https://sdk.redbrickai.com/sdk.html#redbrick.RBProject)
+
+    * [`RBProject.org_id`](https://sdk.redbrickai.com/sdk.html#redbrick.RBProject.org_id)
+
+    * [`RBProject.project_id`](https://sdk.redbrickai.com/sdk.html#redbrick.RBProject.project_id)
+
+    * [`RBProject.name`](https://sdk.redbrickai.com/sdk.html#redbrick.RBProject.name)
+
+    * [`RBProject.url`](https://sdk.redbrickai.com/sdk.html#redbrick.RBProject.url)
+
+    * [`RBProject.taxonomy_name`](https://sdk.redbrickai.com/sdk.html#redbrick.RBProject.taxonomy_name)
+
+    * [`RBProject.taxonomy`](https://sdk.redbrickai.com/sdk.html#redbrick.RBProject.taxonomy)
+
+    * [`RBProject.workspace_id`](https://sdk.redbrickai.com/sdk.html#redbrick.RBProject.workspace_id)
+
+    * [`RBProject.label_storage`](https://sdk.redbrickai.com/sdk.html#redbrick.RBProject.label_storage)
+
+    * [`RBProject.stages`](https://sdk.redbrickai.com/sdk.html#redbrick.RBProject.stages)
+
+    * [`RBProject.set_label_storage()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBProject.set_label_storage)
+
+    * [`RBProject.update_stage()`](https://sdk.redbrickai.com/sdk.html#redbrick.RBProject.update_stage)
+
+* [Export](https://sdk.redbrickai.com/sdk.html#export)
+
+  * [`Export`](https://sdk.redbrickai.com/sdk.html#redbrick.common.export.Export)
+
+    * [`Export.export_tasks()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.export.Export.export_tasks)
+
+    * [`Export.list_tasks()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.export.Export.list_tasks)
+
+    * [`Export.get_task_events()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.export.Export.get_task_events)
+
+    * [`Export.get_active_time()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.export.Export.get_active_time)
+
+* [Upload](https://sdk.redbrickai.com/sdk.html#upload)
+
+  * [`Upload`](https://sdk.redbrickai.com/sdk.html#redbrick.common.upload.Upload)
+
+    * [`Upload.create_datapoints()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.upload.Upload.create_datapoints)
+
+    * [`Upload.delete_tasks()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.upload.Upload.delete_tasks)
+
+    * [`Upload.delete_tasks_by_name()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.upload.Upload.delete_tasks_by_name)
+
+    * [`Upload.update_task_items()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.upload.Upload.update_task_items)
+
+    * [`Upload.import_tasks_from_workspace()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.upload.Upload.import_tasks_from_workspace)
+
+    * [`Upload.update_tasks_priority()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.upload.Upload.update_tasks_priority)
+
+    * [`Upload.update_tasks_labels()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.upload.Upload.update_tasks_labels)
+
+    * [`Upload.send_tasks_to_stage()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.upload.Upload.send_tasks_to_stage)
+
+* [Labeling](https://sdk.redbrickai.com/sdk.html#labeling)
+
+  * [`Labeling`](https://sdk.redbrickai.com/sdk.html#redbrick.common.labeling.Labeling)
+
+    * [`Labeling.put_tasks()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.labeling.Labeling.put_tasks)
+
+    * [`Labeling.assign_tasks()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.labeling.Labeling.assign_tasks)
+
+    * [`Labeling.move_tasks_to_start()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.labeling.Labeling.move_tasks_to_start)
+
+* [Settings](https://sdk.redbrickai.com/sdk.html#settings)
+
+  * [`Settings`](https://sdk.redbrickai.com/sdk.html#redbrick.common.settings.Settings)
+
+    * [`Settings.label_validation`](https://sdk.redbrickai.com/sdk.html#redbrick.common.settings.Settings.label_validation)
+
+    * [`Settings.hanging_protocol`](https://sdk.redbrickai.com/sdk.html#redbrick.common.settings.Settings.hanging_protocol)
+
+    * [`Settings.webhook`](https://sdk.redbrickai.com/sdk.html#redbrick.common.settings.Settings.webhook)
+
+    * [`Settings.toggle_reference_standard_task()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.settings.Settings.toggle_reference_standard_task)
+
+    * [`Settings.task_duplication`](https://sdk.redbrickai.com/sdk.html#redbrick.common.settings.Settings.task_duplication)
+
+* [Workforce](https://sdk.redbrickai.com/sdk.html#workforce)
+
+  * [`Workforce`](https://sdk.redbrickai.com/sdk.html#redbrick.common.member.Workforce)
+
+    * [`Workforce.get_member()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.member.Workforce.get_member)
+
+    * [`Workforce.list_members()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.member.Workforce.list_members)
+
+    * [`Workforce.add_members()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.member.Workforce.add_members)
+
+    * [`Workforce.update_members()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.member.Workforce.update_members)
+
+    * [`Workforce.remove_members()`](https://sdk.redbrickai.com/sdk.html#redbrick.common.member.Workforce.remove_members)
+
+![Read the Docs](data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmc6c3ZnCiAgIHZlcnNpb249IjEuMSIKICAgaWQ9InN2ZyIKICAgeD0iMHB4IgogICB5PSIwcHgiCiAgIHZpZXdCb3g9IjY5NCAxOTcgMzQ2LjY5ODU1IDM5OS45ODQ3NyIKICAgc29kaXBvZGk6ZG9jbmFtZT0ibG9nby1saWdodC5zdmciCiAgIHdpZHRoPSIzNDYuNjk4NTUiCiAgIGhlaWdodD0iMzk5Ljk4NDc3IgogICBpbmtzY2FwZTp2ZXJzaW9uPSIxLjMuMiAoMDkxZTIwZWYwZiwgMjAyMy0xMS0yNSwgY3VzdG9tKSIKICAgeG1sbnM6aW5rc2NhcGU9Imh0dHA6Ly93d3cuaW5rc2NhcGUub3JnL25hbWVzcGFjZXMvaW5rc2NhcGUiCiAgIHhtbG5zOnNvZGlwb2RpPSJodHRwOi8vc29kaXBvZGkuc291cmNlZm9yZ2UubmV0L0RURC9zb2RpcG9kaS0wLmR0ZCIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHN2ZzpkZWZzCiAgICAgaWQ9ImRlZnMxMiIgLz4KICA8c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgaWQ9Im5hbWVkdmlldzEyIgogICAgIHBhZ2Vjb2xvcj0iI2ZmZmZmZiIKICAgICBib3JkZXJjb2xvcj0iIzAwMDAwMCIKICAgICBib3JkZXJvcGFjaXR5PSIwLjI1IgogICAgIGlua3NjYXBlOnNob3dwYWdlc2hhZG93PSIyIgogICAgIGlua3NjYXBlOnBhZ2VvcGFjaXR5PSIwLjAiCiAgICAgaW5rc2NhcGU6cGFnZWNoZWNrZXJib2FyZD0iMCIKICAgICBpbmtzY2FwZTpkZXNrY29sb3I9IiNkMWQxZDEiCiAgICAgaW5rc2NhcGU6em9vbT0iMS4yNTIiCiAgICAgaW5rc2NhcGU6Y3g9Ijk5OC40MDI1NiIKICAgICBpbmtzY2FwZTpjeT0iMTk5LjY4MDUxIgogICAgIGlua3NjYXBlOndpbmRvdy13aWR0aD0iMzQ0MCIKICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSIxMzg5IgogICAgIGlua3NjYXBlOndpbmRvdy14PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy15PSIyNyIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9InN2ZyIgLz4KICA8c3ZnOmcKICAgICBpZD0ibG9nbyIKICAgICB0cmFuc2Zvcm09Im1hdHJpeCgwLjU1NzUzNjQ0LDAsMCwwLjU1NzUzNjQ0LDY2LjUzMTgxMiwxMDUwLjEyNjIpIj4KICAgIDxzdmc6cGF0aAogICAgICAgc3R5bGU9ImZpbGw6I2ZjZmNmYyIKICAgICAgIGQ9Im0gMTQwOC4xLC0xMTgxLjcgYyAtNy41LDEgLTEyLjcsNy44IC0xMS43LDE1LjMgMC43LDUuNCA0LjYsOS45IDkuOSwxMS4zIDAsMCAzMy4yLDExIDg5LjcsMTUuNiA0NS40LDMuNyA5Ni45LC0zLjIgOTYuOSwtMy4yIDcuNSwtMC4yIDEzLjUsLTYuNSAxMy4yLC0xNCAtMC4zLC03LjUgLTYuNSwtMTMuNSAtMTQsLTEzLjIgLTAuOSwwIC0xLjgsMC4xIC0yLjYsMC4zIDAsMCAtNTAuNCw2LjIgLTkxLjMsMi45IC01NCwtNC40IC04My40LC0xNC4zIC04My40LC0xNC4zIC0yLjIsLTAuNyAtNC41LC0xIC02LjcsLTAuNyB6IG0gMCwtNjcuNiBjIC03LjUsMSAtMTIuNyw3LjggLTExLjcsMTUuMyAwLjcsNS40IDQuNiw5LjkgOS45LDExLjMgMCwwIDMzLjIsMTEgODkuNywxNS42IDQ1LjQsMy43IDk2LjksLTMuMiA5Ni45LC0zLjIgNy41LC0wLjIgMTMuNSwtNi41IDEzLjIsLTE0IC0wLjMsLTcuNSAtNi41LC0xMy41IC0xNCwtMTMuMiAtMC45LDAgLTEuOCwwLjEgLTIuNiwwLjMgMCwwIC01MC40LDYuMiAtOTEuMywyLjkgLTU0LC00LjQgLTgzLjQsLTE0LjMgLTgzLjQsLTE0LjMgLTIuMiwtMC43IC00LjUsLTEgLTYuNywtMC43IHogbSAwLC02Ny42IGMgLTcuNSwxIC0xMi43LDcuOCAtMTEuNywxNS4zIDAuNyw1LjQgNC42LDkuOSA5LjksMTEuMyAwLDAgMzMuMiwxMSA4OS43LDE1LjYgNDUuNCwzLjcgOTYuOSwtMy4yIDk2LjksLTMuMiA3LjUsLTAuMiAxMy41LC02LjUgMTMuMiwtMTQgLTAuMywtNy41IC02LjUsLTEzLjUgLTE0LC0xMy4yIC0wLjksMCAtMS44LDAuMSAtMi42LDAuMyAwLDAgLTUwLjQsNi4yIC05MS4zLDIuOSAtNTQsLTQuNCAtODMuNCwtMTQuMyAtODMuNCwtMTQuMyAtMi4yLC0wLjcgLTQuNSwtMSAtNi43LC0wLjcgeiBtIDAsLTY3LjUgYyAtNy41LDEgLTEyLjcsNy44IC0xMS43LDE1LjMgMC43LDUuNCA0LjYsOS45IDkuOSwxMS4zIDAsMCAzMy4yLDExIDg5LjcsMTUuNiA0NS40LDMuNyA5Ni45LC0zLjIgOTYuOSwtMy4yIDcuNSwtMC4yIDEzLjUsLTYuNSAxMy4yLC0xNCAtMC4zLC03LjUgLTYuNSwtMTMuNSAtMTQsLTEzLjIgLTAuOSwwIC0xLjgsMC4xIC0yLjYsMC4zIDAsMCAtNTAuNCw2LjIgLTkxLjMsMi45IC01NCwtNC40IC04My40LC0xNC4zIC04My40LC0xNC4zIC0yLjIsLTAuOCAtNC41LC0xIC02LjcsLTAuNyB6IG0gLTk0LjcsLTcxLjMgYyAtNzEsMC41IC05Ny41LDIyLjMgLTk3LjUsMjIuMyB2IDUzMC4zIGMgMCwwIDI1LjgsLTIyLjMgMTA5LC0xOC45IDgzLjIsMy40IDEwMC4zLDMyLjYgMjAyLjUsMzQuNiAxMDIuMiwyLjEgMTI3LjksLTE1LjcgMTI3LjksLTE1LjcgbCAxLjUsLTU0MC42IGMgMCwwIC00NiwxMyAtMTM1LjUsMTMuNyAtODkuNSwwLjcgLTExMSwtMjIuOCAtMTkzLjIsLTI1LjUgLTUuMSwtMC4xIC0xMCwtMC4yIC0xNC43LC0wLjIgeiBtIDU5LjQsMzQuNiBjIDAsMCA0MywxNC4yIDEyMi41LDE4LjIgNjcuMiwzLjMgMTM0LjUsLTYuNiAxMzQuNSwtNi42IFYgLTkyOSBjIDAsMCAtMzQuMSwxNy45IC0xMTkuMywxMS44IC02NiwtNC43IC0xMzguNywtMjkuNyAtMTM4LjcsLTI5LjcgeiBtIC00MS41LDEyLjUgYyA3LjYsMCAxMy43LDYuMiAxMy43LDEzLjcgMCw3LjUgLTYuMiwxMy43IC0xMy43LDEzLjcgMCwwIC0yMi4zLDAuMSAtMzUuOCwxLjUgLTIyLjgsMi4zIC0zOC4zLDEwLjYgLTM4LjMsMTAuNiAtNi43LDMuNSAtMTUsMSAtMTguNSwtNS43IC0zLjUsLTYuNyAtMSwtMTUgNS43LC0xOC41IDAsMCAwLDAgMCwwIDAsMCAyMC4yLC0xMC43IDQ4LjQsLTEzLjUgMTYuMywtMS43IDM4LjUsLTEuOCAzOC41LC0xLjggeiBtIC0xMy4yLDY3LjggYyA3LjYsLTAuMiAxMy4zLDAgMTMuMywwIDcuNSwwLjkgMTIuOSw3LjggMTIsMTUuMyAtMC44LDYuMyAtNS43LDExLjIgLTEyLDEyIDAsMCAtMjIuMywwLjEgLTM1LjgsMS41IC0yMi44LDIuMyAtMzguMywxMC42IC0zOC4zLDEwLjYgLTYuNywzLjUgLTE1LDAuOSAtMTguNSwtNS44IC0zLjUsLTYuNyAtMC45LC0xNSA1LjgsLTE4LjUgMCwwIDIwLjIsLTEwLjcgNDguNCwtMTMuNSA3LjksLTAuOSAxNy41LC0xLjQgMjUuMSwtMS42IHogbSAxMy4yLDY3LjUgYyA3LjYsMCAxMy43LDYuMiAxMy43LDEzLjcgMCw3LjYgLTYuMiwxMy43IC0xMy43LDEzLjcgMCwwIC0yMi4zLC0wLjEgLTM1LjgsMS4yIC0yMi44LDIuMyAtMzguMywxMC42IC0zOC4zLDEwLjYgLTYuNywzLjUgLTE1LDAuOSAtMTguNSwtNS44IC0zLjUsLTYuNyAtMC45LC0xNSA1LjgsLTE4LjUgMCwwIDIwLjIsLTEwLjcgNDguNCwtMTMuNSAxNi4yLC0xLjUgMzguNCwtMS40IDM4LjQsLTEuNCB6IgogICAgICAgaWQ9InBhdGgxIiAvPgogIDwvc3ZnOmc+CiAgPGRpdgogICAgIGlkPSJzYWthLWd1aS1yb290Ij4KICAgIDxkaXY+CiAgICAgIDxkaXY+CiAgICAgICAgPHN0eWxlIC8+CiAgICAgIDwvZGl2PgogICAgPC9kaXY+CiAgPC9kaXY+Cjwvc3ZnOnN2Zz4K)

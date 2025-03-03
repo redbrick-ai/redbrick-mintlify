@@ -1,0 +1,849 @@
+---
+title: 'New file'
+description: 'Description of your new file.'
+---
+
+Hide navigation sidebar
+
+Hide table of contents sidebar
+
+[![Light Logo](https://sdk.redbrickai.com/_static/redbrick.svg)Version 2.21.5](https://sdk.redbrickai.com/index.html)
+
+* [Python SDK](https://sdk.redbrickai.com/sdk.html)
+
+* [Command Line Interface](https://sdk.redbrickai.com/cli.html)
+
+* [Formats](https://sdk.redbrickai.com/formats/index.html)
+
+
+
+
+  Toggle navigation of Formats
+
+  * [Annotation type definitions](https://sdk.redbrickai.com/formats/annotations.html#)
+
+  * [Taxonomy format](https://sdk.redbrickai.com/formats/taxonomy.html)
+
+Toggle Light / Dark / Auto color theme
+
+# Annotation type definitions
+
+This section covers definitions of all the annotation object types. The objects are the same for importing annotations, and exporting annotations.
+
+[`Label Type`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.ObjectType.labelType "redbrick.types.taxonomy.ObjectType.labelType")
+
+Label Definition
+
+2D Image
+
+3D Volume
+
+Video
+
+CLASSIFICATION (non objectType)
+
+[`Classification`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Classification "redbrick.types.task.Classification")
+
+
+
+
+
+
+
+SEGMENTATION
+
+[`CommonLabelProps`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.CommonLabelProps "redbrick.types.task.CommonLabelProps")
+
+
+
+
+
+
+
+LENGTH
+
+[`MeasureLength`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureLength "redbrick.types.task.MeasureLength")
+
+
+
+
+
+
+
+ANGLE
+
+[`MeasureAngle`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureAngle "redbrick.types.task.MeasureAngle")
+
+
+
+
+
+
+
+POINT
+
+[`Landmark`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Landmark "redbrick.types.task.Landmark")
+
+
+
+
+
+
+
+[`Landmark3D`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Landmark3D "redbrick.types.task.Landmark3D")
+
+
+
+
+
+
+
+POLYLINE
+
+[`Polyline`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Polyline "redbrick.types.task.Polyline")
+
+
+
+
+
+
+
+POLYGON
+
+[`Polygon`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Polygon "redbrick.types.task.Polygon")
+
+
+
+
+
+
+
+ELLIPSE
+
+[`Ellipse`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Ellipse "redbrick.types.task.Ellipse")
+
+
+
+
+
+
+
+BBOX
+
+[`BoundingBox`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.BoundingBox "redbrick.types.task.BoundingBox")
+
+
+
+
+
+
+
+CUBOID
+
+[`Cuboid`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Cuboid "redbrick.types.task.Cuboid")
+
+
+
+
+
+
+
+*class* redbrick.types.task.Point2D[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#Point2D)
+
+2D pixel point.
+
+The Point2D coordinates are normalized in relation to the dimensions of the image, meaning they are scaled down to a range between 0 and 1. To convert these normalized points back to their original scale on the image, you “un-normalize” them by multiplying by the image’s dimensions. This operation typically results in a floating-point number.
+
+RedBrick AI enhances the precision of annotations on its canvas by **supporting a resolution higher than that of the underlying image**. This capability facilitates sub-pixel annotation accuracy. However, if sub-pixel precision is not necessary for your application, you can simplify the process **by rounding the un-normalized coordinates to the nearest whole number**. This adjustment converts the precise floating-point values back to standard pixel coordinates, making them easier to work with for general purposes.
+
+Important
+
+The origin point (0,0) from which these coordinates are measured is at the top left of the image. However, for mammography and DBT the origin is the top right of the image.
+
+xNor&#x6D;*: `float`*
+
+X co-ordinate normalized by the width of the image.
+
+yNor&#x6D;*: `float`*
+
+Y co-ordinate normalized by the height of the image.
+
+*class* redbrick.types.task.VoxelPoint[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#VoxelPoint)
+
+Represents a three-dimensional point in image-space, where i, j, and k are columns, rows, and k is the slice number.
+
+&#x69;*: `int`*
+
+&#x6A;*: `int`*
+
+&#x6B;*: `int`*
+
+*class* redbrick.types.task.WorldPoint[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#WorldPoint)
+
+Represents a three-dimensional point in physical space/world co-ordinates. The world co-ordinates are calculated using [`redbrick.types.task.VoxelPoint`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VoxelPoint "redbrick.types.task.VoxelPoint") and the DICOM Image Plane Module.
+
+&#x78;*: `float`*
+
+&#x79;*: `float`*
+
+&#x7A;*: `float`*
+
+*class* redbrick.types.task.MeasurementStats[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#MeasurementStats)
+
+Measurement statistics for annotations.
+
+averag&#x65;*: `float`*
+
+Average pixel/voxel intensity within the annotation. In CT, this is the average HU value.
+
+are&#x61;*: `float`*
+
+Area contained within the annotation in mm^2.
+
+volum&#x65;*: `float`*
+
+Volume contained within the annotation in mm^3
+
+minimu&#x6D;*: `float`*
+
+Minimum intensity value within the annotation.
+
+maximu&#x6D;*: `float`*
+
+Maximum intensity value within the annotation.
+
+*class* redbrick.types.task.VideoMetaData[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#VideoMetaData)
+
+Contains annotation information along the third axis. Frames for video, and slices for 3D volumes.
+
+Warning
+
+[`redbrick.types.task.VideoMetaData`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VideoMetaData "redbrick.types.task.VideoMetaData") has a misleading name. It contains information for both videos, and 3D volumes.
+
+Hint
+
+Watch [this video](https://share.redbrickai.com/vpKDGyBd) for a detailed explaination of all the attributes of this object.
+
+seriesItemInde&#x78;*: `int`*
+
+The index of the file in series “items” list that this annotation is present on.
+
+seriesFrameInde&#x78;*: `int`*
+
+Frame index of the annotation for nifti and dicom multipart files.
+
+frameInde&#x78;*: `int`*
+
+The frame number (for video) or slice index (for 3D volumes) the annotation is present on.
+
+trackI&#x64;*: `str`*
+
+Each distinct object has a unique trackId. Two annotations on different frameIndex’s with the same trackId’s represent the same distinct object.
+
+keyFram&#x65;*: `bool`*
+
+If True, this annotation is user-defined. If False, this annotation is interpolated.
+
+endTrac&#x6B;*: `bool`*
+
+If True, this annotation is the last annotation of a specific track defined by trackId.
+
+redbrick.types.task.Attributes
+
+Attributes for Taxonomy objects. Attributes can be boolean, textfields, select’s or multi-select’s.
+
+alias of `Dict`\[`str`, `Union`\[`str`, `bool`, `List`\[`str`]]]
+
+*class* redbrick.types.task.CommonLabelProps[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#CommonLabelProps)
+
+Full version of [`redbrick.types.task.Series.segmentMap`](https://sdk.redbrickai.com/formats/index.html#redbrick.types.task.Series.segmentMap "redbrick.types.task.Series.segmentMap").
+
+categor&#x79;*: `Union`\[`int`, `str`, `List`\[`str`]]*
+
+Taxonomy object category.
+
+attribute&#x73;*: `Dict`\[`str`, `Union`\[`str`, `bool`, `List`\[`str`]]]*
+
+Associated taxonomy object attributes.
+
+mas&#x6B;*: `Union`\[`str`, `List`\[`str`]]*
+
+Filepath to segmentation file for this annotation.
+
+overlappingGroup&#x73;*: `List`\[`int`]*
+
+Overlapping instances that this label is part of (when without\_masks is set).
+
+grou&#x70;*: `str`*
+
+Linked label group id.
+
+readOnl&#x79;*: `bool`*
+
+Read only status
+
+*class* redbrick.types.task.InstanceClassification[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#InstanceClassification)
+
+Instance level classifications for frame-by-frame (video) or slice-by-slice (volume) classifications..
+
+fileInde&#x78;*: `int`*
+
+For video this is the frameIndex, for DICOM volumes this is the sliceIndex.
+
+fileNam&#x65;*: `str`*
+
+The file name represented by frameIndex.
+
+grou&#x70;*: `str`*
+
+Linked label group id.
+
+readOnl&#x79;*: `bool`*
+
+Read only status
+
+*class* redbrick.types.task.Classification[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#Classification)
+
+Study or series classification.
+
+attribute&#x73;*: `Dict`\[`str`, `Union`\[`str`, `bool`, `List`\[`str`]]]*
+
+grou&#x70;*: `str`*
+
+Linked label group id.
+
+readOnl&#x79;*: `bool`*
+
+Read only status
+
+*class* redbrick.types.task.Polyline[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#Polyline)
+
+Open polylines, not supported in 3D images.
+
+point&#x73;*: `List`\[*[*`Point2D`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Point2D "redbrick.types.task.Point2D")*]*
+
+categor&#x79;*: `Union`\[`int`, `str`, `List`\[`str`]]*
+
+attribute&#x73;*: `Dict`\[`str`, `Union`\[`str`, `bool`, `List`\[`str`]]]*
+
+vide&#x6F;*:* [*`VideoMetaData`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VideoMetaData "redbrick.types.task.VideoMetaData")
+
+grou&#x70;*: `str`*
+
+Linked label group id.
+
+readOnl&#x79;*: `bool`*
+
+Read only status
+
+*class* redbrick.types.task.Polygon[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#Polygon)
+
+Closed polygons, not supported in 3D images.
+
+point&#x73;*: `List`\[*[*`Point2D`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Point2D "redbrick.types.task.Point2D")*]*
+
+categor&#x79;*: `Union`\[`int`, `str`, `List`\[`str`]]*
+
+attribute&#x73;*: `Dict`\[`str`, `Union`\[`str`, `bool`, `List`\[`str`]]]*
+
+stat&#x73;*:* [*`MeasurementStats`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasurementStats "redbrick.types.task.MeasurementStats")
+
+vide&#x6F;*:* [*`VideoMetaData`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VideoMetaData "redbrick.types.task.VideoMetaData")
+
+grou&#x70;*: `str`*
+
+Linked label group id.
+
+readOnl&#x79;*: `bool`*
+
+Read only status
+
+*class* redbrick.types.task.Cuboid[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#Cuboid)
+
+3D bounding boxes for 3D images.
+
+point&#x31;*:* [*`VoxelPoint`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VoxelPoint "redbrick.types.task.VoxelPoint")
+
+Top left diagonal corner.
+
+point&#x32;*:* [*`VoxelPoint`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VoxelPoint "redbrick.types.task.VoxelPoint")
+
+Bottom right diagonal corner.
+
+absolutePoint&#x31;*:* [*`WorldPoint`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.WorldPoint "redbrick.types.task.WorldPoint")
+
+absolutePoint&#x32;*:* [*`WorldPoint`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.WorldPoint "redbrick.types.task.WorldPoint")
+
+categor&#x79;*: `Union`\[`int`, `str`, `List`\[`str`]]*
+
+attribute&#x73;*: `Dict`\[`str`, `Union`\[`str`, `bool`, `List`\[`str`]]]*
+
+stat&#x73;*:* [*`MeasurementStats`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasurementStats "redbrick.types.task.MeasurementStats")
+
+grou&#x70;*: `str`*
+
+Linked label group id.
+
+readOnl&#x79;*: `bool`*
+
+Read only status
+
+*class* redbrick.types.task.BoundingBox[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#BoundingBox)
+
+2D bounding box for 2D images, or slice by slice annotation in 3D images.
+
+Hint
+
+See the [following diagram](https://share.redbrickai.com/T0jPZFn9) to understand the coordinate system.
+
+pointTopLef&#x74;*:* [*`Point2D`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Point2D "redbrick.types.task.Point2D")
+
+Coordinates of the top left of the bounding box.
+
+wNor&#x6D;*: `float`*
+
+Width of the bounding box, normalized by image width.
+
+hNor&#x6D;*: `float`*
+
+Height of the bounding box, normalized by the image height.
+
+categor&#x79;*: `Union`\[`int`, `str`, `List`\[`str`]]*
+
+attribute&#x73;*: `Dict`\[`str`, `Union`\[`str`, `bool`, `List`\[`str`]]]*
+
+stat&#x73;*:* [*`MeasurementStats`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasurementStats "redbrick.types.task.MeasurementStats")
+
+vide&#x6F;*:* [*`VideoMetaData`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VideoMetaData "redbrick.types.task.VideoMetaData")
+
+grou&#x70;*: `str`*
+
+Linked label group id.
+
+readOnl&#x79;*: `bool`*
+
+Read only status
+
+*class* redbrick.types.task.Ellipse[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#Ellipse)
+
+Ellipse annotation.
+
+Hint
+
+See [this ellipse diagram](https://share.redbrickai.com/6PH9ypkl) to understand the coordinate system. Please read the [`redbrick.types.task.Point2D`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Point2D "redbrick.types.task.Point2D") documentation to understand how normalization works & the origin of the coordinate system.
+
+Warning
+
+For DICOM images of a certain type, ellipse annotations might be flipped i.e., rotating the ellipse clockwise would result in counter-clockwise rotation. If you encounter these cases, reach out to our support for instructions on how to handle this [support@redbrickai.com](mailto:support%40redbrickai.com).
+
+pointCente&#x72;*:* [*`Point2D`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Point2D "redbrick.types.task.Point2D")
+
+The normalized center of the ellipse.
+
+xRadiusNor&#x6D;*: `float`*
+
+The x axis of the ellipse, normalized with by the image width. Adjusting for rotationRad, the x-axis of the ellipse aligns with the x-axis of the image.
+
+yRadiusNor&#x6D;*: `float`*
+
+The y axis of the ellipse, normalized with by the image width. Adjusting for rotationRad, the y-axis of the ellipse aligns with the y-axis of the image.
+
+rotationRa&#x64;*: `float`*
+
+The rotation of the ellipse measured clockwise as the angle between the y-axis of the ellipse and y-axis of the image.
+
+categor&#x79;*: `Union`\[`int`, `str`, `List`\[`str`]]*
+
+attribute&#x73;*: `Dict`\[`str`, `Union`\[`str`, `bool`, `List`\[`str`]]]*
+
+stat&#x73;*:* [*`MeasurementStats`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasurementStats "redbrick.types.task.MeasurementStats")
+
+vide&#x6F;*:* [*`VideoMetaData`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VideoMetaData "redbrick.types.task.VideoMetaData")
+
+grou&#x70;*: `str`*
+
+Linked label group id.
+
+readOnl&#x79;*: `bool`*
+
+Read only status
+
+*class* redbrick.types.task.MeasureAngle[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#MeasureAngle)
+
+Angle measurement label.
+
+An angle measurement is defined by three points, where vertex is the middle point between point1 and point2. The angle between the two vectors \<point1, vertex> and \<point2, vertex> defines the angle measurement.
+
+Hint
+
+See [this angle diagram](https://share.redbrickai.com/rqW3sZtf) to understand the coordinate system.
+
+typ&#x65;*: `Literal`\[`'angle'`]*
+
+point&#x31;*:* [*`VoxelPoint`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VoxelPoint "redbrick.types.task.VoxelPoint")
+
+verte&#x78;*:* [*`VoxelPoint`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VoxelPoint "redbrick.types.task.VoxelPoint")
+
+point&#x32;*:* [*`VoxelPoint`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VoxelPoint "redbrick.types.task.VoxelPoint")
+
+absolutePoint&#x31;*:* [*`WorldPoint`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.WorldPoint "redbrick.types.task.WorldPoint")
+
+absoluteVerte&#x78;*:* [*`WorldPoint`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.WorldPoint "redbrick.types.task.WorldPoint")
+
+absolutePoint&#x32;*:* [*`WorldPoint`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.WorldPoint "redbrick.types.task.WorldPoint")
+
+norma&#x6C;*: `List`\[`float`]*
+
+Measurements can be made on oblique planes. normal defines the normal unit vector to the slice on which the annotation was made. For annotations made on non-oblique planes, the normal will be \[0,0,1]. The measurement is fully defined even without normal, however, for completeness [see this angle diagram](https://share.redbrickai.com/CZ5BXXWK) for it’s definition.
+
+angl&#x65;*: `float`*
+
+Measurement angle in degrees.
+
+categor&#x79;*: `Union`\[`int`, `str`, `List`\[`str`]]*
+
+attribute&#x73;*: `Dict`\[`str`, `Union`\[`str`, `bool`, `List`\[`str`]]]*
+
+grou&#x70;*: `str`*
+
+Linked label group id.
+
+readOnl&#x79;*: `bool`*
+
+Read only status
+
+*class* redbrick.types.task.MeasureLength[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#MeasureLength)
+
+Length measurement label.
+
+A length measurement is defined by two points, and the length measurement is the distance between the two points.
+
+typ&#x65;*: `Literal`\[`'length'`]*
+
+point&#x31;*:* [*`VoxelPoint`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VoxelPoint "redbrick.types.task.VoxelPoint")
+
+point&#x32;*:* [*`VoxelPoint`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VoxelPoint "redbrick.types.task.VoxelPoint")
+
+absolutePoint&#x31;*:* [*`WorldPoint`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.WorldPoint "redbrick.types.task.WorldPoint")
+
+absolutePoint&#x32;*:* [*`WorldPoint`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.WorldPoint "redbrick.types.task.WorldPoint")
+
+norma&#x6C;*: `List`\[`float`]*
+
+Measurements can be made on oblique planes. normal defines the normal unit vector to the slice on which the annotation was made. For annotations made on non-oblique planes, the normal will be \[0,0,1]. The measurement is fully defined even without normal, however, for completeness [see this length diagram](https://share.redbrickai.com/CZ5BXXWK) for it’s definition.
+
+lengt&#x68;*: `float`*
+
+The value of the measurement in millimeters.
+
+categor&#x79;*: `Union`\[`int`, `str`, `List`\[`str`]]*
+
+attribute&#x73;*: `Dict`\[`str`, `Union`\[`str`, `bool`, `List`\[`str`]]]*
+
+grou&#x70;*: `str`*
+
+Linked label group id.
+
+readOnl&#x79;*: `bool`*
+
+Read only status
+
+*class* redbrick.types.task.Landmark3D[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#Landmark3D)
+
+3D landmark for 3D data.
+
+poin&#x74;*:* [*`VoxelPoint`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VoxelPoint "redbrick.types.task.VoxelPoint")
+
+categor&#x79;*: `Union`\[`int`, `str`, `List`\[`str`]]*
+
+attribute&#x73;*: `Dict`\[`str`, `Union`\[`str`, `bool`, `List`\[`str`]]]*
+
+grou&#x70;*: `str`*
+
+Linked label group id.
+
+readOnl&#x79;*: `bool`*
+
+Read only status
+
+*class* redbrick.types.task.Landmark[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/task.html#Landmark)
+
+2D landmark for 2D data.
+
+poin&#x74;*:* [*`Point2D`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Point2D "redbrick.types.task.Point2D")
+
+categor&#x79;*: `Union`\[`int`, `str`, `List`\[`str`]]*
+
+attribute&#x73;*: `Dict`\[`str`, `Union`\[`str`, `bool`, `List`\[`str`]]]*
+
+vide&#x6F;*:* [*`VideoMetaData`*](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VideoMetaData "redbrick.types.task.VideoMetaData")
+
+grou&#x70;*: `str`*
+
+Linked label group id.
+
+readOnl&#x79;*: `bool`*
+
+Read only status
+
+[NextTaxonomy format](https://sdk.redbrickai.com/formats/taxonomy.html)[PreviousFormats](https://sdk.redbrickai.com/formats/index.html)
+
+Copyright © 2023, RedBrick AI
+
+Made with [Sphinx](https://www.sphinx-doc.org/) and [@pradyunsg](https://pradyunsg.me/)'s [Furo](https://github.com/pradyunsg/furo)
+
+On this page
+
+* [`Point2D`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Point2D)
+
+  * [`Point2D.xNorm`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Point2D.xNorm)
+
+  * [`Point2D.yNorm`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Point2D.yNorm)
+
+* [`VoxelPoint`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VoxelPoint)
+
+  * [`VoxelPoint.i`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VoxelPoint.i)
+
+  * [`VoxelPoint.j`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VoxelPoint.j)
+
+  * [`VoxelPoint.k`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VoxelPoint.k)
+
+* [`WorldPoint`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.WorldPoint)
+
+  * [`WorldPoint.x`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.WorldPoint.x)
+
+  * [`WorldPoint.y`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.WorldPoint.y)
+
+  * [`WorldPoint.z`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.WorldPoint.z)
+
+* [`MeasurementStats`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasurementStats)
+
+  * [`MeasurementStats.average`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasurementStats.average)
+
+  * [`MeasurementStats.area`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasurementStats.area)
+
+  * [`MeasurementStats.volume`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasurementStats.volume)
+
+  * [`MeasurementStats.minimum`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasurementStats.minimum)
+
+  * [`MeasurementStats.maximum`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasurementStats.maximum)
+
+* [`VideoMetaData`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VideoMetaData)
+
+  * [`VideoMetaData.seriesItemIndex`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VideoMetaData.seriesItemIndex)
+
+  * [`VideoMetaData.seriesFrameIndex`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VideoMetaData.seriesFrameIndex)
+
+  * [`VideoMetaData.frameIndex`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VideoMetaData.frameIndex)
+
+  * [`VideoMetaData.trackId`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VideoMetaData.trackId)
+
+  * [`VideoMetaData.keyFrame`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VideoMetaData.keyFrame)
+
+  * [`VideoMetaData.endTrack`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.VideoMetaData.endTrack)
+
+* [`Attributes`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Attributes)
+
+* [`CommonLabelProps`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.CommonLabelProps)
+
+  * [`CommonLabelProps.category`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.CommonLabelProps.category)
+
+  * [`CommonLabelProps.attributes`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.CommonLabelProps.attributes)
+
+  * [`CommonLabelProps.mask`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.CommonLabelProps.mask)
+
+  * [`CommonLabelProps.overlappingGroups`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.CommonLabelProps.overlappingGroups)
+
+  * [`CommonLabelProps.group`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.CommonLabelProps.group)
+
+  * [`CommonLabelProps.readOnly`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.CommonLabelProps.readOnly)
+
+* [`InstanceClassification`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.InstanceClassification)
+
+  * [`InstanceClassification.fileIndex`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.InstanceClassification.fileIndex)
+
+  * [`InstanceClassification.fileName`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.InstanceClassification.fileName)
+
+  * [`InstanceClassification.group`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.InstanceClassification.group)
+
+  * [`InstanceClassification.readOnly`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.InstanceClassification.readOnly)
+
+* [`Classification`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Classification)
+
+  * [`Classification.attributes`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Classification.attributes)
+
+  * [`Classification.group`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Classification.group)
+
+  * [`Classification.readOnly`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Classification.readOnly)
+
+* [`Polyline`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Polyline)
+
+  * [`Polyline.points`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Polyline.points)
+
+  * [`Polyline.category`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Polyline.category)
+
+  * [`Polyline.attributes`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Polyline.attributes)
+
+  * [`Polyline.video`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Polyline.video)
+
+  * [`Polyline.group`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Polyline.group)
+
+  * [`Polyline.readOnly`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Polyline.readOnly)
+
+* [`Polygon`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Polygon)
+
+  * [`Polygon.points`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Polygon.points)
+
+  * [`Polygon.category`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Polygon.category)
+
+  * [`Polygon.attributes`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Polygon.attributes)
+
+  * [`Polygon.stats`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Polygon.stats)
+
+  * [`Polygon.video`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Polygon.video)
+
+  * [`Polygon.group`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Polygon.group)
+
+  * [`Polygon.readOnly`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Polygon.readOnly)
+
+* [`Cuboid`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Cuboid)
+
+  * [`Cuboid.point1`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Cuboid.point1)
+
+  * [`Cuboid.point2`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Cuboid.point2)
+
+  * [`Cuboid.absolutePoint1`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Cuboid.absolutePoint1)
+
+  * [`Cuboid.absolutePoint2`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Cuboid.absolutePoint2)
+
+  * [`Cuboid.category`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Cuboid.category)
+
+  * [`Cuboid.attributes`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Cuboid.attributes)
+
+  * [`Cuboid.stats`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Cuboid.stats)
+
+  * [`Cuboid.group`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Cuboid.group)
+
+  * [`Cuboid.readOnly`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Cuboid.readOnly)
+
+* [`BoundingBox`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.BoundingBox)
+
+  * [`BoundingBox.pointTopLeft`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.BoundingBox.pointTopLeft)
+
+  * [`BoundingBox.wNorm`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.BoundingBox.wNorm)
+
+  * [`BoundingBox.hNorm`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.BoundingBox.hNorm)
+
+  * [`BoundingBox.category`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.BoundingBox.category)
+
+  * [`BoundingBox.attributes`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.BoundingBox.attributes)
+
+  * [`BoundingBox.stats`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.BoundingBox.stats)
+
+  * [`BoundingBox.video`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.BoundingBox.video)
+
+  * [`BoundingBox.group`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.BoundingBox.group)
+
+  * [`BoundingBox.readOnly`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.BoundingBox.readOnly)
+
+* [`Ellipse`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Ellipse)
+
+  * [`Ellipse.pointCenter`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Ellipse.pointCenter)
+
+  * [`Ellipse.xRadiusNorm`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Ellipse.xRadiusNorm)
+
+  * [`Ellipse.yRadiusNorm`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Ellipse.yRadiusNorm)
+
+  * [`Ellipse.rotationRad`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Ellipse.rotationRad)
+
+  * [`Ellipse.category`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Ellipse.category)
+
+  * [`Ellipse.attributes`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Ellipse.attributes)
+
+  * [`Ellipse.stats`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Ellipse.stats)
+
+  * [`Ellipse.video`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Ellipse.video)
+
+  * [`Ellipse.group`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Ellipse.group)
+
+  * [`Ellipse.readOnly`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Ellipse.readOnly)
+
+* [`MeasureAngle`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureAngle)
+
+  * [`MeasureAngle.type`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureAngle.type)
+
+  * [`MeasureAngle.point1`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureAngle.point1)
+
+  * [`MeasureAngle.vertex`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureAngle.vertex)
+
+  * [`MeasureAngle.point2`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureAngle.point2)
+
+  * [`MeasureAngle.absolutePoint1`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureAngle.absolutePoint1)
+
+  * [`MeasureAngle.absoluteVertex`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureAngle.absoluteVertex)
+
+  * [`MeasureAngle.absolutePoint2`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureAngle.absolutePoint2)
+
+  * [`MeasureAngle.normal`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureAngle.normal)
+
+  * [`MeasureAngle.angle`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureAngle.angle)
+
+  * [`MeasureAngle.category`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureAngle.category)
+
+  * [`MeasureAngle.attributes`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureAngle.attributes)
+
+  * [`MeasureAngle.group`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureAngle.group)
+
+  * [`MeasureAngle.readOnly`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureAngle.readOnly)
+
+* [`MeasureLength`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureLength)
+
+  * [`MeasureLength.type`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureLength.type)
+
+  * [`MeasureLength.point1`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureLength.point1)
+
+  * [`MeasureLength.point2`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureLength.point2)
+
+  * [`MeasureLength.absolutePoint1`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureLength.absolutePoint1)
+
+  * [`MeasureLength.absolutePoint2`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureLength.absolutePoint2)
+
+  * [`MeasureLength.normal`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureLength.normal)
+
+  * [`MeasureLength.length`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureLength.length)
+
+  * [`MeasureLength.category`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureLength.category)
+
+  * [`MeasureLength.attributes`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureLength.attributes)
+
+  * [`MeasureLength.group`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureLength.group)
+
+  * [`MeasureLength.readOnly`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.MeasureLength.readOnly)
+
+* [`Landmark3D`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Landmark3D)
+
+  * [`Landmark3D.point`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Landmark3D.point)
+
+  * [`Landmark3D.category`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Landmark3D.category)
+
+  * [`Landmark3D.attributes`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Landmark3D.attributes)
+
+  * [`Landmark3D.group`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Landmark3D.group)
+
+  * [`Landmark3D.readOnly`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Landmark3D.readOnly)
+
+* [`Landmark`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Landmark)
+
+  * [`Landmark.point`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Landmark.point)
+
+  * [`Landmark.category`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Landmark.category)
+
+  * [`Landmark.attributes`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Landmark.attributes)
+
+  * [`Landmark.video`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Landmark.video)
+
+  * [`Landmark.group`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Landmark.group)
+
+  * [`Landmark.readOnly`](https://sdk.redbrickai.com/formats/annotations.html#redbrick.types.task.Landmark.readOnly)
+
+![Read the Docs](data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmc6c3ZnCiAgIHZlcnNpb249IjEuMSIKICAgaWQ9InN2ZyIKICAgeD0iMHB4IgogICB5PSIwcHgiCiAgIHZpZXdCb3g9IjY5NCAxOTcgMzQ2LjY5ODU1IDM5OS45ODQ3NyIKICAgc29kaXBvZGk6ZG9jbmFtZT0ibG9nby1saWdodC5zdmciCiAgIHdpZHRoPSIzNDYuNjk4NTUiCiAgIGhlaWdodD0iMzk5Ljk4NDc3IgogICBpbmtzY2FwZTp2ZXJzaW9uPSIxLjMuMiAoMDkxZTIwZWYwZiwgMjAyMy0xMS0yNSwgY3VzdG9tKSIKICAgeG1sbnM6aW5rc2NhcGU9Imh0dHA6Ly93d3cuaW5rc2NhcGUub3JnL25hbWVzcGFjZXMvaW5rc2NhcGUiCiAgIHhtbG5zOnNvZGlwb2RpPSJodHRwOi8vc29kaXBvZGkuc291cmNlZm9yZ2UubmV0L0RURC9zb2RpcG9kaS0wLmR0ZCIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHN2ZzpkZWZzCiAgICAgaWQ9ImRlZnMxMiIgLz4KICA8c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgaWQ9Im5hbWVkdmlldzEyIgogICAgIHBhZ2Vjb2xvcj0iI2ZmZmZmZiIKICAgICBib3JkZXJjb2xvcj0iIzAwMDAwMCIKICAgICBib3JkZXJvcGFjaXR5PSIwLjI1IgogICAgIGlua3NjYXBlOnNob3dwYWdlc2hhZG93PSIyIgogICAgIGlua3NjYXBlOnBhZ2VvcGFjaXR5PSIwLjAiCiAgICAgaW5rc2NhcGU6cGFnZWNoZWNrZXJib2FyZD0iMCIKICAgICBpbmtzY2FwZTpkZXNrY29sb3I9IiNkMWQxZDEiCiAgICAgaW5rc2NhcGU6em9vbT0iMS4yNTIiCiAgICAgaW5rc2NhcGU6Y3g9Ijk5OC40MDI1NiIKICAgICBpbmtzY2FwZTpjeT0iMTk5LjY4MDUxIgogICAgIGlua3NjYXBlOndpbmRvdy13aWR0aD0iMzQ0MCIKICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSIxMzg5IgogICAgIGlua3NjYXBlOndpbmRvdy14PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy15PSIyNyIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9InN2ZyIgLz4KICA8c3ZnOmcKICAgICBpZD0ibG9nbyIKICAgICB0cmFuc2Zvcm09Im1hdHJpeCgwLjU1NzUzNjQ0LDAsMCwwLjU1NzUzNjQ0LDY2LjUzMTgxMiwxMDUwLjEyNjIpIj4KICAgIDxzdmc6cGF0aAogICAgICAgc3R5bGU9ImZpbGw6I2ZjZmNmYyIKICAgICAgIGQ9Im0gMTQwOC4xLC0xMTgxLjcgYyAtNy41LDEgLTEyLjcsNy44IC0xMS43LDE1LjMgMC43LDUuNCA0LjYsOS45IDkuOSwxMS4zIDAsMCAzMy4yLDExIDg5LjcsMTUuNiA0NS40LDMuNyA5Ni45LC0zLjIgOTYuOSwtMy4yIDcuNSwtMC4yIDEzLjUsLTYuNSAxMy4yLC0xNCAtMC4zLC03LjUgLTYuNSwtMTMuNSAtMTQsLTEzLjIgLTAuOSwwIC0xLjgsMC4xIC0yLjYsMC4zIDAsMCAtNTAuNCw2LjIgLTkxLjMsMi45IC01NCwtNC40IC04My40LC0xNC4zIC04My40LC0xNC4zIC0yLjIsLTAuNyAtNC41LC0xIC02LjcsLTAuNyB6IG0gMCwtNjcuNiBjIC03LjUsMSAtMTIuNyw3LjggLTExLjcsMTUuMyAwLjcsNS40IDQuNiw5LjkgOS45LDExLjMgMCwwIDMzLjIsMTEgODkuNywxNS42IDQ1LjQsMy43IDk2LjksLTMuMiA5Ni45LC0zLjIgNy41LC0wLjIgMTMuNSwtNi41IDEzLjIsLTE0IC0wLjMsLTcuNSAtNi41LC0xMy41IC0xNCwtMTMuMiAtMC45LDAgLTEuOCwwLjEgLTIuNiwwLjMgMCwwIC01MC40LDYuMiAtOTEuMywyLjkgLTU0LC00LjQgLTgzLjQsLTE0LjMgLTgzLjQsLTE0LjMgLTIuMiwtMC43IC00LjUsLTEgLTYuNywtMC43IHogbSAwLC02Ny42IGMgLTcuNSwxIC0xMi43LDcuOCAtMTEuNywxNS4zIDAuNyw1LjQgNC42LDkuOSA5LjksMTEuMyAwLDAgMzMuMiwxMSA4OS43LDE1LjYgNDUuNCwzLjcgOTYuOSwtMy4yIDk2LjksLTMuMiA3LjUsLTAuMiAxMy41LC02LjUgMTMuMiwtMTQgLTAuMywtNy41IC02LjUsLTEzLjUgLTE0LC0xMy4yIC0wLjksMCAtMS44LDAuMSAtMi42LDAuMyAwLDAgLTUwLjQsNi4yIC05MS4zLDIuOSAtNTQsLTQuNCAtODMuNCwtMTQuMyAtODMuNCwtMTQuMyAtMi4yLC0wLjcgLTQuNSwtMSAtNi43LC0wLjcgeiBtIDAsLTY3LjUgYyAtNy41LDEgLTEyLjcsNy44IC0xMS43LDE1LjMgMC43LDUuNCA0LjYsOS45IDkuOSwxMS4zIDAsMCAzMy4yLDExIDg5LjcsMTUuNiA0NS40LDMuNyA5Ni45LC0zLjIgOTYuOSwtMy4yIDcuNSwtMC4yIDEzLjUsLTYuNSAxMy4yLC0xNCAtMC4zLC03LjUgLTYuNSwtMTMuNSAtMTQsLTEzLjIgLTAuOSwwIC0xLjgsMC4xIC0yLjYsMC4zIDAsMCAtNTAuNCw2LjIgLTkxLjMsMi45IC01NCwtNC40IC04My40LC0xNC4zIC04My40LC0xNC4zIC0yLjIsLTAuOCAtNC41LC0xIC02LjcsLTAuNyB6IG0gLTk0LjcsLTcxLjMgYyAtNzEsMC41IC05Ny41LDIyLjMgLTk3LjUsMjIuMyB2IDUzMC4zIGMgMCwwIDI1LjgsLTIyLjMgMTA5LC0xOC45IDgzLjIsMy40IDEwMC4zLDMyLjYgMjAyLjUsMzQuNiAxMDIuMiwyLjEgMTI3LjksLTE1LjcgMTI3LjksLTE1LjcgbCAxLjUsLTU0MC42IGMgMCwwIC00NiwxMyAtMTM1LjUsMTMuNyAtODkuNSwwLjcgLTExMSwtMjIuOCAtMTkzLjIsLTI1LjUgLTUuMSwtMC4xIC0xMCwtMC4yIC0xNC43LC0wLjIgeiBtIDU5LjQsMzQuNiBjIDAsMCA0MywxNC4yIDEyMi41LDE4LjIgNjcuMiwzLjMgMTM0LjUsLTYuNiAxMzQuNSwtNi42IFYgLTkyOSBjIDAsMCAtMzQuMSwxNy45IC0xMTkuMywxMS44IC02NiwtNC43IC0xMzguNywtMjkuNyAtMTM4LjcsLTI5LjcgeiBtIC00MS41LDEyLjUgYyA3LjYsMCAxMy43LDYuMiAxMy43LDEzLjcgMCw3LjUgLTYuMiwxMy43IC0xMy43LDEzLjcgMCwwIC0yMi4zLDAuMSAtMzUuOCwxLjUgLTIyLjgsMi4zIC0zOC4zLDEwLjYgLTM4LjMsMTAuNiAtNi43LDMuNSAtMTUsMSAtMTguNSwtNS43IC0zLjUsLTYuNyAtMSwtMTUgNS43LC0xOC41IDAsMCAwLDAgMCwwIDAsMCAyMC4yLC0xMC43IDQ4LjQsLTEzLjUgMTYuMywtMS43IDM4LjUsLTEuOCAzOC41LC0xLjggeiBtIC0xMy4yLDY3LjggYyA3LjYsLTAuMiAxMy4zLDAgMTMuMywwIDcuNSwwLjkgMTIuOSw3LjggMTIsMTUuMyAtMC44LDYuMyAtNS43LDExLjIgLTEyLDEyIDAsMCAtMjIuMywwLjEgLTM1LjgsMS41IC0yMi44LDIuMyAtMzguMywxMC42IC0zOC4zLDEwLjYgLTYuNywzLjUgLTE1LDAuOSAtMTguNSwtNS44IC0zLjUsLTYuNyAtMC45LC0xNSA1LjgsLTE4LjUgMCwwIDIwLjIsLTEwLjcgNDguNCwtMTMuNSA3LjksLTAuOSAxNy41LC0xLjQgMjUuMSwtMS42IHogbSAxMy4yLDY3LjUgYyA3LjYsMCAxMy43LDYuMiAxMy43LDEzLjcgMCw3LjYgLTYuMiwxMy43IC0xMy43LDEzLjcgMCwwIC0yMi4zLC0wLjEgLTM1LjgsMS4yIC0yMi44LDIuMyAtMzguMywxMC42IC0zOC4zLDEwLjYgLTYuNywzLjUgLTE1LDAuOSAtMTguNSwtNS44IC0zLjUsLTYuNyAtMC45LC0xNSA1LjgsLTE4LjUgMCwwIDIwLjIsLTEwLjcgNDguNCwtMTMuNSAxNi4yLC0xLjUgMzguNCwtMS40IDM4LjQsLTEuNCB6IgogICAgICAgaWQ9InBhdGgxIiAvPgogIDwvc3ZnOmc+CiAgPGRpdgogICAgIGlkPSJzYWthLWd1aS1yb290Ij4KICAgIDxkaXY+CiAgICAgIDxkaXY+CiAgICAgICAgPHN0eWxlIC8+CiAgICAgIDwvZGl2PgogICAgPC9kaXY+CiAgPC9kaXY+Cjwvc3ZnOnN2Zz4K)

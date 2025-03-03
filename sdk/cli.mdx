@@ -1,0 +1,580 @@
+---
+title: 'New file'
+description: 'Description of your new file.'
+---
+
+
+
+[![Light Logo](https://sdk.redbrickai.com/_static/redbrick.svg)Version 2.21.5](https://sdk.redbrickai.com/index.html)
+
+* [Python SDK](https://sdk.redbrickai.com/sdk.html)
+
+* [Command Line Interface](https://sdk.redbrickai.com/cli.html#)
+
+* [Formats](https://sdk.redbrickai.com/formats/index.html)
+
+
+
+
+# Command Line Interface
+
+The RedBrick CLI offers a simple interface to quickly import and export your images & annotations, and perform other high-level actions.
+
+usag&#x65;**:** redbrick **\[-**&#x68;**]** **\[-**&#x76;**]** **\[--**&#x63;ompletion **\{**&#x62;as&#x68;**,**&#x7A;s&#x68;**,**&#x74;cs&#x68;**}]**
+&#x20;               **\{**&#x63;onfi&#x67;**,**&#x69;ni&#x74;**,**&#x63;lon&#x65;**,**&#x69;nf&#x6F;**,**&#x65;xpor&#x74;**,**&#x75;ploa&#x64;**,**&#x72;epor&#x74;**}** **...**
+
+
+## Named Arguments
+
+-v, --version
+
+show program’s version number and exit
+
+\--completion
+
+Possible choices: bash, zsh, tcsh
+
+print shell completion script
+
+## Commands
+
+command
+
+Possible choices: config, init, clone, info, export, upload, report
+
+## Sub-commands
+
+### config
+
+Setup the credentials for your CLI.
+
+redbrick config **\[-**&#x68;**]** **\[--**&#x6F;rg OR&#x47;**]** **\[--**&#x6B;ey KE&#x59;**]** **\[--**&#x75;rl UR&#x4C;**]** **\[--**&#x70;rofile PROFIL&#x45;**]**
+&#x20;               **\[--**&#x66;orc&#x65;**]**
+&#x20;               **\{**&#x6C;is&#x74;**,**&#x73;e&#x74;**,**&#x61;d&#x64;**,**&#x72;emov&#x65;**,**&#x63;lea&#x72;**,**&#x76;erif&#x79;**}** **...**
+
+
+#### Positional Arguments
+
+sub\_command
+
+Possible choices: list, set, add, remove, clear, verify
+
+#### Named Arguments
+
+\--org, -o
+
+Org ID
+
+\--key, -k
+
+API Key
+
+\--url, -u
+
+Endpoint URL, should default to [https://api.redbrickai.com.](https://api.redbrickai.com.)
+
+\--profile, -p
+
+Profile name
+
+\--force, -f
+
+Force create new credentials
+
+Default: False
+
+#### Sub-commands
+
+##### list
+
+List all credential profiles
+
+redbrick config list **\[-**&#x68;**]**
+
+
+##### set
+
+Set your default credentials profile
+
+redbrick config set **\[-**&#x68;**]** **\[**&#x70;rofil&#x65;**]**
+
+
+###### Positional Arguments
+
+profile
+
+Profile name
+
+##### add
+
+Add a new profile
+
+redbrick config add **\[-**&#x68;**]** **\[--**&#x6F;rg OR&#x47;**]** **\[--**&#x6B;ey KE&#x59;**]** **\[--**&#x75;rl UR&#x4C;**]**
+&#x20;                   **\[--**&#x70;rofile PROFIL&#x45;**]**
+
+
+###### Named Arguments
+
+\--org, -o
+
+Org ID
+
+\--key, -k
+
+Add your API Key.
+
+\--url, -u
+
+Endpoint URL, should default to [https://api.redbrickai.com.](https://api.redbrickai.com.)
+
+\--profile, -p
+
+Define a name for your authentication profile.
+
+##### remove
+
+Remove a profile
+
+redbrick config remove **\[-**&#x68;**]** **\[**&#x70;rofil&#x65;**]**
+
+
+###### Positional Arguments
+
+profile
+
+Profile name
+
+##### clear
+
+Clear all credentials
+
+redbrick config clear **\[-**&#x68;**]**
+
+
+##### verify
+
+Verify a profile
+
+redbrick config verify **\[-**&#x68;**]** **\[**&#x70;rofil&#x65;**]**
+
+
+###### Positional Arguments
+
+profile
+
+Profile name
+
+### init
+
+Create a new project. We recommend creating a new directory and naming it after your project, initializing your project within the new directory.
+
+$ mkdir new-project
+$ cd new-project
+$ redbrick init
+
+
+redbrick init **\[-**&#x68;**]** **\[--**&#x6E;ame NAM&#x45;**]** **\[--**&#x74;axonomy TAXONOM&#x59;**]** **\[--**&#x72;eviews REVIEW&#x53;**]**
+&#x20;             **\[--**&#x77;orkspace WORKSPAC&#x45;**]** **\[--**&#x73;iblin&#x67;**-**&#x74;asks SIBLING\_TASK&#x53;**]**
+&#x20;             **\[**&#x70;at&#x68;**]**
+
+
+#### Positional Arguments
+
+path
+
+Local path of the empty project directory
+
+Default: “.”
+
+#### Named Arguments
+
+\--name, -n
+
+Project name
+
+\--taxonomy, -t
+
+Taxonomy name
+
+\--reviews, -r
+
+Number of review stages
+
+\--workspace, -w
+
+The workspace that you want to add this project to
+
+\--sibling-tasks
+
+Number of tasks created for each uploaded datapoint
+
+### clone
+
+The project will be cloned to a local directory named after your `project name`.
+
+redbrick clone **\[-**&#x68;**]** **\[**&#x70;rojec&#x74;**]** **\[**&#x70;at&#x68;**]**
+
+
+#### Positional Arguments
+
+project
+
+Project ID or Name
+
+path
+
+Local path of the empty project directory
+
+### info
+
+Get a project’s information
+
+redbrick info **\[-**&#x68;**]** **\[--**&#x67;et **\{**&#x6C;abelstorag&#x65;**}]** **\[--**&#x73;et **\{**&#x6C;abelstorag&#x65;**}]** **\[**&#x70;at&#x68;**]**
+
+
+#### Positional Arguments
+
+path
+
+Path of project (Default: current directory)
+
+Default: “.”
+
+#### Named Arguments
+
+\--get, -g
+
+Possible choices: labelstorage
+
+Get a project’s setting information
+
+\--set, -s
+
+Possible choices: labelstorage
+
+Set a project setting
+
+### export
+
+Export data for a project
+
+redbrick export **\[-**&#x68;**]** **\[--with-**&#x66;ile&#x73;**]** **\[--**&#x64;ico&#x6D;**-**&#x74;&#x6F;**-**&#x6E;ift&#x69;**]** **\[--**&#x6F;l&#x64;**-**&#x66;orma&#x74;**]**
+&#x20;               **\[--**&#x77;ithou&#x74;**-**&#x6D;ask&#x73;**]** **\[--**&#x73;emanti&#x63;**]** **\[--**&#x62;inar&#x79;**-**&#x6D;as&#x6B;**]** **\[--**&#x73;ingl&#x65;**-**&#x6D;as&#x6B;**]**
+&#x20;               **\[--**&#x6E;&#x6F;**-**&#x63;onsensu&#x73;**]** **\[--**&#x70;n&#x67;**]** **\[--**&#x72;&#x74;**-**&#x73;truc&#x74;**]** **\[--**&#x6D;h&#x64;**]** **\[--**&#x63;lea&#x72;**-**&#x63;ach&#x65;**]**
+&#x20;               **\[--**&#x63;oncurrency CONCURRENC&#x59;**]** **\[--**&#x73;tage STAG&#x45;**]**
+&#x20;               **\[--**&#x64;estination DESTINATIO&#x4E;**]**
+&#x20;               **\[**&#x74;yp&#x65;**]**
+
+
+#### Positional Arguments
+
+type
+
+Export type: (latest \[default], groundtruth, )
+
+Default: “latest”
+
+#### Named Arguments
+
+\--with-files
+
+Export with files (e.g. images/video frames)
+
+Default: False
+
+\--dicom-to-nifti
+
+Convert DICOM images to NIfTI. Applicable when `--with-files` is set.
+
+Default: False
+
+\--old-format
+
+Whether to export tasks in old format. (Default: False)
+
+Default: False
+
+\--without-masks
+
+Exports only tasks JSON without downloading any segmentation masks. Note: This is not recommended for tasks with overlapping labels.
+
+Default: False
+
+\--semantic
+
+Whether to export all segmentations as semantic\_mask. This will create one segmentation file per class. If this is set to True and a task has multiple instances per class, then attributes belonging to each instance will not be exported.
+
+Default: False
+
+\--binary-mask
+
+Whether to export all segmentations as binary masks. This will create one segmentation file per instance.
+
+Default: False
+
+\--single-mask
+
+Whether to export all segmentations in a single file. Binary mask will be considered if both binary\_mask and single\_mask are set.
+
+Default: False
+
+\--no-consensus
+
+Whether to export tasks without consensus info. If None, will default to export with consensus info, if it is enabled for the given project.
+
+Default: False
+
+\--png
+
+Export labels as PNG masks
+
+Default: False
+
+\--rt-struct
+
+Export labels as DICOM RT-Struct. (Only for DICOM images)
+
+Default: False
+
+\--mhd
+
+Export segmentation masks in MHD format.
+
+Default: False
+
+\--clear-cache
+
+Clear local cache
+
+Default: False
+
+\--concurrency, -c
+
+Concurrency value (Default: 10)
+
+Default: 10
+
+\--stage, -s
+
+Export tasks that are currently in the given stage. Applicable only with `redbrick export` and `redbrick export latest`
+
+\--destination, -d
+
+Destination directory (Default: current directory)
+
+Default: “.”
+
+### upload
+
+Upload files to a project
+
+redbrick upload **\[-**&#x68;**]** **\[--as-**&#x66;rame&#x73;**]**
+&#x20;               **\[--**&#x74;ype **\[\{**&#x44;ICOM3&#x44;**,**&#x4E;IFTI3&#x44;**,**&#x4E;RRD3&#x44;**,**&#x49;MAGE2&#x44;**,**&#x56;IDE&#x4F;**,**&#x56;IDEOFRAME&#x53;**}]]**
+&#x20;               **\[--as-**&#x73;tud&#x79;**]** **\[--**&#x6A;so&#x6E;**]** **\[--**&#x73;egmen&#x74;**-**&#x6D;ap SEGMENT\_MA&#x50;**]**
+&#x20;               **\[--**&#x73;torage STORAG&#x45;**]** **\[--**&#x6C;abe&#x6C;**-**&#x73;torage LABEL\_STORAG&#x45;**]**
+&#x20;               **\[--**&#x67;roun&#x64;**-**&#x74;rut&#x68;**]** **\[--**&#x6C;abe&#x6C;**-**&#x76;alidat&#x65;**]** **\[--**&#x70;run&#x65;**-**&#x73;egmentation&#x73;**]**
+&#x20;               **\[--**&#x72;&#x74;**-**&#x73;truc&#x74;**]** **\[--**&#x6D;h&#x64;**]** **\[--**&#x63;lea&#x72;**-**&#x63;ach&#x65;**]**
+&#x20;               **\[--**&#x63;oncurrency CONCURRENC&#x59;**]**
+&#x20;               directory
+
+
+#### Positional Arguments
+
+directory
+
+The directory containing files to upload to the project
+
+#### Named Arguments
+
+\--as-frames
+
+Upload video from image frames
+
+Default: False
+
+\--type, -t
+
+Possible choices: DICOM3D, NIFTI3D, NRRD3D, IMAGE2D, VIDEO, VIDEOFRAMES
+
+Import file type \[’`DICOM3D`’, ‘`NIFTI3D`’, ‘`NRRD3D`’, ‘`IMAGE2D`’, ‘`VIDEO`’, ‘`VIDEOFRAMES`’]
+
+Please refer to [our documentation](https://docs.redbrickai.com/importing-data/direct-data-upload), to understand the required folder structure and supported file types.
+
+Default: “DICOM3D”
+
+\--as-study
+
+Group files by study
+
+Default: False
+
+\--json
+
+Upload json files with list of task objects
+
+Default: False
+
+\--segment-map, -m
+
+Segmentation mapping file path
+
+\--storage, -s
+
+Storage method: (redbrick \[default], public, )
+
+Default: “redbrick”
+
+\--label-storage
+
+Label Storage method: (same as items storage `--storage` \[default], redbrick, public, )
+
+\--ground-truth
+
+Upload tasks directly to ground truth.
+
+Default: False
+
+\--label-validate
+
+Validate NIfTI label instances and segmentMap. By default, the uploaded NIfTI files are not validated during upload, which can result in invalid files being uploaded. Using this argument validates the files before upload, but may increase the upload time.
+
+Default: False
+
+\--prune-segmentations
+
+Prune segmentations that are not part of the series.
+
+Default: False
+
+\--rt-struct
+
+Upload segmentations from DICOM RT-Struct files.
+
+Default: False
+
+\--mhd
+
+Upload segmentations from MHD files.
+
+Default: False
+
+\--clear-cache
+
+Clear local cache
+
+Default: False
+
+\--concurrency, -c
+
+Concurrency value (Default: 10)
+
+Default: 10
+
+### report
+
+Generate an audit report for a project. Exports a JSON file containing all actions & events associated with every task, including:
+
+* Who annotated the task
+
+* Who uploaded the data
+
+* Who reviewed the task
+
+* and more.
+
+redbrick report **\[-**&#x68;**]** **\[--**&#x63;oncurrency CONCURRENC&#x59;**]** **\[**&#x74;yp&#x65;**]**
+
+
+#### Positional Arguments
+
+type
+
+Export type: (all \[default], groundtruth)
+
+Default: “all”
+
+#### Named Arguments
+
+\--concurrency, -c
+
+Concurrency value (Default: 10)
+
+Default: 10
+
+[NextFormats](https://sdk.redbrickai.com/formats/index.html)[PreviousPython SDK](https://sdk.redbrickai.com/sdk.html)
+
+Copyright © 2023, RedBrick AI
+
+Made with [Sphinx](https://www.sphinx-doc.org/) and [@pradyunsg](https://pradyunsg.me/)'s [Furo](https://github.com/pradyunsg/furo)
+
+On this page
+
+* [Named Arguments](https://sdk.redbrickai.com/cli.html#named-arguments)
+
+* [Commands](https://sdk.redbrickai.com/cli.html#commands)
+
+* [Sub-commands](https://sdk.redbrickai.com/cli.html#Sub-commands)
+
+  * [config](https://sdk.redbrickai.com/cli.html#config)
+
+    * [Positional Arguments](https://sdk.redbrickai.com/cli.html#positional-arguments)
+
+    * [Named Arguments](https://sdk.redbrickai.com/cli.html#named-arguments_repeat1)
+
+    * [Sub-commands](https://sdk.redbrickai.com/cli.html#Sub-commands_repeat1)
+
+      * [list](https://sdk.redbrickai.com/cli.html#list)
+
+      * [set](https://sdk.redbrickai.com/cli.html#set)
+
+        * [Positional Arguments](https://sdk.redbrickai.com/cli.html#positional-arguments_repeat1)
+
+      * [add](https://sdk.redbrickai.com/cli.html#add)
+
+        * [Named Arguments](https://sdk.redbrickai.com/cli.html#named-arguments_repeat2)
+
+      * [remove](https://sdk.redbrickai.com/cli.html#remove)
+
+        * [Positional Arguments](https://sdk.redbrickai.com/cli.html#positional-arguments_repeat2)
+
+      * [clear](https://sdk.redbrickai.com/cli.html#clear)
+
+      * [verify](https://sdk.redbrickai.com/cli.html#verify)
+
+        * [Positional Arguments](https://sdk.redbrickai.com/cli.html#positional-arguments_repeat3)
+
+  * [init](https://sdk.redbrickai.com/cli.html#init)
+
+    * [Positional Arguments](https://sdk.redbrickai.com/cli.html#positional-arguments_repeat4)
+
+    * [Named Arguments](https://sdk.redbrickai.com/cli.html#named-arguments_repeat3)
+
+  * [clone](https://sdk.redbrickai.com/cli.html#clone)
+
+    * [Positional Arguments](https://sdk.redbrickai.com/cli.html#positional-arguments_repeat5)
+
+  * [info](https://sdk.redbrickai.com/cli.html#info)
+
+    * [Positional Arguments](https://sdk.redbrickai.com/cli.html#positional-arguments_repeat6)
+
+    * [Named Arguments](https://sdk.redbrickai.com/cli.html#named-arguments_repeat4)
+
+  * [export](https://sdk.redbrickai.com/cli.html#export)
+
+    * [Positional Arguments](https://sdk.redbrickai.com/cli.html#positional-arguments_repeat7)
+
+    * [Named Arguments](https://sdk.redbrickai.com/cli.html#named-arguments_repeat5)
+
+  * [upload](https://sdk.redbrickai.com/cli.html#upload)
+
+    * [Positional Arguments](https://sdk.redbrickai.com/cli.html#positional-arguments_repeat8)
+
+    * [Named Arguments](https://sdk.redbrickai.com/cli.html#named-arguments_repeat6)
+
+  * [report](https://sdk.redbrickai.com/cli.html#report)
+
+    * [Positional Arguments](https://sdk.redbrickai.com/cli.html#positional-arguments_repeat9)
+
+    * [Named Arguments](https://sdk.redbrickai.com/cli.html#named-arguments_repeat7)
+
+![Read the Docs](data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmc6c3ZnCiAgIHZlcnNpb249IjEuMSIKICAgaWQ9InN2ZyIKICAgeD0iMHB4IgogICB5PSIwcHgiCiAgIHZpZXdCb3g9IjY5NCAxOTcgMzQ2LjY5ODU1IDM5OS45ODQ3NyIKICAgc29kaXBvZGk6ZG9jbmFtZT0ibG9nby1saWdodC5zdmciCiAgIHdpZHRoPSIzNDYuNjk4NTUiCiAgIGhlaWdodD0iMzk5Ljk4NDc3IgogICBpbmtzY2FwZTp2ZXJzaW9uPSIxLjMuMiAoMDkxZTIwZWYwZiwgMjAyMy0xMS0yNSwgY3VzdG9tKSIKICAgeG1sbnM6aW5rc2NhcGU9Imh0dHA6Ly93d3cuaW5rc2NhcGUub3JnL25hbWVzcGFjZXMvaW5rc2NhcGUiCiAgIHhtbG5zOnNvZGlwb2RpPSJodHRwOi8vc29kaXBvZGkuc291cmNlZm9yZ2UubmV0L0RURC9zb2RpcG9kaS0wLmR0ZCIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHN2ZzpkZWZzCiAgICAgaWQ9ImRlZnMxMiIgLz4KICA8c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgaWQ9Im5hbWVkdmlldzEyIgogICAgIHBhZ2Vjb2xvcj0iI2ZmZmZmZiIKICAgICBib3JkZXJjb2xvcj0iIzAwMDAwMCIKICAgICBib3JkZXJvcGFjaXR5PSIwLjI1IgogICAgIGlua3NjYXBlOnNob3dwYWdlc2hhZG93PSIyIgogICAgIGlua3NjYXBlOnBhZ2VvcGFjaXR5PSIwLjAiCiAgICAgaW5rc2NhcGU6cGFnZWNoZWNrZXJib2FyZD0iMCIKICAgICBpbmtzY2FwZTpkZXNrY29sb3I9IiNkMWQxZDEiCiAgICAgaW5rc2NhcGU6em9vbT0iMS4yNTIiCiAgICAgaW5rc2NhcGU6Y3g9Ijk5OC40MDI1NiIKICAgICBpbmtzY2FwZTpjeT0iMTk5LjY4MDUxIgogICAgIGlua3NjYXBlOndpbmRvdy13aWR0aD0iMzQ0MCIKICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSIxMzg5IgogICAgIGlua3NjYXBlOndpbmRvdy14PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy15PSIyNyIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9InN2ZyIgLz4KICA8c3ZnOmcKICAgICBpZD0ibG9nbyIKICAgICB0cmFuc2Zvcm09Im1hdHJpeCgwLjU1NzUzNjQ0LDAsMCwwLjU1NzUzNjQ0LDY2LjUzMTgxMiwxMDUwLjEyNjIpIj4KICAgIDxzdmc6cGF0aAogICAgICAgc3R5bGU9ImZpbGw6I2ZjZmNmYyIKICAgICAgIGQ9Im0gMTQwOC4xLC0xMTgxLjcgYyAtNy41LDEgLTEyLjcsNy44IC0xMS43LDE1LjMgMC43LDUuNCA0LjYsOS45IDkuOSwxMS4zIDAsMCAzMy4yLDExIDg5LjcsMTUuNiA0NS40LDMuNyA5Ni45LC0zLjIgOTYuOSwtMy4yIDcuNSwtMC4yIDEzLjUsLTYuNSAxMy4yLC0xNCAtMC4zLC03LjUgLTYuNSwtMTMuNSAtMTQsLTEzLjIgLTAuOSwwIC0xLjgsMC4xIC0yLjYsMC4zIDAsMCAtNTAuNCw2LjIgLTkxLjMsMi45IC01NCwtNC40IC04My40LC0xNC4zIC04My40LC0xNC4zIC0yLjIsLTAuNyAtNC41LC0xIC02LjcsLTAuNyB6IG0gMCwtNjcuNiBjIC03LjUsMSAtMTIuNyw3LjggLTExLjcsMTUuMyAwLjcsNS40IDQuNiw5LjkgOS45LDExLjMgMCwwIDMzLjIsMTEgODkuNywxNS42IDQ1LjQsMy43IDk2LjksLTMuMiA5Ni45LC0zLjIgNy41LC0wLjIgMTMuNSwtNi41IDEzLjIsLTE0IC0wLjMsLTcuNSAtNi41LC0xMy41IC0xNCwtMTMuMiAtMC45LDAgLTEuOCwwLjEgLTIuNiwwLjMgMCwwIC01MC40LDYuMiAtOTEuMywyLjkgLTU0LC00LjQgLTgzLjQsLTE0LjMgLTgzLjQsLTE0LjMgLTIuMiwtMC43IC00LjUsLTEgLTYuNywtMC43IHogbSAwLC02Ny42IGMgLTcuNSwxIC0xMi43LDcuOCAtMTEuNywxNS4zIDAuNyw1LjQgNC42LDkuOSA5LjksMTEuMyAwLDAgMzMuMiwxMSA4OS43LDE1LjYgNDUuNCwzLjcgOTYuOSwtMy4yIDk2LjksLTMuMiA3LjUsLTAuMiAxMy41LC02LjUgMTMuMiwtMTQgLTAuMywtNy41IC02LjUsLTEzLjUgLTE0LC0xMy4yIC0wLjksMCAtMS44LDAuMSAtMi42LDAuMyAwLDAgLTUwLjQsNi4yIC05MS4zLDIuOSAtNTQsLTQuNCAtODMuNCwtMTQuMyAtODMuNCwtMTQuMyAtMi4yLC0wLjcgLTQuNSwtMSAtNi43LC0wLjcgeiBtIDAsLTY3LjUgYyAtNy41LDEgLTEyLjcsNy44IC0xMS43LDE1LjMgMC43LDUuNCA0LjYsOS45IDkuOSwxMS4zIDAsMCAzMy4yLDExIDg5LjcsMTUuNiA0NS40LDMuNyA5Ni45LC0zLjIgOTYuOSwtMy4yIDcuNSwtMC4yIDEzLjUsLTYuNSAxMy4yLC0xNCAtMC4zLC03LjUgLTYuNSwtMTMuNSAtMTQsLTEzLjIgLTAuOSwwIC0xLjgsMC4xIC0yLjYsMC4zIDAsMCAtNTAuNCw2LjIgLTkxLjMsMi45IC01NCwtNC40IC04My40LC0xNC4zIC04My40LC0xNC4zIC0yLjIsLTAuOCAtNC41LC0xIC02LjcsLTAuNyB6IG0gLTk0LjcsLTcxLjMgYyAtNzEsMC41IC05Ny41LDIyLjMgLTk3LjUsMjIuMyB2IDUzMC4zIGMgMCwwIDI1LjgsLTIyLjMgMTA5LC0xOC45IDgzLjIsMy40IDEwMC4zLDMyLjYgMjAyLjUsMzQuNiAxMDIuMiwyLjEgMTI3LjksLTE1LjcgMTI3LjksLTE1LjcgbCAxLjUsLTU0MC42IGMgMCwwIC00NiwxMyAtMTM1LjUsMTMuNyAtODkuNSwwLjcgLTExMSwtMjIuOCAtMTkzLjIsLTI1LjUgLTUuMSwtMC4xIC0xMCwtMC4yIC0xNC43LC0wLjIgeiBtIDU5LjQsMzQuNiBjIDAsMCA0MywxNC4yIDEyMi41LDE4LjIgNjcuMiwzLjMgMTM0LjUsLTYuNiAxMzQuNSwtNi42IFYgLTkyOSBjIDAsMCAtMzQuMSwxNy45IC0xMTkuMywxMS44IC02NiwtNC43IC0xMzguNywtMjkuNyAtMTM4LjcsLTI5LjcgeiBtIC00MS41LDEyLjUgYyA3LjYsMCAxMy43LDYuMiAxMy43LDEzLjcgMCw3LjUgLTYuMiwxMy43IC0xMy43LDEzLjcgMCwwIC0yMi4zLDAuMSAtMzUuOCwxLjUgLTIyLjgsMi4zIC0zOC4zLDEwLjYgLTM4LjMsMTAuNiAtNi43LDMuNSAtMTUsMSAtMTguNSwtNS43IC0zLjUsLTYuNyAtMSwtMTUgNS43LC0xOC41IDAsMCAwLDAgMCwwIDAsMCAyMC4yLC0xMC43IDQ4LjQsLTEzLjUgMTYuMywtMS43IDM4LjUsLTEuOCAzOC41LC0xLjggeiBtIC0xMy4yLDY3LjggYyA3LjYsLTAuMiAxMy4zLDAgMTMuMywwIDcuNSwwLjkgMTIuOSw3LjggMTIsMTUuMyAtMC44LDYuMyAtNS43LDExLjIgLTEyLDEyIDAsMCAtMjIuMywwLjEgLTM1LjgsMS41IC0yMi44LDIuMyAtMzguMywxMC42IC0zOC4zLDEwLjYgLTYuNywzLjUgLTE1LDAuOSAtMTguNSwtNS44IC0zLjUsLTYuNyAtMC45LC0xNSA1LjgsLTE4LjUgMCwwIDIwLjIsLTEwLjcgNDguNCwtMTMuNSA3LjksLTAuOSAxNy41LC0xLjQgMjUuMSwtMS42IHogbSAxMy4yLDY3LjUgYyA3LjYsMCAxMy43LDYuMiAxMy43LDEzLjcgMCw3LjYgLTYuMiwxMy43IC0xMy43LDEzLjcgMCwwIC0yMi4zLC0wLjEgLTM1LjgsMS4yIC0yMi44LDIuMyAtMzguMywxMC42IC0zOC4zLDEwLjYgLTYuNywzLjUgLTE1LDAuOSAtMTguNSwtNS44IC0zLjUsLTYuNyAtMC45LC0xNSA1LjgsLTE4LjUgMCwwIDIwLjIsLTEwLjcgNDguNCwtMTMuNSAxNi4yLC0xLjUgMzguNCwtMS40IDM4LjQsLTEuNCB6IgogICAgICAgaWQ9InBhdGgxIiAvPgogIDwvc3ZnOmc+CiAgPGRpdgogICAgIGlkPSJzYWthLWd1aS1yb290Ij4KICAgIDxkaXY+CiAgICAgIDxkaXY+CiAgICAgICAgPHN0eWxlIC8+CiAgICAgIDwvZGl2PgogICAgPC9kaXY+CiAgPC9kaXY+Cjwvc3ZnOnN2Zz4K)

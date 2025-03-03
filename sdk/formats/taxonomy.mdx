@@ -1,0 +1,209 @@
+---
+title: 'New file'
+description: 'Description of your new file.'
+---
+
+Hide navigation sidebar
+
+Hide table of contents sidebar
+
+[![Light Logo](https://sdk.redbrickai.com/_static/redbrick.svg)Version 2.21.5](https://sdk.redbrickai.com/index.html)
+
+* [Python SDK](https://sdk.redbrickai.com/sdk.html)
+
+* [Command Line Interface](https://sdk.redbrickai.com/cli.html)
+
+* [Formats](https://sdk.redbrickai.com/formats/index.html)
+
+
+
+
+  Toggle navigation of Formats
+
+  * [Annotation type definitions](https://sdk.redbrickai.com/formats/annotations.html)
+
+  * [Taxonomy format](https://sdk.redbrickai.com/formats/taxonomy.html#)
+
+Toggle Light / Dark / Auto color theme
+
+# Taxonomy format
+
+Section covering the formats for all Taxonomy objects. Taxonomies define a labeling schema for your RedBrick AI projects.
+
+*class* redbrick.types.taxonomy.AttributeOption[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/taxonomy.html#AttributeOption)
+
+Attribute Option.
+
+nam&#x65;*: `str`*
+
+optionI&#x64;*: `int`*
+
+colo&#x72;*: `str`*
+
+archive&#x64;*: `bool`*
+
+*class* redbrick.types.taxonomy.Attribute[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/taxonomy.html#Attribute)
+
+Attribute.
+
+nam&#x65;*: `str`*
+
+attrTyp&#x65;*: `Literal`\[`'BOOL'`, `'TEXT'`, `'SELECT'`, `'MULTISELECT'`]*
+
+attrI&#x64;*: `int`*
+
+option&#x73;*: `Optional`\[`List`\[*[*`AttributeOption`*](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.AttributeOption "redbrick.types.taxonomy.AttributeOption")*]]*
+
+For attrType SELECT and MULTISELECT this defines the list of selection options.
+
+archive&#x64;*: `bool`*
+
+parent&#x73;*: `Optional`\[`List`\[`str`]]*
+
+Defining parents will add a nested structure to the taxonomy. Multiple attributes with parent \[“Type A”] will be visually nested under a expansion panel Type A in the user interface.
+
+Note
+
+Only supported for Classifications, not for Object Attributes.
+
+hin&#x74;*: `Optional`\[`str`]*
+
+A string containing raw text, or HTML. The hints will appear in the viewer.
+
+defaultValu&#x65;*: `Union`\[`str`, `bool`, `int`, `List`\[`int`], `None`]*
+
+For SELECT or MULTISELECT types, defaultValue will pre-populate the UI with the selection.
+
+*class* redbrick.types.taxonomy.ObjectType[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/taxonomy.html#ObjectType)
+
+Object’s are used to annotate features or objects in tasks.
+
+categor&#x79;*: `str`*
+
+Category of the Taxonomy object is a string descriptor.
+
+classI&#x64;*: `int`*
+
+A unique integer for this object. Segmentation files can be exported to contain classId as the values in the file.
+
+labelTyp&#x65;*: `Literal`\[`'BBOX'`, `'CUBOID'`, `'POINT'`, `'POLYLINE'`, `'POLYGON'`, `'ELLIPSE'`, `'SEGMENTATION'`, `'LENGTH'`, `'ANGLE'`]*
+
+They type of label for this object.
+
+attribute&#x73;*: `Optional`\[`List`\[*[*`Attribute`*](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Attribute "redbrick.types.taxonomy.Attribute")*]]*
+
+Attributes allow further classification of objects.
+
+colo&#x72;*: `str`*
+
+archive&#x64;*: `bool`*
+
+parent&#x73;*: `Optional`\[`List`\[`str`]]*
+
+Defining parents will add a nested structure to the taxonomy. Multiple objects with parent \[“Type A”] will be visually nested under a expansion panel Type A in the user interface.
+
+hin&#x74;*: `Optional`\[`str`]*
+
+A string containing raw text, or HTML. The hints will appear in the viewer.
+
+*class* redbrick.types.taxonomy.Taxonomy[\[source\]](https://sdk.redbrickai.com/_modules/redbrick/types/taxonomy.html#Taxonomy)
+
+Taxonomy object.
+
+orgI&#x64;*: `str`*
+
+taxI&#x64;*: `str`*
+
+nam&#x65;*: `str`*
+
+studyClassif&#x79;*: `List`\[*[*`Attribute`*](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Attribute "redbrick.types.taxonomy.Attribute")*]*
+
+seriesClassif&#x79;*: `List`\[*[*`Attribute`*](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Attribute "redbrick.types.taxonomy.Attribute")*]*
+
+instanceClassif&#x79;*: `List`\[*[*`Attribute`*](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Attribute "redbrick.types.taxonomy.Attribute")*]*
+
+objectType&#x73;*: `List`\[*[*`ObjectType`*](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.ObjectType "redbrick.types.taxonomy.ObjectType")*]*
+
+createdA&#x74;*: `str`*
+
+archive&#x64;*: `bool`*
+
+isNe&#x77;*: `bool`*
+
+[PreviousAnnotation type definitions](https://sdk.redbrickai.com/formats/annotations.html)
+
+Copyright © 2023, RedBrick AI
+
+Made with [Sphinx](https://www.sphinx-doc.org/) and [@pradyunsg](https://pradyunsg.me/)'s [Furo](https://github.com/pradyunsg/furo)
+
+On this page
+
+* [`AttributeOption`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.AttributeOption)
+
+  * [`AttributeOption.name`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.AttributeOption.name)
+
+  * [`AttributeOption.optionId`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.AttributeOption.optionId)
+
+  * [`AttributeOption.color`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.AttributeOption.color)
+
+  * [`AttributeOption.archived`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.AttributeOption.archived)
+
+* [`Attribute`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Attribute)
+
+  * [`Attribute.name`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Attribute.name)
+
+  * [`Attribute.attrType`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Attribute.attrType)
+
+  * [`Attribute.attrId`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Attribute.attrId)
+
+  * [`Attribute.options`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Attribute.options)
+
+  * [`Attribute.archived`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Attribute.archived)
+
+  * [`Attribute.parents`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Attribute.parents)
+
+  * [`Attribute.hint`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Attribute.hint)
+
+  * [`Attribute.defaultValue`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Attribute.defaultValue)
+
+* [`ObjectType`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.ObjectType)
+
+  * [`ObjectType.category`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.ObjectType.category)
+
+  * [`ObjectType.classId`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.ObjectType.classId)
+
+  * [`ObjectType.labelType`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.ObjectType.labelType)
+
+  * [`ObjectType.attributes`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.ObjectType.attributes)
+
+  * [`ObjectType.color`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.ObjectType.color)
+
+  * [`ObjectType.archived`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.ObjectType.archived)
+
+  * [`ObjectType.parents`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.ObjectType.parents)
+
+  * [`ObjectType.hint`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.ObjectType.hint)
+
+* [`Taxonomy`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Taxonomy)
+
+  * [`Taxonomy.orgId`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Taxonomy.orgId)
+
+  * [`Taxonomy.taxId`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Taxonomy.taxId)
+
+  * [`Taxonomy.name`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Taxonomy.name)
+
+  * [`Taxonomy.studyClassify`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Taxonomy.studyClassify)
+
+  * [`Taxonomy.seriesClassify`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Taxonomy.seriesClassify)
+
+  * [`Taxonomy.instanceClassify`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Taxonomy.instanceClassify)
+
+  * [`Taxonomy.objectTypes`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Taxonomy.objectTypes)
+
+  * [`Taxonomy.createdAt`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Taxonomy.createdAt)
+
+  * [`Taxonomy.archived`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Taxonomy.archived)
+
+  * [`Taxonomy.isNew`](https://sdk.redbrickai.com/formats/taxonomy.html#redbrick.types.taxonomy.Taxonomy.isNew)
+
+![Read the Docs](data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmc6c3ZnCiAgIHZlcnNpb249IjEuMSIKICAgaWQ9InN2ZyIKICAgeD0iMHB4IgogICB5PSIwcHgiCiAgIHZpZXdCb3g9IjY5NCAxOTcgMzQ2LjY5ODU1IDM5OS45ODQ3NyIKICAgc29kaXBvZGk6ZG9jbmFtZT0ibG9nby1saWdodC5zdmciCiAgIHdpZHRoPSIzNDYuNjk4NTUiCiAgIGhlaWdodD0iMzk5Ljk4NDc3IgogICBpbmtzY2FwZTp2ZXJzaW9uPSIxLjMuMiAoMDkxZTIwZWYwZiwgMjAyMy0xMS0yNSwgY3VzdG9tKSIKICAgeG1sbnM6aW5rc2NhcGU9Imh0dHA6Ly93d3cuaW5rc2NhcGUub3JnL25hbWVzcGFjZXMvaW5rc2NhcGUiCiAgIHhtbG5zOnNvZGlwb2RpPSJodHRwOi8vc29kaXBvZGkuc291cmNlZm9yZ2UubmV0L0RURC9zb2RpcG9kaS0wLmR0ZCIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHN2ZzpkZWZzCiAgICAgaWQ9ImRlZnMxMiIgLz4KICA8c29kaXBvZGk6bmFtZWR2aWV3CiAgICAgaWQ9Im5hbWVkdmlldzEyIgogICAgIHBhZ2Vjb2xvcj0iI2ZmZmZmZiIKICAgICBib3JkZXJjb2xvcj0iIzAwMDAwMCIKICAgICBib3JkZXJvcGFjaXR5PSIwLjI1IgogICAgIGlua3NjYXBlOnNob3dwYWdlc2hhZG93PSIyIgogICAgIGlua3NjYXBlOnBhZ2VvcGFjaXR5PSIwLjAiCiAgICAgaW5rc2NhcGU6cGFnZWNoZWNrZXJib2FyZD0iMCIKICAgICBpbmtzY2FwZTpkZXNrY29sb3I9IiNkMWQxZDEiCiAgICAgaW5rc2NhcGU6em9vbT0iMS4yNTIiCiAgICAgaW5rc2NhcGU6Y3g9Ijk5OC40MDI1NiIKICAgICBpbmtzY2FwZTpjeT0iMTk5LjY4MDUxIgogICAgIGlua3NjYXBlOndpbmRvdy13aWR0aD0iMzQ0MCIKICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSIxMzg5IgogICAgIGlua3NjYXBlOndpbmRvdy14PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy15PSIyNyIKICAgICBpbmtzY2FwZTp3aW5kb3ctbWF4aW1pemVkPSIxIgogICAgIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9InN2ZyIgLz4KICA8c3ZnOmcKICAgICBpZD0ibG9nbyIKICAgICB0cmFuc2Zvcm09Im1hdHJpeCgwLjU1NzUzNjQ0LDAsMCwwLjU1NzUzNjQ0LDY2LjUzMTgxMiwxMDUwLjEyNjIpIj4KICAgIDxzdmc6cGF0aAogICAgICAgc3R5bGU9ImZpbGw6I2ZjZmNmYyIKICAgICAgIGQ9Im0gMTQwOC4xLC0xMTgxLjcgYyAtNy41LDEgLTEyLjcsNy44IC0xMS43LDE1LjMgMC43LDUuNCA0LjYsOS45IDkuOSwxMS4zIDAsMCAzMy4yLDExIDg5LjcsMTUuNiA0NS40LDMuNyA5Ni45LC0zLjIgOTYuOSwtMy4yIDcuNSwtMC4yIDEzLjUsLTYuNSAxMy4yLC0xNCAtMC4zLC03LjUgLTYuNSwtMTMuNSAtMTQsLTEzLjIgLTAuOSwwIC0xLjgsMC4xIC0yLjYsMC4zIDAsMCAtNTAuNCw2LjIgLTkxLjMsMi45IC01NCwtNC40IC04My40LC0xNC4zIC04My40LC0xNC4zIC0yLjIsLTAuNyAtNC41LC0xIC02LjcsLTAuNyB6IG0gMCwtNjcuNiBjIC03LjUsMSAtMTIuNyw3LjggLTExLjcsMTUuMyAwLjcsNS40IDQuNiw5LjkgOS45LDExLjMgMCwwIDMzLjIsMTEgODkuNywxNS42IDQ1LjQsMy43IDk2LjksLTMuMiA5Ni45LC0zLjIgNy41LC0wLjIgMTMuNSwtNi41IDEzLjIsLTE0IC0wLjMsLTcuNSAtNi41LC0xMy41IC0xNCwtMTMuMiAtMC45LDAgLTEuOCwwLjEgLTIuNiwwLjMgMCwwIC01MC40LDYuMiAtOTEuMywyLjkgLTU0LC00LjQgLTgzLjQsLTE0LjMgLTgzLjQsLTE0LjMgLTIuMiwtMC43IC00LjUsLTEgLTYuNywtMC43IHogbSAwLC02Ny42IGMgLTcuNSwxIC0xMi43LDcuOCAtMTEuNywxNS4zIDAuNyw1LjQgNC42LDkuOSA5LjksMTEuMyAwLDAgMzMuMiwxMSA4OS43LDE1LjYgNDUuNCwzLjcgOTYuOSwtMy4yIDk2LjksLTMuMiA3LjUsLTAuMiAxMy41LC02LjUgMTMuMiwtMTQgLTAuMywtNy41IC02LjUsLTEzLjUgLTE0LC0xMy4yIC0wLjksMCAtMS44LDAuMSAtMi42LDAuMyAwLDAgLTUwLjQsNi4yIC05MS4zLDIuOSAtNTQsLTQuNCAtODMuNCwtMTQuMyAtODMuNCwtMTQuMyAtMi4yLC0wLjcgLTQuNSwtMSAtNi43LC0wLjcgeiBtIDAsLTY3LjUgYyAtNy41LDEgLTEyLjcsNy44IC0xMS43LDE1LjMgMC43LDUuNCA0LjYsOS45IDkuOSwxMS4zIDAsMCAzMy4yLDExIDg5LjcsMTUuNiA0NS40LDMuNyA5Ni45LC0zLjIgOTYuOSwtMy4yIDcuNSwtMC4yIDEzLjUsLTYuNSAxMy4yLC0xNCAtMC4zLC03LjUgLTYuNSwtMTMuNSAtMTQsLTEzLjIgLTAuOSwwIC0xLjgsMC4xIC0yLjYsMC4zIDAsMCAtNTAuNCw2LjIgLTkxLjMsMi45IC01NCwtNC40IC04My40LC0xNC4zIC04My40LC0xNC4zIC0yLjIsLTAuOCAtNC41LC0xIC02LjcsLTAuNyB6IG0gLTk0LjcsLTcxLjMgYyAtNzEsMC41IC05Ny41LDIyLjMgLTk3LjUsMjIuMyB2IDUzMC4zIGMgMCwwIDI1LjgsLTIyLjMgMTA5LC0xOC45IDgzLjIsMy40IDEwMC4zLDMyLjYgMjAyLjUsMzQuNiAxMDIuMiwyLjEgMTI3LjksLTE1LjcgMTI3LjksLTE1LjcgbCAxLjUsLTU0MC42IGMgMCwwIC00NiwxMyAtMTM1LjUsMTMuNyAtODkuNSwwLjcgLTExMSwtMjIuOCAtMTkzLjIsLTI1LjUgLTUuMSwtMC4xIC0xMCwtMC4yIC0xNC43LC0wLjIgeiBtIDU5LjQsMzQuNiBjIDAsMCA0MywxNC4yIDEyMi41LDE4LjIgNjcuMiwzLjMgMTM0LjUsLTYuNiAxMzQuNSwtNi42IFYgLTkyOSBjIDAsMCAtMzQuMSwxNy45IC0xMTkuMywxMS44IC02NiwtNC43IC0xMzguNywtMjkuNyAtMTM4LjcsLTI5LjcgeiBtIC00MS41LDEyLjUgYyA3LjYsMCAxMy43LDYuMiAxMy43LDEzLjcgMCw3LjUgLTYuMiwxMy43IC0xMy43LDEzLjcgMCwwIC0yMi4zLDAuMSAtMzUuOCwxLjUgLTIyLjgsMi4zIC0zOC4zLDEwLjYgLTM4LjMsMTAuNiAtNi43LDMuNSAtMTUsMSAtMTguNSwtNS43IC0zLjUsLTYuNyAtMSwtMTUgNS43LC0xOC41IDAsMCAwLDAgMCwwIDAsMCAyMC4yLC0xMC43IDQ4LjQsLTEzLjUgMTYuMywtMS43IDM4LjUsLTEuOCAzOC41LC0xLjggeiBtIC0xMy4yLDY3LjggYyA3LjYsLTAuMiAxMy4zLDAgMTMuMywwIDcuNSwwLjkgMTIuOSw3LjggMTIsMTUuMyAtMC44LDYuMyAtNS43LDExLjIgLTEyLDEyIDAsMCAtMjIuMywwLjEgLTM1LjgsMS41IC0yMi44LDIuMyAtMzguMywxMC42IC0zOC4zLDEwLjYgLTYuNywzLjUgLTE1LDAuOSAtMTguNSwtNS44IC0zLjUsLTYuNyAtMC45LC0xNSA1LjgsLTE4LjUgMCwwIDIwLjIsLTEwLjcgNDguNCwtMTMuNSA3LjksLTAuOSAxNy41LC0xLjQgMjUuMSwtMS42IHogbSAxMy4yLDY3LjUgYyA3LjYsMCAxMy43LDYuMiAxMy43LDEzLjcgMCw3LjYgLTYuMiwxMy43IC0xMy43LDEzLjcgMCwwIC0yMi4zLC0wLjEgLTM1LjgsMS4yIC0yMi44LDIuMyAtMzguMywxMC42IC0zOC4zLDEwLjYgLTYuNywzLjUgLTE1LDAuOSAtMTguNSwtNS44IC0zLjUsLTYuNyAtMC45LC0xNSA1LjgsLTE4LjUgMCwwIDIwLjIsLTEwLjcgNDguNCwtMTMuNSAxNi4yLC0xLjUgMzguNCwtMS40IDM4LjQsLTEuNCB6IgogICAgICAgaWQ9InBhdGgxIiAvPgogIDwvc3ZnOmc+CiAgPGRpdgogICAgIGlkPSJzYWthLWd1aS1yb290Ij4KICAgIDxkaXY+CiAgICAgIDxkaXY+CiAgICAgICAgPHN0eWxlIC8+CiAgICAgIDwvZGl2PgogICAgPC9kaXY+CiAgPC9kaXY+Cjwvc3ZnOnN2Zz4K)
